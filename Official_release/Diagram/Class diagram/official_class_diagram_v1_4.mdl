@@ -2002,17 +2002,7 @@
 			supplier   	"Logical View::Mon an"
 			quidu      	"4E9CFC5E0093"
 			client_cardinality 	(value cardinality "1")
-			is_navigable 	TRUE)))
-	    (object Class_Category "NewPackage"
-		quid       	"4E9CFB890359"
-		exportControl 	"Public"
-		logical_models 	(list unit_reference_list)
-		logical_presentations 	(list unit_reference_list))
-	    (object Class_Category "NewPackage2"
-		quid       	"4E9CFC490121"
-		exportControl 	"Public"
-		logical_models 	(list unit_reference_list)
-		logical_presentations 	(list unit_reference_list)))
+			is_navigable 	TRUE))))
 	logical_presentations 	(list unit_reference_list
 	    (object ClassDiagram "Main"
 		quid       	"4E9CFB5B0342"
