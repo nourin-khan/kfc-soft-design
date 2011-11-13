@@ -101,7 +101,11 @@
 		    (object Uses_Relationship
 			quid       	"4EBFB9A40017"
 			supplier   	"Logical View::Controller"
-			quidu      	"4EBF6173000A"))
+			quidu      	"4EBF6173000A")
+		    (object Uses_Relationship
+			quid       	"4EBFC0BE02C5"
+			supplier   	"Logical View::Man hinh cau hinh chuong trinh"
+			quidu      	"4EBFBECF0038"))
 		operations 	(list Operations
 		    (object Operation "Show"
 			quid       	"4EBF62740015"
@@ -204,6 +208,15 @@
 			    (object Parameter "MaMonAn"
 				quid       	"4EBF65A30132"))
 			result     	"Mon An // lay thong tin mon an tu DAO"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "lay ds mon an cua mot nhom mon an"
+			quid       	"4EBFC13102AC"
+			parameters 	(list Parameters
+			    (object Parameter "Ma nhom MA"
+				quid       	"4EBFC1520108"))
+			result     	"List<MonAn>"
 			concurrency 	"Sequential"
 			opExportControl 	"Public"
 			uid        	0)
@@ -355,6 +368,212 @@
 		    (object ClassAttribute "ds don dat hang"
 			quid       	"4EBFBB1A0310"
 			type       	"DonDatHang[]")))
+	    (object Class "Man hinh cau hinh chuong trinh"
+		quid       	"4EBFBECF0038"
+		used_nodes 	(list uses_relationship_list
+		    (object Uses_Relationship
+			quid       	"4EBFC0C00206"
+			supplier   	"Logical View::ConfigureController"
+			quidu      	"4EBFBFDF0048"))
+		operations 	(list Operations
+		    (object Operation "Ok clicked"
+			quid       	"4EBFBF9202C8"
+			result     	"void // click vao button ok de cau hinh chuong trinh"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "Cancel clicked"
+			quid       	"4EBFBFB20145"
+			result     	"void // click vao button Cancel de huy bo thao tac"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0))
+		class_attributes 	(list class_attribute_list
+		    (object ClassAttribute "ngon ngu"
+			quid       	"4EBFBEED0030"
+			type       	"DropdownList")
+		    (object ClassAttribute "dia chi server"
+			quid       	"4EBFBEFC00F7"
+			type       	"Textbox")
+		    (object ClassAttribute "dia chi thu ngan"
+			quid       	"4EBFBF1A01AD"
+			type       	"Textbox")
+		    (object ClassAttribute "dia chi nha bep"
+			quid       	"4EBFBF2102CA"
+			type       	"Textbox")
+		    (object ClassAttribute "OK"
+			quid       	"4EBFBF72006B"
+			type       	"button")
+		    (object ClassAttribute "Cancel"
+			quid       	"4EBFBF7E01CA"
+			type       	"button")))
+	    (object Class "ConfigureController"
+		quid       	"4EBFBFDF0048"
+		used_nodes 	(list uses_relationship_list
+		    (object Uses_Relationship
+			quid       	"4EBFC0C500B5"
+			supplier   	"Logical View::Man hinh cau hinh chuong trinh"
+			quidu      	"4EBFBECF0038"))
+		operations 	(list Operations
+		    (object Operation "lay goi ngon ngu"
+			quid       	"4EBFC0680076"
+			result     	"bool // lay goi ngon ngu tu DAO, DAO tra ve file xml"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "thay doi ngon ngu"
+			quid       	"4EBFC00800B8"
+			result     	"void // doc file xml thay doi ngon ngu cua toan bo giao dien he thong"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "thay doi dia chi server, thu ngan, nha bep"
+			quid       	"4EBFC0430251"
+			result     	"bool"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0))
+		class_attributes 	(list class_attribute_list
+		    (object ClassAttribute "ngon ngu"
+			quid       	"4EBFBFE803A1")
+		    (object ClassAttribute "dia chi server"
+			quid       	"4EBFBFEE0232")
+		    (object ClassAttribute "dia chi thu ngan"
+			quid       	"4EBFBFF700A0")
+		    (object ClassAttribute "dia chi nha bep"
+			quid       	"4EBFBFFB0315")))
+	    (object Class "Tiep tan"
+		quid       	"4EBFC1BE008E"
+		used_nodes 	(list uses_relationship_list
+		    (object Uses_Relationship
+			quid       	"4EBFC3D60075"
+			supplier   	"Logical View::TiepTanController"
+			quidu      	"4EBFC1C60257"))
+		operations 	(list Operations
+		    (object Operation "ban an clicked"
+			quid       	"4EBFC2A50280"
+			result     	"void // click vao picture box cua ban an"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "xem don dat hang clicked"
+			quid       	"4EBFC2B900A5"
+			result     	"void // click vao button xem don dat hang"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "chinh sua don dat hang clicked"
+			quid       	"4EBFC2CB022F"
+			result     	"void"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "huy don dat hang clicked"
+			quid       	"4EBFC2D702AF"
+			result     	"void"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "tao moi don dat hang clicked"
+			quid       	"4EBFC2E20268"
+			result     	"void"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "xem hoa don clicked"
+			quid       	"4EBFC2ED003D"
+			result     	"void"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "tinh tien clicked"
+			quid       	"4EBFC33700D3"
+			result     	"void"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0))
+		class_attributes 	(list class_attribute_list
+		    (object ClassAttribute "nhan vien tiep tan hien tai"
+			quid       	"4EBFC1D40353"
+			type       	"NhanVien")
+		    (object ClassAttribute "so do ban an"
+			quid       	"4EBFC1EB01BB"
+			type       	"PictureBox")
+		    (object ClassAttribute "tinh tien"
+			quid       	"4EBFC1F70270"
+			type       	"Button")
+		    (object ClassAttribute "xem don dat hang"
+			quid       	"4EBFC21F01C6"
+			type       	"Button")
+		    (object ClassAttribute "chinh sua don dat hang"
+			quid       	"4EBFC22E0346"
+			type       	"Button")
+		    (object ClassAttribute "huy don dat hang"
+			quid       	"4EBFC2720335"
+			type       	"Button")
+		    (object ClassAttribute "tao moi don dat hang"
+			quid       	"4EBFC27E0345"
+			type       	"Button")
+		    (object ClassAttribute "xem hoa don"
+			quid       	"4EBFC28A0158"
+			type       	"Button")))
+	    (object Class "TiepTanController"
+		quid       	"4EBFC1C60257"
+		used_nodes 	(list uses_relationship_list
+		    (object Uses_Relationship
+			quid       	"4EBFC3D90205"
+			supplier   	"Logical View::Tiep tan"
+			quidu      	"4EBFC1BE008E"))
+		operations 	(list Operations
+		    (object Operation "xem chi tiet ban an"
+			quid       	"4EBFC3830060"
+			result     	"void"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "tao moi don dat hang"
+			quid       	"4EBFC38E0031"
+			result     	"DonDatHang"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "chinh sua don dat hang"
+			quid       	"4EBFC3980184"
+			result     	"bool"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "huy don dat hang"
+			quid       	"4EBFC39F00EB"
+			result     	"bool"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "tao moi hoa don"
+			quid       	"4EBFC3A403E5"
+			result     	"HoaDon"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "xem chi tiet hoa don"
+			quid       	"4EBFC3AD022E"
+			result     	"void"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "tinh tien"
+			quid       	"4EBFC3B90068"
+			result     	"// void"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0))
+		class_attributes 	(list class_attribute_list
+		    (object ClassAttribute "ds don dat hang"
+			quid       	"4EBFC35801B3"
+			type       	"DonDatHang[]")
+		    (object ClassAttribute "ds hoa don"
+			quid       	"4EBFC36702A2"
+			type       	"HoaDon[]")))
 	    (object Class_Category "NewPackage"
 		quid       	"4EBFB9D20069"
 		exportControl 	"Public"
@@ -367,14 +586,14 @@
 		zoom       	100
 		max_height 	28350
 		max_width  	21600
-		origin_x   	999
+		origin_x   	1000
 		origin_y   	0
 		items      	(list diagram_item_list
 		    (object ClassView "Class" "Logical View::MainScreen" @1
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(1073, 544)
+			location   	(726, 525)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -386,7 +605,7 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@1
-			    location   	(659, 88)
+			    location   	(312, 69)
 			    fill_color 	13434879
 			    nlines     	1
 			    max_width  	828
@@ -398,7 +617,7 @@
 			quidu      	"4EBF615E02F1"
 			compartment 	(object Compartment
 			    Parent_View 	@1
-			    location   	(659, 149)
+			    location   	(312, 130)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -422,7 +641,7 @@
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(2526, 550)
+			location   	(2071, 487)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -434,10 +653,10 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@2
-			    location   	(2160, 244)
+			    location   	(1546, 146)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	732
+			    max_width  	1050
 			    justify    	0
 			    label      	"Controller")
 			icon_style 	"Icon"
@@ -446,7 +665,7 @@
 			quidu      	"4EBF6173000A"
 			compartment 	(object Compartment
 			    Parent_View 	@2
-			    location   	(2160, 305)
+			    location   	(1546, 207)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -459,11 +678,11 @@
 			    icon_style 	"Icon"
 			    fill_color 	13434879
 			    anchor     	2
-			    nlines     	11
-			    max_width  	728
+			    nlines     	12
+			    max_width  	759
 			    justify    	1)
-			width      	750
-			height     	636
+			width      	1068
+			height     	707
 			annotation 	8
 			autoResize 	TRUE)
 		    (object UsesView "" @3
@@ -473,8 +692,8 @@
 			client     	@1
 			supplier   	@2
 			vertices   	(list Points
-			    (1496, 545)
-			    (2150, 547))
+			    (1149, 511)
+			    (1536, 501))
 			line_style 	0)
 		    (object UsesView "" @4
 			stereotype 	TRUE
@@ -483,8 +702,134 @@
 			client     	@2
 			supplier   	@1
 			vertices   	(list Points
-			    (2150, 547)
-			    (1496, 545))
+			    (1536, 501)
+			    (1149, 511))
+			line_style 	0)
+		    (object ClassView "Class" "Logical View::Man hinh cau hinh chuong trinh" @5
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(697, 1481)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@5
+			    location   	(384, 1225)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	626
+			    justify    	0
+			    label      	"Man hinh cau hinh chuong trinh")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"4EBFBECF0038"
+			compartment 	(object Compartment
+			    Parent_View 	@5
+			    location   	(384, 1286)
+			    font       	(object Font
+				size       	10
+				face       	"Arial"
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	0
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	9
+			    max_width  	525
+			    justify    	1)
+			width      	644
+			height     	536
+			annotation 	8
+			autoResize 	TRUE)
+		    (object ClassView "Class" "Logical View::ConfigureController" @6
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(1925, 1434)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@6
+			    location   	(1511, 1203)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	828
+			    justify    	0
+			    label      	"ConfigureController")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"4EBFBFDF0048"
+			compartment 	(object Compartment
+			    Parent_View 	@6
+			    location   	(1511, 1264)
+			    font       	(object Font
+				size       	10
+				face       	"Arial"
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	0
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	8
+			    max_width  	825
+			    justify    	1)
+			width      	846
+			height     	486
+			annotation 	8
+			autoResize 	TRUE)
+		    (object UsesView "" @7
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"4EBFC0BE02C5"
+			client     	@1
+			supplier   	@5
+			vertices   	(list Points
+			    (711, 993)
+			    (704, 1212))
+			line_style 	0)
+		    (object UsesView "" @8
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"4EBFC0C00206"
+			client     	@5
+			supplier   	@6
+			vertices   	(list Points
+			    (1019, 1468)
+			    (1501, 1449))
+			line_style 	0)
+		    (object UsesView "" @9
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"4EBFC0C500B5"
+			client     	@6
+			supplier   	@5
+			vertices   	(list Points
+			    (1501, 1449)
+			    (1019, 1468))
 			line_style 	0)))
 	    (object ClassDiagram "Nha bep"
 		quid       	"4EBFB97C0035"
@@ -495,7 +840,7 @@
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object ClassView "Class" "Logical View::GUI" @5
+		    (object ClassView "Class" "Logical View::GUI" @10
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -510,7 +855,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@5
+			    Parent_View 	@10
 			    location   	(278, 294)
 			    fill_color 	13434879
 			    nlines     	1
@@ -522,7 +867,7 @@
 			fill_color 	13434879
 			quidu      	"4EBFB9D80380"
 			compartment 	(object Compartment
-			    Parent_View 	@5
+			    Parent_View 	@10
 			    location   	(278, 355)
 			    font       	(object Font
 				size       	10
@@ -543,7 +888,7 @@
 			height     	536
 			annotation 	8
 			autoResize 	TRUE)
-		    (object ClassView "Class" "Logical View::NhabepController" @6
+		    (object ClassView "Class" "Logical View::NhabepController" @11
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -558,7 +903,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@6
+			    Parent_View 	@11
 			    location   	(1606, 363)
 			    fill_color 	13434879
 			    nlines     	1
@@ -570,7 +915,7 @@
 			fill_color 	13434879
 			quidu      	"4EBFB9D903D2"
 			compartment 	(object Compartment
-			    Parent_View 	@6
+			    Parent_View 	@11
 			    location   	(1606, 424)
 			    font       	(object Font
 				size       	10
@@ -591,25 +936,150 @@
 			height     	386
 			annotation 	8
 			autoResize 	TRUE)
-		    (object UsesView "" @7
+		    (object UsesView "" @12
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"4EBFBBDE0168"
-			client     	@5
-			supplier   	@6
+			client     	@10
+			supplier   	@11
 			vertices   	(list Points
 			    (1081, 547)
 			    (1596, 545))
 			line_style 	0)
-		    (object UsesView "" @8
+		    (object UsesView "" @13
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"4EBFBBE3022E"
-			client     	@6
-			supplier   	@5
+			client     	@11
+			supplier   	@10
 			vertices   	(list Points
 			    (1596, 545)
 			    (1081, 547))
+			line_style 	0)))
+	    (object ClassDiagram "Tiep tan"
+		quid       	"4EBFC1A6039D"
+		title      	"Tiep tan"
+		zoom       	100
+		max_height 	28350
+		max_width  	21600
+		origin_x   	0
+		origin_y   	0
+		items      	(list diagram_item_list
+		    (object ClassView "Class" "Logical View::Tiep tan" @14
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(708, 618)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@14
+			    location   	(343, 187)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	730
+			    justify    	0
+			    label      	"Tiep tan")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"4EBFC1BE008E"
+			compartment 	(object Compartment
+			    Parent_View 	@14
+			    location   	(343, 248)
+			    font       	(object Font
+				size       	10
+				face       	"Arial"
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	0
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	16
+			    max_width  	731
+			    justify    	1)
+			width      	748
+			height     	886
+			annotation 	8
+			autoResize 	TRUE)
+		    (object ClassView "Class" "Logical View::TiepTanController" @15
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(2070, 528)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@15
+			    location   	(1754, 247)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	632
+			    justify    	0
+			    label      	"TiepTanController")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"4EBFC1C60257"
+			compartment 	(object Compartment
+			    Parent_View 	@15
+			    location   	(1754, 308)
+			    font       	(object Font
+				size       	10
+				face       	"Arial"
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	0
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	10
+			    max_width  	640
+			    justify    	1)
+			width      	650
+			height     	586
+			annotation 	8
+			autoResize 	TRUE)
+		    (object UsesView "" @16
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"4EBFC3D60075"
+			client     	@14
+			supplier   	@15
+			vertices   	(list Points
+			    (1082, 592)
+			    (1744, 548))
+			line_style 	0)
+		    (object UsesView "" @17
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"4EBFC3D90205"
+			client     	@15
+			supplier   	@14
+			vertices   	(list Points
+			    (1744, 548)
+			    (1082, 592))
 			line_style 	0)))))
     root_subsystem 	(object SubSystem "Component View"
 	quid       	"4EADF59000A0"
