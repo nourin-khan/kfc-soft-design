@@ -7,5 +7,9 @@ namespace TableController
 {
     public class OrderCTL
     {
+        public void add()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

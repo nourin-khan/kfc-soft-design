@@ -7,5 +7,8 @@ namespace TableDTO
 {
     public class ConfigurationDTO
     {
+        #region Attributes
+
+        #endregion
     }
 }

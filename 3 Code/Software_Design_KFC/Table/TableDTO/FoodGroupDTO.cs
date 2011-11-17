@@ -7,5 +7,9 @@ namespace TableDTO
 {
     public class FoodGroupDTO
     {
+        #region Attributes - private
+        private string _foodGroupID;
+        private string _foodGroupName;
+        #endregion
     }
 }
