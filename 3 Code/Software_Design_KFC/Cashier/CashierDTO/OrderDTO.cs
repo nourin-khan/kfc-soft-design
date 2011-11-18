@@ -5,14 +5,20 @@ using System.Text;
 
 namespace CashierDTO
 {
+    /* @ convention:
+     * _orderStatus: 
+     * 0 - deleted
+     * 1 - not confirm yet
+     * 2 - already confirm
+    */
+    enum OrderStatus
+    {
+        DELETED = 0,
+        UNCONFIRMED = 1,
+        COMFIRMED = 2
+    }
     public class OrderDTO
     {
-        /* @ convention:
-         * _orderStatus: 
-         * 0 - deleted
-         * 1 - not confirm yet
-         * 2 - already confirm
-         */
         #region Attributes - private
         private string _orderID;
         private DateTime _orderDate;

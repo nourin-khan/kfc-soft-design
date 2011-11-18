@@ -5,15 +5,21 @@ using System.Text;
 
 namespace CashierDTO
 {
-    public class BillDTO
+    /*@convention:
+     * billStatus:
+     *0 - deleted
+     *1 - chua thanh toan
+     *2 - da thanh toan
+    */
+    enum BillStatus
     {
-        /*@convention:
-         * billStatus:
-         *0 - deleted
-         *1 - chua thanh toan
-         *2 - da thanh toan
-         */
-        #region Attributes - private
+        DELETED = 0, 
+        UNPAID = 1,
+        PAID = 2
+    }
+    public class BillDTO
+    {        
+        #region Attributes
         private string _billID;
         private DateTime _billDate;
         private float _total;

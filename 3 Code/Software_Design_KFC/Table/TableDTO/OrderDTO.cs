@@ -5,14 +5,20 @@ using System.Text;
 
 namespace TableDTO
 {
+    /* @ convention:
+     * _orderStatus: 
+     * 0 - deleted
+     * 1 - not confirm yet
+     * 2 - already confirm
+    */
+    enum OrderStatus
+    {
+        DELETED = 0,
+        UNCONFIRMED = 1,
+        CONFIRMED = 2
+    }
     public class OrderDTO
     {
-        /* @ convention:
-         * _orderStatus: 
-         * 0 - deleted
-         * 1 - not confirm yet
-         * 2 - already confirm
-         */
         #region Attributes - private
         private string _orderID;
         private DateTime _orderDate;
