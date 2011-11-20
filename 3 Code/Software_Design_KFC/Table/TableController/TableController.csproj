@@ -51,6 +51,15 @@
   <ItemGroup>
     <None Include="TableCTL_ClassDiagram.cd" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TableDTO\TableDTO.csproj">
+      <Project>{84F8F228-FCE7-4C45-A948-C23E917758B5}</Project>
+      <Name>TableDTO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

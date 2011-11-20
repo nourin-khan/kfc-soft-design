@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="KFC_Server.Service1" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Service1.asmx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Server.FoodDAO">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>FoodDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Server.FoodGroupDAO">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FoodGroupDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Server.OrderDAO">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAADAAAAAAAAAAAAQBAAAAAAAEAAAAA=</HashCode>
+      <FileName>OrderDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Server.OrderDetailDAO">
+    <Position X="2.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OrderDetailDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Server.BillDAO">
+    <Position X="4" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BillDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Server.EmployeeDAO">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EmployeeDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Server.ParameterDAO">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ParameterDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Server.WarningDAO">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WarningDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Server.ReportDAO">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="KFC_Server.ReportDAO.ReportDTO" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ReportDAO.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="KFC_Server.ReportDAO.DailyReport" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ReportDAO.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="KFC_Server.ReportDAO.WeeklyReport" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ReportDAO.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="KFC_Server.ReportDAO.MonthlyReport" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ReportDAO.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ReportDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Server.SQLConnectionDAO">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SQLConnectionDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

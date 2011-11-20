@@ -50,6 +50,12 @@
   <ItemGroup>
     <None Include="KitchenCTL_ClassDiagram.cd" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KitchenDTO\KitchenDTO.csproj">
+      <Project>{D8D9C5FA-EA86-4537-881E-BB7F20319BC6}</Project>
+      <Name>KitchenDTO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

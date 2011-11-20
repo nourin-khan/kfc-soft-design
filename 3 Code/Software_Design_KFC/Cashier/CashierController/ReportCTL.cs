@@ -7,6 +7,17 @@ namespace CashierController
 {
     public class ReportCTL
     {
+        /*
+         * Description: do report
+         * Input:
+         * Output:
+         * Author:
+         * Note: add more input when coding
+         */
+        virtual public void doReport()
+        {
+
+        }
     }
 
     public class DailyReport : ReportCTL
