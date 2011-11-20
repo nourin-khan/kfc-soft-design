@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DTO.FoodDTO">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAUABAAEAAAAABAAAAAAQBAAAAAAAAAAAAA=</HashCode>
+      <FileName>FoodDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.FoodGroupDTO">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FoodGroupDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.BillDTO">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="DTO.BillDTO.BillStatus" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>BillDTO.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Class Name="DTO.BillDTO.BillDTO" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>BillDTO.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BillDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.OrderDTO">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="DTO.OrderDTO.OrderStatus" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>OrderDTO.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Class Name="DTO.OrderDTO.OrderDTO" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>OrderDTO.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OrderDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.OrderDetailDTO">
+    <Position X="2.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAADAAAAAAAAAAAAQBAAAAAAAEAAAAA=</HashCode>
+      <FileName>OrderDetailDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.ConnectionDTO">
+    <Position X="8" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConnectionDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.WarningDTO">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WarningDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.ParameterDTO">
+    <Position X="6" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ParameterDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

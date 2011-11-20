@@ -1,0 +1,11 @@
+Note 20/11/2011
+
+@JML
+DAO - Webservice:
++ chua public ham cua Employee len webservice (do co vai thong tin chua quyet dinh de o dau cho thuan tien khai thac)
++ chua xac dinh ki cac lop Connection, warning, parameter, lop report
++ chua xac dinh loai tra ve cua lop report, va can report tren nhung tieu chi nao => chua xac dinh
+
+=> co error khi nap chong ham doi voi webservice=> can tim hieu them va chinh sua lai
+Controller:
++ chua xac dinh duoc cac phuong thuc cu the cua Configuration class
