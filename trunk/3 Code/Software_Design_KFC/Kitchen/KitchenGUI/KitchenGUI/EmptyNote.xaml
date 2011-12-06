@@ -1,0 +1,83 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+	mc:Ignorable="d"
+	x:Class="KitchenGUI.EmptyNote"
+	x:Name="UserControl"
+	d:DesignWidth="640" d:DesignHeight="480" Width="206" Height="293">
+	<UserControl.Resources>
+		<Storyboard x:Key="MouseOnEmptyNote">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.StrokeThickness)" Storyboard.TargetName="borderRec">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="7"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="warningImg">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="MouseLeaveEmptyNote">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.StrokeThickness)" Storyboard.TargetName="borderRec">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="3"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="warningImg">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.3"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
+	<UserControl.Triggers>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard Storyboard="{StaticResource MouseOnEmptyNote}"/>
+			<BeginStoryboard Storyboard="{StaticResource MouseLeaveEmptyNote}"/>
+		</EventTrigger>
+	</UserControl.Triggers>
+
+	<Grid x:Name="LayoutRoot">
+		<i:Interaction.Triggers>
+			<i:EventTrigger EventName="MouseEnter">
+				<ei:ControlStoryboardAction x:Name="EnterEmptyNote" Storyboard="{StaticResource MouseOnEmptyNote}"/>
+			</i:EventTrigger>
+			<i:EventTrigger EventName="MouseLeave">
+				<ei:ControlStoryboardAction x:Name="LeaveEmptyNote" Storyboard="{StaticResource MouseLeaveEmptyNote}"/>
+			</i:EventTrigger>
+		</i:Interaction.Triggers>
+		<Rectangle x:Name="borderRec" HorizontalAlignment="Left" Height="293" Stroke="#FFF1F1F1" VerticalAlignment="Top" Width="206" StrokeThickness="3">
+			<Rectangle.Fill>
+				<ImageBrush/>
+			</Rectangle.Fill>
+		</Rectangle>
+		<Canvas x:Name="warningImg" ClipToBounds="True" HorizontalAlignment="Left" Height="1064" UseLayoutRounding="False" VerticalAlignment="Top" Width="1256" Margin="-555.334,-366.667,0,0" Opacity="0.3">
+			<Canvas x:Name="_1" Height="901" Canvas.Left="206" Canvas.Top="65" Width="901" RenderTransformOrigin="0.5,0.5">
+				<Canvas.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform ScaleX="0.1" ScaleY="0.1"/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Canvas.RenderTransform>
+				<Image x:Name="Layer_1_copy_2" Height="855" Canvas.Left="23" Source="warning-stop-do-not-symbol_Images\Layer 1 copy 2.png" Canvas.Top="23" Width="855">
+					<Image.Effect>
+						<DropShadowEffect BlurRadius="32" Color="#FF000000" Direction="-228" Opacity="1" ShadowDepth="0"/>
+					</Image.Effect>
+				</Image>
+				<Image x:Name="Layer_4" Height="590" Canvas.Left="23" Opacity="0.788" Source="warning-stop-do-not-symbol_Images\Layer 4.png" Canvas.Top="23" Width="766"/>
+				<Image x:Name="Layer_5" Height="614" Canvas.Left="23" Source="warning-stop-do-not-symbol_Images\Layer 5.png" Canvas.Top="23" Width="776"/>
+			</Canvas>
+			<Image x:Name="_1_copy" Height="899" Canvas.Left="207" Source="warning-stop-do-not-symbol_Images\1 copy.png" Canvas.Top="66" Width="899" RenderTransformOrigin="0.5,0.5">
+				<Image.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform ScaleX="0.1" ScaleY="0.1"/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Image.RenderTransform>
+				<Image.Effect>
+					<DropShadowEffect BlurRadius="13" Color="#FF000000" Direction="-228" Opacity="0.24" ShadowDepth="0"/>
+				</Image.Effect>
+			</Image>
+		</Canvas>
+	</Grid>
+</UserControl>

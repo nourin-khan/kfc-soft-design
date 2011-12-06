@@ -1,0 +1,22 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="KitchenGUI.OrderUsc"
+	x:Name="UserControl"
+	d:DesignWidth="640" d:DesignHeight="480" Width="428" Height="438" RenderTransformOrigin="0.5,0.5">
+	<UserControl.RenderTransform>
+		<TransformGroup>
+			<ScaleTransform/>
+			<SkewTransform/>
+			<RotateTransform/>
+			<TranslateTransform/>
+		</TransformGroup>
+	</UserControl.RenderTransform>
+
+	<Grid x:Name="LayoutRoot">
+		<Frame x:Name="OrderFrame" HorizontalAlignment="Left" Height="438" VerticalAlignment="Top" Width="428" NavigationUIVisibility="Hidden" Source="/KFC_GUI;component/OrderUscTemplate.xaml"/>
+	</Grid>
+</UserControl>

@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ExpressionBlendVersion>4.0.20525.0</ExpressionBlendVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{62F1045E-670C-4786-BD66-FE2F29FEE018}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <DefaultClrNameSpace>KFC_GUI</DefaultClrNameSpace>
+    <RootNamespace>KitchenGUI</RootNamespace>
+    <AssemblyName>KFC_GUI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <ApplicationIcon>Application.ico</ApplicationIcon>
+    <Utf8Output>true</Utf8Output>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DeepZoomTouch, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\..\1 CLASS STUDY\1 Lecture\1 Third year\7 WPF\3 Lab\DeepZoomTouch.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Drawing" />
+    <Reference Include="Microsoft.Expression.Interactions" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="BellOrderUsc.xaml.cs">
+      <DependentUpon>BellOrderUsc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NavigateAction.cs" />
+    <Compile Include="NoteOrderUsc.xaml.cs">
+      <DependentUpon>NoteOrderUsc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OptionPanel.xaml.cs">
+      <DependentUpon>OptionPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrderUsc.xaml.cs">
+      <DependentUpon>OrderUsc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrderUscTemplate.xaml.cs">
+      <DependentUpon>OrderUscTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QueueUsc.xaml.cs">
+      <DependentUpon>QueueUsc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TickOrderUsc.xaml.cs">
+      <DependentUpon>TickOrderUsc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TimeOrderUsc.xaml.cs">
+      <DependentUpon>TimeOrderUsc.xaml</DependentUpon>
+    </Compile>
+    <Page Include="BellOrderUsc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EmptyNote.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EmptyNote.xaml.cs">
+      <DependentUpon>EmptyNote.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="NoteOrderUsc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OptionPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OrderUsc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NoteUsc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OrderUscTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="QueueUsc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TickOrderUsc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TimeOrderUsc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NoteUsc.xaml.cs">
+      <DependentUpon>NoteUsc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+    <None Include="Application.ico">
+      <Visible>false</Visible>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="chalkboard_Images\Green Board.png" />
+    <Resource Include="chalkboard_Images\My_Bookshelf_by_sardao_Images\Back copy.png" />
+    <Resource Include="Images\Actions-view-pim-notes-icon.png" />
+    <Resource Include="Images\Apps-clock-icon.png" />
+    <Resource Include="Images\bell.png" />
+    <Resource Include="Images\blue_pin.png" />
+    <Resource Include="Images\Button-Blank-Red-icon.png" />
+    <Resource Include="Images\Check-icon.png" />
+    <Resource Include="Images\DrawingPin_Blue.png" />
+    <Resource Include="Images\germany-icon.png" />
+    <Resource Include="Images\gif_43.gif" />
+    <Resource Include="Images\gold-button-icon.png" />
+    <Resource Include="Images\httpzcoolcomcnpicpngnew_png_133png133_020png.png" />
+    <Resource Include="Images\navigate-left-icon.png" />
+    <Resource Include="Images\navigate-right-icon.png" />
+    <Resource Include="Images\semi-success-icon.png" />
+    <Resource Include="Images\Thumb_Tack_clip_art_hight.png" />
+    <Resource Include="warning-stop-do-not-symbol_Images\1 copy.png" />
+    <Resource Include="warning-stop-do-not-symbol_Images\Layer 1 copy 2.png" />
+    <Resource Include="warning-stop-do-not-symbol_Images\Layer 4.png" />
+    <Resource Include="warning-stop-do-not-symbol_Images\Layer 5.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath32)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	     Other similar extension points exist, see Microsoft.Common.targets.
+	<Target Name="BeforeBuild">
+	</Target>
+	<Target Name="AfterBuild">
+	</Target>
+	-->
+</Project>

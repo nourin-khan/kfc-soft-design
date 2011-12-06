@@ -1,0 +1,271 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:KitchenGUI" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+	x:Class="KitchenGUI.TickOrderUsc"
+	x:Name="UserControl" mc:Ignorable="d" Height="439" Width="428">
+
+	<UserControl.Resources>
+		<Storyboard x:Key="MouseOverClock">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Note">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Tick">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Bell">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.3"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderThickness)" Storyboard.TargetName="Clock">
+				<EasingThicknessKeyFrame KeyTime="0:0:0.25" Value="4"/>
+			</ThicknessAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="clockCmt">
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Visible}"/>
+			</ObjectAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="MouseLeaveClock">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Note">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Bell">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Tick">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderThickness)" Storyboard.TargetName="Clock">
+				<EasingThicknessKeyFrame KeyTime="0:0:0.25" Value="1"/>
+			</ThicknessAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="clockCmt">
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Hidden}"/>
+			</ObjectAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="MouseOverNote">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Clock">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Tick">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Bell">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.3"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderThickness)" Storyboard.TargetName="Note">
+				<EasingThicknessKeyFrame KeyTime="0:0:0.25" Value="4"/>
+			</ThicknessAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="noteCmt">
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Visible}"/>
+			</ObjectAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="MouseLeaveNote">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Clock">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Bell">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Tick">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderThickness)" Storyboard.TargetName="Note">
+				<EasingThicknessKeyFrame KeyTime="0:0:0.25" Value="1"/>
+			</ThicknessAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="noteCmt">
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Hidden}"/>
+			</ObjectAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="MouseOverBell">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Clock">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Note">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Tick">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderThickness)" Storyboard.TargetName="Bell">
+				<EasingThicknessKeyFrame KeyTime="0:0:0.25" Value="4"/>
+			</ThicknessAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="bellCmt">
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Visible}"/>
+			</ObjectAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="MouseLeaveBell">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Clock">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Note">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Tick">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderThickness)" Storyboard.TargetName="Bell">
+				<EasingThicknessKeyFrame KeyTime="0:0:0.25" Value="1"/>
+			</ThicknessAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="bellCmt">
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Hidden}"/>
+			</ObjectAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="MouseOverTick">
+			<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderThickness)" Storyboard.TargetName="Tick">
+				<EasingThicknessKeyFrame KeyTime="0:0:0.25" Value="4"/>
+			</ThicknessAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="tickCmt">
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Visible}"/>
+			</ObjectAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="MouseLeaveTick">
+			<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderThickness)" Storyboard.TargetName="Tick">
+				<EasingThicknessKeyFrame KeyTime="0:0:0.25" Value="4"/>
+			</ThicknessAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="tickCmt">
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Hidden}"/>
+			</ObjectAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
+
+	<Grid x:Name="LayoutRoot">
+		<Canvas x:Name="TickCanvas" Margin="0,0,-12,1">
+			<local:NoteUsc x:Name="NoteUsc" d:LayoutOverrides="Width, Height" RenderTransformOrigin="0.5,0.5" Canvas.Top="72.5" Canvas.Left="50">
+				<local:NoteUsc.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</local:NoteUsc.RenderTransform>
+			</local:NoteUsc>
+			<Canvas x:Name="OptionCanvas" Height="470" Canvas.Left="302.5" Width="135" Canvas.Top="1.5">
+				<StackPanel x:Name="OptionPanel" Height="470" VerticalAlignment="Top" Width="135" Canvas.Left="-5">
+					<Border x:Name="Clock" BorderThickness="1" Height="106" Margin="10,0,20,0" Width="105" Padding="0" CornerRadius="10" RenderTransformOrigin="0.5,0.5" Background="{x:Null}">
+						<i:Interaction.Triggers>
+							<i:EventTrigger EventName="MouseEnter">
+								<ei:ControlStoryboardAction x:Name="EnterClock" Storyboard="{StaticResource MouseOverClock}"/>
+							</i:EventTrigger>
+							<i:EventTrigger EventName="MouseLeave">
+								<ei:ControlStoryboardAction x:Name="LeaveClock" Storyboard="{StaticResource MouseLeaveClock}"/>
+							</i:EventTrigger>
+							<i:EventTrigger EventName="MouseLeftButtonDown">
+								<local:NavigateAction x:Name="ClockNav" Page="TimeOrderUsc.xaml"/>
+							</i:EventTrigger>
+						</i:Interaction.Triggers>
+						<Border.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform/>
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Border.RenderTransform>
+						<Border.BorderBrush>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+								<GradientStop Color="#FFB6B6B6" Offset="0"/>
+								<GradientStop Color="#FFFEFEFE" Offset="1"/>
+							</LinearGradientBrush>
+						</Border.BorderBrush>
+						<Canvas x:Name="clockImg" Height="100" Width="100" >
+							<Canvas.Background>
+								<ImageBrush ImageSource="Images/Apps-clock-icon.png"/>
+							</Canvas.Background>
+							<ed:Callout x:Name="clockCmt" AnchorPoint="0,1.25" CalloutStyle="Oval" Content="Set time" FontSize="14.667" Height="29" Fill="#FFE9FB94" Width="69" Canvas.Left="47" Visibility="Hidden"/>
+						</Canvas>
+					</Border>
+					<Border x:Name="Note" BorderThickness="1" Height="106" Margin="10,0,20,0" Padding="0" CornerRadius="10" Background="{x:Null}">
+						<i:Interaction.Triggers>
+							<i:EventTrigger EventName="MouseEnter">
+								<ei:ControlStoryboardAction x:Name="EnterNote" Storyboard="{StaticResource MouseOverNote}"/>
+							</i:EventTrigger>
+							<i:EventTrigger EventName="MouseLeave">
+								<ei:ControlStoryboardAction x:Name="LeaveNote" Storyboard="{StaticResource MouseLeaveNote}"/>
+							</i:EventTrigger>
+							<i:EventTrigger EventName="MouseLeftButtonDown">
+								<local:NavigateAction x:Name="NoteNav" Page="NoteOrderUsc.xaml"/>
+							</i:EventTrigger>
+						</i:Interaction.Triggers>
+						<Border.BorderBrush>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+								<GradientStop Color="#FFB6B6B6" Offset="0"/>
+								<GradientStop Color="#FFFEFEFE" Offset="1"/>
+							</LinearGradientBrush>
+						</Border.BorderBrush>
+						<Canvas x:Name="noteImg" Height="100" Width="100" >
+							<Canvas.Background>
+								<ImageBrush ImageSource="Images/Actions-view-pim-notes-icon.png"/>
+							</Canvas.Background>
+							<ed:Callout x:Name="noteCmt" AnchorPoint="0,1.25" CalloutStyle="Oval" Content="View notes" FontSize="14.667" Height="29" Fill="#FFE9FB94" Canvas.Left="38" Canvas.Top="8" Width="78" RenderTransformOrigin="0.103,0.569" Visibility="Hidden"/>
+						</Canvas>
+					</Border>
+					<Border x:Name="Bell" BorderThickness="1" Height="106" Margin="10,0,20,0" Padding="0" CornerRadius="10" Background="{x:Null}">
+						<i:Interaction.Triggers>
+							<i:EventTrigger EventName="MouseEnter">
+								<ei:ControlStoryboardAction x:Name="EnterBell" Storyboard="{StaticResource MouseOverBell}"/>
+							</i:EventTrigger>
+							<i:EventTrigger EventName="MouseLeave">
+								<ei:ControlStoryboardAction x:Name="LeaveBell" Storyboard="{StaticResource MouseLeaveBell}"/>
+							</i:EventTrigger>
+							<i:EventTrigger EventName="MouseLeftButtonDown">
+								<local:NavigateAction x:Name="BellNav" Page="BellOrderUsc.xaml"/>
+							</i:EventTrigger>
+						</i:Interaction.Triggers>
+						<Border.BorderBrush>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+								<GradientStop Color="#FFB6B6B6" Offset="0"/>
+								<GradientStop Color="#FFFEFEFE" Offset="1"/>
+							</LinearGradientBrush>
+						</Border.BorderBrush>
+						<Canvas x:Name="bellImg" Height="100" Width="100" >
+							<Canvas.Background>
+								<ImageBrush ImageSource="Images/bell.png"/>
+							</Canvas.Background>
+							<ed:Callout x:Name="bellCmt" AnchorPoint="0,1.25" CalloutStyle="Oval" Content="Alarm" FontSize="14.667" Height="29" Fill="#FFE9FB94" Width="69" Canvas.Left="45" Canvas.Top="8" Visibility="Hidden"/>
+						</Canvas>
+					</Border>
+					<Border x:Name="Tick" BorderThickness="4" Height="106" Margin="10,0,20,0" Padding="0" CornerRadius="10">
+						<Border.Background>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+								<GradientStop Color="White" Offset="0"/>
+								<GradientStop Color="#FF9B9B9B" Offset="1"/>
+							</LinearGradientBrush>
+						</Border.Background>
+						<i:Interaction.Triggers>
+							<i:EventTrigger EventName="MouseEnter">
+								<ei:ControlStoryboardAction x:Name="EnterTick" Storyboard="{StaticResource MouseOverTick}"/>
+							</i:EventTrigger>
+							<i:EventTrigger EventName="MouseLeave">
+								<ei:ControlStoryboardAction x:Name="LeaveTick" Storyboard="{StaticResource MouseLeaveTick}"/>
+							</i:EventTrigger>
+						</i:Interaction.Triggers>
+						<Border.BorderBrush>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+								<GradientStop Color="#FFB6B6B6" Offset="0"/>
+								<GradientStop Color="#FFFEFEFE" Offset="1"/>
+							</LinearGradientBrush>
+						</Border.BorderBrush>
+						<Canvas x:Name="tickImg" Height="100" Width="100" >
+							<Canvas.Background>
+								<ImageBrush ImageSource="Images/Check-icon.png"/>
+							</Canvas.Background>
+							<ed:Callout x:Name="tickCmt" AnchorPoint="0,1.25" CalloutStyle="Oval" Content="Complete" FontSize="14.667" Height="29" Fill="#FFE9FB94" Width="69" Canvas.Left="47" Visibility="Hidden"/>
+						</Canvas>
+					</Border>
+				</StackPanel>
+			</Canvas>
+			<Grid x:Name="TickGrid" Width="280" Height="210" Canvas.Left="12" Canvas.Top="72.583" d:LayoutOverrides="Width">
+				<Rectangle RadiusY="6" RadiusX="6" Stroke="#FFC4B394" Fill="#FFF3E0BC" StrokeThickness="2" Width="275" Margin="2.5,0"/>
+				<UniformGrid Margin="14,11">
+					<DataGrid x:Name="TickGridView" Margin="1.3,1.875,-125.9,-93.521" AlternatingRowBackground="#FFE5D2AE" Background="#FFC4B394" Foreground="#FF645E51" RowBackground="#FFF5E3C1" HorizontalGridLinesBrush="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0">
+						<DataGrid.VerticalGridLinesBrush>
+							<ImageBrush/>
+						</DataGrid.VerticalGridLinesBrush>
+						<DataGrid.Columns>
+							<DataGridTextColumn x:Name="id" Visibility="Hidden"/>
+							<DataGridTextColumn x:Name="foodCol" Header="Món ăn" MinWidth="100"/>
+							<DataGridComboBoxColumn x:Name="tickCol" Header="Hoàn thành" MinWidth="200" CanUserResize="False"/>
+						</DataGrid.Columns>
+					</DataGrid>
+					<Rectangle Margin="-125.9,0,0.5,-93.521" Stroke="#FFC4B394" RadiusY="3" RadiusX="3" StrokeThickness="1.5"/>
+				</UniformGrid>
+			</Grid>
+		</Canvas>
+	</Grid>
+</UserControl>
