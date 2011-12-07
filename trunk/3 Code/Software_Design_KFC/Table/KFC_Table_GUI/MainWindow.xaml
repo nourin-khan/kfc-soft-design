@@ -1,0 +1,536 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+	xmlns:local="clr-namespace:KFC_Table_GUI" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+	x:Class="KFC_Table_GUI.MainWindow"
+	x:Name="Window"
+	Title="MainWindow"
+	Width="1320" Height="720" WindowStyle="None" WindowState="Maximized" Loaded="Window_Loaded">
+	<Window.Resources>
+		<Storyboard x:Key="moveToLeftOver">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="moveToLeft">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="iconLeft">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="moveToRightOver">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="moveToRight">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="iconRight">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="moveToRightLeave">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="moveToRight">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.6"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="iconRight">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.6"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="moveToLeftLeave">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="moveToLeft">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.6"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="iconLeft">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.6"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Style x:Key="TabItemFocusVisual">
+			<Setter Property="Control.Template">
+				<Setter.Value>
+					<ControlTemplate>
+						<Rectangle Margin="3,3,3,1" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<SolidColorBrush x:Key="TabControlNormalBorderBrush" Color="#8C8E94"/>
+		<LinearGradientBrush x:Key="ButtonNormalBackground" EndPoint="0,1" StartPoint="0,0">
+			<GradientStop Color="#F3F3F3" Offset="0"/>
+			<GradientStop Color="#EBEBEB" Offset="0.5"/>
+			<GradientStop Color="#DDDDDD" Offset="0.5"/>
+			<GradientStop Color="#CDCDCD" Offset="1"/>
+		</LinearGradientBrush>
+		<SolidColorBrush x:Key="TabItemDisabledBackground" Color="#F4F4F4"/>
+		<SolidColorBrush x:Key="TabItemDisabledBorderBrush" Color="#FFC9C7BA"/>
+		<Style x:Key="TabItemStyle" TargetType="{x:Type TabItem}">
+			<Setter Property="FocusVisualStyle" Value="{StaticResource TabItemFocusVisual}"/>
+			<Setter Property="Foreground" Value="Black"/>
+			<Setter Property="Padding" Value="6,1,6,1"/>
+			<Setter Property="BorderBrush" Value="{StaticResource TabControlNormalBorderBrush}"/>
+			<Setter Property="Background" Value="{StaticResource ButtonNormalBackground}"/>
+			<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+			<Setter Property="VerticalContentAlignment" Value="Stretch"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type TabItem}">
+						<Grid Height="150" Margin="0,0,10,0">
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Disabled"/>
+								</VisualStateGroup>
+								<VisualStateGroup x:Name="SelectionStates">
+									<VisualStateGroup.Transitions>
+										<VisualTransition GeneratedDuration="0:0:0.3"/>
+									</VisualStateGroup.Transitions>
+									<VisualState x:Name="Unselected"/>
+									<VisualState x:Name="Selected">
+										<Storyboard>
+											<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="grid">
+												<EasingDoubleKeyFrame KeyTime="0" Value="-28.669"/>
+											</DoubleAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.VerticalAlignment)" Storyboard.TargetName="grid1">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static VerticalAlignment.Stretch}"/>
+											</ObjectAnimationUsingKeyFrames>
+											<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grid1">
+												<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+											</DoubleAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+								<VisualStateGroup x:Name="FocusStates">
+									<VisualState x:Name="Unfocused"/>
+									<VisualState x:Name="Focused"/>
+								</VisualStateGroup>
+								<VisualStateGroup x:Name="ValidationStates">
+									<VisualState x:Name="Valid"/>
+									<VisualState x:Name="InvalidFocused"/>
+									<VisualState x:Name="InvalidUnfocused"/>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Grid x:Name="grid" SnapsToDevicePixels="true" Width="100" Margin="0,28,0,-28" RenderTransformOrigin="0.5,0.5">
+								<Grid.RenderTransform>
+									<TransformGroup>
+										<ScaleTransform/>
+										<SkewTransform/>
+										<RotateTransform/>
+										<TranslateTransform/>
+									</TransformGroup>
+								</Grid.RenderTransform>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="0.813*"/>
+									<RowDefinition Height="0.187*"/>
+								</Grid.RowDefinitions>
+								<Border x:Name="Bd" BorderThickness="2" CornerRadius="10" Background="Black">
+									<Border.BorderBrush>
+										<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+											<GradientStop Color="#FF37AFED" Offset="1"/>
+											<GradientStop Color="#FF005A89"/>
+										</LinearGradientBrush>
+									</Border.BorderBrush>
+									<Border BorderThickness="1" CornerRadius="8">
+										<Border.BorderBrush>
+											<LinearGradientBrush EndPoint="0.783,0.944" StartPoint="0.217,0.056">
+												<GradientStop Color="Black" Offset="0"/>
+												<GradientStop Color="#FFC0BFBF" Offset="1"/>
+											</LinearGradientBrush>
+										</Border.BorderBrush>
+										<ContentPresenter x:Name="Content" ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+									</Border>
+								</Border>
+								<Grid x:Name="grid1" Margin="4,0" Grid.Row="1" RenderTransformOrigin="0.5,0" VerticalAlignment="Stretch">
+									<Grid.RenderTransform>
+										<TransformGroup>
+											<ScaleTransform ScaleY="0"/>
+											<SkewTransform/>
+											<RotateTransform/>
+											<TranslateTransform/>
+										</TransformGroup>
+									</Grid.RenderTransform>
+									<Rectangle Stroke="{x:Null}" Width="30" Grid.Row="0" Margin="31,0,31,3">
+										<Rectangle.Fill>
+											<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+												<GradientStop Color="#FF37AFED" Offset="1"/>
+												<GradientStop Color="#FF005A89"/>
+											</LinearGradientBrush>
+										</Rectangle.Fill>
+									</Rectangle>
+									<Rectangle Stroke="{x:Null}" Width="30" Grid.Row="0" Margin="31,0,31,3">
+										<Rectangle.Fill>
+											<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+												<GradientStop Color="#0037AFED" Offset="1"/>
+												<GradientStop Color="#A7000000"/>
+											</LinearGradientBrush>
+										</Rectangle.Fill>
+									</Rectangle>
+									<Ellipse Stroke="{x:Null}" Grid.Row="0" VerticalAlignment="Bottom" Height="7" Margin="0">
+										<Ellipse.Fill>
+											<RadialGradientBrush>
+												<GradientStop Color="Black" Offset="0"/>
+												<GradientStop Offset="1" Color="#00000000"/>
+											</RadialGradientBrush>
+										</Ellipse.Fill>
+									</Ellipse>
+								</Grid>
+							</Grid>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="TabStripPlacement" Value="Bottom">
+								<Setter Property="BorderThickness" TargetName="Bd" Value="1,0,1,1"/>
+							</Trigger>
+							<Trigger Property="TabStripPlacement" Value="Left">
+								<Setter Property="BorderThickness" TargetName="Bd" Value="1,1,0,1"/>
+							</Trigger>
+							<Trigger Property="TabStripPlacement" Value="Right">
+								<Setter Property="BorderThickness" TargetName="Bd" Value="0,1,1,1"/>
+							</Trigger>
+							<MultiTrigger>
+								<MultiTrigger.Conditions>
+									<Condition Property="IsSelected" Value="true"/>
+									<Condition Property="TabStripPlacement" Value="Top"/>
+								</MultiTrigger.Conditions>
+								<Setter Property="Margin" Value="-2,-2,-2,-1"/>
+								<Setter Property="Margin" TargetName="Content" Value="0,0,0,1"/>
+							</MultiTrigger>
+							<MultiTrigger>
+								<MultiTrigger.Conditions>
+									<Condition Property="IsSelected" Value="true"/>
+									<Condition Property="TabStripPlacement" Value="Bottom"/>
+								</MultiTrigger.Conditions>
+								<Setter Property="Margin" Value="-2,-1,-2,-2"/>
+								<Setter Property="Margin" TargetName="Content" Value="0,1,0,0"/>
+							</MultiTrigger>
+							<MultiTrigger>
+								<MultiTrigger.Conditions>
+									<Condition Property="IsSelected" Value="true"/>
+									<Condition Property="TabStripPlacement" Value="Left"/>
+								</MultiTrigger.Conditions>
+								<Setter Property="Margin" Value="-2,-2,-1,-2"/>
+								<Setter Property="Margin" TargetName="Content" Value="0,0,1,0"/>
+							</MultiTrigger>
+							<MultiTrigger>
+								<MultiTrigger.Conditions>
+									<Condition Property="IsSelected" Value="true"/>
+									<Condition Property="TabStripPlacement" Value="Right"/>
+								</MultiTrigger.Conditions>
+								<Setter Property="Margin" Value="-1,-2,-2,-2"/>
+								<Setter Property="Margin" TargetName="Content" Value="1,0,0,0"/>
+							</MultiTrigger>
+							<Trigger Property="IsEnabled" Value="false">
+								<Setter Property="Background" TargetName="Bd" Value="{StaticResource TabItemDisabledBackground}"/>
+								<Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource TabItemDisabledBorderBrush}"/>
+								<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="TabControlStyle" TargetType="{x:Type TabControl}">
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="Padding" Value="4,4,4,4"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="BorderBrush" Value="{StaticResource TabControlNormalBorderBrush}"/>
+			<Setter Property="Background" Value="#F9F9F9"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type TabControl}">
+						<Grid ClipToBounds="true" SnapsToDevicePixels="true" KeyboardNavigation.TabNavigation="Local">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition x:Name="ColumnDefinition0"/>
+								<ColumnDefinition x:Name="ColumnDefinition1" Width="0"/>
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition x:Name="RowDefinition0" Height="Auto"/>
+								<RowDefinition x:Name="RowDefinition1" Height="*"/>
+							</Grid.RowDefinitions>
+							<TabPanel x:Name="HeaderPanel" Grid.Column="0" IsItemsHost="true" Margin="2,2,2,0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1"/>
+							<Border x:Name="ContentPanel" BorderThickness="{TemplateBinding BorderThickness}" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
+								<ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+							</Border>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="TabStripPlacement" Value="Bottom">
+								<Setter Property="Grid.Row" TargetName="HeaderPanel" Value="1"/>
+								<Setter Property="Grid.Row" TargetName="ContentPanel" Value="0"/>
+								<Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+								<Setter Property="Height" TargetName="RowDefinition1" Value="Auto"/>
+								<Setter Property="Margin" TargetName="HeaderPanel" Value="2,0,2,2"/>
+							</Trigger>
+							<Trigger Property="TabStripPlacement" Value="Left">
+								<Setter Property="Grid.Row" TargetName="HeaderPanel" Value="0"/>
+								<Setter Property="Grid.Row" TargetName="ContentPanel" Value="0"/>
+								<Setter Property="Grid.Column" TargetName="HeaderPanel" Value="0"/>
+								<Setter Property="Grid.Column" TargetName="ContentPanel" Value="1"/>
+								<Setter Property="Width" TargetName="ColumnDefinition0" Value="Auto"/>
+								<Setter Property="Width" TargetName="ColumnDefinition1" Value="*"/>
+								<Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+								<Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
+								<Setter Property="Margin" TargetName="HeaderPanel" Value="2,2,0,2"/>
+							</Trigger>
+							<Trigger Property="TabStripPlacement" Value="Right">
+								<Setter Property="Grid.Row" TargetName="HeaderPanel" Value="0"/>
+								<Setter Property="Grid.Row" TargetName="ContentPanel" Value="0"/>
+								<Setter Property="Grid.Column" TargetName="HeaderPanel" Value="1"/>
+								<Setter Property="Grid.Column" TargetName="ContentPanel" Value="0"/>
+								<Setter Property="Width" TargetName="ColumnDefinition0" Value="*"/>
+								<Setter Property="Width" TargetName="ColumnDefinition1" Value="Auto"/>
+								<Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+								<Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
+								<Setter Property="Margin" TargetName="HeaderPanel" Value="0,2,2,2"/>
+							</Trigger>
+							<Trigger Property="IsEnabled" Value="false">
+								<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="myImage" TargetType="{x:Type Image}">
+			<Style.Resources>
+				<Storyboard x:Key="imageExpand">
+					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="{x:Null}">
+						<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1.3"/>
+					</DoubleAnimationUsingKeyFrames>
+					<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="{x:Null}">
+						<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1.3"/>
+					</DoubleAnimationUsingKeyFrames>
+				</Storyboard>
+			</Style.Resources>
+			<Setter Property="FlowDirection" Value="LeftToRight"/>
+			<Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+			<Setter Property="RenderTransform">
+				<Setter.Value>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</Window.Resources>
+	<Window.Triggers>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard Storyboard="{StaticResource moveToLeftOver}"/>
+			<BeginStoryboard Storyboard="{StaticResource moveToRightOver}"/>
+			<BeginStoryboard Storyboard="{StaticResource moveToRightLeave}"/>
+			<BeginStoryboard Storyboard="{StaticResource moveToLeftLeave}"/>
+		</EventTrigger>
+	</Window.Triggers>
+	<Grid x:Name="main" Margin="0,8,-8,-8">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="0.995*"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="21"/>
+			<ColumnDefinition/>
+			<ColumnDefinition Width="43.5"/>
+			<ColumnDefinition Width="333"/>
+		</Grid.ColumnDefinitions>
+		<Image x:Name="background" Margin="0,-8.667,8,0" Source="Image2.png" Stretch="Fill" Grid.ColumnSpan="4" Grid.RowSpan="3" d:LayoutOverrides="GridBox"/>
+		<StackPanel x:Name="moveToLeft" Margin="0,0,1,309.792" Orientation="Vertical" d:LayoutOverrides="GridBox" Height="30.708" VerticalAlignment="Bottom" RenderTransformOrigin="0.3,-1.026">
+			<i:Interaction.Triggers>
+				<i:EventTrigger EventName="MouseEnter">
+					<ei:ControlStoryboardAction Storyboard="{StaticResource moveToLeftOver}"/>
+				</i:EventTrigger>
+				<i:EventTrigger EventName="MouseLeave">
+					<ei:ControlStoryboardAction Storyboard="{StaticResource moveToLeftLeave}"/>
+				</i:EventTrigger>
+			</i:Interaction.Triggers>
+			<Rectangle x:Name="iconLeft" RenderTransformOrigin="0.326,-1.437" Width="20" Height="25" d:LayoutOverrides="Height" MouseLeftButtonDown="iconLeft_MouseLeftButtonDown">
+				<Rectangle.Fill>
+					<ImageBrush ImageSource="navigate-left-icon.png"/>
+				</Rectangle.Fill>
+			</Rectangle>
+		</StackPanel>
+		<StackPanel x:Name="moveToRight" Grid.Column="2" Margin="15.841,0,8,309.792" Orientation="Vertical" d:LayoutOverrides="GridBox" Height="28.04" VerticalAlignment="Bottom">
+			<i:Interaction.Triggers>
+				<i:EventTrigger EventName="MouseEnter">
+					<ei:ControlStoryboardAction Storyboard="{StaticResource moveToRightOver}"/>
+				</i:EventTrigger>
+				<i:EventTrigger EventName="MouseLeave">
+					<ei:ControlStoryboardAction Storyboard="{StaticResource moveToRightLeave}"/>
+				</i:EventTrigger>
+			</i:Interaction.Triggers>
+			<Rectangle x:Name="iconRight" RenderTransformOrigin="0.326,-1.437" Height="30.666" Margin="2.607,0,-9.615,0" MouseLeftButtonDown="iconRight_MouseLeftButtonDown">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform ScaleX="-1"/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+				<Rectangle.Fill>
+					<ImageBrush ImageSource="navigate-left-icon.png"/>
+				</Rectangle.Fill>
+			</Rectangle>
+		</StackPanel>
+		<StackPanel x:Name="status" Grid.Column="3" Margin="0,43,8,0" Orientation="Vertical">
+			<ListBox x:Name="statusItems">
+            <ListBox.Resources>
+                <Style TargetType="{x:Type Expander}">
+                    <Setter
+                        Property="IsExpanded"
+                        Value="{Binding Path=IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}"/>
+                </Style>
+            </ListBox.Resources>
+            <Expander x:Name="order" Header="Đơn đặt hàng" Margin="8,0" Height="311.667" BorderBrush="#FF0E7BF5" BorderThickness="5" ScrollViewer.VerticalScrollBarVisibility="Auto" IsExpanded="True">
+            	<Expander.Background>
+            		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            			<GradientStop Color="#FF670502" Offset="0"/>
+            			<GradientStop Color="#FFA10904" Offset="1"/>
+            		</LinearGradientBrush>
+            	</Expander.Background>
+            	<ListBox Height="278.669" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            		<ListBox.Background>
+            			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            				<GradientStop Color="#FF6A0502" Offset="0"/>
+            				<GradientStop Color="#FF990904" Offset="1"/>
+            			</LinearGradientBrush>
+            		</ListBox.Background>
+            		<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
+            		<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
+            		<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
+            		<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
+            		<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
+            		<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
+            		<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
+            	</ListBox>
+            </Expander>
+            <Expander x:Name="kitchen" Header="Nhà bếp" Margin="8,3,8,0" Height="284.117" BorderThickness="5" BorderBrush="#FF0E7BF5" IsExpanded="True">
+            	<Expander.Background>
+            		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            			<GradientStop Color="#FF680502" Offset="0"/>
+            			<GradientStop Color="#FFA00904" Offset="1"/>
+            		</LinearGradientBrush>
+            	</Expander.Background>
+            	<ListBox Height="252.999" Margin="0,0,-2,0">
+            		<ListBox.Background>
+            			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            				<GradientStop Color="#FF860704" Offset="0"/>
+            				<GradientStop Color="#FF980904" Offset="1"/>
+            			</LinearGradientBrush>
+            		</ListBox.Background>
+            		<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
+            		<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
+            		<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
+            		<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
+            		<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
+            		<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
+            	</ListBox>
+            </Expander>
+            <ListBox.Template>
+                <ControlTemplate TargetType="{x:Type ListBox}">
+                    <ItemsPresenter/>
+                </ControlTemplate>
+            </ListBox.Template>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                <ContentPresenter Content="{TemplateBinding Content}"/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+		</StackPanel>
+		<TabControl Width="Auto" Height="696" Style="{DynamicResource TabControlStyle}" ItemContainerStyle="{DynamicResource TabItemStyle}" Grid.Column="1" Margin="8,0,-0.264,0" Grid.Row="0" Grid.RowSpan="1" VerticalAlignment="Top">
+			<TabItem Foreground="White" BorderBrush="{x:Null}" Margin="0,-2,-2,-1">
+				<TabItem.Header>
+					<Image x:Name="chicken" Source="Images/large-combo28.png" MouseLeftButtonDown="chicken_MouseLeftButtonDown"/>
+				</TabItem.Header>                
+				<Border CornerRadius="7" BorderThickness="5">
+					<Border.Background>
+						<RadialGradientBrush>
+							<GradientStop Color="#FF870704" Offset="1"/>
+							<GradientStop Color="#FF9F0A04"/>
+						</RadialGradientBrush>
+					</Border.Background>
+					<Border.BorderBrush>
+						<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+							<GradientStop Color="#FF1679E7" Offset="0"/>
+							<GradientStop Color="#FF0E3560" Offset="1"/>
+						</LinearGradientBrush>
+					</Border.BorderBrush>
+					<UniformGrid Columns="3" Rows="3">
+						<local:foodControl x:Name="chicken1" Margin="0"/>
+						<local:foodControl x:Name="chicken2" Margin="0"/>
+						<local:foodControl x:Name="chicken3" Margin="0"/>
+						<local:foodControl x:Name="chicken4" Margin="0"/>
+						<local:foodControl x:Name="chicken5" Margin="0"/>
+						<local:foodControl x:Name="chicken6" Margin="0"/>
+						<local:foodControl x:Name="chicken7" Margin="0"/>
+						<local:foodControl x:Name="chicken8" Margin="0"/>
+						<local:foodControl x:Name="chicken9" Margin="0"/>
+					</UniformGrid>
+				</Border>
+			</TabItem>
+			<TabItem BorderBrush="{x:Null}" Margin="0" >
+				<TabItem.Header>
+					<Image x:Name="hamburger" Stretch="Fill" Margin="3" MouseLeftButtonDown="hamburger_MouseLeftButtonDown"/>
+				</TabItem.Header>
+				<Border CornerRadius="7" BorderThickness="5">
+					<Border.Background>
+						<RadialGradientBrush>
+							<GradientStop Color="#FF870704" Offset="1"/>
+							<GradientStop Color="#FF9F0A04"/>
+						</RadialGradientBrush>
+					</Border.Background>
+					<Border.BorderBrush>
+						<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+							<GradientStop Color="#FF1679E7" Offset="0"/>
+							<GradientStop Color="#FF0E3560" Offset="1"/>
+						</LinearGradientBrush>
+					</Border.BorderBrush>
+					<UniformGrid Columns="3" Rows="3">
+						<local:foodControl x:Name="hamburger1" Margin="13,0"/>
+						<local:foodControl x:Name="hamburger2" Margin="13,0"/>
+						<local:foodControl x:Name="hamburger3" Margin="13,0"/>
+						<local:foodControl x:Name="hamburger4" Margin="13,0"/>
+						<local:foodControl x:Name="hamburger5" Margin="13,0"/>
+						<local:foodControl x:Name="hamburger6" Margin="13,0"/>
+						<local:foodControl x:Name="hamburger7" Margin="13,0"/>
+						<local:foodControl x:Name="hamburger8" Margin="13,0"/>
+						<local:foodControl x:Name="hamburger9" Margin="13,0"/>
+					</UniformGrid>
+				</Border>
+			</TabItem>
+			<TabItem BorderBrush="{x:Null}" Margin="0" >
+				<TabItem.Header>
+					<Image x:Name="drink" Stretch="Fill" Margin="3" MouseLeftButtonDown="drink_MouseLeftButtonDown"/>
+				</TabItem.Header>
+				<Border CornerRadius="7" BorderThickness="5">
+					<Border.Background>
+						<RadialGradientBrush>
+							<GradientStop Color="#FF870704" Offset="1"/>
+							<GradientStop Color="#FF9F0A04"/>
+						</RadialGradientBrush>
+					</Border.Background>
+					<Border.BorderBrush>
+						<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+							<GradientStop Color="#FF1679E7" Offset="0"/>
+							<GradientStop Color="#FF0E3560" Offset="1"/>
+						</LinearGradientBrush>
+					</Border.BorderBrush>
+					<UniformGrid Columns="3" Rows="3">
+						<local:foodControl x:Name="drink1" Margin="13,0"/>
+						<local:foodControl x:Name="drink2" Margin="13,0"/>
+						<local:foodControl x:Name="drink3" Margin="13,0"/>
+						<local:foodControl x:Name="drink4" Margin="13,0"/>
+						<local:foodControl x:Name="drink5" Margin="13,0"/>
+						<local:foodControl x:Name="drink6" Margin="13,0"/>
+						<local:foodControl x:Name="drink7" Margin="13,0"/>
+						<local:foodControl x:Name="drink8" Margin="13,0"/>
+						<local:foodControl x:Name="drink9" Margin="13,0"/>
+					</UniformGrid>
+				</Border>
+			</TabItem>
+		</TabControl>
+	</Grid>
+</Window>

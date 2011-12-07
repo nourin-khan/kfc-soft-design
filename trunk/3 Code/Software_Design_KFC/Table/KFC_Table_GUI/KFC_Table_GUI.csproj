@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ExpressionBlendVersion>4.0.20525.0</ExpressionBlendVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{93841302-060a-4d44-8e9b-334f71da1c2c}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <DefaultClrNameSpace>KFC_Table_GUI</DefaultClrNameSpace>
+    <RootNamespace>KFC_Table_GUI</RootNamespace>
+    <AssemblyName>KFC_Table_GUI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <ApplicationIcon>Application.ico</ApplicationIcon>
+    <Utf8Output>true</Utf8Output>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Drawing" />
+    <Reference Include="Microsoft.Expression.Interactions" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="foodControl.xaml.cs">
+      <DependentUpon>foodControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="foodInCartControl.xaml.cs">
+      <DependentUpon>foodInCartControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="foodInKitchenControl.xaml.cs">
+      <DependentUpon>foodInKitchenControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="optionsBar.xaml.cs">
+      <DependentUpon>optionsBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\foodStatus.xaml.cs">
+      <DependentUpon>foodStatus.xaml</DependentUpon>
+    </Compile>
+    <Page Include="foodControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="foodInCartControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="foodInKitchenControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="optionsBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Properties\foodStatus.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+    <None Include="Application.ico">
+      <Visible>false</Visible>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image1.png" />
+    <Resource Include="Image2.png" />
+    <Resource Include="Images\02-Combo-HS-large.png" />
+    <Resource Include="Images\08-Combo-Hot-Wing-large.png" />
+    <Resource Include="Images\09-Combo-Hot-Wing-B-large.png" />
+    <Resource Include="Images\160-Combo-HS-A.png" />
+    <Resource Include="Images\160-Combo-OA-2.png" />
+    <Resource Include="Images\160-Combo-Strip.png" />
+    <Resource Include="Images\160-popco.png" />
+    <Resource Include="Images\19-Combo-Canh-Ga-Flava-Roast-large.png" />
+    <Resource Include="Images\21-Combo-com-ga-Flava-Roast-large.png" />
+    <Resource Include="Images\Button\choose.png" />
+    <Resource Include="Images\Button\close.png" />
+    <Resource Include="Images\Chicken\large-garan01.png" />
+    <Resource Include="Images\Chicken\large-garan02.png" />
+    <Resource Include="Images\Chicken\large-garan03.png" />
+    <Resource Include="Images\Chicken\large-garan05-4c33d45696644.png" />
+    <Resource Include="Images\Chicken\large-garan05.png" />
+    <Resource Include="Images\Hamburger\Bogo-Flava-Roast-large.png" />
+    <Resource Include="Images\Hamburger\Bogo-Hai-San-large.png" />
+    <Resource Include="Images\Hamburger\Bogo-phi-le-large.png" />
+    <Resource Include="Images\Hamburger\Bogo-Tom-large.png" />
+    <Resource Include="Images\Hamburger\Bogo-Zinger-large.png" />
+    <Resource Include="Images\large-combo03.png" />
+    <Resource Include="Images\large-combo04.png" />
+    <Resource Include="Images\large-combo05.png" />
+    <Resource Include="Images\large-combo20.png" />
+    <Resource Include="Images\large-combo23.png" />
+    <Resource Include="Images\large-combo25.png" />
+    <Resource Include="Images\large-combo26.png" />
+    <Resource Include="Images\large-combo27.png" />
+    <Resource Include="Images\large-combo28.png" />
+    <Resource Include="Images\Drink\160-Aquafina.png" />
+    <Resource Include="Images\Drink\160-Lipto.png" />
+    <Resource Include="Images\Drink\160-nescafe.png" />
+    <Resource Include="Images\Drink\160chai-evia.png" />
+    <Resource Include="Images\Drink\Egg-Tart-1pc-large.png" />
+    <Resource Include="Images\Drink\Egg-Tart-3pcs-large.png" />
+    <Resource Include="Images\Drink\Kem-Cone-Com-large.png" />
+    <Resource Include="Images\Drink\Kem-Cone-Socola-large.png" />
+    <Resource Include="Images\Drink\Kem-Sundae-Socola-large.png" />
+    <Resource Include="Images\Drink\Lemonice-large.png" />
+    <Resource Include="Images\Drink\Ly-Pepsi-%28L%29-large.png" />
+    <Resource Include="Images\Drink\Ly-Pepsi-%28R%29%29-large.png" />
+    <Resource Include="Images\Drink\Milo-large.png" />
+    <Resource Include="Images\Drink\Pepsi-Diet-large.png" />
+    <Resource Include="Images\Drink\Pie-large.png" />
+    <Resource Include="Images\Drink\Twister-Can-large.png" />
+    <Resource Include="navigate-left-icon.png" />
+    <Resource Include="navigate-right-icon.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath32)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	     Other similar extension points exist, see Microsoft.Common.targets.
+	<Target Name="BeforeBuild">
+	</Target>
+	<Target Name="AfterBuild">
+	</Target>
+	-->
+</Project>
