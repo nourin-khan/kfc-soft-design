@@ -33,10 +33,10 @@
 			</Setter>
 		</Style>
 		<Storyboard x:Key="foodEnter">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="details">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="optionsBar">
 				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="optionsBar">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="details">
 				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
@@ -51,7 +51,6 @@
 	</UserControl.Resources>
 	<UserControl.Triggers>
 		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
-			<BeginStoryboard Storyboard="{StaticResource foodEnter}"/>
 			<BeginStoryboard Storyboard="{StaticResource foodLeave}"/>
 		</EventTrigger>
 	</UserControl.Triggers>
@@ -67,7 +66,7 @@
 
 	<Grid x:Name="LayoutRoot" HorizontalAlignment="Left" Width="268.088">
 		<Image x:Name="image" Source="Images/Chicken/large-garan03.png" Style="{DynamicResource myImage}" Margin="0,0,0,53.167" HorizontalAlignment="Left" Width="221.588"/>
-		<local:optionsBar x:Name="optionsBar" HorizontalAlignment="Left" Margin="225.588,0,0,45.667" Width="41" Opacity="0"/>
 		<TextBlock x:Name="details" Height="45.667" TextWrapping="Wrap" Text="Chi tiết món ăn" Foreground="White" VerticalAlignment="Bottom" TextAlignment="Center" Opacity="0"/>
+		<local:optionsBar x:Name="optionsBar" Margin="0,29,8,0" HorizontalAlignment="Right" Width="43.006" VerticalAlignment="Top" Height="40.927" ToolTip="Chọn món" Opacity="0"/>
 	</Grid>
 </UserControl>
