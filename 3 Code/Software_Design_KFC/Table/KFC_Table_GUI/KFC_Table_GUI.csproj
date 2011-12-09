@@ -75,6 +75,15 @@
     <Compile Include="Properties\foodStatus.xaml.cs">
       <DependentUpon>foodStatus.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlCloseButton.xaml.cs">
+      <DependentUpon>UserControlCloseButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlOK.xaml.cs">
+      <DependentUpon>UserControlOK.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlPayment.xaml.cs">
+      <DependentUpon>UserControlPayment.xaml</DependentUpon>
+    </Compile>
     <Page Include="foodControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -107,6 +116,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UserControlCloseButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControlOK.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControlPayment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -131,6 +152,7 @@
     <Resource Include="Images\21-Combo-com-ga-Flava-Roast-large.png" />
     <Resource Include="Images\Button\choose.png" />
     <Resource Include="Images\Button\close.png" />
+    <Resource Include="Images\Button\payment_icon.png" />
     <Resource Include="Images\Chicken\large-garan01.png" />
     <Resource Include="Images\Chicken\large-garan02.png" />
     <Resource Include="Images\Chicken\large-garan03.png" />
@@ -166,6 +188,8 @@
     <Resource Include="Images\Drink\Pepsi-Diet-large.png" />
     <Resource Include="Images\Drink\Pie-large.png" />
     <Resource Include="Images\Drink\Twister-Can-large.png" />
+    <Resource Include="kfc_logo.png" />
+    <Resource Include="kfc_logo2.png" />
     <Resource Include="navigate-left-icon.png" />
     <Resource Include="navigate-right-icon.png" />
   </ItemGroup>

@@ -4,65 +4,18 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+	xmlns:local="clr-namespace:KFC_Table_GUI"
 	mc:Ignorable="d"
 	x:Class="KFC_Table_GUI.optionsBar"
-	x:Name="UserControl"
-	d:DesignWidth="41.5" d:DesignHeight="95">
+	x:Name="UserControl" Width="34.5" Height="33.594">
 	<UserControl.Resources>
-		<Storyboard x:Key="addToCartEnter">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="addToCart">
-				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
-			</DoubleAnimationUsingKeyFrames>
-		</Storyboard>
-		<Storyboard x:Key="addToCartNormal">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="addToCart">
-				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.7"/>
-			</DoubleAnimationUsingKeyFrames>
-		</Storyboard>
-		<Storyboard x:Key="closeEnter">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="close">
-				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
-			</DoubleAnimationUsingKeyFrames>
-		</Storyboard>
-		<Storyboard x:Key="closeLeave">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="close">
-				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.7"/>
-			</DoubleAnimationUsingKeyFrames>
-		</Storyboard>
+		<Storyboard x:Key="addToCartEnter"/>
+		<Storyboard x:Key="addToCartNormal"/>
+		<Storyboard x:Key="closeEnter"/>
+		<Storyboard x:Key="closeLeave"/>
 	</UserControl.Resources>
-	<UserControl.Triggers>
-		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
-			<BeginStoryboard Storyboard="{StaticResource addToCartEnter}"/>
-			<BeginStoryboard Storyboard="{StaticResource addToCartNormal}"/>
-			<BeginStoryboard Storyboard="{StaticResource closeEnter}"/>
-			<BeginStoryboard Storyboard="{StaticResource closeLeave}"/>
-		</EventTrigger>
-	</UserControl.Triggers>
 
-	<Grid x:Name="LayoutRoot" Height="94.5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="42">
-		<StackPanel HorizontalAlignment="Left" Width="41.833" Height="94.441" VerticalAlignment="Top">
-			<Border x:Name="addToCart" BorderThickness="1,2,1,0" Height="50.333" HorizontalAlignment="Left" Width="48.646">
-				<i:Interaction.Triggers>
-					<i:EventTrigger EventName="MouseEnter">
-						<ei:ControlStoryboardAction Storyboard="{StaticResource addToCartEnter}"/>
-					</i:EventTrigger>
-					<i:EventTrigger EventName="MouseLeave">
-						<ei:ControlStoryboardAction Storyboard="{StaticResource addToCartNormal}"/>
-					</i:EventTrigger>
-				</i:Interaction.Triggers>
-				<Image Margin="0,3.624,7,3.624" Source="Images/Button/choose.png" Stretch="Fill"/>
-			</Border>
-			<Border x:Name="close" BorderThickness="1,4,1,0" Height="51" Opacity="0.995" HorizontalAlignment="Left" Width="47.075">
-				<i:Interaction.Triggers>
-					<i:EventTrigger EventName="MouseEnter">
-						<ei:ControlStoryboardAction Storyboard="{StaticResource closeEnter}"/>
-					</i:EventTrigger>
-					<i:EventTrigger EventName="MouseLeave">
-						<ei:ControlStoryboardAction Storyboard="{StaticResource closeLeave}"/>
-					</i:EventTrigger>
-				</i:Interaction.Triggers>
-				<Image Margin="0,3.712,7,8" Source="Images/Button/close.png" Stretch="Fill"/>
-			</Border>
-		</StackPanel>
+	<Grid x:Name="LayoutRoot" Margin="0,0,0,0.063">
+		<local:UserControlOK Width="Auto" Margin="0,0,0,0.031"/>
 	</Grid>
 </UserControl>

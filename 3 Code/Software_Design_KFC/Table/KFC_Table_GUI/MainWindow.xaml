@@ -311,6 +311,12 @@
 			</Setter>
 		</Style>
 	</Window.Resources>
+	<Window.Background>
+		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+			<GradientStop Color="#FF680502" Offset="0"/>
+			<GradientStop Color="#FFA00904" Offset="1"/>
+		</LinearGradientBrush>
+	</Window.Background>
 	<Window.Triggers>
 		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
 			<BeginStoryboard Storyboard="{StaticResource moveToLeftOver}"/>
@@ -329,7 +335,6 @@
 			<ColumnDefinition Width="43.5"/>
 			<ColumnDefinition Width="333"/>
 		</Grid.ColumnDefinitions>
-		<Image x:Name="background" Margin="0,-8.667,8,0" Source="Image2.png" Stretch="Fill" Grid.ColumnSpan="4" Grid.RowSpan="3" d:LayoutOverrides="GridBox"/>
 		<StackPanel x:Name="moveToLeft" Margin="0,0,1,309.792" Orientation="Vertical" d:LayoutOverrides="GridBox" Height="30.708" VerticalAlignment="Bottom" RenderTransformOrigin="0.3,-1.026">
 			<i:Interaction.Triggers>
 				<i:EventTrigger EventName="MouseEnter">
@@ -377,50 +382,57 @@
                         Value="{Binding Path=IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}"/>
                 </Style>
             </ListBox.Resources>
-            <Expander x:Name="order" Header="Đơn đặt hàng" Margin="8,0" Height="311.667" BorderBrush="#FF0E7BF5" BorderThickness="5" ScrollViewer.VerticalScrollBarVisibility="Auto" IsExpanded="True">
+            <Expander x:Name="order" Header="Đơn đặt hàng" Margin="8,0" Height="311.667" BorderBrush="#FF0E7BF5" BorderThickness="5" ScrollViewer.VerticalScrollBarVisibility="Auto" Foreground="White">
             	<Expander.Background>
             		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             			<GradientStop Color="#FF670502" Offset="0"/>
             			<GradientStop Color="#FFA10904" Offset="1"/>
             		</LinearGradientBrush>
             	</Expander.Background>
-            	<ListBox Height="278.669" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-            		<ListBox.Background>
-            			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            				<GradientStop Color="#FF6A0502" Offset="0"/>
-            				<GradientStop Color="#FF990904" Offset="1"/>
-            			</LinearGradientBrush>
-            		</ListBox.Background>
-            		<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
-            		<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
-            		<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
-            		<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
-            		<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
-            		<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
-            		<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
-            	</ListBox>
+            	<Canvas Height="280.669" VerticalAlignment="Top" Margin="0,0,-2,0">
+            		<ListBox Height="217.336" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top" HorizontalAlignment="Center" BorderBrush="{x:Null}" BorderThickness="1,0,0,1">
+            			<ListBox.Background>
+            				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            					<GradientStop Color="#FF6A0502" Offset="0"/>
+            					<GradientStop Color="#FF990904" Offset="1"/>
+            				</LinearGradientBrush>
+            			</ListBox.Background>
+            			<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
+            			<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
+            			<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
+            			<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
+            			<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
+            			<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
+            			<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
+            		</ListBox>
+            		<local:UserControlCloseButton x:Name="cancel" Height="41.592" Canvas.Left="170.768" Canvas.Top="231.077" Width="43.732" ToolTip="Hủy"/>
+            		<local:UserControlOK Canvas.Left="98.833" Canvas.Top="231.077" Height="41.592" Width="45.791" ToolTip="Đặt món"/>
+            	</Canvas>
             </Expander>
-            <Expander x:Name="kitchen" Header="Nhà bếp" Margin="8,3,8,0" Height="284.117" BorderThickness="5" BorderBrush="#FF0E7BF5" IsExpanded="True">
+            <Expander x:Name="kitchen" Header="Nhà bếp" Margin="8,3,8,0" Height="331.617" BorderThickness="5" BorderBrush="#FF0E7BF5" Foreground="White">
             	<Expander.Background>
             		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             			<GradientStop Color="#FF680502" Offset="0"/>
             			<GradientStop Color="#FFA00904" Offset="1"/>
             		</LinearGradientBrush>
             	</Expander.Background>
-            	<ListBox Height="252.999" Margin="0,0,-2,0">
-            		<ListBox.Background>
-            			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            				<GradientStop Color="#FF860704" Offset="0"/>
-            				<GradientStop Color="#FF980904" Offset="1"/>
-            			</LinearGradientBrush>
-            		</ListBox.Background>
-            		<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
-            		<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
-            		<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
-            		<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
-            		<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
-            		<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
-            	</ListBox>
+            	<Canvas Height="237.999" Margin="0,0,-2,0" VerticalAlignment="Top">
+            		<ListBox Height="221.499" Width="301" VerticalAlignment="Top">
+            			<ListBox.Background>
+            				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            					<GradientStop Color="#FF860704" Offset="0"/>
+            					<GradientStop Color="#FF980904" Offset="1"/>
+            				</LinearGradientBrush>
+            			</ListBox.Background>
+            			<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
+            			<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
+            			<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
+            			<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
+            			<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
+            			<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
+            		</ListBox>
+            		<local:UserControlPayment Canvas.Left="110.169" Canvas.Top="233.683" ToolTip="Thanh toán" Height="60.565" Width="69.667"/>
+            	</Canvas>
             </Expander>
             <ListBox.Template>
                 <ControlTemplate TargetType="{x:Type ListBox}">
@@ -440,35 +452,33 @@
             </ListBox.ItemContainerStyle>
         </ListBox>
 		</StackPanel>
+		<Image Height="142.333" Source="kfc_logo.png" Stretch="Fill" Grid.Column="1" Margin="0,8,8,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="142.333"/>
+		<Image Source="kfc_logo2.png" Stretch="Fill" Margin="405.167,37.334,227.666,0" Grid.Column="1" Height="102.031" VerticalAlignment="Top"/>
 		<TabControl Width="Auto" Height="696" Style="{DynamicResource TabControlStyle}" ItemContainerStyle="{DynamicResource TabItemStyle}" Grid.Column="1" Margin="8,0,-0.264,0" Grid.Row="0" Grid.RowSpan="1" VerticalAlignment="Top">
-			<TabItem Foreground="White" BorderBrush="{x:Null}" Margin="0,-2,-2,-1">
+			<TabItem Foreground="White" BorderBrush="{x:Null}" Margin="0,-2,-2,-1" Background="{x:Null}">
 				<TabItem.Header>
 					<Image x:Name="chicken" Source="Images/large-combo28.png" MouseLeftButtonDown="chicken_MouseLeftButtonDown"/>
 				</TabItem.Header>                
 				<Border CornerRadius="7" BorderThickness="5">
-					<Border.Background>
-						<RadialGradientBrush>
-							<GradientStop Color="#FF870704" Offset="1"/>
-							<GradientStop Color="#FF9F0A04"/>
-						</RadialGradientBrush>
-					</Border.Background>
 					<Border.BorderBrush>
 						<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 							<GradientStop Color="#FF1679E7" Offset="0"/>
 							<GradientStop Color="#FF0E3560" Offset="1"/>
 						</LinearGradientBrush>
 					</Border.BorderBrush>
-					<UniformGrid Columns="3" Rows="3">
-						<local:foodControl x:Name="chicken1" Margin="0"/>
-						<local:foodControl x:Name="chicken2" Margin="0"/>
-						<local:foodControl x:Name="chicken3" Margin="0"/>
-						<local:foodControl x:Name="chicken4" Margin="0"/>
-						<local:foodControl x:Name="chicken5" Margin="0"/>
-						<local:foodControl x:Name="chicken6" Margin="0"/>
-						<local:foodControl x:Name="chicken7" Margin="0"/>
-						<local:foodControl x:Name="chicken8" Margin="0"/>
-						<local:foodControl x:Name="chicken9" Margin="0"/>
-					</UniformGrid>
+					<Canvas>
+						<UniformGrid Columns="3" Rows="3" Height="524" Width="886.764">
+							<local:foodControl x:Name="chicken1" Margin="0"/>
+							<local:foodControl x:Name="chicken2" Margin="0"/>
+							<local:foodControl x:Name="chicken3" Margin="0"/>
+							<local:foodControl x:Name="chicken4" Margin="0"/>
+							<local:foodControl x:Name="chicken5" Margin="0"/>
+							<local:foodControl x:Name="chicken6" Margin="0"/>
+							<local:foodControl x:Name="chicken7" Margin="0"/>
+							<local:foodControl x:Name="chicken8" Margin="0"/>
+							<local:foodControl x:Name="chicken9" Margin="0"/>
+						</UniformGrid>
+					</Canvas>
 				</Border>
 			</TabItem>
 			<TabItem BorderBrush="{x:Null}" Margin="0" >
@@ -476,12 +486,6 @@
 					<Image x:Name="hamburger" Stretch="Fill" Margin="3" MouseLeftButtonDown="hamburger_MouseLeftButtonDown"/>
 				</TabItem.Header>
 				<Border CornerRadius="7" BorderThickness="5">
-					<Border.Background>
-						<RadialGradientBrush>
-							<GradientStop Color="#FF870704" Offset="1"/>
-							<GradientStop Color="#FF9F0A04"/>
-						</RadialGradientBrush>
-					</Border.Background>
 					<Border.BorderBrush>
 						<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 							<GradientStop Color="#FF1679E7" Offset="0"/>
@@ -506,12 +510,6 @@
 					<Image x:Name="drink" Stretch="Fill" Margin="3" MouseLeftButtonDown="drink_MouseLeftButtonDown"/>
 				</TabItem.Header>
 				<Border CornerRadius="7" BorderThickness="5">
-					<Border.Background>
-						<RadialGradientBrush>
-							<GradientStop Color="#FF870704" Offset="1"/>
-							<GradientStop Color="#FF9F0A04"/>
-						</RadialGradientBrush>
-					</Border.Background>
 					<Border.BorderBrush>
 						<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 							<GradientStop Color="#FF1679E7" Offset="0"/>
