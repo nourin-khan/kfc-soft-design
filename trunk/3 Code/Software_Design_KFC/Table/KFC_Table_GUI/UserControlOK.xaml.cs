@@ -17,10 +17,11 @@ namespace KFC_Table_GUI
 	/// Interaction logic for UserControlOK.xaml
 	/// </summary>
 	public partial class UserControlOK : UserControl
-	{
+	{       
 		public UserControlOK()
 		{
 			this.InitializeComponent();
 		}
+
 	}
 }

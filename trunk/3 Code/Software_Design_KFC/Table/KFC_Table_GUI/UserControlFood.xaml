@@ -5,7 +5,7 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" xmlns:local="clr-namespace:KFC_Table_GUI"
 	mc:Ignorable="d"
-	x:Class="KFC_Table_GUI.foodControl"
+	x:Class="KFC_Table_GUI.UserControlFood"
 	x:Name="UserControl" d:DesignHeight="174.667" Width="269.588">
 	<UserControl.Resources>
 		<Style x:Key="myImage" TargetType="{x:Type Image}">
@@ -67,6 +67,6 @@
 	<Grid x:Name="LayoutRoot" HorizontalAlignment="Left" Width="268.088">
 		<Image x:Name="image" Source="Images/Chicken/large-garan03.png" Style="{DynamicResource myImage}" Margin="0,0,0,53.167" HorizontalAlignment="Left" Width="221.588"/>
 		<TextBlock x:Name="details" Height="45.667" TextWrapping="Wrap" Text="Chi tiết món ăn" Foreground="White" VerticalAlignment="Bottom" TextAlignment="Center" Opacity="0"/>
-		<local:optionsBar x:Name="optionsBar" Margin="0,29,8,0" HorizontalAlignment="Right" Width="43.006" VerticalAlignment="Top" Height="40.927" ToolTip="Chọn món" Opacity="0"/>
+		<local:UserControlOptionsBar x:Name="optionsBar" Margin="0,29,8,0" HorizontalAlignment="Right" Width="43.006" VerticalAlignment="Top" Height="40.927" ToolTip="Chọn món" Opacity="0"/>
 	</Grid>
 </UserControl>

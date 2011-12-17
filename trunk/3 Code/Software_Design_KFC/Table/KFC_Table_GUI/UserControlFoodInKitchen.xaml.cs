@@ -14,11 +14,20 @@ using System.Windows.Shapes;
 namespace KFC_Table_GUI
 {
 	/// <summary>
-	/// Interaction logic for foodInKitchenControl.xaml
+	/// Interaction logic for UserControlFoodInKitchen.xaml
 	/// </summary>
-	public partial class foodInKitchenControl : UserControl
+	public partial class UserControlFoodInKitchen : UserControl
 	{
-		public foodInKitchenControl()
+        private string foodName;
+
+        public string FoodName
+        {
+            get { return name.Text; }
+            set { name.Text = value; }
+        }
+        private string foodProgress;
+
+		public UserControlFoodInKitchen()
 		{
 			this.InitializeComponent();
 		}

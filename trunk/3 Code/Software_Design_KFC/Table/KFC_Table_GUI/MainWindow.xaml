@@ -390,23 +390,16 @@
             		</LinearGradientBrush>
             	</Expander.Background>
             	<Canvas Height="280.669" VerticalAlignment="Top" Margin="0,0,-2,0">
-            		<ListBox Height="217.336" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top" HorizontalAlignment="Center" BorderBrush="{x:Null}" BorderThickness="1,0,0,1">
+            		<ListBox x:Name="lstboxOrder" Height="217.336" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Top" HorizontalAlignment="Center" BorderBrush="{x:Null}" BorderThickness="1,0,0,1">
             			<ListBox.Background>
             				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             					<GradientStop Color="#FF6A0502" Offset="0"/>
             					<GradientStop Color="#FF990904" Offset="1"/>
             				</LinearGradientBrush>
             			</ListBox.Background>
-            			<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
-            			<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
-            			<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
-            			<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
-            			<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
-            			<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
-            			<local:foodInCartControl d:LayoutOverrides="Width, Height"/>
             		</ListBox>
-            		<local:UserControlCloseButton x:Name="cancel" Height="41.592" Canvas.Left="170.768" Canvas.Top="231.077" Width="43.732" ToolTip="Hủy"/>
-            		<local:UserControlOK Canvas.Left="98.833" Canvas.Top="231.077" Height="41.592" Width="45.791" ToolTip="Đặt món"/>
+            		<local:UserControlCloseButton x:Name="btnCancelOrder" Height="41.592" Canvas.Left="170.768" Canvas.Top="231.077" Width="43.732" ToolTip="Hủy" MouseLeftButtonDown="btnCancelOrder_MouseLeftButtonDown"/>
+            		<local:UserControlOK x:Name="btnOrder" Canvas.Left="98.833" Canvas.Top="231.077" Height="41.592" Width="45.791" ToolTip="Đặt món" MouseLeftButtonDown="btnOrder_MouseLeftButtonDown"/>
             	</Canvas>
             </Expander>
             <Expander x:Name="kitchen" Header="Nhà bếp" Margin="8,3,8,0" Height="331.617" BorderThickness="5" BorderBrush="#FF0E7BF5" Foreground="White">
@@ -417,19 +410,13 @@
             		</LinearGradientBrush>
             	</Expander.Background>
             	<Canvas Height="237.999" Margin="0,0,-2,0" VerticalAlignment="Top">
-            		<ListBox Height="221.499" Width="301" VerticalAlignment="Top">
+            		<ListBox x:Name="lstboxKitchen" Height="221.499" Width="301" VerticalAlignment="Top">
             			<ListBox.Background>
             				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             					<GradientStop Color="#FF860704" Offset="0"/>
             					<GradientStop Color="#FF980904" Offset="1"/>
             				</LinearGradientBrush>
             			</ListBox.Background>
-            			<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
-            			<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
-            			<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
-            			<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
-            			<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
-            			<local:foodInKitchenControl d:LayoutOverrides="Width, Height"/>
             		</ListBox>
             		<local:UserControlPayment Canvas.Left="110.169" Canvas.Top="233.683" ToolTip="Thanh toán" Height="60.565" Width="69.667"/>
             	</Canvas>
@@ -468,15 +455,15 @@
 					</Border.BorderBrush>
 					<Canvas>
 						<UniformGrid Columns="3" Rows="3" Height="524" Width="886.764">
-							<local:foodControl x:Name="chicken1" Margin="0"/>
-							<local:foodControl x:Name="chicken2" Margin="0"/>
-							<local:foodControl x:Name="chicken3" Margin="0"/>
-							<local:foodControl x:Name="chicken4" Margin="0"/>
-							<local:foodControl x:Name="chicken5" Margin="0"/>
-							<local:foodControl x:Name="chicken6" Margin="0"/>
-							<local:foodControl x:Name="chicken7" Margin="0"/>
-							<local:foodControl x:Name="chicken8" Margin="0"/>
-							<local:foodControl x:Name="chicken9" Margin="0"/>
+							<local:UserControlFood x:Name="chicken1" Margin="0"/>
+							<local:UserControlFood x:Name="chicken2" Margin="0"/>
+							<local:UserControlFood x:Name="chicken3" Margin="0"/>
+							<local:UserControlFood x:Name="chicken4" Margin="0"/>
+							<local:UserControlFood x:Name="chicken5" Margin="0"/>
+							<local:UserControlFood x:Name="chicken6" Margin="0"/>
+							<local:UserControlFood x:Name="chicken7" Margin="0"/>
+							<local:UserControlFood x:Name="chicken8" Margin="0"/>
+							<local:UserControlFood x:Name="chicken9" Margin="0"/>
 						</UniformGrid>
 					</Canvas>
 				</Border>
@@ -493,15 +480,15 @@
 						</LinearGradientBrush>
 					</Border.BorderBrush>
 					<UniformGrid Columns="3" Rows="3">
-						<local:foodControl x:Name="hamburger1" Margin="13,0"/>
-						<local:foodControl x:Name="hamburger2" Margin="13,0"/>
-						<local:foodControl x:Name="hamburger3" Margin="13,0"/>
-						<local:foodControl x:Name="hamburger4" Margin="13,0"/>
-						<local:foodControl x:Name="hamburger5" Margin="13,0"/>
-						<local:foodControl x:Name="hamburger6" Margin="13,0"/>
-						<local:foodControl x:Name="hamburger7" Margin="13,0"/>
-						<local:foodControl x:Name="hamburger8" Margin="13,0"/>
-						<local:foodControl x:Name="hamburger9" Margin="13,0"/>
+						<local:UserControlFood x:Name="hamburger1" Margin="13,0"/>
+						<local:UserControlFood x:Name="hamburger2" Margin="13,0"/>
+						<local:UserControlFood x:Name="hamburger3" Margin="13,0"/>
+						<local:UserControlFood x:Name="hamburger4" Margin="13,0"/>
+						<local:UserControlFood x:Name="hamburger5" Margin="13,0"/>
+						<local:UserControlFood x:Name="hamburger6" Margin="13,0"/>
+						<local:UserControlFood x:Name="hamburger7" Margin="13,0"/>
+						<local:UserControlFood x:Name="hamburger8" Margin="13,0"/>
+						<local:UserControlFood x:Name="hamburger9" Margin="13,0"/>
 					</UniformGrid>
 				</Border>
 			</TabItem>
@@ -517,15 +504,15 @@
 						</LinearGradientBrush>
 					</Border.BorderBrush>
 					<UniformGrid Columns="3" Rows="3">
-						<local:foodControl x:Name="drink1" Margin="13,0"/>
-						<local:foodControl x:Name="drink2" Margin="13,0"/>
-						<local:foodControl x:Name="drink3" Margin="13,0"/>
-						<local:foodControl x:Name="drink4" Margin="13,0"/>
-						<local:foodControl x:Name="drink5" Margin="13,0"/>
-						<local:foodControl x:Name="drink6" Margin="13,0"/>
-						<local:foodControl x:Name="drink7" Margin="13,0"/>
-						<local:foodControl x:Name="drink8" Margin="13,0"/>
-						<local:foodControl x:Name="drink9" Margin="13,0"/>
+						<local:UserControlFood x:Name="drink1" Margin="13,0"/>
+						<local:UserControlFood x:Name="drink2" Margin="13,0"/>
+						<local:UserControlFood x:Name="drink3" Margin="13,0"/>
+						<local:UserControlFood x:Name="drink4" Margin="13,0"/>
+						<local:UserControlFood x:Name="drink5" Margin="13,0"/>
+						<local:UserControlFood x:Name="drink6" Margin="13,0"/>
+						<local:UserControlFood x:Name="drink7" Margin="13,0"/>
+						<local:UserControlFood x:Name="drink8" Margin="13,0"/>
+						<local:UserControlFood x:Name="drink9" Margin="13,0"/>
 					</UniformGrid>
 				</Border>
 			</TabItem>
