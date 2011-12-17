@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ExpressionBlendVersion>4.0.20525.0</ExpressionBlendVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{93841302-060a-4d44-8e9b-334f71da1c2c}</ProjectGuid>
+    <ProjectGuid>{93841302-060A-4D44-8E9B-334F71DA1C2C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <DefaultClrNameSpace>KFC_Table_GUI</DefaultClrNameSpace>
@@ -60,17 +60,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="foodControl.xaml.cs">
-      <DependentUpon>foodControl.xaml</DependentUpon>
+    <Compile Include="UserControlFood.xaml.cs">
+      <DependentUpon>UserControlFood.xaml</DependentUpon>
     </Compile>
-    <Compile Include="foodInCartControl.xaml.cs">
-      <DependentUpon>foodInCartControl.xaml</DependentUpon>
+    <Compile Include="UserControlFoodInCart.xaml.cs">
+      <DependentUpon>UserControlFoodInCart.xaml</DependentUpon>
     </Compile>
-    <Compile Include="foodInKitchenControl.xaml.cs">
-      <DependentUpon>foodInKitchenControl.xaml</DependentUpon>
+    <Compile Include="UserControlFoodInKitchen.xaml.cs">
+      <DependentUpon>UserControlFoodInKitchen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="optionsBar.xaml.cs">
-      <DependentUpon>optionsBar.xaml</DependentUpon>
+    <Compile Include="UserControlOptionsBar.xaml.cs">
+      <DependentUpon>UserControlOptionsBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\foodStatus.xaml.cs">
       <DependentUpon>foodStatus.xaml</DependentUpon>
@@ -84,15 +84,15 @@
     <Compile Include="UserControlPayment.xaml.cs">
       <DependentUpon>UserControlPayment.xaml</DependentUpon>
     </Compile>
-    <Page Include="foodControl.xaml">
+    <Page Include="UserControlFood.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="foodInCartControl.xaml">
+    <Page Include="UserControlFoodInCart.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="foodInKitchenControl.xaml">
+    <Page Include="UserControlFoodInKitchen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -108,7 +108,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="optionsBar.xaml">
+    <Page Include="UserControlOptionsBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

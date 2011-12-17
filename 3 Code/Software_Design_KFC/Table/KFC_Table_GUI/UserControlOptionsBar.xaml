@@ -6,8 +6,8 @@
 	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
 	xmlns:local="clr-namespace:KFC_Table_GUI"
 	mc:Ignorable="d"
-	x:Class="KFC_Table_GUI.optionsBar"
-	x:Name="UserControl" Width="34.5" Height="33.594">
+	x:Class="KFC_Table_GUI.UserControlOptionsBar"
+	x:Name="UserControl" Height="34" Width="34">
 	<UserControl.Resources>
 		<Storyboard x:Key="addToCartEnter"/>
 		<Storyboard x:Key="addToCartNormal"/>
@@ -16,6 +16,6 @@
 	</UserControl.Resources>
 
 	<Grid x:Name="LayoutRoot" Margin="0,0,0,0.063">
-		<local:UserControlOK Width="Auto" Margin="0,0,0,0.031"/>
+		<local:UserControlOK x:Name="okControl" Width="Auto" Margin="0,0,0,0.031" MouseLeftButtonUp="okControl_MouseLeftButtonUp" />
 	</Grid>
 </UserControl>

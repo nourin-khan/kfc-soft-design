@@ -14,13 +14,21 @@ using System.Windows.Shapes;
 namespace KFC_Table_GUI
 {
 	/// <summary>
-	/// Interaction logic for optionsBar.xaml
+	/// Interaction logic for UserControlOptionsBar.xaml
 	/// </summary>
-	public partial class optionsBar : UserControl
+	public partial class UserControlOptionsBar : UserControl
 	{
-		public optionsBar()
+        public delegate void ControlClicked();
+        public event ControlClicked OKClick;
+
+		public UserControlOptionsBar()
 		{
-			this.InitializeComponent();
+			this.InitializeComponent(); 
 		}
+
+        private void okControl_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            OKClick();
+        }
 	}
 }

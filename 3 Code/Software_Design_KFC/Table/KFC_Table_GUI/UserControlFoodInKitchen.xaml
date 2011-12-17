@@ -4,29 +4,23 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
-	xmlns:local="clr-namespace:KFC_Table_GUI"
 	mc:Ignorable="d"
-	x:Class="KFC_Table_GUI.foodInCartControl"
-	x:Name="UserControl" Height="48" Width="276.167">
-
+	x:Class="KFC_Table_GUI.UserControlFoodInKitchen"
+	x:Name="UserControl" Height="50.833" Width="255.333">
 	<UserControl.Resources>
 		<Storyboard x:Key="closeEnter"/>
 		<Storyboard x:Key="closeLeave"/>
 	</UserControl.Resources>
-
-	<Grid x:Name="LayoutRoot" Height="50" VerticalAlignment="Top">
-		<StackPanel Height="49.5" VerticalAlignment="Top" Orientation="Horizontal" Margin="0,0,1,0">
+	<Grid x:Name="LayoutRoot" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="254.5" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment">
+		<StackPanel Height="49.5" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Left" Width="254">
 			<Border x:Name="Border" BorderThickness="1" Width="53.333">
 				<Image x:Name="image" Source="Images/Drink/Ly-Pepsi-(R))-large.png" Stretch="Fill" Height="48.5" VerticalAlignment="Top" Margin="0,0,-1,0"/>
 			</Border>
-			<Border BorderThickness="1" Width="88">
+			<Border BorderThickness="1" Width="100">
 				<TextBlock x:Name="name" Margin="-1" TextWrapping="Wrap" Text="Tên món ăn" RenderTransformOrigin="0.5,0.5" TextAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
 			</Border>
-			<Border BorderThickness="1" Width="81">
-				<TextBlock x:Name="price" Margin="-1" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" TextAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="Giá cả"/>
-			</Border>
-			<Border BorderThickness="1" Width="53.833">
-				<local:UserControlCloseButton Height="Auto" Width="Auto" Margin="11,9.5,9.601,7" ToolTip="Không đặt món này"/>
+			<Border BorderThickness="1" Width="100">
+				<ProgressBar Margin="0,20,0,13" VerticalAlignment="Center" Height="13"/>
 			</Border>
 		</StackPanel>
 	</Grid>
