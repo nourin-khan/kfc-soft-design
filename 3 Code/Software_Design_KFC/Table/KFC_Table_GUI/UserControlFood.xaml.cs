@@ -20,6 +20,8 @@ namespace KFC_Table_GUI
 	{
         public delegate void ControlClick();
         public event ControlClick ChooseFoodclick;
+        public delegate void ControlFocus();
+        public event ControlFocus FoodFocus;
 
         private string foodName;
 
@@ -36,12 +38,10 @@ namespace KFC_Table_GUI
             set { foodPrice = value; }
         }
 
-        private string foodDetails;
-
         public string FoodDetails
         {
-            get { return foodDetails; }
-            set { foodDetails = value; }
+            get { return details.Text; }
+            set { details.Text = value; }
         }
         
 		public UserControlFood()
@@ -54,6 +54,11 @@ namespace KFC_Table_GUI
         void optionsBar_OKClick()
         {
             ChooseFoodclick();
+        }
+
+        private void image_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            FoodFocus();
         }
 	}
 }

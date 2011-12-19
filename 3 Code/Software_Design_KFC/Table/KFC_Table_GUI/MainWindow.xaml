@@ -6,7 +6,7 @@
 	x:Class="KFC_Table_GUI.MainWindow"
 	x:Name="Window"
 	Title="MainWindow"
-	Width="1320" Height="720" WindowStyle="None" WindowState="Maximized" Loaded="Window_Loaded">
+	Width="1320" Height="720" WindowStyle="None" Loaded="Window_Loaded" AllowsTransparency="True" WindowState="Maximized">
 	<Window.Resources>
 		<Storyboard x:Key="moveToLeftOver">
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="moveToLeft">
@@ -454,8 +454,8 @@
 						</LinearGradientBrush>
 					</Border.BorderBrush>
 					<Canvas>
-						<UniformGrid Columns="3" Rows="3" Height="524" Width="886.764">
-							<local:UserControlFood x:Name="chicken1" Margin="0"/>
+						<UniformGrid x:Name="gridChicken" Columns="3" Rows="3" Height="524" Width="886.764">
+							<local:UserControlFood x:Name="chicken1" Margin="0" MouseLeftButtonDown="chicken1_MouseLeftButtonDown"/>
 							<local:UserControlFood x:Name="chicken2" Margin="0"/>
 							<local:UserControlFood x:Name="chicken3" Margin="0"/>
 							<local:UserControlFood x:Name="chicken4" Margin="0"/>
@@ -479,17 +479,7 @@
 							<GradientStop Color="#FF0E3560" Offset="1"/>
 						</LinearGradientBrush>
 					</Border.BorderBrush>
-					<UniformGrid Columns="3" Rows="3">
-						<local:UserControlFood x:Name="hamburger1" Margin="13,0"/>
-						<local:UserControlFood x:Name="hamburger2" Margin="13,0"/>
-						<local:UserControlFood x:Name="hamburger3" Margin="13,0"/>
-						<local:UserControlFood x:Name="hamburger4" Margin="13,0"/>
-						<local:UserControlFood x:Name="hamburger5" Margin="13,0"/>
-						<local:UserControlFood x:Name="hamburger6" Margin="13,0"/>
-						<local:UserControlFood x:Name="hamburger7" Margin="13,0"/>
-						<local:UserControlFood x:Name="hamburger8" Margin="13,0"/>
-						<local:UserControlFood x:Name="hamburger9" Margin="13,0"/>
-					</UniformGrid>
+					<UniformGrid Columns="3" Rows="3"/>
 				</Border>
 			</TabItem>
 			<TabItem BorderBrush="{x:Null}" Margin="0" >
@@ -503,17 +493,7 @@
 							<GradientStop Color="#FF0E3560" Offset="1"/>
 						</LinearGradientBrush>
 					</Border.BorderBrush>
-					<UniformGrid Columns="3" Rows="3">
-						<local:UserControlFood x:Name="drink1" Margin="13,0"/>
-						<local:UserControlFood x:Name="drink2" Margin="13,0"/>
-						<local:UserControlFood x:Name="drink3" Margin="13,0"/>
-						<local:UserControlFood x:Name="drink4" Margin="13,0"/>
-						<local:UserControlFood x:Name="drink5" Margin="13,0"/>
-						<local:UserControlFood x:Name="drink6" Margin="13,0"/>
-						<local:UserControlFood x:Name="drink7" Margin="13,0"/>
-						<local:UserControlFood x:Name="drink8" Margin="13,0"/>
-						<local:UserControlFood x:Name="drink9" Margin="13,0"/>
-					</UniformGrid>
+					<UniformGrid Columns="3" Rows="3"/>
 				</Border>
 			</TabItem>
 		</TabControl>
