@@ -8,38 +8,10 @@
 	Title="MainWindow"
 	Width="1320" Height="720" WindowStyle="None" Loaded="Window_Loaded" AllowsTransparency="True" WindowState="Maximized">
 	<Window.Resources>
-		<Storyboard x:Key="moveToLeftOver">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="moveToLeft">
-				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="iconLeft">
-				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
-			</DoubleAnimationUsingKeyFrames>
-		</Storyboard>
-		<Storyboard x:Key="moveToRightOver">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="moveToRight">
-				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="iconRight">
-				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
-			</DoubleAnimationUsingKeyFrames>
-		</Storyboard>
-		<Storyboard x:Key="moveToRightLeave">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="moveToRight">
-				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.6"/>
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="iconRight">
-				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.6"/>
-			</DoubleAnimationUsingKeyFrames>
-		</Storyboard>
-		<Storyboard x:Key="moveToLeftLeave">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="moveToLeft">
-				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.6"/>
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="iconLeft">
-				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.6"/>
-			</DoubleAnimationUsingKeyFrames>
-		</Storyboard>
+		<Storyboard x:Key="moveToLeftOver"/>
+		<Storyboard x:Key="moveToRightOver"/>
+		<Storyboard x:Key="moveToRightLeave"/>
+		<Storyboard x:Key="moveToLeftLeave"/>
 		<Style x:Key="TabItemFocusVisual">
 			<Setter Property="Control.Template">
 				<Setter.Value>
@@ -330,49 +302,11 @@
 			<RowDefinition Height="0.995*"/>
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="21"/>
+			<ColumnDefinition Width="57"/>
 			<ColumnDefinition/>
 			<ColumnDefinition Width="43.5"/>
 			<ColumnDefinition Width="333"/>
 		</Grid.ColumnDefinitions>
-		<StackPanel x:Name="moveToLeft" Margin="0,0,1,309.792" Orientation="Vertical" d:LayoutOverrides="GridBox" Height="30.708" VerticalAlignment="Bottom" RenderTransformOrigin="0.3,-1.026">
-			<i:Interaction.Triggers>
-				<i:EventTrigger EventName="MouseEnter">
-					<ei:ControlStoryboardAction Storyboard="{StaticResource moveToLeftOver}"/>
-				</i:EventTrigger>
-				<i:EventTrigger EventName="MouseLeave">
-					<ei:ControlStoryboardAction Storyboard="{StaticResource moveToLeftLeave}"/>
-				</i:EventTrigger>
-			</i:Interaction.Triggers>
-			<Rectangle x:Name="iconLeft" RenderTransformOrigin="0.326,-1.437" Width="20" Height="25" d:LayoutOverrides="Height" MouseLeftButtonDown="iconLeft_MouseLeftButtonDown">
-				<Rectangle.Fill>
-					<ImageBrush ImageSource="navigate-left-icon.png"/>
-				</Rectangle.Fill>
-			</Rectangle>
-		</StackPanel>
-		<StackPanel x:Name="moveToRight" Grid.Column="2" Margin="15.841,0,8,309.792" Orientation="Vertical" d:LayoutOverrides="GridBox" Height="28.04" VerticalAlignment="Bottom">
-			<i:Interaction.Triggers>
-				<i:EventTrigger EventName="MouseEnter">
-					<ei:ControlStoryboardAction Storyboard="{StaticResource moveToRightOver}"/>
-				</i:EventTrigger>
-				<i:EventTrigger EventName="MouseLeave">
-					<ei:ControlStoryboardAction Storyboard="{StaticResource moveToRightLeave}"/>
-				</i:EventTrigger>
-			</i:Interaction.Triggers>
-			<Rectangle x:Name="iconRight" RenderTransformOrigin="0.326,-1.437" Height="30.666" Margin="2.607,0,-9.615,0" MouseLeftButtonDown="iconRight_MouseLeftButtonDown">
-				<Rectangle.RenderTransform>
-					<TransformGroup>
-						<ScaleTransform ScaleX="-1"/>
-						<SkewTransform/>
-						<RotateTransform/>
-						<TranslateTransform/>
-					</TransformGroup>
-				</Rectangle.RenderTransform>
-				<Rectangle.Fill>
-					<ImageBrush ImageSource="navigate-left-icon.png"/>
-				</Rectangle.Fill>
-			</Rectangle>
-		</StackPanel>
 		<StackPanel x:Name="status" Grid.Column="3" Margin="0,43,8,0" Orientation="Vertical">
 			<ListBox x:Name="statusItems">
             <ListBox.Resources>
@@ -440,8 +374,8 @@
         </ListBox>
 		</StackPanel>
 		<Image Height="142.333" Source="kfc_logo.png" Stretch="Fill" Grid.Column="1" Margin="0,8,8,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="142.333"/>
-		<Image Source="kfc_logo2.png" Stretch="Fill" Margin="405.167,37.334,227.666,0" Grid.Column="1" Height="102.031" VerticalAlignment="Top"/>
-		<TabControl Width="Auto" Height="696" Style="{DynamicResource TabControlStyle}" ItemContainerStyle="{DynamicResource TabItemStyle}" Grid.Column="1" Margin="8,0,-0.264,0" Grid.Row="0" Grid.RowSpan="1" VerticalAlignment="Top">
+		<Image Source="kfc_logo2.png" Stretch="Fill" Margin="369.167,37.334,227.666,0" Grid.Column="1" Height="102.031" VerticalAlignment="Top"/>
+		<TabControl Width="Auto" Height="696" Style="{DynamicResource TabControlStyle}" ItemContainerStyle="{DynamicResource TabItemStyle}" Grid.Column="1" Margin="2,0,-0.264,0" Grid.Row="0" Grid.RowSpan="1" VerticalAlignment="Top">
 			<TabItem Foreground="White" BorderBrush="{x:Null}" Margin="0,-2,-2,-1" Background="{x:Null}">
 				<TabItem.Header>
 					<Image x:Name="chicken" Source="Images/large-combo28.png" MouseLeftButtonDown="chicken_MouseLeftButtonDown"/>
@@ -455,7 +389,7 @@
 					</Border.BorderBrush>
 					<Canvas>
 						<UniformGrid x:Name="gridChicken" Columns="3" Rows="3" Height="524" Width="886.764">
-							<local:UserControlFood x:Name="chicken1" Margin="0" MouseLeftButtonDown="chicken1_MouseLeftButtonDown"/>
+							<local:UserControlFood x:Name="chicken1" Margin="0"/>
 							<local:UserControlFood x:Name="chicken2" Margin="0"/>
 							<local:UserControlFood x:Name="chicken3" Margin="0"/>
 							<local:UserControlFood x:Name="chicken4" Margin="0"/>

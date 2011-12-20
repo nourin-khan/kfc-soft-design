@@ -18,9 +18,10 @@ namespace KFC_Table_GUI
 	/// </summary>
 	public partial class UserControlFood : UserControl
 	{
-        public delegate void ControlClick();
+        public delegate void ControlClick(UserControlFood food);
         public event ControlClick ChooseFoodclick;
-        public delegate void ControlFocus();
+
+        public delegate void ControlFocus(UserControlFood food);
         public event ControlFocus FoodFocus;
 
         private string foodName;
@@ -53,12 +54,12 @@ namespace KFC_Table_GUI
 
         void optionsBar_OKClick()
         {
-            ChooseFoodclick();
+            ChooseFoodclick(this);
         }
 
         private void image_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            FoodFocus();
+            FoodFocus(this);
         }
 	}
 }

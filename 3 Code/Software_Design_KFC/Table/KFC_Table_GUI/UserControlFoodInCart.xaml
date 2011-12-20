@@ -16,17 +16,20 @@
 
 	<Grid x:Name="LayoutRoot" Height="50" VerticalAlignment="Top">
 		<StackPanel Height="49.5" VerticalAlignment="Top" Orientation="Horizontal" Margin="0,0,1,0">
-			<Border x:Name="Border" BorderThickness="1" Width="53.333">
-				<Image x:Name="image" Source="Images/Drink/Ly-Pepsi-(R))-large.png" Stretch="Fill" Height="48.5" VerticalAlignment="Top" Margin="0,0,-1,0"/>
+			<Border x:Name="Border" BorderThickness="1" Width="45.333">
+				<Image x:Name="image" Source="Images/Drink/Ly-Pepsi-(R))-large.png" Stretch="Fill" Height="35.238" VerticalAlignment="Top" Margin="-1,5.262,4.333,0"/>
 			</Border>
 			<Border BorderThickness="1" Width="88">
 				<TextBlock x:Name="name" Margin="-1" TextWrapping="Wrap" Text="Tên món ăn" RenderTransformOrigin="0.5,0.5" TextAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
 			</Border>
-			<Border BorderThickness="1" Width="81">
+			<Border BorderThickness="1" Width="58.999">
 				<TextBlock x:Name="price" Margin="-1" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" TextAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="Giá cả"/>
 			</Border>
-			<Border BorderThickness="1" Width="53.833">
-				<local:UserControlCloseButton Height="Auto" Width="Auto" Margin="11,9.5,9.601,7" ToolTip="Không đặt món này"/>
+			<Border BorderThickness="1" Width="48.5">
+				<TextBlock x:Name="count" Margin="-1" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" TextAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="1"/>
+			</Border>
+			<Border BorderThickness="1" Width="31.667">
+				<local:UserControlCloseButton Height="Auto" Width="Auto" Margin="1.333,9.5,-2.898,7" ToolTip="Không đặt món này" MouseLeftButtonDown="UserControlCloseButton_MouseLeftButtonDown"/>
 			</Border>
 		</StackPanel>
 	</Grid>
