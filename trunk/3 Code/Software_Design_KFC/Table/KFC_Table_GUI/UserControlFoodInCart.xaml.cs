@@ -18,14 +18,20 @@ namespace KFC_Table_GUI
 	/// </summary>
 	public partial class UserControlFoodInCart : UserControl
 	{
-        private string foodName;
+        public delegate void RemoveFromCartHandler(UserControlFoodInCart foodInCart);
+        public event RemoveFromCartHandler RemoveFromCart;
+
+        public int FoodCount
+        {
+            get { return int.Parse(count.Text); }
+            set { count.Text = value.ToString(); }
+        }
 
         public string FoodName
         {
             get { return name.Text; }
             set { name.Text = value; }
         }
-        private string foodPrice;
 
         public string FoodPrice
         {
@@ -35,7 +41,15 @@ namespace KFC_Table_GUI
 
 		public UserControlFoodInCart()
 		{
-			this.InitializeComponent();
+            this.InitializeComponent();            
+        }
+
+		private void UserControlCloseButton_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+            if (RemoveFromCart != null)
+            {
+                RemoveFromCart(this);
+            }
 		}
 	}
 }
