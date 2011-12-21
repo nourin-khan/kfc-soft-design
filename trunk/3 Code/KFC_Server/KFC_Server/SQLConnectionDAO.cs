@@ -19,7 +19,10 @@ namespace KFC_Server
     public class SQLConnectionDAO
     {
         #region Attributes
-        private static string _connectionString;
+        private static string startUpPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase).Replace("file:\\", "");
+
+
+        protected static string _connectionString = @"Data Source=.\SQLEXPRESS;AttachDbFileName=" + startUpPath + @"\Database\KFC_DB.mdf" + ";Integrated Security=True;User Instance=True";
 
         public static string ConnectionString
         {
