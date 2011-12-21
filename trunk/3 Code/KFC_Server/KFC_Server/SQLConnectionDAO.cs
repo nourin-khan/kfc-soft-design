@@ -4,6 +4,9 @@ using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
 using System.Data;
+using System.Collections;
+using System.IO;
+using System.Data.SqlClient;
 
 namespace KFC_Server
 {
@@ -16,7 +19,17 @@ namespace KFC_Server
     public class SQLConnectionDAO
     {
         #region Attributes
-        private string _connectionString;
+        private static string _connectionString;
+
+        public static string ConnectionString
+        {
+            get { return SQLConnectionDAO._connectionString; }
+            set { SQLConnectionDAO._connectionString = value; }
+        }
+        protected SqlConnection connection;
+        protected SqlDataAdapter adapter;
+        protected SqlCommand command;
+        
         #endregion
 
         #region Method
@@ -26,9 +39,10 @@ namespace KFC_Server
          * Output:
          * Author:
          */
-        public static void connect()
+        public void connect()
         {
-
+            connection = new SqlConnection(ConnectionString);
+            connection.Open();
         }
 
         /* 
@@ -37,28 +51,42 @@ namespace KFC_Server
          * Output:
          * Author:
          */
-        public static void disconnect()
+        public void disconnect()
         {
-
+            connection.Close();
         }
         /* 
          * Description:do SQL non query
          * Input: @sqlCommand - string
-         * Output: @ int - number of rows affected
          * Author:
          */
-        public static int doSQLNonQuery(string sqlCommand)
+        public void executeNonQuery(string sqlCommand)
         {
-            return 0;
+            command = new SqlCommand(sqlCommand, connection);
+            command.ExecuteNonQuery();
         }
 
         /* 
          * Description:do SQL query
          * Input: @sqlCommand - string
-         * Output: @ Datatable: table with rows satisfied the requirement
          * Author:
          */
-        public static DataTable doSQLQuery(string sqlCommand)
+        public IDataReader executeQuery(string sqlCommand)
+        {
+            command = new SqlCommand(sqlCommand, connection);
+            return command.ExecuteReader();
+        }
+
+        /**
+         * execute scalar
+         */
+        public object executeScalar(string sqlCommand)
+        {
+            command = new SqlCommand(sqlCommand, connection);
+            return command.ExecuteScalar();
+        }
+                
+        private virtual object GetDataFromDataRow(DataTable dt, int i)
         {
             return null;
         }

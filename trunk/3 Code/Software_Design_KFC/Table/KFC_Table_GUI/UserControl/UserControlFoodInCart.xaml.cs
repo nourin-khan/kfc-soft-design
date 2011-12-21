@@ -51,5 +51,13 @@ namespace KFC_Table_GUI
                 RemoveFromCart(this);
             }
 		}
-	}
+
+        private string foodID;
+
+        public string FoodID
+        {
+            get { return foodID; }
+            set { foodID = value; }
+        }
+    }
 }

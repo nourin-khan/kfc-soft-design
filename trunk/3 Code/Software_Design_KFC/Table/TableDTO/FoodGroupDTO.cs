@@ -23,5 +23,10 @@ namespace TableDTO
             set { _foodGroupName = value; }
         }
         #endregion
+
+        public FoodGroupDTO()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

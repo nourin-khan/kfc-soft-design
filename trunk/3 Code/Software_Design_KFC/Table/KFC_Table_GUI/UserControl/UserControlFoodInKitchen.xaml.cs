@@ -18,6 +18,14 @@ namespace KFC_Table_GUI
 	/// </summary>
 	public partial class UserControlFoodInKitchen : UserControl
 	{
+        private string foodID;
+
+        public string FoodID
+        {
+            get { return foodID; }
+            set { foodID = value; }
+        }
+
         private string foodName;
 
         public string FoodName

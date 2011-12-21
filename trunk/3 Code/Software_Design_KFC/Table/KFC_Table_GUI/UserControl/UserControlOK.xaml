@@ -15,7 +15,7 @@
 		</Storyboard>
 		<Storyboard x:Key="mouseEnter">
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image">
-				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 		<Storyboard x:Key="mouseLeftButtonDown">
@@ -52,7 +52,7 @@
 	<UserControl.Triggers>
 	</UserControl.Triggers>
 	<Grid x:Name="LayoutRoot" Margin="0,0,-0.184,0">
-		<Image x:Name="image" Source="Images/Button/choose.png" Stretch="Fill" Margin="0,0,4,3" RenderTransformOrigin="0.5,0.5" Opacity="0.7">
+		<Image x:Name="image" Source="/KFC_Table_GUI;component/Images/Button/choose.png" Stretch="Fill" Margin="0,0,4,3" RenderTransformOrigin="0.5,0.5" Opacity="0.7">
 			<Image.RenderTransform>
 				<TransformGroup>
 					<ScaleTransform/>

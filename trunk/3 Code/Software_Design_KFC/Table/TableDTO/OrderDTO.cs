@@ -11,11 +11,11 @@ namespace TableDTO
      * 1 - not confirm yet
      * 2 - already confirm
     */
-    enum OrderStatus
+    public enum OrderStatus
     {
-        DELETED = 0,
-        UNCONFIRMED = 1,
-        CONFIRMED = 2
+        DELETED,
+        UNCONFIRMED,
+        CONFIRMED
     }
     public class OrderDTO
     {
@@ -41,9 +41,9 @@ namespace TableDTO
             get { return _tableNum; }
             set { _tableNum = value; }
         }
-        private int _orderStatus;
+        private OrderStatus _orderStatus;
 
-        public int OrderStatus
+        public OrderStatus OrderStatus
         {
             get { return _orderStatus; }
             set { _orderStatus = value; }
@@ -55,6 +55,19 @@ namespace TableDTO
             get { return _orderNote; }
             set { _orderNote = value; }
         }
+
+        private List<OrderDetailDTO> foodList;
+
+        public List<OrderDetailDTO> FoodList
+        {
+            get { return foodList; }
+            set { foodList = value; }
+        }
         #endregion
+
+        public OrderDTO()
+        {
+            foodList = new List<OrderDetailDTO>();
+        }
     }
 }

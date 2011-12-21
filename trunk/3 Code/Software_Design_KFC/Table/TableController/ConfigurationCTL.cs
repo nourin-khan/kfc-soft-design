@@ -7,5 +7,6 @@ namespace TableController
 {
     public class ConfigurationCTL
     {
+        public static int TableNum;
     }
 }

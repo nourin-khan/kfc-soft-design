@@ -25,6 +25,13 @@ namespace KFC_Table_GUI
             set { isAddToCart = value; }
         }
 
+        private string foodID;
+
+        public string FoodID
+        {
+            get { return foodID; }
+            set { foodID = value; }
+        }
         public string Details 
         {
             get {return details.Text;}

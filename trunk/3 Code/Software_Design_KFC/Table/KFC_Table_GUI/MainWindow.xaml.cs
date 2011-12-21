@@ -12,6 +12,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TableController;
 using TableDTO;
+using System.Threading;
+using System.Windows.Media.Animation;
 
 namespace KFC_Table_GUI
 {
@@ -62,10 +64,17 @@ namespace KFC_Table_GUI
             #endregion
 
             FoodDTO[] foodList = foodCtrl.getFoodGroup("chicken");
-            int idx = 0;
-            while (idx < 9)
+            if (foodList == null)
             {
-                foodList[i];
+                return;
+            }
+            int idx = 0;
+            while (idx < foods.Count)
+            {
+                foods[idx].FoodName = foodList[idx].FoodName;
+                foods[idx].FoodPrice = foodList[idx].FoodPrice.ToString();
+                foods[idx].FoodDetails = foodList[idx].FoodDescription + "\nGia : " + foodList[idx].FoodPrice.ToString();
+                foods[idx].FoodImageSource = new BitmapImage(new Uri(foodList[idx].FoodImageSource));
             }
         }
 
@@ -141,23 +150,74 @@ namespace KFC_Table_GUI
 
         private void drink_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+        }    
+
+        private void btnCancelOrder_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            lstboxOrder.Items.Clear();
         }
 
-        private void btnOrder_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void btnPayment_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            
+        }
+
+        private void btnOrder_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            // confirmation
+            UserControlConfirm confirm = new UserControlConfirm();
+            confirm.DisplayText.Text = "Mời bạn xác nhận đặt món ăn !";
+            confirm.ShowDialog();
+            // animation
+            Storyboard sb = btnOrder.FindResource("mouseLeftButtonUp") as Storyboard;
+            btnOrder.BeginStoryboard(sb);
+            // check confirm
+            if (!confirm.IsConfirm)
+            {
+                return;
+            }
+
             lstboxKitchen.Items.Clear();
+
+            // create the order
+            OrderDTO orderInfo = new OrderDTO();
+            orderInfo.OrderTime = DateTime.Now;
+            orderInfo.OrderStatus = OrderStatus.UNCONFIRMED;
+            orderInfo.OrderNote = null;
+            orderInfo.TableNum = ConfigurationCTL.TableNum;
+            // order id is complexity string that's include table No. and datetime.now
+            orderInfo.OrderID = ConfigurationCTL.TableNum + orderInfo.OrderTime.ToString();
+
             foreach (UserControlFoodInCart item in lstboxOrder.Items)
             {
+                OrderDetailDTO info = new OrderDetailDTO();
+                info.CompleteTime = DateTime.Now;
+                info.Quantity = item.FoodCount;
+                info.FoodID = item.FoodID;
+                info.FoodNote = string.Empty;
+                info.OrderID = orderInfo.OrderID;
+                orderInfo.FoodList.Add(info);
+
                 UserControlFoodInKitchen foodInKitchen = new UserControlFoodInKitchen();
                 foodInKitchen.image.Source = item.image.Source;
                 foodInKitchen.FoodName = item.FoodName;
                 lstboxKitchen.Items.Add(foodInKitchen);
             }
+
+            // add new order using order controller
+            orderCtrl.add(orderInfo);
         }
 
-        private void btnCancelOrder_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void btnPayment_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            lstboxOrder.Items.Clear();
+            // confirm bill printing
+            UserControlConfirm confirm = new UserControlConfirm();
+            confirm.DisplayText.Text = "Bạn có cần in hóa đơn không ?";
+            confirm.ShowDialog();
+            if (confirm.IsConfirm)
+            {
+                // handling
+            }
         }
  
 	    #endregion    
