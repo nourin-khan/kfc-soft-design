@@ -25,6 +25,13 @@ namespace KFC_Table_GUI
         public delegate void ControlFocus(UserControlFood food);
         public event ControlFocus FoodFocus;
 
+        private string foodID;
+
+        public string FoodID
+        {
+            get { return foodID; }
+            set { foodID = value; }
+        }
         private string foodName;
 
         public string FoodName
@@ -65,7 +72,7 @@ namespace KFC_Table_GUI
             this.FoodName = info.FoodName;
             this.FoodPrice = info.FoodPrice.ToString();
             this.FoodDetails = info.FoodDescription + "\nGia : " + this.FoodPrice;
-           
+            this.FoodImageSource = new BitmapImage(new Uri(info.FoodImageSource));
         }
 
         void optionsBar_OKClick()

@@ -7,7 +7,6 @@ namespace TableDTO
 {
     public class OrderDetailDTO
     {
-        #region Attributes
         private string _orderID;
 
         public string OrderID
@@ -50,6 +49,11 @@ namespace TableDTO
             get { return _foodNote; }
             set { _foodNote = value; }
         }
-        #endregion
+
+        public void Method()
+        {
+            throw new System.NotImplementedException();
+        }
+
     }
 }

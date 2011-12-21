@@ -333,7 +333,7 @@
             			</ListBox.Background>
             		</ListBox>
             		<local:UserControlCloseButton x:Name="btnCancelOrder" Height="41.592" Canvas.Left="170.768" Canvas.Top="231.077" Width="43.732" ToolTip="Hủy" MouseLeftButtonDown="btnCancelOrder_MouseLeftButtonDown"/>
-            		<local:UserControlOK x:Name="btnOrder" Canvas.Left="98.833" Canvas.Top="231.077" Height="41.592" Width="45.791" ToolTip="Đặt món" MouseLeftButtonDown="btnOrder_MouseLeftButtonDown"/>
+            		<local:UserControlOK x:Name="btnOrder" Canvas.Left="98.833" Canvas.Top="231.077" Height="41.592" Width="45.791" ToolTip="Đặt món" MouseLeftButtonUp="btnOrder_MouseLeftButtonUp"/>
             	</Canvas>
             </Expander>
             <Expander x:Name="kitchen" Header="Nhà bếp" Margin="8,3,8,0" Height="331.617" BorderThickness="5" BorderBrush="#FF0E7BF5" Foreground="White">
@@ -352,7 +352,7 @@
             				</LinearGradientBrush>
             			</ListBox.Background>
             		</ListBox>
-            		<local:UserControlPayment Canvas.Left="110.169" Canvas.Top="233.683" ToolTip="Thanh toán" Height="60.565" Width="69.667"/>
+            		<local:UserControlPayment x:Name="btnPayment" Canvas.Left="110.169" Canvas.Top="233.683" ToolTip="Thanh toán" Height="60.565" Width="69.667" MouseLeftButtonUp="btnPayment_MouseLeftButtonUp"/>
             	</Canvas>
             </Expander>
             <ListBox.Template>
@@ -389,7 +389,7 @@
 					</Border.BorderBrush>
 					<Canvas>
 						<UniformGrid x:Name="gridChicken" Columns="3" Rows="3" Height="524" Width="886.764">
-							<local:UserControlFood x:Name="chicken1" Margin="0"/>
+							<local:UserControlFood x:Name="chicken1" Margin="0" FoodImageSource="Images/08-Combo-Hot-Wing-large.png"/>
 							<local:UserControlFood x:Name="chicken2" Margin="0"/>
 							<local:UserControlFood x:Name="chicken3" Margin="0"/>
 							<local:UserControlFood x:Name="chicken4" Margin="0"/>

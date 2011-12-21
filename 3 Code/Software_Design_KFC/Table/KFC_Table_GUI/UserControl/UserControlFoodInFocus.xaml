@@ -16,16 +16,16 @@
 			<ColumnDefinition Width="0.797*"/>
 			<ColumnDefinition Width="0.203*"/>
 		</Grid.ColumnDefinitions>
-		<Rectangle Margin="1.149,0,0,0" Stroke="Black" Grid.ColumnSpan="2" Grid.RowSpan="2" RadiusY="30.351" RadiusX="30.351">
+		<Rectangle Margin="1.149,0,0,0" Stroke="Black" RadiusY="30.351" RadiusX="30.351" Grid.ColumnSpan="2" Grid.RowSpan="2">
 			<Rectangle.Fill>
-				<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-					<GradientStop Color="#FF09266C"/>
-					<GradientStop Color="#FF13B2F5" Offset="0.983"/>
-				</LinearGradientBrush>
+				<RadialGradientBrush>
+					<GradientStop Color="#FF00CFF7" Offset="0.004"/>
+					<GradientStop Color="#FF00A6C6" Offset="1"/>
+				</RadialGradientBrush>
 			</Rectangle.Fill>
 		</Rectangle>
 		<Image x:Name="image" Margin="18.149,8,0,7.32" HorizontalAlignment="Left" Width="263.162"/>
-		<TextBlock x:Name="details" Grid.Row="1" TextWrapping="Wrap" Margin="0,-0.481,0.236,0" Foreground="White" FontStyle="Italic" TextAlignment="Center"/>
+		<TextBlock x:Name="details" Grid.Row="1" TextWrapping="Wrap" Margin="0,-0.481,0.236,0" Foreground="Black" FontStyle="Italic" TextAlignment="Center"/>
 		<local:UserControlOK x:Name="addToCart" Grid.Column="1" Margin="8,8,7.856,0" Height="63.522" VerticalAlignment="Top" Opacity="0.83" MouseLeftButtonDown="addToCart_MouseLeftButtonDown"/>
 		<local:UserControlCloseButton x:Name="close" VerticalAlignment="Bottom" d:LayoutOverrides="Height" Grid.Column="1" Margin="8.316,0,7.856,26" Opacity="0.785" MouseLeftButtonDown="close_MouseLeftButtonDown"/>
 	</Grid>

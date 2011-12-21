@@ -10,7 +10,9 @@ namespace KFC_Server
     /// Summary description for KFCServerWebService
     /// </summary>
     [WebService(Namespace = "http://tempuri.org/")]
-    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+    [WebServiceBinding(ConformsTo = WsiProfiles.None)]
+    //[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+
     [System.ComponentModel.ToolboxItem(false)]
 
     public partial class KFCServerWebService : System.Web.Services.WebService
@@ -35,7 +37,7 @@ namespace KFC_Server
             return 0;
         }
 
-        [WebMethod]
+        [WebMethod (MessageName="DeleteFoodByID")]
         public int deleteFood(string foodID)
         {
             return 0;
@@ -47,7 +49,7 @@ namespace KFC_Server
             return 0;
         }
 
-        [WebMethod]
+        [WebMethod(MessageName="UpdateFoodByID")]
         public int updateFood(string oldFoodID, FoodDTO newInfo)
         {
             return 0;
@@ -59,7 +61,7 @@ namespace KFC_Server
             return null;
         }
 
-        [WebMethod]
+        [WebMethod(MessageName="SelectFoodByID")]
         public FoodDTO[] selectFoodInfo(string foodID)
         {
             return null;
@@ -79,7 +81,7 @@ namespace KFC_Server
             return 0;
         }
 
-        [WebMethod]
+        [WebMethod(MessageName = "DeleteGroupByID")]
         public int deleteFoodGroup(string foodGroupID)
         {
             return 0;
@@ -91,7 +93,7 @@ namespace KFC_Server
             return 0;
         }
 
-        [WebMethod]
+        [WebMethod(MessageName = "UpdateGroupByID")]
         public int updateFoodGroup(string oldFoodGroupID, FoodGroupDTO newInfo)
         {
             return 0;
@@ -103,7 +105,7 @@ namespace KFC_Server
             return null;
         }
 
-        [WebMethod]
+        [WebMethod(MessageName = "SelectGroupByID")]
         public FoodGroupDTO[] selectFoodGroupInfo(string foodGroupID)
         {
             return null;
@@ -123,7 +125,7 @@ namespace KFC_Server
             return 0;
         }
 
-        [WebMethod]
+        [WebMethod(MessageName = "DeleteOrderByID")]
         public int deleteOrder(string orderID)
         {
             return 0;
@@ -135,7 +137,7 @@ namespace KFC_Server
             return 0;
         }
 
-        [WebMethod]
+        [WebMethod(MessageName = "UpdateOrderByID")]
         public int updateOrder(string oldOrderID, OrderDTO newInfo)
         {
             return 0;
@@ -147,7 +149,7 @@ namespace KFC_Server
             return null;
         }
 
-        [WebMethod]
+        [WebMethod(MessageName = "SelectOrderByID")]
         public OrderDTO[] selectOrderInfo(string orderID)
         {
             return null;
@@ -167,7 +169,7 @@ namespace KFC_Server
             return 0;
         }
 
-        [WebMethod]
+        [WebMethod(MessageName = "DeleteOrderDetailByID")]
         public int deleteOrderDetail(string orderDetailID)
         {
             return 0;
@@ -179,7 +181,7 @@ namespace KFC_Server
             return 0;
         }
 
-        [WebMethod]
+        [WebMethod(MessageName = "UpdateOrderDetailByID")]
         public int updateOrderDetail(string oldOrderDetailID, OrderDetailDTO newInfo)
         {
             return 0;
@@ -191,7 +193,7 @@ namespace KFC_Server
             return null;
         }
 
-        [WebMethod]
+        [WebMethod(MessageName = "SelectOrderDetailByID")]
         public OrderDetailDTO[] selectOrderDetailInfo(string orderDetailID)
         {
             return null;
@@ -212,7 +214,7 @@ namespace KFC_Server
             return 0;
         }
 
-        [WebMethod]
+        [WebMethod(MessageName = "DeleteBillByID")]
         public int deleteBill(string billID)
         {
             return 0;
@@ -224,7 +226,7 @@ namespace KFC_Server
             return 0;
         }
 
-        [WebMethod]
+        [WebMethod(MessageName = "UpdateBillByID")]
         public int updateBill(string oldBillID, BillDTO newInfo)
         {
             return 0;
@@ -236,7 +238,7 @@ namespace KFC_Server
             return null;
         }
 
-        [WebMethod]
+        [WebMethod(MessageName = "SelectBillByID")]
         public BillDTO[] selectBillInfo(string billID)
         {
             return null;

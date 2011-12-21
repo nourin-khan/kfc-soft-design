@@ -4,10 +4,13 @@ using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
 using DTO;
+using System.Data.SqlClient;
+using System.Data;
+using System.Collections;
 
 namespace KFC_Server
 {
-    public class BillDAO
+    public class BillDAO : SQLConnectionDAO
     {
         /* 
          * Description:
@@ -23,9 +26,11 @@ namespace KFC_Server
         * Output: int - number of rows affected
         * Author:
         */
-        public int add(BillDTO billDTO)
+        public void insert(BillDTO info)
         {
-            return 0;
+            connect();
+            string cmd = "";
+            executeNonQuery(cmd);
         }
 
         /* 
@@ -34,14 +39,18 @@ namespace KFC_Server
         * Output: int - number of rows affected
         * Author:
         */
-        public int delete(BillDTO billDTO)
+        public void delete(BillDTO billDTO)
         {
-            return 0;
+            connect();
+            string cmd = "";
+            executeNonQuery(cmd);
         }
 
-        public int delete(string billID)
+        public void delete(string billID)
         {
-            return 0;
+            connect();
+            string cmd = "";
+            executeNonQuery(cmd);
         }
 
         /* 
@@ -49,16 +58,14 @@ namespace KFC_Server
         * Input: @ oldInfo - bill obj with old information (old billID)
          *       @ newInfo - new information
          *       @ oldBillID - old billID
-        * Output: int - number of rows affected
+        * Output: void
         * Author:
         */
-        public int update(BillDTO oldInfo, BillDTO newInfo)
+        public void update(BillDTO newInfo)
         {
-            return 0;
-        }
-        public int update(string oldBillID, BillDTO newInfo)
-        {
-            return 0;
+            connect();
+            string cmd = "";
+            executeNonQuery(cmd);
         }
 
         /* 
@@ -68,9 +75,38 @@ namespace KFC_Server
          * Output: BillDTO[] - list of bill satisfied the requirement
          * Author:
          */
-        public BillDTO[] selectInfo(BillDTO billDTO = null)
+        public BillDTO[] selectInfo(BillDTO info = null)
         {
-            return null;
+            string cmd = "";
+            if (info == null)
+            {
+                // select all
+                cmd = "";
+            }
+            else
+            {
+                // select
+                cmd = "";
+            }
+            connect();
+            adapter = new SqlDataAdapter(cmd, connection);
+            DataSet dataset = new DataSet();
+            adapter.Fill(dataset);
+
+            DataTable dt = dataset.Tables[0];
+            int i, n = dt.Rows.Count;
+            BillDTO[] arr = new BillDTO[n];
+            for (i = 0; i < n; i++ )
+            {
+                object bill = GetDataFromDataRow(dt, i);
+                arr[i] = bill as BillDTO;
+            }
+        }
+
+        protected override object GetDataFromDataRow(DataTable dt, int i)
+        {
+            BillDTO bill = new BillDTO();
+            return bill;
         }
 
         public BillDTO[] selectInfo(string billID)
