@@ -26,222 +26,222 @@ namespace KFC_Server
 
         #region FoodDAO
         [WebMethod]
-        public int addFood(FoodDTO foodDTO)
+        public void addFood(FoodDTO foodDTO)
         {
-            return 0;
+            FoodDAO data = new FoodDAO();
+            data.insert(foodDTO);
         }
 
         [WebMethod]
-        public int deleteFood(FoodDTO foodDTO)
+        public void deleteFood(FoodDTO foodDTO)
         {
-            return 0;
+            FoodDAO data = new FoodDAO();
+            data.delete(foodDTO);
         }
 
         [WebMethod (MessageName="DeleteFoodByID")]
-        public int deleteFood(string foodID)
+        public void deleteFood(string foodID)
         {
-            return 0;
+            FoodDAO data = new FoodDAO();
+            data.delete(foodID);
         }
 
         [WebMethod]
-        public int updateFood(FoodDTO oldInfo, FoodDTO newInfo)
+        public void updateFood(FoodDTO newInfo)
         {
-            return 0;
-        }
-
-        [WebMethod(MessageName="UpdateFoodByID")]
-        public int updateFood(string oldFoodID, FoodDTO newInfo)
-        {
-            return 0;
+            FoodDAO data = new FoodDAO();
+            data.update(newInfo);
         }
 
         [WebMethod]
         public FoodDTO[] selectFoodInfo(FoodDTO foodDTO = null)
         {
-            return null;
+            FoodDAO data = new FoodDAO();
+            return data.selectInfo(foodDTO);
         }
 
         [WebMethod(MessageName="SelectFoodByID")]
         public FoodDTO[] selectFoodInfo(string foodID)
         {
-            return null;
+            FoodDAO data = new FoodDAO();
+            return data.selectInfo(foodID);
         }
         #endregion
 
         #region FoodGroupDAO
         [WebMethod]
-        public int addFoodGroup(FoodGroupDTO foodGroupDTO)
+        public void addFoodGroup(FoodGroupDTO foodGroupDTO)
         {
-            return 0;
+            FoodGroupDAO data = new FoodGroupDAO();
+            data.insert(foodGroupDTO);
         }
 
         [WebMethod]
-        public int deleteFoodGroup(FoodGroupDTO foodGroupDTO)
+        public void deleteFoodGroup(FoodGroupDTO foodGroupDTO)
         {
-            return 0;
+            FoodGroupDAO data = new FoodGroupDAO();
+            data.delete(foodGroupDTO);
         }
 
         [WebMethod(MessageName = "DeleteGroupByID")]
-        public int deleteFoodGroup(string foodGroupID)
+        public void deleteFoodGroup(string foodGroupID)
         {
-            return 0;
+            FoodGroupDAO data = new FoodGroupDAO();
+            data.delete(foodGroupID);
         }
 
         [WebMethod]
-        public int updateFoodGroup(FoodGroupDTO oldInfo, FoodGroupDTO newInfo)
+        public void updateFoodGroup(FoodGroupDTO newInfo)
         {
-            return 0;
-        }
-
-        [WebMethod(MessageName = "UpdateGroupByID")]
-        public int updateFoodGroup(string oldFoodGroupID, FoodGroupDTO newInfo)
-        {
-            return 0;
+            FoodGroupDAO data = new FoodGroupDAO();
+            data.update(newInfo);
         }
 
         [WebMethod]
         public FoodGroupDTO[] selectFoodGroupInfo(FoodGroupDTO foodGroupDTO = null)
         {
-            return null;
+            FoodGroupDAO data = new FoodGroupDAO();
+            return data.selectInfo(foodGroupDTO);
         }
 
         [WebMethod(MessageName = "SelectGroupByID")]
         public FoodGroupDTO[] selectFoodGroupInfo(string foodGroupID)
         {
-            return null;
+            FoodGroupDAO data = new FoodGroupDAO();
+            return data.selectInfo(foodGroupID);
         }
         #endregion
 
         #region OrderDAO
         [WebMethod]
-        public int addOrder(OrderDTO orderDTO)
+        public void addOrder(OrderDTO orderDTO)
         {
-            return 0;
+            OrderDAO data = new OrderDAO();
+            data.insert(orderDTO);
         }
 
         [WebMethod]
-        public int deleteOrder(OrderDTO orderDTO)
+        public void deleteOrder(OrderDTO orderDTO)
         {
-            return 0;
+            OrderDAO data = new OrderDAO();
+            data.delete(orderDTO);
         }
 
         [WebMethod(MessageName = "DeleteOrderByID")]
-        public int deleteOrder(string orderID)
+        public void deleteOrder(string orderID)
         {
-            return 0;
+            OrderDAO data = new OrderDAO();
+            data.delete(orderID);
         }
 
         [WebMethod]
-        public int updateOrder(OrderDTO oldInfo, OrderDTO newInfo)
+        public void updateOrder(OrderDTO newInfo)
         {
-            return 0;
-        }
-
-        [WebMethod(MessageName = "UpdateOrderByID")]
-        public int updateOrder(string oldOrderID, OrderDTO newInfo)
-        {
-            return 0;
+            OrderDAO data = new OrderDAO();
+            data.update(newInfo);
         }
 
         [WebMethod]
         public OrderDTO[] selectOrderInfo(OrderDTO orderDTO = null)
         {
-            return null;
+            OrderDAO data = new OrderDAO();
+            return data.selectInfo(orderDTO);
         }
 
         [WebMethod(MessageName = "SelectOrderByID")]
         public OrderDTO[] selectOrderInfo(string orderID)
         {
-            return null;
+            OrderDAO data = new OrderDAO();
+            return data.selectInfo(orderID);
         }
         #endregion
 
         #region OrderDetailDAO
         [WebMethod]
-        public int addOrderDetail(OrderDetailDTO orderDetailDTO)
+        public void addOrderDetail(OrderDetailDTO orderDetailDTO)
         {
-            return 0;
+            OrderDetailDAO data = new OrderDetailDAO();
+            data.insert(orderDetailDTO);
         }
 
         [WebMethod]
-        public int deleteOrderDetail(OrderDetailDTO orderDetailDTO)
+        public void deleteOrderDetail(OrderDetailDTO orderDetailDTO)
         {
-            return 0;
+            OrderDetailDAO data = new OrderDetailDAO();
+            data.delete(orderDetailDTO);
         }
 
         [WebMethod(MessageName = "DeleteOrderDetailByID")]
-        public int deleteOrderDetail(string orderDetailID)
+        public void deleteOrderDetail(string orderDetailID)
         {
-            return 0;
+            OrderDetailDAO data = new OrderDetailDAO();
+            data.delete(orderDetailID);
         }
 
         [WebMethod]
-        public int updateOrderDetail(OrderDetailDTO oldInfo, OrderDetailDTO newInfo)
+        public void updateOrderDetail( OrderDetailDTO newInfo)
         {
-            return 0;
-        }
-
-        [WebMethod(MessageName = "UpdateOrderDetailByID")]
-        public int updateOrderDetail(string oldOrderDetailID, OrderDetailDTO newInfo)
-        {
-            return 0;
+            OrderDetailDAO data = new OrderDetailDAO();
+            data.update(newInfo);
         }
 
         [WebMethod]
         public OrderDetailDTO[] selectOrderDetailInfo(OrderDetailDTO orderDetailDTO = null)
         {
-            return null;
+            OrderDetailDAO data = new OrderDetailDAO();
+            return data.selectInfo(orderDetailDTO);
         }
 
         [WebMethod(MessageName = "SelectOrderDetailByID")]
         public OrderDetailDTO[] selectOrderDetailInfo(string orderDetailID)
         {
-            return null;
+            OrderDetailDAO data = new OrderDetailDAO();
+            return data.selectInfo(orderDetailID);
         }
         
         #endregion
 
         #region BillDAO
         [WebMethod]
-        public int addBill(BillDTO billDTO)
+        public void addBill(BillDTO billDTO)
         {
-            return 0;
+            BillDAO data = new BillDAO();
+            data.insert(billDTO);
         }
 
         [WebMethod]
-        public int deleteBill(BillDTO billDTO)
+        public void deleteBill(BillDTO billDTO)
         {
-            return 0;
+            BillDAO data = new BillDAO();
+            data.delete(billDTO);
         }
 
         [WebMethod(MessageName = "DeleteBillByID")]
-        public int deleteBill(string billID)
+        public void deleteBill(string billID)
         {
-            return 0;
+            BillDAO data = new BillDAO();
+            data.delete(billID);
         }
 
         [WebMethod]
-        public int updateBill(BillDTO oldInfo, BillDTO newInfo)
+        public void updateBill( BillDTO newInfo)
         {
-            return 0;
-        }
-
-        [WebMethod(MessageName = "UpdateBillByID")]
-        public int updateBill(string oldBillID, BillDTO newInfo)
-        {
-            return 0;
+            BillDAO data = new BillDAO();
+            data.update(newInfo);
         }
 
         [WebMethod]
         public BillDTO[] selectBillInfo(BillDTO billDTO = null)
         {
-            return null;
+            BillDAO data = new BillDAO();
+            return data.selectInfo(billDTO);
         }
 
         [WebMethod(MessageName = "SelectBillByID")]
         public BillDTO[] selectBillInfo(string billID)
         {
-            return null;
+            BillDAO data = new BillDAO();
+            return data.selectInfo(billID);
         }
         #endregion
 
