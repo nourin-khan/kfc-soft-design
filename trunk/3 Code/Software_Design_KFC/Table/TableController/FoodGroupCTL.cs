@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TableDTO;
+using System.Collections;
 namespace TableController
 {
     public class FoodGroupCTL
@@ -14,7 +15,7 @@ namespace TableController
          * Author:
          * Note:
          */
-        public FoodDTO[] getFoodList(string foodGroupName)
+        public ArrayList getFoodList(string foodGroupName)
         {
             return null;
         }

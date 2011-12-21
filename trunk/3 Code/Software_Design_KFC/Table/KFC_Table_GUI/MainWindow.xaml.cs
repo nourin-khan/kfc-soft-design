@@ -10,6 +10,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TableController;
+using TableDTO;
 
 namespace KFC_Table_GUI
 {
@@ -23,14 +25,22 @@ namespace KFC_Table_GUI
         private List<UserControlFood> foods;        
         #endregion        
 
+        #region Controller
+        FoodCTL foodCtrl;
+        OrderCTL orderCtrl;
+        #endregion
+
         public MainWindow()
         {
-            this.InitializeComponent();            
+            this.InitializeComponent();
+            foodCtrl = new FoodCTL();
+            orderCtrl = new OrderCTL();
         }
 
         #region Events Handle
 		private void Window_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
+            #region OldRegion
             statusItems.SelectedIndex = 0;
 
             foods = new List<UserControlFood>();
@@ -48,6 +58,14 @@ namespace KFC_Table_GUI
             {
                 food.FoodFocus += new UserControlFood.ControlFocus(focusFood);
                 food.ChooseFoodclick += new UserControlFood.ControlClick(food_ChooseFoodclick);
+            } 
+            #endregion
+
+            FoodDTO[] foodList = foodCtrl.getFoodGroup("chicken");
+            int idx = 0;
+            while (idx < 9)
+            {
+                foodList[i];
             }
         }
 

@@ -23,5 +23,10 @@ namespace TableController
         {
             return null;
         }
+
+        public FoodDTO[] getFoodGroup(string foodGroupName)
+        {
+            return null;
+        }
     }
 }

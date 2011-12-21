@@ -19,15 +19,42 @@ namespace TableDTO
     }
     public class OrderDTO
     {
-        #region Attributes - private
+        #region Attributes
         private string _orderID;
-        private DateTime _orderDate;
-        private int _tableNum;
-        private int _orderStatus;
-        private string _orderNote;
-        #endregion
 
-        #region Attributes - public
+        public string OrderID
+        {
+            get { return _orderID; }
+            set { _orderID = value; }
+        }
+        private DateTime _orderDate;
+
+        public DateTime OrderTime
+        {
+            get { return _orderDate; }
+            set { _orderDate = value; }
+        }
+        private int _tableNum;
+
+        public int TableNum
+        {
+            get { return _tableNum; }
+            set { _tableNum = value; }
+        }
+        private int _orderStatus;
+
+        public int OrderStatus
+        {
+            get { return _orderStatus; }
+            set { _orderStatus = value; }
+        }
+        private string _orderNote;
+
+        public string OrderNote
+        {
+            get { return _orderNote; }
+            set { _orderNote = value; }
+        }
         #endregion
     }
 }

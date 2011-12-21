@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="KFC_Table_GUI.MainWindow">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAQAAAAAQAgIgAAABAAgIAAAAAAAAAABQ=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Table_GUI.UserControlCloseButton">
+    <Position X="7.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UserControl\UserControlCloseButton.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Table_GUI.UserControlFood">
+    <Position X="9.5" Y="0.5" Width="2.25" />
+    <NestedTypes>
+      <Delegate Name="KFC_Table_GUI.UserControlFood.ControlClick" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>UserControl\UserControlFood.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="KFC_Table_GUI.UserControlFood.ControlFocus" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>UserControl\UserControlFood.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAgAIACAAAAggAAAAAYAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>UserControl\UserControlFood.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Table_GUI.UserControlFoodInCart">
+    <Position X="5" Y="2.75" Width="2" />
+    <NestedTypes>
+      <Delegate Name="KFC_Table_GUI.UserControlFoodInCart.RemoveFromCartHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>UserControl\UserControlFoodInCart.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAACAAAAAAAAEAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>UserControl\UserControlFoodInCart.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Table_GUI.UserControlFoodInKitchen">
+    <Position X="2.75" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>UserControl\UserControlFoodInKitchen.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Table_GUI.UserControlFoodInFocus">
+    <Position X="7.25" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgBAAAAAAAAAABIAAAAQBAAAAAAAAAAAAA=</HashCode>
+      <FileName>UserControl\UserControlFoodInFocus.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Table_GUI.UserControlPayment">
+    <Position X="2.75" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UserControl\UserControlPayment.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Table_GUI.UserControlOK">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UserControl\UserControlOK.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Table_GUI.UserControlOptionsBar">
+    <Position X="5" Y="0.5" Width="2" />
+    <NestedTypes>
+      <Delegate Name="KFC_Table_GUI.UserControlOptionsBar.ControlClicked" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>UserControl\UserControlOptionsBar.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UserControl\UserControlOptionsBar.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Table_GUI.App">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
