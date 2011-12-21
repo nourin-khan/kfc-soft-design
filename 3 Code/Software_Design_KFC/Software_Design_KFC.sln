@@ -24,6 +24,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KitchenGUI", "Kitchen\KitchenGUI\KitchenGUI\KitchenGUI.csproj", "{62F1045E-670C-4786-BD66-FE2F29FEE018}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KFC_Table_GUI", "Table\KFC_Table_GUI\KFC_Table_GUI.csproj", "{93841302-060A-4D44-8E9B-334F71DA1C2C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{84F8F228-FCE7-4C45-A948-C23E917758B5} = {84F8F228-FCE7-4C45-A948-C23E917758B5}
+		{2A24BFED-054A-49C4-A311-EDE0F8652937} = {2A24BFED-054A-49C4-A311-EDE0F8652937}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

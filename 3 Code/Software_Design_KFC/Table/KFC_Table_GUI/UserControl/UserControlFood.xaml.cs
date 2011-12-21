@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TableDTO;
 
 namespace KFC_Table_GUI
 {
@@ -44,13 +45,28 @@ namespace KFC_Table_GUI
             get { return details.Text; }
             set { details.Text = value; }
         }
-        
+
+        public ImageSource FoodImageSource
+        {
+            get { return image.Source; }
+            set { image.Source = value; }
+        }
 		public UserControlFood()
 		{
 			this.InitializeComponent();
             // declare for options bar clicked
             optionsBar.OKClick += new KFC_Table_GUI.UserControlOptionsBar.ControlClicked(optionsBar_OKClick);
 		}
+
+        public UserControlFood(FoodDTO info)
+        {
+            this.InitializeComponent();
+            optionsBar.OKClick += new KFC_Table_GUI.UserControlOptionsBar.ControlClicked(optionsBar_OKClick);
+            this.FoodName = info.FoodName;
+            this.FoodPrice = info.FoodPrice.ToString();
+            this.FoodDetails = info.FoodDescription + "\nGia : " + this.FoodPrice;
+           
+        }
 
         void optionsBar_OKClick()
         {
