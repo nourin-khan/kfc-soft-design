@@ -4,10 +4,12 @@ using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
 using DTO;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace KFC_Server
 {
-    public class FoodGroupDAO
+    public class FoodGroupDAO : SQLConnectionDAO
     {
         #region Method
 
@@ -17,9 +19,11 @@ namespace KFC_Server
         * Output: int - number of rows affected
         * Author:
         */
-        public int add(FoodGroupDTO foodGroupDTO)
+        public void insert(FoodGroupDTO foodGroupDTO)
         {
-            return 0;
+            connect();
+            string cmd = "";
+            executeNonQuery(cmd);
         }
 
         /* 
@@ -28,14 +32,18 @@ namespace KFC_Server
         * Output: int - number of rows affected
         * Author:
         */
-        public int delete(FoodGroupDTO foodGroupDTO)
+        public void delete(FoodGroupDTO foodGroupDTO)
         {
-            return 0;
+            connect();
+            string cmd = "";
+            executeNonQuery(cmd);
         }
 
-        public int delete(string foodGroupID)
+        public void delete(string foodGroupID)
         {
-            return 0;
+            connect();
+            string cmd = "";
+            executeNonQuery(cmd);
         }
 
         /* 
@@ -46,14 +54,13 @@ namespace KFC_Server
         * Output: int - number of rows affected
         * Author:
         */
-        public int update(FoodGroupDTO oldInfo, FoodGroupDTO newInfo)
+        public void update(FoodGroupDTO newInfo)
         {
-            return 0;
+            connect();
+            string cmd = "";
+            executeNonQuery(cmd);
         }
-        public int update(string oldFoodGroupID, FoodGroupDTO newInfo)
-        {
-            return 0;
-        }
+       
 
         /* 
          * Description: select list of foodGroup, or one foodGroup information
@@ -62,9 +69,39 @@ namespace KFC_Server
          * Output: FoodGroupDTO[] - list of foodGroup satisfied the requirement
          * Author:
          */
-        public FoodGroupDTO[] selectInfo(FoodGroupDTO foodGroupDTO = null)
+        public FoodGroupDTO[] selectInfo(FoodGroupDTO info = null)
         {
-            return null;
+            string cmd = "";
+            if (info == null)
+            {
+                // select all
+                cmd = "";
+            }
+            else
+            {
+                // select
+                cmd = "";
+            }
+            connect();
+            adapter = new SqlDataAdapter(cmd, connection);
+            DataSet dataset = new DataSet();
+            adapter.Fill(dataset);
+
+            DataTable dt = dataset.Tables[0];
+            int i, n = dt.Rows.Count;
+            FoodGroupDTO[] arr = new FoodGroupDTO[n];
+            for (i = 0; i < n; i++)
+            {
+                object bill = GetDataFromDataRow(dt, i);
+                arr[i] = bill as FoodGroupDTO;
+            }
+            return arr;
+        }
+
+        protected override object GetDataFromDataRow(DataTable dt, int i)
+        {
+            FoodGroupDTO group = new FoodGroupDTO();
+            return group;
         }
 
         public FoodGroupDTO[] selectInfo(string foodGroupID)

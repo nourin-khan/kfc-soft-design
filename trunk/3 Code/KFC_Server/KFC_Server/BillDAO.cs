@@ -101,6 +101,7 @@ namespace KFC_Server
                 object bill = GetDataFromDataRow(dt, i);
                 arr[i] = bill as BillDTO;
             }
+            return arr;
         }
 
         protected override object GetDataFromDataRow(DataTable dt, int i)

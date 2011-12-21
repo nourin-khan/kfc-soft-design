@@ -4,10 +4,12 @@ using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
 using DTO;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace KFC_Server
 {    
-    public class OrderDetailDAO
+    public class OrderDetailDAO : SQLConnectionDAO
     {
         #region Method
 
@@ -17,9 +19,11 @@ namespace KFC_Server
         * Output: int - number of rows affected
         * Author:
         */
-        public int add(OrderDetailDTO orderDetailDTO)
+        public void insert(OrderDetailDTO orderDetailDTO)
         {
-            return 0;
+            connect();
+            string cmd = "";
+            executeNonQuery(cmd);
         }
 
         /* 
@@ -28,14 +32,18 @@ namespace KFC_Server
         * Output: int - number of rows affected
         * Author:
         */
-        public int delete(OrderDetailDTO orderDetailDTO)
+        public void delete(OrderDetailDTO orderDetailDTO)
         {
-            return 0;
+            connect();
+            string cmd = "";
+            executeNonQuery(cmd);
         }
 
-        public int delete(string orderDetailID)
+        public void delete(string orderDetailID)
         {
-            return 0;
+            connect();
+            string cmd = "";
+            executeNonQuery(cmd);
         }
 
         /* 
@@ -46,13 +54,11 @@ namespace KFC_Server
         * Output: int - number of rows affected
         * Author:
         */
-        public int update(OrderDetailDTO oldInfo, OrderDetailDTO newInfo)
+        public void update(OrderDetailDTO newInfo)
         {
-            return 0;
-        }
-        public int update(string oldOrderDetailID, OrderDetailDTO newInfo)
-        {
-            return 0;
+            connect();
+            string cmd = "";
+            executeNonQuery(cmd);
         }
 
         /* 
@@ -62,10 +68,41 @@ namespace KFC_Server
          * Output: OrderDetailDTO[] - list of orderDetail satisfied the requirement
          * Author:
          */
-        public OrderDetailDTO[] selectInfo(OrderDetailDTO orderDetailDTO = null)
+        public OrderDetailDTO[] selectInfo(OrderDetailDTO info = null)
         {
-            return null;
+            string cmd = "";
+            if (info == null)
+            {
+                // select all
+                cmd = "";
+            }
+            else
+            {
+                // select
+                cmd = "";
+            }
+            connect();
+            adapter = new SqlDataAdapter(cmd, connection);
+            DataSet dataset = new DataSet();
+            adapter.Fill(dataset);
+
+            DataTable dt = dataset.Tables[0];
+            int i, n = dt.Rows.Count;
+            OrderDetailDTO[] arr = new OrderDetailDTO[n];
+            for (i = 0; i < n; i++)
+            {
+                object bill = GetDataFromDataRow(dt, i);
+                arr[i] = bill as OrderDetailDTO;
+            }
+            return arr;
         }
+
+        protected override object GetDataFromDataRow(DataTable dt, int i)
+        {
+            OrderDetailDTO orderDetail = new OrderDetailDTO();
+            return orderDetail;
+        }
+
 
         public OrderDetailDTO[] selectInfo(string orderDetailID)
         {
