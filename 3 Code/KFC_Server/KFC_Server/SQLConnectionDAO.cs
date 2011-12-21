@@ -86,7 +86,7 @@ namespace KFC_Server
             return command.ExecuteScalar();
         }
                 
-        private virtual object GetDataFromDataRow(DataTable dt, int i)
+        protected virtual object GetDataFromDataRow(DataTable dt, int i)
         {
             return null;
         }

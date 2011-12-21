@@ -4,10 +4,12 @@ using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
 using DTO;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace KFC_Server
 {
-    public class FoodDAO
+    public class FoodDAO : SQLConnectionDAO
     {
         /* 
          * Description:
@@ -23,9 +25,11 @@ namespace KFC_Server
         * Output: int - number of rows affected
         * Author:
         */
-        public int add(FoodDTO foodDTO)
+        public void insert(FoodDTO foodDTO)
         {
-            return 0;
+            connect();
+            string cmd = "";
+            executeNonQuery(cmd);
         }
 
         /* 
@@ -34,14 +38,18 @@ namespace KFC_Server
         * Output: int - number of rows affected
         * Author:
         */
-        public int delete(FoodDTO foodDTO)
+        public void delete(FoodDTO foodDTO)
         {
-            return 0;
+            connect();
+            string cmd = "";
+            executeNonQuery(cmd);
         }
 
-        public int delete(string foodID)
+        public void delete(string foodID)
         {
-            return 0;
+            connect();
+            string cmd = "";
+            executeNonQuery(cmd);
         }
 
         /* 
@@ -52,15 +60,12 @@ namespace KFC_Server
         * Output: int - number of rows affected
         * Author:
         */
-        public int update(FoodDTO oldInfo, FoodDTO newInfo)
+        public void update(FoodDTO newInfo)
         {
-            return 0;
+            connect();
+            string cmd = "";
+            executeNonQuery(cmd);
         }
-        public int update(string oldFoodID, FoodDTO newInfo)
-        {
-            return 0;
-        }
-
         /* 
          * Description: select list of food, or one food information
          * Input: @foodDTO - food obj, null when you want to select all food
@@ -68,9 +73,39 @@ namespace KFC_Server
          * Output: FoodDTO[] - list of food satisfied the requirement
          * Author:
          */
-        public FoodDTO[] selectInfo(FoodDTO foodDTO = null)
+        public FoodDTO[] selectInfo(FoodDTO info = null)
         {
-            return null;
+            string cmd = "";
+            if (info == null)
+            {
+                // select all
+                cmd = "";
+            }
+            else
+            {
+                // select
+                cmd = "";
+            }
+            connect();
+            adapter = new SqlDataAdapter(cmd, connection);
+            DataSet dataset = new DataSet();
+            adapter.Fill(dataset);
+
+            DataTable dt = dataset.Tables[0];
+            int i, n = dt.Rows.Count;
+            FoodDTO[] arr = new FoodDTO[n];
+            for (i = 0; i < n; i++)
+            {
+                object bill = GetDataFromDataRow(dt, i);
+                arr[i] = bill as FoodDTO;
+            }
+            return arr;
+        }
+
+        protected override object GetDataFromDataRow(DataTable dt, int i)
+        {
+            FoodDTO food = new FoodDTO();
+            return food;
         }
 
         public FoodDTO[] selectInfo(string foodID)
