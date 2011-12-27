@@ -1,0 +1,36 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+	x:Class="CashierGUI.MoneyCalWindow"
+	x:Name="Window"
+	Title="MoneyCalWindow"
+	Width="355" Height="287" FontSize="14.667">
+
+	<Grid x:Name="LayoutRoot">
+		<StackPanel Margin="8,8,17,64">
+			<Grid Height="24" Margin="0,15,17,0">
+				<TextBlock TextWrapping="Wrap" Text="Tổng tiền:" HorizontalAlignment="Left" Width="84" FontStyle="Italic" FontWeight="Bold"/>
+				<TextBlock Margin="0,0,47,5" TextWrapping="Wrap" Text="TextBlock" Width="220" TextAlignment="Right" HorizontalAlignment="Right" d:LayoutOverrides="Width" FontStyle="Italic"/>
+				<TextBlock HorizontalAlignment="Right" Margin="0,0,5,0" TextWrapping="Wrap" Text="VND" Width="38"/>
+			</Grid>
+			<Grid Height="24" Margin="0,15,17,0">
+				<TextBlock TextWrapping="Wrap" Text="Tiền đưa trước:" Margin="0,0,143,0" FontStyle="Italic" FontWeight="Bold"/>
+				<TextBox Margin="136,0,47,0" TextWrapping="Wrap" TextAlignment="Right"/>
+				<TextBlock HorizontalAlignment="Right" Margin="0,0,5,0" TextWrapping="Wrap" Text="VND" Width="38"/>
+			</Grid>
+			<Grid Height="24" Margin="0,15,17,0">
+				<TextBlock TextWrapping="Wrap" Text="Tiền phải trả:" HorizontalAlignment="Left" Width="101" FontStyle="Italic" FontWeight="Bold"/>
+				<TextBlock Margin="63,0,47,5" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Right" FontStyle="Italic"/>
+				<TextBlock HorizontalAlignment="Right" Margin="0,0,5,0" TextWrapping="Wrap" Text="VND" Width="38"/>
+			</Grid>
+			<Rectangle Height="4" Margin="0,7,0,0" RadiusY="3" RadiusX="3" Stroke="#FFC4B394" StrokeThickness="1.5" Fill="#FFC4B394"/>
+			<Grid Height="24" Margin="10,10,17,0">
+				<TextBlock TextWrapping="Wrap" Text="Tiền hoàn trả:" Margin="0,0,141,0" FontStyle="Italic" FontWeight="Bold"/>
+				<TextBox Margin="127,0,46,0" TextWrapping="Wrap" TextAlignment="Right"/>
+				<TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="VND" Width="38" Margin="0,0,4,0"/>
+			</Grid>
+		</StackPanel>
+		<Button Content="OK" Height="27" Margin="130,0,125,18" VerticalAlignment="Bottom"/>
+	</Grid>
+</Window>

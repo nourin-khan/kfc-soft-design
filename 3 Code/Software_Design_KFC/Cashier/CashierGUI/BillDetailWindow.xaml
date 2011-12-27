@@ -1,0 +1,56 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+	x:Class="CashierGUI.BillDetailWindow"
+	x:Name="Window"
+	Title="BillDetailWindow"
+	Width="622" Height="533.375">
+
+	<Grid x:Name="LayoutRoot">
+		<Grid x:Name="Add" HorizontalAlignment="Left" Height="28" Margin="23,19,0,0" VerticalAlignment="Top" Width="34">
+			<Border BorderBrush="Black" BorderThickness="1">
+				<i:Interaction.Triggers>
+					<i:EventTrigger EventName="MouseLeftButtonDown">
+						<ei:ChangePropertyAction x:Name="Add_MouseLeave"/>
+					</i:EventTrigger>
+					<i:EventTrigger EventName="MouseEnter">
+						<ei:ChangePropertyAction x:Name="Add_MouseEnter" PropertyName="Background">
+							<ei:ChangePropertyAction.Value>
+								<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+									<GradientStop Color="#FFC4B394" Offset="0"/>
+									<GradientStop Color="White" Offset="1"/>
+									<GradientStop Color="LightGray" Offset="0.372"/>
+								</LinearGradientBrush>
+							</ei:ChangePropertyAction.Value>
+						</ei:ChangePropertyAction>
+					</i:EventTrigger>
+				</i:Interaction.Triggers>
+				<TextBlock TextWrapping="Wrap" Text="+" FontSize="32" TextAlignment="Center" FontWeight="Bold" FontFamily="/CashierGUI;component/Fonts/#Snap ITC" VerticalAlignment="Center" HorizontalAlignment="Center" Height="45"/>
+			</Border>
+		</Grid>
+		<Grid x:Name="Delete" HorizontalAlignment="Left" Height="28" Margin="88,19,0,0" VerticalAlignment="Top" Width="34">
+			<Border BorderBrush="Black" BorderThickness="1">
+				<TextBlock TextWrapping="Wrap" FontSize="29.333" TextAlignment="Center" FontFamily="Wingdings 2" HorizontalAlignment="Center" Height="45" FontWeight="Bold" Margin="0,-2,0,0"><Span FontFamily="Wingdings 2" Language="en-us"><Run Text="3"/></Span></TextBlock>
+			</Border>
+		</Grid>
+		<Grid x:Name="Cash" HorizontalAlignment="Left" Height="28" Margin="159,19,0,0" VerticalAlignment="Top" Width="34">
+			<Border BorderBrush="Black" BorderThickness="1">
+				<TextBlock TextWrapping="Wrap" FontSize="24" TextAlignment="Center" FontFamily="Arial Black" HorizontalAlignment="Center" Height="45" VerticalAlignment="Top" Text="$" FontWeight="Bold"/>
+			</Border>
+		</Grid>
+		<TextBlock HorizontalAlignment="Left" Margin="231.446,53.626,0,0" TextWrapping="Wrap" Text="CHI TIẾT HÓA ĐƠN" VerticalAlignment="Top" FontSize="21.333"/>
+		<TextBlock HorizontalAlignment="Left" Margin="54,107,0,0" TextWrapping="Wrap" Text="Loại:" VerticalAlignment="Top" FontSize="14.667"/>
+		<RadioButton Content="Tại cửa hàng" HorizontalAlignment="Left" Margin="128,107,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+		<RadioButton Content="Giao tận nhà" Height="19.507" Margin="274,107,225,0" VerticalAlignment="Top" FontSize="14.667"/>
+		<UniformGrid Margin="54,146,60,88.922">
+			<DataGrid x:Name="TickGridView" Margin="1.3,1.875,-246,-111.522" AlternatingRowBackground="#FFE5D2AE" Background="#FFC4B394" Foreground="#FF645E51" RowBackground="#FFF5E3C1" HorizontalGridLinesBrush="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" FontSize="14.667">
+				<DataGrid.VerticalGridLinesBrush>
+					<ImageBrush/>
+				</DataGrid.VerticalGridLinesBrush>
+			</DataGrid>
+			<Rectangle Margin="-246,0,0,-111.522" Stroke="#FFC4B394" RadiusY="3" RadiusX="3" StrokeThickness="1.5"/>
+		</UniformGrid>
+		<Button Content="OK" Margin="274,0,257,59.415" VerticalAlignment="Bottom" FontSize="14.667"/>
+	</Grid>
+</Window>
