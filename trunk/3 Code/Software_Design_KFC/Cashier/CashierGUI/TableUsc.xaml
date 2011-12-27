@@ -1,0 +1,84 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+	mc:Ignorable="d"
+	x:Class="CashierGUI.TableUsc"
+	x:Name="UserControl"
+	d:DesignWidth="640" d:DesignHeight="480" Width="142" Height="148">
+	<UserControl.Resources>
+		<Storyboard x:Key="MouseClick">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Opacity)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.68"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Color)" Storyboard.TargetName="image">
+				<EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FF6A6A6A"/>
+				<EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FFC2C1C1"/>
+			</ColorAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.BlurRadius)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="10"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="3"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="2"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="MouseLeave">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.BlurRadius)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Color)" Storyboard.TargetName="image">
+				<EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFC2C1C1"/>
+			</ColorAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Opacity)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.68"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
+	<UserControl.Triggers>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard Storyboard="{StaticResource MouseClick}"/>
+			<BeginStoryboard x:Name="MouseLeave_BeginStoryboard" Storyboard="{StaticResource MouseLeave}"/>
+		</EventTrigger>
+	</UserControl.Triggers>
+
+	<Grid x:Name="LayoutRoot">
+		<i:Interaction.Triggers>
+			<i:EventTrigger EventName="MouseLeftButtonDown">
+				<ei:ControlStoryboardAction x:Name="MouseClick" Storyboard="{StaticResource MouseClick}"/>
+			</i:EventTrigger>
+		</i:Interaction.Triggers>
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Image x:Name="image" Margin="0,0,0,16" Height="132" Source="Fast_food_Icon_256.png" RenderTransformOrigin="0.5,0.5">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+			<Image.Effect>
+				<DropShadowEffect Color="#FFC2C1C1" Opacity="0.675"/>
+			</Image.Effect>
+		</Image>
+		<Label x:Name="TableNumLbl" Content="BÀN 11" Height="29.5" VerticalAlignment="Bottom" ScrollViewer.VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Center" FontSize="16"/>
+		<Label x:Name="freeLbl" Content="FREE" HorizontalAlignment="Right" Height="26.5" VerticalAlignment="Top" Width="39.45" FontSize="13.333" Foreground="Red" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
+	</Grid>
+</UserControl>
