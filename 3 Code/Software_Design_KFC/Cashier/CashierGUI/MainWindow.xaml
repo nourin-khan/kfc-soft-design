@@ -551,7 +551,7 @@
     	<TabControl Height="704" Style="{DynamicResource TabControlStyle}" ItemContainerStyle="{DynamicResource TabItemStyle}" Margin="0,0,8,0" VerticalAlignment="Top">
     		<TabItem Foreground="White" BorderBrush="{x:Null}">
     			<TabItem.Header>
-    				<Image Source="1.png" Stretch="Fill" Margin="3"/>
+    				<Image Source="CashierTab2.png" Stretch="Fill" Margin="3"/>
     			</TabItem.Header>                
     			<Border CornerRadius="7" BorderThickness="5">
     				<Border.Background>
@@ -610,8 +610,8 @@
     										<ei:ChangePropertyAction x:Name="MouseLeave" TargetObject="{Binding ElementName=border}" PropertyName="Background"/>
     									</i:EventTrigger>
     								</i:Interaction.Triggers>
-    								<TextBlock Margin="20,5,63.683,0" TextWrapping="Wrap" Foreground="Black" Text="Tầng 1" FontSize="14.667" Height="25"/>
-    								<Border x:Name="border" BorderBrush="Black" BorderThickness="1" Margin="0" CornerRadius="5"/>
+    								<TextBlock x:Name="textBlock4" Margin="20,5,63.683,0" TextWrapping="Wrap" Foreground="Black" Text="Tầng 1" FontSize="14.667" Height="25"/>
+    								<Border x:Name="border" BorderBrush="#FF1679E7" BorderThickness="1" Margin="0" CornerRadius="5"/>
     							</Grid>
     							<Grid Height="34.5" Margin="2.5,58,4.5,0" VerticalAlignment="Top">
     								<i:Interaction.Triggers>
@@ -627,7 +627,7 @@
     									</i:EventTrigger>
     								</i:Interaction.Triggers>
     								<TextBlock Margin="20,5,63.683,0" TextWrapping="Wrap" Foreground="Black" Text="Tầng 2" FontSize="14.667" Height="25"/>
-    								<Border x:Name="border1" BorderBrush="Black" BorderThickness="1" Margin="0" CornerRadius="5"/>
+    								<Border x:Name="border1" BorderBrush="#FF1679E7" BorderThickness="1" Margin="0" CornerRadius="5"/>
     							</Grid>
     							<Grid Height="34.5" Margin="2.5,108,4.5,0" VerticalAlignment="Top">
     								<i:Interaction.Triggers>
@@ -643,7 +643,7 @@
     									</i:EventTrigger>
     								</i:Interaction.Triggers>
     								<TextBlock Margin="20,5,63.683,0" TextWrapping="Wrap" Foreground="Black" Text="Tầng 3" FontSize="14.667" Height="25"/>
-    								<Border x:Name="border2" BorderBrush="Black" BorderThickness="1" Margin="0" CornerRadius="5"/>
+    								<Border x:Name="border2" BorderBrush="#FF1679E7" BorderThickness="1" Margin="0" CornerRadius="5"/>
     							</Grid>
     						</Grid>
     					</Border>
@@ -665,23 +665,117 @@
     				</Border.Background>
     				<Border.BorderBrush>
     					<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-    						<GradientStop Color="#FF1679E7" Offset="0"/>
+    						<GradientStop Color="#FF1679E7"/>
     						<GradientStop Color="#FF0E3560" Offset="1"/>
     					</LinearGradientBrush>
     				</Border.BorderBrush>
-    				<Grid Margin="3">
+    				<Grid Margin="0,0,6,6">
     					<Grid.ColumnDefinitions>
-    						<ColumnDefinition Width="0.306*"/>
-    						<ColumnDefinition Width="0.694*"/>
+    						<ColumnDefinition Width="0*"/>
+    						<ColumnDefinition/>
     					</Grid.ColumnDefinitions>
-    					<Image Source="2Big.png" Stretch="Fill" VerticalAlignment="Center" Height="248" Margin="10,0"/>
-    					<TextBlock TextWrapping="Wrap" Text="Proin vel imperdiet nibh. Donec porta nulla pharetra mi dignissim tincidunt. Sed ornare libero vitae erat viverra at lacinia augue placerat. Proin semper condimentum arcu sit amet commodo. Ut eu est at libero ultrices tincidunt. Donec semper lorem eget elit sodales eget rutrum enim porta. Vestibulum vel lectus urna. Aenean magna orci, aliquet ut lacinia non, sagittis sed velit. Duis semper, odio nec convallis commodo, nisl magna eleifend justo, et lobortis orci leo aliquet metus. Phasellus luctus erat sit amet orci lacinia non consectetur leo eleifend. Nullam dapibus feugiat enim eget interdum. Pellentesque imperdiet vulputate nibh, eu rutrum est venenatis quis. Proin ut neque non eros feugiat hendrerit eu at libero. Sed consequat, augue non hendrerit luctus, odio elit tristique ipsum, ut auctor magna nisl eget quam. Duis ultricies mattis faucibus. Nullam et enim sed felis blandit eleifend. Aenean eu tortor in purus posuere tristique quis non quam. Integer ac tellus ut enim posuere egestas id in nibh. Integer turpis magna, condimentum sit amet tempus non, volutpat quis augue. Aenean sodales dictum viverra. " Grid.Column="1" Foreground="#FF9F9F9F" Margin="10"/>
+    					<Grid x:Name="Add" HorizontalAlignment="Left" Height="40" Margin="8,8,0,0" VerticalAlignment="Top" Width="50" Grid.Column="1">
+    						<Border x:Name="border3" BorderBrush="#FF1679E7" BorderThickness="1" CornerRadius="5" Background="#FF1679E7">
+    							<i:Interaction.Triggers>
+    								<i:EventTrigger EventName="MouseLeave">
+    									<ei:ChangePropertyAction x:Name="Add_MouseLeave" TargetObject="{Binding ElementName=border3}" PropertyName="Background">
+    										<ei:ChangePropertyAction.Value>
+    											<SolidColorBrush Color="#FF1679E7"/>
+    										</ei:ChangePropertyAction.Value>
+    									</ei:ChangePropertyAction>
+    								</i:EventTrigger>
+    								<i:EventTrigger EventName="MouseEnter">
+    									<ei:ChangePropertyAction x:Name="Add_MouseEnter" PropertyName="Background">
+    										<ei:ChangePropertyAction.Value>
+    											<SolidColorBrush Color="#FF005EDE"/>
+    										</ei:ChangePropertyAction.Value>
+    									</ei:ChangePropertyAction>
+    								</i:EventTrigger>
+    							</i:Interaction.Triggers>
+    							<TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="+" FontSize="32" TextAlignment="Center" FontWeight="Bold" FontFamily="/CashierGUI;component/Fonts/#Snap ITC" VerticalAlignment="Center" HorizontalAlignment="Center" Height="45" Foreground="White"/>
+    						</Border>
+    					</Grid>
+    					<Grid x:Name="Delete" Margin="78,8,0,0" Grid.Column="1" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="50">
+    						<Border x:Name="border4" BorderBrush="#FF1679E7" BorderThickness="1" CornerRadius="5" Background="#FF1679E7">
+    							<i:Interaction.Triggers>
+    								<i:EventTrigger EventName="MouseLeave">
+    									<ei:ChangePropertyAction x:Name="Add_MouseLeave1" TargetObject="{Binding ElementName=border4}" PropertyName="Background">
+    										<ei:ChangePropertyAction.Value>
+    											<SolidColorBrush Color="#FF1679E7"/>
+    										</ei:ChangePropertyAction.Value>
+    									</ei:ChangePropertyAction>
+    								</i:EventTrigger>
+    								<i:EventTrigger EventName="MouseEnter">
+    									<ei:ChangePropertyAction x:Name="Add_MouseEnter1" PropertyName="Background" TargetObject="{Binding ElementName=border4}">
+    										<ei:ChangePropertyAction.Value>
+    											<SolidColorBrush Color="#FF005EDE"/>
+    										</ei:ChangePropertyAction.Value>
+    									</ei:ChangePropertyAction>
+    								</i:EventTrigger>
+    							</i:Interaction.Triggers>
+    							<TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="3" FontSize="32" TextAlignment="Center" FontWeight="Bold" FontFamily="Wingdings 2" HorizontalAlignment="Center" Foreground="White" Margin="0,5.17,0,-2.17"/>
+    						</Border>
+    					</Grid>
+    					<Grid x:Name="Cash" HorizontalAlignment="Left" Height="40" Margin="148,8,0,0" VerticalAlignment="Top" Width="50" Grid.Column="1">
+    						<Border x:Name="border5" BorderBrush="#FF1679E7" BorderThickness="1" CornerRadius="5" Background="#FF1679E7">
+    							<i:Interaction.Triggers>
+    								<i:EventTrigger EventName="MouseLeave">
+    									<ei:ChangePropertyAction x:Name="Add_MouseLeave2" TargetObject="{Binding ElementName=border5}" PropertyName="Background">
+    										<ei:ChangePropertyAction.Value>
+    											<SolidColorBrush Color="#FF1679E7"/>
+    										</ei:ChangePropertyAction.Value>
+    									</ei:ChangePropertyAction>
+    								</i:EventTrigger>
+    								<i:EventTrigger EventName="MouseEnter">
+    									<ei:ChangePropertyAction x:Name="Add_MouseEnter2" PropertyName="Background" TargetObject="{Binding ElementName=border5}">
+    										<ei:ChangePropertyAction.Value>
+    											<SolidColorBrush Color="#FF005EDE"/>
+    										</ei:ChangePropertyAction.Value>
+    									</ei:ChangePropertyAction>
+    								</i:EventTrigger>
+    							</i:Interaction.Triggers>
+    							<TextBlock x:Name="textBlock2" TextWrapping="Wrap" Text="$" FontSize="32" TextAlignment="Center" FontWeight="Bold" FontFamily="Arial" HorizontalAlignment="Center" Foreground="White" Margin="0,1.002,0,1.998"/>
+    						</Border>
+    					</Grid>
+    					<Canvas Grid.Column="1" Margin="0,146,8,0" >
+    						<DataGrid x:Name="TickGridView" AlternatingRowBackground="White" Background="#8C73AFF1" Foreground="#FF054387" RowBackground="#FFA3C0C8" HorizontalGridLinesBrush="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" FontSize="14.667" Height="383.077" Canvas.Left="1.3" Canvas.Top="1.875" Width="1340.7">
+    							<DataGrid.VerticalGridLinesBrush>
+    								<ImageBrush/>
+    							</DataGrid.VerticalGridLinesBrush>
+    						</DataGrid>
+    						<Rectangle Stroke="#FF94B1C4" RadiusY="3" RadiusX="3" StrokeThickness="1.5" Height="384.952" Width="1342"/>
+    					</Canvas>
+    					<TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23.96" Margin="356,64.551,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" FontSize="14.667"/>
+    					<TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="232,64.551,0,0" TextWrapping="Wrap" Text="Tên món ăn" VerticalAlignment="Top" Height="23.96" Width="120" FontSize="14.667"/>
+    					<TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="232,107.318,0,0" TextWrapping="Wrap" Text="Mã món ăn" VerticalAlignment="Top" FontSize="14.667"/>
+    					<TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23.96" Margin="356,102.865,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" FontSize="14.667"/>
+    					<Grid x:Name="Search" Height="25" Margin="529.5,82.551,0,0" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Left" Width="86">
+    						<Border x:Name="border6" BorderBrush="#FF1679E7" BorderThickness="1" CornerRadius="5" Background="#FF1679E7" Margin="0,0,-1,-3.511">
+    							<i:Interaction.Triggers>
+    								<i:EventTrigger EventName="MouseLeave">
+    									<ei:ChangePropertyAction x:Name="Add_MouseLeave3" TargetObject="{Binding ElementName=border6}" PropertyName="Background">
+    										<ei:ChangePropertyAction.Value>
+    											<SolidColorBrush Color="#FF1679E7"/>
+    										</ei:ChangePropertyAction.Value>
+    									</ei:ChangePropertyAction>
+    								</i:EventTrigger>
+    								<i:EventTrigger EventName="MouseEnter">
+    									<ei:ChangePropertyAction x:Name="Add_MouseEnter3" PropertyName="Background">
+    										<ei:ChangePropertyAction.Value>
+    											<SolidColorBrush Color="#FF005EDE"/>
+    										</ei:ChangePropertyAction.Value>
+    									</ei:ChangePropertyAction>
+    								</i:EventTrigger>
+    							</i:Interaction.Triggers>
+    							<TextBlock x:Name="textBlock3" TextWrapping="Wrap" FontSize="16" TextAlignment="Center" FontFamily="Times New Roman" HorizontalAlignment="Center" Foreground="White" Text="Tra cứu" Margin="0,-1" VerticalAlignment="Center"/>
+    						</Border>
+    					</Grid>
     				</Grid>
     			</Border>
     		</TabItem>
     		<TabItem BorderBrush="{x:Null}" >
     			<TabItem.Header>
-    				<Image Source="3.png" Stretch="Fill" Margin="3"/>
+    				<Image Source="ReportTab.png" Stretch="Fill" Margin="3"/>
     			</TabItem.Header>
     			<Border CornerRadius="7" BorderThickness="5">
     				<Border.Background>
@@ -696,13 +790,48 @@
     						<GradientStop Color="#FF0E3560" Offset="1"/>
     					</LinearGradientBrush>
     				</Border.BorderBrush>
-    				<Grid Margin="3">
+    				<Grid Margin="0,0,6,6">
     					<Grid.ColumnDefinitions>
-    						<ColumnDefinition Width="0.306*"/>
-    						<ColumnDefinition Width="0.694*"/>
+    						<ColumnDefinition Width="0*"/>
+    						<ColumnDefinition/>
     					</Grid.ColumnDefinitions>
-    					<Image Source="3Big.png" Stretch="Fill" VerticalAlignment="Center" Height="248" Margin="10,0"/>
-    					<TextBlock TextWrapping="Wrap" Text="Proin vel imperdiet nibh. Donec porta nulla pharetra mi dignissim tincidunt. Sed ornare libero vitae erat viverra at lacinia augue placerat. Proin semper condimentum arcu sit amet commodo. Ut eu est at libero ultrices tincidunt. Donec semper lorem eget elit sodales eget rutrum enim porta. Vestibulum vel lectus urna. Aenean magna orci, aliquet ut lacinia non, sagittis sed velit. Duis semper, odio nec convallis commodo, nisl magna eleifend justo, et lobortis orci leo aliquet metus. Phasellus luctus erat sit amet orci lacinia non consectetur leo eleifend. Nullam dapibus feugiat enim eget interdum. Pellentesque imperdiet vulputate nibh, eu rutrum est venenatis quis. Proin ut neque non eros feugiat hendrerit eu at libero. Sed consequat, augue non hendrerit luctus, odio elit tristique ipsum, ut auctor magna nisl eget quam. Duis ultricies mattis faucibus. Nullam et enim sed felis blandit eleifend. Aenean eu tortor in purus posuere tristique quis non quam. Integer ac tellus ut enim posuere egestas id in nibh. Integer turpis magna, condimentum sit amet tempus non, volutpat quis augue. Aenean sodales dictum viverra. " Grid.Column="1" Foreground="#FF9F9F9F" Margin="10"/>
+    					<Canvas Grid.Column="1" Margin="0,146,8,0" >
+    						<DataGrid x:Name="TickGridView1" AlternatingRowBackground="White" Background="#8C73AFF1" Foreground="#FF054387" RowBackground="#FFA3C0C8" HorizontalGridLinesBrush="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" FontSize="14.667" Height="383.077" Canvas.Left="1.3" Canvas.Top="1.875" Width="1340.7">
+    							<DataGrid.VerticalGridLinesBrush>
+    								<ImageBrush/>
+    							</DataGrid.VerticalGridLinesBrush>
+    						</DataGrid>
+    						<Rectangle Stroke="#FF94B1C4" RadiusY="3" RadiusX="3" StrokeThickness="1.5" Height="384.952" Width="1342"/>
+    					</Canvas>
+    					<ComboBox Height="23.96" Width="134" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="356,30.551,0,0">
+    						<ComboBoxItem x:Name="Day" Content="Ngày"/>
+    						<ComboBoxItem x:Name="Month" Content="Tháng"/>
+    						<ComboBoxItem x:Name="Year" Content="Năm"/>
+    					</ComboBox>
+    					<TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="232,30.551,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23.96" Width="120" FontSize="14.667"><Run Text="Loại báo biểu"/></TextBlock>
+    					<TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="232,73.318,0,0" TextWrapping="Wrap" Text="Thời gian" VerticalAlignment="Top" FontSize="14.667"/>
+    					<Grid x:Name="Search1" Height="25" Margin="529.5,48.551,0,0" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Left" Width="86">
+    						<Border x:Name="border10" BorderBrush="#FF1679E7" BorderThickness="1" CornerRadius="5" Background="#FF1679E7" Margin="0,0,-1,-3.511">
+    							<i:Interaction.Triggers>
+    								<i:EventTrigger EventName="MouseLeave">
+    									<ei:ChangePropertyAction x:Name="Add_MouseLeave7" TargetObject="{Binding ElementName=border6}" PropertyName="Background">
+    										<ei:ChangePropertyAction.Value>
+    											<SolidColorBrush Color="#FF1679E7"/>
+    										</ei:ChangePropertyAction.Value>
+    									</ei:ChangePropertyAction>
+    								</i:EventTrigger>
+    								<i:EventTrigger EventName="MouseEnter">
+    									<ei:ChangePropertyAction x:Name="Add_MouseEnter7" PropertyName="Background">
+    										<ei:ChangePropertyAction.Value>
+    											<SolidColorBrush Color="#FF005EDE"/>
+    										</ei:ChangePropertyAction.Value>
+    									</ei:ChangePropertyAction>
+    								</i:EventTrigger>
+    							</i:Interaction.Triggers>
+    							<TextBlock x:Name="textBlock8" TextWrapping="Wrap" FontSize="16" TextAlignment="Center" FontFamily="Times New Roman" HorizontalAlignment="Center" Foreground="White" Text="Kết xuất" Margin="0,-1" VerticalAlignment="Center"/>
+    						</Border>
+    					</Grid>
+    					<DatePicker Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="356,73.318,0,0" VerticalAlignment="Top" Width="134"/>
     				</Grid>
     			</Border>
     		</TabItem>
