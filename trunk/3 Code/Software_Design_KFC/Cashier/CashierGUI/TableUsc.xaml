@@ -7,7 +7,7 @@
 	mc:Ignorable="d"
 	x:Class="CashierGUI.TableUsc"
 	x:Name="UserControl"
-	d:DesignWidth="640" d:DesignHeight="480" Width="142" Height="148">
+	d:DesignWidth="640" d:DesignHeight="480" Width="142" Height="148" MouseDoubleClick="UserControl_MouseDoubleClick">
 	<UserControl.Resources>
 		<Storyboard x:Key="MouseClick">
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Opacity)" Storyboard.TargetName="image">

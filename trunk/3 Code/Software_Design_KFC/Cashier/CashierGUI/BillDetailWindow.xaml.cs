@@ -23,5 +23,11 @@ namespace CashierGUI
 			
 			// Insert code required on object creation below this point.
 		}
+
+        private void border5_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MoneyCalWindow moneyCal = new MoneyCalWindow();
+            moneyCal.Show();
+        }
 	}
 }

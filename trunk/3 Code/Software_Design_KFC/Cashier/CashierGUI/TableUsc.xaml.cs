@@ -40,5 +40,11 @@ namespace CashierGUI
 		{
 			this.InitializeComponent();
 		}
+
+        private void UserControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            BillDetailWindow billDetail = new BillDetailWindow();
+            billDetail.Show();
+        }
 	}
 }
