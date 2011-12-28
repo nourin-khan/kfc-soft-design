@@ -66,6 +66,9 @@
     <Compile Include="BillDetailWindow.xaml.cs">
       <DependentUpon>BillDetailWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LogInForm.xaml.cs">
+      <DependentUpon>LogInForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MoneyCalWindow.xaml.cs">
       <DependentUpon>MoneyCalWindow.xaml</DependentUpon>
     </Compile>
@@ -73,6 +76,10 @@
       <DependentUpon>TableUsc.xaml</DependentUpon>
     </Compile>
     <Page Include="BillDetailWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LogInForm.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
