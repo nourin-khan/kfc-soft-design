@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace DTO
 {
+    [DataContract]
     public class FoodDTO
     {
         #region Attributes - private
         private string _foodID;
 
+        [DataMember]
         public string FoodID
         {
             get { return _foodID; }
@@ -16,6 +19,7 @@ namespace DTO
         }
         private string _foodName;
 
+        [DataMember]
         public string FoodName
         {
             get { return _foodName; }
@@ -23,6 +27,7 @@ namespace DTO
         }
         private float _foodPrice;
 
+        [DataMember]
         public float FoodPrice
         {
             get { return _foodPrice; }
@@ -30,6 +35,7 @@ namespace DTO
         }
         private float _discountPrice;
 
+        [DataMember]
         public float DiscountPrice
         {
             get { return _discountPrice; }
@@ -37,6 +43,7 @@ namespace DTO
         }
         private string _image;
 
+        [DataMember]
         public string Image
         {
             get { return _image; }
@@ -44,6 +51,7 @@ namespace DTO
         }
         private string _description;
 
+        [DataMember]
         public string Description
         {
             get { return _description; }
@@ -51,6 +59,7 @@ namespace DTO
         }
         private string _foodGroupID;
 
+        [DataMember]
         public string FoodGroupID
         {
             get { return _foodGroupID; }

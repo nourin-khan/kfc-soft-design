@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace DTO
 {
@@ -16,11 +17,12 @@ namespace DTO
         UNCONFIRMED = 1,
         COMFIRMED = 2
     }
+    [DataContract]
     public class OrderDTO
     {
-
         private string _orderID;
 
+        [DataMember]
         public string OrderID
         {
             get { return _orderID; }
@@ -28,6 +30,7 @@ namespace DTO
         }
         private DateTime _orderDate;
 
+        [DataMember]
         public DateTime OrderDate
         {
             get { return _orderDate; }
@@ -35,6 +38,7 @@ namespace DTO
         }
         private int _tableNum;
 
+        [DataMember]
         public int TableNum
         {
             get { return _tableNum; }
@@ -42,6 +46,7 @@ namespace DTO
         }
         private int _orderStatus;
 
+        [DataMember]
         public int OrderStatus
         {
             get { return _orderStatus; }
@@ -49,6 +54,7 @@ namespace DTO
         }
         private string _orderNote;
 
+        [DataMember]
         public string OrderNote
         {
             get { return _orderNote; }
