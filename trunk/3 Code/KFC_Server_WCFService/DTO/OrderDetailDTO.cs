@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace DTO
 {
+    [DataContract]
     public class OrderDetailDTO
     {
         #region Attributes - private
         private string _orderID;
 
+        [DataMember]
         public string OrderID
         {
             get { return _orderID; }
@@ -16,6 +19,7 @@ namespace DTO
         }
         private string _foodID;
 
+        [DataMember]
         public string FoodID
         {
             get { return _foodID; }
@@ -23,6 +27,7 @@ namespace DTO
         }
         private int _quantity;
 
+        [DataMember]
         public int Quantity
         {
             get { return _quantity; }
@@ -30,6 +35,7 @@ namespace DTO
         }
         private DateTime _completeTime;
 
+        [DataMember]
         public DateTime CompleteTime
         {
             get { return _completeTime; }
@@ -37,6 +43,7 @@ namespace DTO
         }
         private int _priority;
 
+        [DataMember]
         public int Priority
         {
             get { return _priority; }
@@ -44,6 +51,7 @@ namespace DTO
         }
         private string _foodNote;
 
+        [DataMember]
         public string FoodNote
         {
             get { return _foodNote; }

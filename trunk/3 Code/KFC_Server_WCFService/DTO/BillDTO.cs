@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ServiceModel;
+using System.Runtime.Serialization;
 
 namespace DTO
 {
@@ -13,10 +15,13 @@ namespace DTO
         UNPAID,
         PAID
     }
+    
+    [DataContract]
     public class BillDTO
     {
         private string _billID;
 
+        [DataMember]
         public string BillID
         {
             get { return _billID; }
@@ -24,6 +29,7 @@ namespace DTO
         }
         private DateTime _billDate;
 
+        [DataMember]
         public DateTime BillDate
         {
             get { return _billDate; }
@@ -31,13 +37,16 @@ namespace DTO
         }
         private float _total;
 
+        [DataMember]
         public float Total
         {
             get { return _total; }
             set { _total = value; }
         }
+
         private int _billStatus;
 
+        [DataMember]
         public int BillStatus
         {
             get { return _billStatus; }
@@ -45,6 +54,7 @@ namespace DTO
         }
         private string _deleteNode;
 
+        [DataMember]
         public string DeleteNode
         {
             get { return _deleteNode; }
@@ -52,6 +62,7 @@ namespace DTO
         }
         private string _empID;
 
+        [DataMember]
         public string EmpID
         {
             get { return _empID; }
@@ -59,6 +70,7 @@ namespace DTO
         }
         private string _orderID;
 
+        [DataMember]
         public string OrderID
         {
             get { return _orderID; }
