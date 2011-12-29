@@ -77,7 +77,9 @@
     <Compile Include="Service.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="ThreadServiceHost.cs" />
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="KFCDatabaseClasses.dbml.layout">
       <DependentUpon>KFCDatabaseClasses.dbml</DependentUpon>
     </None>

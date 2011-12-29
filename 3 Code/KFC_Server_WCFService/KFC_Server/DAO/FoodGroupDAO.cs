@@ -20,7 +20,7 @@ namespace ServiceLibrary
         public bool insert(FoodGroupDTO info)
         {
             bool successfull = false;
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.Settings.connectionString);
             try
             {
                 FOOD_GROUP foodGrp = new FOOD_GROUP();
@@ -46,7 +46,7 @@ namespace ServiceLibrary
         public bool delete(FoodGroupDTO info)
         {
             bool successfull = false;
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.Settings.connectionString);
             try
             {
                 var foodGrp = db.FOOD_GROUPs.SingleOrDefault(f => f.FoodGroupID == info.FoodGroupID);
@@ -71,7 +71,7 @@ namespace ServiceLibrary
         public bool delete(string foodGroupID)
         {
             bool successfull = false;
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.Settings.connectionString);
             try
             {
                 var foodGrp = db.FOOD_GROUPs.SingleOrDefault(f => f.FoodGroupID == foodGroupID);
@@ -104,7 +104,7 @@ namespace ServiceLibrary
         public bool update(FoodGroupDTO info)
         {
             bool successfull = false;
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.Settings.connectionString);
             try
             {
                 var foodGrp = db.FOOD_GROUPs.SingleOrDefault(f => f.FoodGroupID == info.FoodGroupID);
@@ -136,7 +136,7 @@ namespace ServiceLibrary
          */
         public FoodGroupDTO[] selectInfo(FoodGroupDTO info = null)
         {
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.Settings.connectionString);
             try
             {
                 if (info == null)
