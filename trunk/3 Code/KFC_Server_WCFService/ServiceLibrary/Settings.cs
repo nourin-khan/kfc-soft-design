@@ -7,7 +7,9 @@
     //  The SettingsLoaded event is raised after the setting values are loaded.
     //  The SettingsSaving event is raised before the setting values are saved.
     internal sealed partial class Settings {
-        
+
+        public static string connectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=D:\2011-2012\Software analysis and design\Group-work\Project_SVN\1 Document\Thao\KFC Database\KFC_DB.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True";
+
         public Settings() {
             // // To add event handlers for saving and changing settings, uncomment the lines below:
             //

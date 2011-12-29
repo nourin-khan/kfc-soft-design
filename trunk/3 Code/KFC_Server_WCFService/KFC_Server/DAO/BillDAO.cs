@@ -22,7 +22,7 @@ namespace ServiceLibrary
         public bool insert(BillDTO info)
         {
             bool successfull = false;
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.Settings.connectionString);
 
             try
             {
@@ -56,7 +56,7 @@ namespace ServiceLibrary
         {
             bool successfull = false;
 
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.Settings.connectionString);
             try
             {
                 var bill = db.BILLs.SingleOrDefault(b => b.BillID == info.BillID);
@@ -80,7 +80,7 @@ namespace ServiceLibrary
         {
             bool successfull = false;
 
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.Settings.connectionString);
             try
             {
                 var bill = db.BILLs.SingleOrDefault(b => b.BillID == billID);
@@ -111,7 +111,7 @@ namespace ServiceLibrary
         public bool update(BillDTO info)
         {
             bool successfull = false;
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.Settings.connectionString);
             try
             {
                 var bill = db.BILLs.SingleOrDefault(b => b.BillID == info.BillID);
@@ -144,7 +144,7 @@ namespace ServiceLibrary
          */
         public BillDTO[] selectInfo(BillDTO info)
         {
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.Settings.connectionString);
             try
             {
                 if (info == null)

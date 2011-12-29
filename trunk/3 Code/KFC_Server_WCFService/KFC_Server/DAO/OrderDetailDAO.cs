@@ -17,7 +17,7 @@ namespace ServiceLibrary
             bool successful = false;
             try
             {
-                var db = new KFCDatabaseClassesDataContext();
+                var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.Settings.connectionString);
                 ORDER_DETAIL orderDetail = new ORDER_DETAIL();
                 orderDetail.OrderID = info.OrderID;
                 orderDetail.FoodID = info.FoodID;
@@ -47,7 +47,7 @@ namespace ServiceLibrary
             bool successful = false;
             try
             {
-                var db = new KFCDatabaseClassesDataContext();
+                var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.Settings.connectionString);
                 var orderDetail = db.ORDER_DETAILs.SingleOrDefault(o => o.OrderID == info.OrderID && o.FoodID == info.FoodID);
                 if (orderDetail != null)
                 {
@@ -81,7 +81,7 @@ namespace ServiceLibrary
             bool successful = false;
             try
             {
-                var db = new KFCDatabaseClassesDataContext();
+                var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.Settings.connectionString);
                 var orderDetail = db.ORDER_DETAILs.SingleOrDefault(o => o.FoodID == newInfo.FoodID && o.OrderID == newInfo.OrderID);
                 if (orderDetail != null)
                 {
@@ -111,7 +111,7 @@ namespace ServiceLibrary
         {
             try
             {
-                var db = new KFCDatabaseClassesDataContext();
+                var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.Settings.connectionString);
                 if (info == null)
                 {
                     var allOrderDetails = db.ORDER_DETAILs;

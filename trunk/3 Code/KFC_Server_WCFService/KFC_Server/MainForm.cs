@@ -31,8 +31,7 @@ namespace KFC_Server
         public MainForm()
         {
             InitializeComponent();
-            _kfcDict = new Dictionary<string, ThreadServiceHost<Service, IService>>(KfcDictSize);
-            address = txtAddress.Text;
+            _kfcDict = new Dictionary<string, ThreadServiceHost<Service, IService>>(KfcDictSize);            
             btnStop.Enabled = false;
         }
 
@@ -46,6 +45,23 @@ namespace KFC_Server
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtFile.Text.Trim()))
+            {
+                MessageBox.Show("Please select a database file !", "Error");
+                return;
+            }
+
+            try
+            {
+                address = txtAddress.Text;
+                string connectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=" + dabaseFile + ";Integrated Security=True;Connect Timeout=30;User Instance=True";
+                ServiceLibrary.Properties.Settings.connectionString = connectionString;
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error");
+                return;
+            }
             StartKFCServer();
             btnStop.Enabled = true;
         }
@@ -64,6 +80,7 @@ namespace KFC_Server
                 textBoxAddress.Text = address;
                 textBoxStatus.Text = ServerStatus.Running;
                 textBoxStatus.BackColor = Color.PaleGreen;
+                btnStart.Enabled = false;
             }
             catch (System.Exception ex)
             {
@@ -97,6 +114,8 @@ namespace KFC_Server
                     // set status
                     textBoxStatus.Text = ServerStatus.Stopped;
                     textBoxStatus.BackColor = Color.LightPink;
+                    btnStop.Enabled = false;
+                    btnStart.Enabled = true;
                 }
             }
             catch (System.Exception ex)

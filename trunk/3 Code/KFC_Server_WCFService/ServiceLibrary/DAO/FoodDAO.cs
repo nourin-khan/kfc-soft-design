@@ -140,7 +140,7 @@ namespace ServiceLibrary
          */
         public FoodDTO[] selectInfo(FoodDTO info)
         {
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.Settings.connectionString);
             try
             {
                 if (info == null) // get all food

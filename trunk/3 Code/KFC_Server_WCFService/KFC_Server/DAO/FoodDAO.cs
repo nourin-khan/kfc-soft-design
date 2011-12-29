@@ -19,7 +19,7 @@ namespace ServiceLibrary
         public bool insert(FoodDTO info)
         {
             bool successfull = false;
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.Settings.connectionString);
 
             try
             {
@@ -52,7 +52,7 @@ namespace ServiceLibrary
         {
             bool successfull = false;
 
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.Settings.connectionString);
             try
             {
                 FOOD food = db.FOODs.Single(f => f.FoodID == info.FoodID);
@@ -76,7 +76,7 @@ namespace ServiceLibrary
         {
             bool successfull = false;
 
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.Settings.connectionString);
             try
             {
                 FOOD food = db.FOODs.Single(f => f.FoodID == foodID);
@@ -107,7 +107,7 @@ namespace ServiceLibrary
         public bool update(FoodDTO info)
         {
             bool successfull = false;
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.Settings.connectionString);
             try
             {
                 var food = db.FOODs.SingleOrDefault(f => f.FoodID == info.FoodID);
@@ -140,7 +140,7 @@ namespace ServiceLibrary
          */
         public FoodDTO[] selectInfo(FoodDTO info)
         {
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.Settings.connectionString);
             try
             {
                 if (info == null) // get all food
