@@ -45,7 +45,7 @@
 										<VisualTransition GeneratedDuration="0:0:0.3"/>
 									</VisualStateGroup.Transitions>
 									<VisualState x:Name="Unselected"/>
-									<VisualState x:Name="Selected">
+									<!--<VisualState x:Name="Selected">
 										<Storyboard>
 											<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="grid">
 												<EasingDoubleKeyFrame KeyTime="0" Value="-28.669"/>
@@ -57,7 +57,7 @@
 												<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
 											</DoubleAnimationUsingKeyFrames>
 										</Storyboard>
-									</VisualState>
+									</VisualState>-->
 								</VisualStateGroup>
 								<VisualStateGroup x:Name="FocusStates">
 									<VisualState x:Name="Unfocused"/>
@@ -261,168 +261,6 @@
 				</StackPanel>
 			</Grid>
 		</DataTemplate>
-		<XmlDataProvider x:Key="XmlData" XPath="Continents/Continent">
-			<x:XData>
-                <Continents xmlns="">
-                    <Continent Name="Asia">
-                        <Countries>
-                            <Country Name="Japan">
-                                <Cities>
-                                    <City Name="Toyota"/>
-                                    <City Name="Handa"/>
-                                    <City Name="Komaki"/>
-                                    <City Name="Chita"/>
-                                    <City Name="Nagoya"/>
-                                </Cities>
-                            </Country>
-                            <Country Name="India">
-                                <Cities>
-                                    <City Name="Bangalore"/>
-                                    <City Name="Kochi"/>
-                                    <City Name="Mumbai"/>
-                                    <City Name="Delhi"/>
-                                    <City Name="Pune"/>
-                                    <City Name="Chandigarh"/>
-                                </Cities>
-                            </Country>
-                            <Country Name="China">
-                                <Cities>
-                                    <City Name="Shanghai"/>
-                                    <City Name="Beijing"/>
-                                    <City Name="Wuhan"/>
-                                    <City Name="Tianjin"/>
-                                    <City Name="Shenzhen"/>
-                                    <City Name="Nanjing"/>
-                                    <City Name="Chengdu"/>
-                                </Cities>
-                            </Country>
-                            <Country Name="Korea">
-                                <Cities>
-                                    <City Name="Anyang"/>
-                                    <City Name="Pyeongtaek"/>
-                                    <City Name="Yongin"/>
-                                    <City Name="Seoul"/>
-                                    <City Name="Pohang"/>
-                                </Cities>
-                            </Country>
-                        </Countries>
-                    </Continent>
-                    <Continent Name="Europe">
-                        <Countries>
-                            <Country Name="United Kingdom">
-                                <Cities>
-                                    <City Name="Liverpool"/>
-                                    <City Name="London"/>
-                                    <City Name="Glasgow"/>
-                                    <City Name="Leeds"/>
-                                    <City Name="Derby"/>
-                                    <City Name="Wells"/>
-                                    <City Name="York"/>
-                                    <City Name="Manchester"/>
-                                </Cities>
-                            </Country>
-                            <Country Name="Italy">
-                                <Cities>
-                                    <City Name="Rome"/>
-                                    <City Name="Milan"/>
-                                    <City Name="Naples"/>
-                                    <City Name="Bari"/>
-                                    <City Name="Florence"/>
-                                    <City Name="Venice"/>
-                                    <City Name="Parma"/>
-                                    <City Name="Verona"/>
-                                    <City Name="Messina"/>
-                                    <City Name="Prato"/>
-                                    <City Name="Modena"/>
-                                </Cities>
-                            </Country>
-                            <Country Name="France">
-                                <Cities>
-                                    <City Name="Marseille"/>
-                                    <City Name="Paris"/>
-                                    <City Name="Montpellier"/>
-                                    <City Name="Nice"/>
-                                    <City Name="Rennes"/>
-                                    <City Name="Le Havre"/>
-                                    <City Name="Reims"/>
-                                    <City Name="Brest"/>
-                                    <City Name="Tours"/>
-                                    <City Name="Villeurbanne"/>
-                                </Cities>
-                            </Country>
-                            <Country Name="Germany">
-                                <Cities>
-                                    <City Name="Berlin"/>
-                                    <City Name="Altenberg "/>
-                                    <City Name="Aurich"/>
-                                    <City Name="Fladungen"/>
-                                    <City Name="Ulmen"/>
-                                    <City Name="Freyung"/>
-                                    <City Name="Viernheim"/>
-                                    <City Name="Soltau"/>
-                                    <City Name="Rehau"/>
-                                    <City Name="Putlitz"/>
-                                </Cities>
-                            </Country>
-                        </Countries>
-                    </Continent>
-                    <Continent Name="Americas">
-                        <Countries>
-                            <Country Name="United States">
-                                <Cities>
-                                    <City Name="New York"/>
-                                    <City Name="Los Angeles"/>
-                                    <City Name="Chicago"/>
-                                    <City Name="Houston"/>
-                                    <City Name="Phoenix"/>
-                                    <City Name="Philadelphia"/>
-                                    <City Name="San Antonio"/>
-                                    <City Name="San Diego"/>
-                                    <City Name="Dallas"/>
-                                    <City Name="Detroit"/>
-                                    <City Name="Austin"/>
-                                    <City Name="Seattle"/>
-                                    <City Name="Tacoma"/>
-                                    <City Name="Charlotte"/>
-                                    <City Name="Memphis"/>
-                                </Cities>
-                            </Country>
-                            <Country Name="Canada">
-                                <Cities>
-                                    <City Name="Ottawa"/>
-                                    <City Name="Toronto"/>
-                                    <City Name="Montreal"/>
-                                    <City Name="Edmonton"/>
-                                    <City Name="Regina"/>
-                                </Cities>
-                            </Country>
-                            <Country Name="Mexico">
-                                <Cities>
-                                    <City Name="Mexico City"/>
-                                    <City Name="Puebla"/>
-                                    <City Name="Tijuana"/>
-                                    <City Name="Toluca"/>
-                                    <City Name="Hermosillo"/>
-                                    <City Name="Saltillo"/>
-                                    <City Name="Reynosa"/>
-                                    <City Name="Villahermosa"/>
-                                    <City Name="Celaya"/>
-                                </Cities>
-                            </Country>
-                            <Country Name="Brazil">
-                                <Cities>
-                                    <City Name="Rio de Janeiro"/>
-                                    <City Name="Salvador"/>
-                                    <City Name="Komaki"/>
-                                    <City Name="Brasília"/>
-                                    <City Name="São Paulo"/>
-                                </Cities>
-                            </Country>
-                        </Countries>
-                    </Continent>
-                </Continents>
-            </x:XData>
-		</XmlDataProvider>
 		<Style x:Key="ListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
 			<Setter Property="Background" Value="Transparent"/>
 			<Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
@@ -600,14 +438,14 @@
     							<Grid Height="34.5" Margin="2.5,8,4.5,0" VerticalAlignment="Top">
     								<i:Interaction.Triggers>
     									<i:EventTrigger EventName="MouseEnter">
-    										<ei:ChangePropertyAction x:Name="MouseEnter" PropertyName="Background" TargetObject="{Binding ElementName=border}">
+    										<ei:ChangePropertyAction x:Name="MouseEnter3" PropertyName="Background">
     											<ei:ChangePropertyAction.Value>
     												<SolidColorBrush Color="#BA1578E5"/>
     											</ei:ChangePropertyAction.Value>
     										</ei:ChangePropertyAction>
     									</i:EventTrigger>
     									<i:EventTrigger EventName="MouseLeave">
-    										<ei:ChangePropertyAction x:Name="MouseLeave" TargetObject="{Binding ElementName=border}" PropertyName="Background"/>
+    										<ei:ChangePropertyAction x:Name="MouseLeave3" PropertyName="Background"/>
     									</i:EventTrigger>
     								</i:Interaction.Triggers>
     								<TextBlock x:Name="textBlock4" Margin="20,5,63.683,0" TextWrapping="Wrap" Foreground="Black" Text="Tầng 1" FontSize="14.667" Height="25"/>
@@ -616,14 +454,14 @@
     							<Grid Height="34.5" Margin="2.5,58,4.5,0" VerticalAlignment="Top">
     								<i:Interaction.Triggers>
     									<i:EventTrigger EventName="MouseEnter">
-    										<ei:ChangePropertyAction x:Name="MouseEnter1" PropertyName="Background" TargetObject="{Binding ElementName=border1}">
+    										<ei:ChangePropertyAction x:Name="MouseEnter1" PropertyName="Background">
     											<ei:ChangePropertyAction.Value>
     												<SolidColorBrush Color="#BA1578E5"/>
     											</ei:ChangePropertyAction.Value>
     										</ei:ChangePropertyAction>
     									</i:EventTrigger>
     									<i:EventTrigger EventName="MouseLeave">
-    										<ei:ChangePropertyAction x:Name="MouseLeave1" TargetObject="{Binding ElementName=border1}" PropertyName="Background"/>
+    										<ei:ChangePropertyAction x:Name="MouseLeave1" PropertyName="Background"/>
     									</i:EventTrigger>
     								</i:Interaction.Triggers>
     								<TextBlock Margin="20,5,63.683,0" TextWrapping="Wrap" Foreground="Black" Text="Tầng 2" FontSize="14.667" Height="25"/>
@@ -632,14 +470,14 @@
     							<Grid Height="34.5" Margin="2.5,108,4.5,0" VerticalAlignment="Top">
     								<i:Interaction.Triggers>
     									<i:EventTrigger EventName="MouseEnter">
-    										<ei:ChangePropertyAction x:Name="MouseEnter2" PropertyName="Background" TargetObject="{Binding ElementName=border2}">
+    										<ei:ChangePropertyAction x:Name="MouseEnter2" PropertyName="Background">
     											<ei:ChangePropertyAction.Value>
     												<SolidColorBrush Color="#BA1578E5"/>
     											</ei:ChangePropertyAction.Value>
     										</ei:ChangePropertyAction>
     									</i:EventTrigger>
     									<i:EventTrigger EventName="MouseLeave">
-    										<ei:ChangePropertyAction x:Name="MouseLeave2" TargetObject="{Binding ElementName=border2}" PropertyName="Background"/>
+    										<ei:ChangePropertyAction x:Name="MouseLeave2" PropertyName="Background"/>
     									</i:EventTrigger>
     								</i:Interaction.Triggers>
     								<TextBlock Margin="20,5,63.683,0" TextWrapping="Wrap" Foreground="Black" Text="Tầng 3" FontSize="14.667" Height="25"/>
@@ -832,33 +670,6 @@
     						</Border>
     					</Grid>
     					<DatePicker Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="356,73.318,0,0" VerticalAlignment="Top" Width="134"/>
-    				</Grid>
-    			</Border>
-    		</TabItem>
-    		<TabItem BorderBrush="{x:Null}" d:IsHidden="True" >
-    			<TabItem.Header>
-    				<Image Source="4.png" Stretch="Fill" Margin="3"/>
-    			</TabItem.Header>
-    			<Border CornerRadius="7" BorderThickness="5">
-    				<Border.Background>
-    					<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-    						<GradientStop Color="White"/>
-    						<GradientStop Color="#FFD6D6D6" Offset="1"/>
-    					</LinearGradientBrush>
-    				</Border.Background>
-    				<Border.BorderBrush>
-    					<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-    						<GradientStop Color="#FF1679E7" Offset="0"/>
-    						<GradientStop Color="#FF0E3560" Offset="1"/>
-    					</LinearGradientBrush>
-    				</Border.BorderBrush>
-    				<Grid Margin="3">
-    					<Grid.ColumnDefinitions>
-    						<ColumnDefinition Width="0.306*"/>
-    						<ColumnDefinition Width="0.694*"/>
-    					</Grid.ColumnDefinitions>
-    					<Image Source="4Big.png" Stretch="Fill" VerticalAlignment="Center" Height="248" Margin="10,0"/>
-    					<TextBlock TextWrapping="Wrap" Text="Proin vel imperdiet nibh. Donec porta nulla pharetra mi dignissim tincidunt. Sed ornare libero vitae erat viverra at lacinia augue placerat. Proin semper condimentum arcu sit amet commodo. Ut eu est at libero ultrices tincidunt. Donec semper lorem eget elit sodales eget rutrum enim porta. Vestibulum vel lectus urna. Aenean magna orci, aliquet ut lacinia non, sagittis sed velit. Duis semper, odio nec convallis commodo, nisl magna eleifend justo, et lobortis orci leo aliquet metus. Phasellus luctus erat sit amet orci lacinia non consectetur leo eleifend. Nullam dapibus feugiat enim eget interdum. Pellentesque imperdiet vulputate nibh, eu rutrum est venenatis quis. Proin ut neque non eros feugiat hendrerit eu at libero. Sed consequat, augue non hendrerit luctus, odio elit tristique ipsum, ut auctor magna nisl eget quam. Duis ultricies mattis faucibus. Nullam et enim sed felis blandit eleifend. Aenean eu tortor in purus posuere tristique quis non quam. Integer ac tellus ut enim posuere egestas id in nibh. Integer turpis magna, condimentum sit amet tempus non, volutpat quis augue. Aenean sodales dictum viverra. " Grid.Column="1" Foreground="#FF9F9F9F" Margin="10"/>
     				</Grid>
     			</Border>
     		</TabItem>
