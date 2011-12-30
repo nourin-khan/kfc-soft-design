@@ -4,6 +4,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+	xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
 	mc:Ignorable="d"
 	x:Class="CashierGUI.TableUsc"
 	x:Name="UserControl"
@@ -78,7 +79,10 @@
 				<DropShadowEffect Color="#FFC2C1C1" Opacity="0.675"/>
 			</Image.Effect>
 		</Image>
-		<Label x:Name="TableNumLbl" Content="BÀN 11" Height="29.5" VerticalAlignment="Bottom" ScrollViewer.VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Center" FontSize="16"/>
+		<Label x:Name="TableNumLbl" Content="BÀN 101" Height="29.5" VerticalAlignment="Bottom" ScrollViewer.VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Center" FontSize="16"/>
 		<Label x:Name="freeLbl" Content="FREE" HorizontalAlignment="Right" Height="26.5" VerticalAlignment="Top" Width="39.45" FontSize="13.333" Foreground="Red" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
+		<ed:Callout x:Name="paymentCallOut" AnchorPoint="0.549,1.783" CalloutStyle="RoundedRectangle" Fill="White" FontSize="14.667" Height="34.5" VerticalAlignment="Top" Margin="31.5,0,0,0" Stroke="#FF1679E7" ScrollViewer.VerticalScrollBarVisibility="Hidden" Visibility="Hidden">
+			<TextBlock x:Name="paymentMessage" Height="26.5" TextWrapping="Wrap" Text="Không hóa đơn" Width="104" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFFD0000" TextAlignment="Center"/>
+		</ed:Callout>
 	</Grid>
 </UserControl>

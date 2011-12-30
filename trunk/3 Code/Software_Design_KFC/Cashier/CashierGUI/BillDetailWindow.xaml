@@ -5,7 +5,7 @@
 	x:Class="CashierGUI.BillDetailWindow"
 	x:Name="Window"
 	Title="BillDetailWindow"
-	Width="622" Height="533.375" Background="White" ResizeMode="NoResize">
+	Width="622" Height="533.375" Background="White" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
 	<Grid x:Name="LayoutRoot">
 		<TextBlock HorizontalAlignment="Left" Margin="231.446,53.626,0,0" TextWrapping="Wrap" Text="CHI TIẾT HÓA ĐƠN" VerticalAlignment="Top" FontSize="21.333"/>
@@ -85,8 +85,8 @@
 				<TextBlock x:Name="textBlock2" TextWrapping="Wrap" Text="$" FontSize="26.667" TextAlignment="Center" FontWeight="Bold" FontFamily="Arial" HorizontalAlignment="Center" Foreground="White" Margin="0,-0.998,0,-1"/>
 			</Border>
 		</Grid>
-		<Grid x:Name="OK" Height="25" Margin="257.5,0,262.5,42" VerticalAlignment="Bottom">
-			<Border x:Name="border6" BorderBrush="#FF1679E7" BorderThickness="1" CornerRadius="5" Background="#FF1679E7" Margin="0,0,8,0">
+		<Grid x:Name="OK" Height="25" Margin="257.5,0,268,42" VerticalAlignment="Bottom" MouseLeftButtonDown="OK_MouseLeftButtonDown">
+			<Border x:Name="border6" BorderBrush="#FF1679E7" BorderThickness="1" CornerRadius="5" Background="#FF1679E7">
 				<i:Interaction.Triggers>
 					<i:EventTrigger EventName="MouseLeave">
 						<ei:ChangePropertyAction x:Name="Add_MouseLeave3" TargetObject="{Binding ElementName=border6}" PropertyName="Background">
