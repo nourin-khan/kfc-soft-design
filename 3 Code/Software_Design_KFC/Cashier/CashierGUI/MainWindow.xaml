@@ -387,7 +387,7 @@
 	</Window.Resources>
     <Grid>
     	<TabControl Height="704" Style="{DynamicResource TabControlStyle}" ItemContainerStyle="{DynamicResource TabItemStyle}" Margin="0,0,8,0" VerticalAlignment="Top">
-    		<TabItem Foreground="White" BorderBrush="{x:Null}">
+    		<TabItem x:Name="TabSale" Foreground="White" BorderBrush="{x:Null}">
     			<TabItem.Header>
     				<Image Source="CashierTab2.png" Stretch="Fill" Margin="3"/>
     			</TabItem.Header>                
@@ -410,7 +410,7 @@
     						<ColumnDefinition Width="0.181*"/>
     						<ColumnDefinition Width="0.819*"/>
     					</Grid.ColumnDefinitions>
-    					<WrapPanel Grid.Column="1" Margin="10,0,8,20" Grid.Row="3" ItemWidth="200" HorizontalAlignment="Center" ItemHeight="170" VerticalAlignment="Center">
+    					<WrapPanel x:Name="FloorWrappnl" Grid.Column="1" Margin="10,0,8,20" Grid.Row="3" ItemWidth="200" HorizontalAlignment="Center" ItemHeight="170" VerticalAlignment="Center">
     						<local:TableUsc d:LayoutOverrides="Width, Height"/>
     						<local:TableUsc d:LayoutOverrides="Width, Height"/>
     						<local:TableUsc d:LayoutOverrides="Width, Height"/>
@@ -435,7 +435,7 @@
     							</LinearGradientBrush>
     						</Border.BorderBrush>
     						<Grid>
-    							<Grid Height="34.5" Margin="2.5,8,4.5,0" VerticalAlignment="Top">
+    							<Grid x:Name="Floor1SelBox" Height="34.5" Margin="2.5,8,4.5,0" VerticalAlignment="Top" MouseLeftButtonDown="Floor1SelBox_MouseLeftButtonDown">
     								<i:Interaction.Triggers>
     									<i:EventTrigger EventName="MouseEnter">
     										<ei:ChangePropertyAction x:Name="MouseEnter3" PropertyName="Background">
@@ -451,7 +451,7 @@
     								<TextBlock x:Name="textBlock4" Margin="20,5,63.683,0" TextWrapping="Wrap" Foreground="Black" Text="Tầng 1" FontSize="14.667" Height="25"/>
     								<Border x:Name="border" BorderBrush="#FF1679E7" BorderThickness="1" Margin="0" CornerRadius="5"/>
     							</Grid>
-    							<Grid Height="34.5" Margin="2.5,58,4.5,0" VerticalAlignment="Top">
+    							<Grid x:Name="Floor2SelBox" Height="34.5" Margin="2.5,58,4.5,0" VerticalAlignment="Top" MouseLeftButtonDown="Floor2SelBox_MouseLeftButtonDown">
     								<i:Interaction.Triggers>
     									<i:EventTrigger EventName="MouseEnter">
     										<ei:ChangePropertyAction x:Name="MouseEnter1" PropertyName="Background">
@@ -467,7 +467,7 @@
     								<TextBlock Margin="20,5,63.683,0" TextWrapping="Wrap" Foreground="Black" Text="Tầng 2" FontSize="14.667" Height="25"/>
     								<Border x:Name="border1" BorderBrush="#FF1679E7" BorderThickness="1" Margin="0" CornerRadius="5"/>
     							</Grid>
-    							<Grid Height="34.5" Margin="2.5,108,4.5,0" VerticalAlignment="Top">
+    							<Grid x:Name="Floor3SelBox" Height="34.5" Margin="2.5,108,4.5,0" VerticalAlignment="Top" MouseLeftButtonDown="Floor3SelBox_MouseLeftButtonDown">
     								<i:Interaction.Triggers>
     									<i:EventTrigger EventName="MouseEnter">
     										<ei:ChangePropertyAction x:Name="MouseEnter2" PropertyName="Background">
@@ -490,7 +490,7 @@
     				</Grid>
     			</Border>
     		</TabItem>
-    		<TabItem BorderBrush="{x:Null}" >
+    		<TabItem x:Name="TabFood" BorderBrush="{x:Null}" >
     			<TabItem.Header>
     				<Image Source="2.png" Stretch="Fill" Margin="3"/>
     			</TabItem.Header>
@@ -611,7 +611,7 @@
     				</Grid>
     			</Border>
     		</TabItem>
-    		<TabItem BorderBrush="{x:Null}" >
+    		<TabItem x:Name="TabReport" BorderBrush="{x:Null}" >
     			<TabItem.Header>
     				<Image Source="ReportTab.png" Stretch="Fill" Margin="3"/>
     			</TabItem.Header>
@@ -669,7 +669,7 @@
     							<TextBlock x:Name="textBlock8" TextWrapping="Wrap" FontSize="16" TextAlignment="Center" FontFamily="Times New Roman" HorizontalAlignment="Center" Foreground="White" Text="Kết xuất" Margin="0,-1" VerticalAlignment="Center"/>
     						</Border>
     					</Grid>
-    					<DatePicker Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="356,73.318,0,0" VerticalAlignment="Top" Width="134"/>
+    					<DatePicker Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="356,68.318,0,0" VerticalAlignment="Top" Width="134" FontSize="14.667"/>
     				</Grid>
     			</Border>
     		</TabItem>

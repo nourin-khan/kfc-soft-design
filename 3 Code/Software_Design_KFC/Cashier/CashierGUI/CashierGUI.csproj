@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>C:\Program Files (x86)\Microsoft SDKs\Expression\Blend\.NETFramework\v4.0\Libraries\Microsoft.Expression.Drawing.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>C:\Program Files (x86)\Microsoft SDKs\Expression\Blend\.NETFramework\v4.0\Libraries\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
@@ -150,6 +153,16 @@
     <Resource Include="kfc_logo.png" />
     <Resource Include="kfc_logo2.png" />
     <Resource Include="ReportTab.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CashierController\CashierController.csproj">
+      <Project>{931A6231-F34D-4498-842D-A11C96823BE6}</Project>
+      <Name>CashierController</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CashierDTO\CashierDTO.csproj">
+      <Project>{F6B3B173-E071-4A1C-BBBE-673D548AAAD6}</Project>
+      <Name>CashierDTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.0\Microsoft.Expression.Blend.WPF.targets" />

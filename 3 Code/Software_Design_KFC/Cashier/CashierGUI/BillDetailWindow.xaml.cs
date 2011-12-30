@@ -17,6 +17,17 @@ namespace CashierGUI
 	/// </summary>
 	public partial class BillDetailWindow : Window
 	{
+        #region  Attribute
+        private string _orderId;
+
+        public string orderId
+        {
+            get { return _orderId; }
+            set { _orderId = value; }
+        }
+
+        #endregion
+
 		public BillDetailWindow()
 		{
 			this.InitializeComponent();
@@ -28,6 +39,11 @@ namespace CashierGUI
         {
             MoneyCalWindow moneyCal = new MoneyCalWindow();
             moneyCal.Show();
+        }
+
+        private void OK_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
         }
 	}
 }
