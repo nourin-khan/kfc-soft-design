@@ -5,18 +5,21 @@
 	x:Class="KFC_Table_GUI.UserControlFoodInFocus"
 	x:Name="Window"
 	Title="FoodInFocus"
-	Width="363" Height="234" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterOwner" Background="{x:Null}">
+	Width="431" Height="289" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterOwner" Background="{x:Null}" Foreground="{x:Null}">
+	<Window.Effect>
+		<DropShadowEffect Color="White" BlurRadius="31" ShadowDepth="0" Direction="339"/>
+	</Window.Effect>
 
 	<Grid x:Name="LayoutRoot" Opacity="0.93">
 		<Grid.RowDefinitions>
-			<RowDefinition Height="0.733*"/>
-			<RowDefinition Height="0.267*"/>
+			<RowDefinition Height="0.593*"/>
+			<RowDefinition Height="0.407*"/>
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="0.797*"/>
-			<ColumnDefinition Width="0.203*"/>
+			<ColumnDefinition Width="0.671*"/>
+			<ColumnDefinition Width="0.329*"/>
 		</Grid.ColumnDefinitions>
-		<Rectangle Margin="1.149,0,0,0" Stroke="Black" RadiusY="30.351" RadiusX="30.351" Grid.ColumnSpan="2" Grid.RowSpan="2">
+		<Rectangle Margin="32.149,24,37,31" RadiusY="30.351" RadiusX="30.351" Grid.ColumnSpan="2" Grid.RowSpan="2" Stroke="White" StrokeThickness="2">
 			<Rectangle.Fill>
 				<RadialGradientBrush>
 					<GradientStop Color="#FF00CFF7" Offset="0.004"/>
@@ -24,9 +27,9 @@
 				</RadialGradientBrush>
 			</Rectangle.Fill>
 		</Rectangle>
-		<Image x:Name="image" Margin="18.149,8,0,7.32" HorizontalAlignment="Left" Width="263.162"/>
-		<TextBlock x:Name="details" Grid.Row="1" TextWrapping="Wrap" Margin="0,-0.481,0.236,0" Foreground="Black" FontStyle="Italic" TextAlignment="Center"/>
-		<local:UserControlOK x:Name="addToCart" Grid.Column="1" Margin="8,8,7.856,0" Height="63.522" VerticalAlignment="Top" Opacity="0.83" MouseLeftButtonDown="addToCart_MouseLeftButtonDown"/>
-		<local:UserControlCloseButton x:Name="close" VerticalAlignment="Bottom" d:LayoutOverrides="Height" Grid.Column="1" Margin="8.316,0,7.856,26" Opacity="0.785" MouseLeftButtonDown="close_MouseLeftButtonDown"/>
+		<Image x:Name="image" Margin="49.149,32,0,-16.825" HorizontalAlignment="Left" Width="263.162"/>
+		<TextBlock x:Name="details" Grid.Row="1" TextWrapping="Wrap" Margin="31,23.664,-30.874,31" Foreground="Black" FontStyle="Italic" TextAlignment="Center"/>
+		<local:UserControlOK x:Name="addToCart" Grid.Column="1" Margin="39.11,32,44.856,75.855" Opacity="0.83" MouseLeftButtonDown="addToCart_MouseLeftButtonDown"/>
+		<local:UserControlCloseButton x:Name="close" VerticalAlignment="Bottom" d:LayoutOverrides="Height" Grid.Column="1" Margin="39.426,0,44.856,1.855" Opacity="0.785" MouseLeftButtonDown="close_MouseLeftButtonDown"/>
 	</Grid>
 </Window>

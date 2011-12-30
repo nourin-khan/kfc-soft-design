@@ -375,7 +375,7 @@
 		</StackPanel>
 		<Image Height="142.333" Source="kfc_logo.png" Stretch="Fill" Grid.Column="1" Margin="0,8,8,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="142.333"/>
 		<Image Source="kfc_logo2.png" Stretch="Fill" Margin="369.167,37.334,227.666,0" Grid.Column="1" Height="102.031" VerticalAlignment="Top"/>
-		<TabControl Width="Auto" Height="696" Style="{DynamicResource TabControlStyle}" ItemContainerStyle="{DynamicResource TabItemStyle}" Grid.Column="1" Margin="2,0,-0.264,0" Grid.Row="0" Grid.RowSpan="1" VerticalAlignment="Top">
+		<TabControl x:Name="tabControl" Width="Auto" Height="696" Style="{DynamicResource TabControlStyle}" ItemContainerStyle="{DynamicResource TabItemStyle}" Grid.Column="1" Margin="2,0,-0.264,0" Grid.Row="0" Grid.RowSpan="1" VerticalAlignment="Top">
 			<TabItem Foreground="White" BorderBrush="{x:Null}" Margin="0,-2,-2,-1" Background="{x:Null}">
 				<TabItem.Header>
 					<Image x:Name="chicken" Source="Images/large-combo28.png" MouseLeftButtonDown="chicken_MouseLeftButtonDown"/>
@@ -389,7 +389,7 @@
 					</Border.BorderBrush>
 					<Canvas>
 						<UniformGrid x:Name="gridChicken" Columns="3" Rows="3" Height="524" Width="886.764">
-							<local:UserControlFood x:Name="chicken1" Margin="0" FoodImageSource="Images/08-Combo-Hot-Wing-large.png"/>
+							<local:UserControlFood x:Name="chicken1" Margin="0"/>
 							<local:UserControlFood x:Name="chicken2" Margin="0"/>
 							<local:UserControlFood x:Name="chicken3" Margin="0"/>
 							<local:UserControlFood x:Name="chicken4" Margin="0"/>

@@ -42,6 +42,10 @@
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +64,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ConfigureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigureForm.Designer.cs">
+      <DependentUpon>ConfigureForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindowEventHandler.cs" />
     <Compile Include="UserControl\UserControlConfirm.xaml.cs">
       <DependentUpon>UserControlConfirm.xaml</DependentUpon>
@@ -215,10 +225,11 @@
       <Project>{2A24BFED-054A-49C4-A311-EDE0F8652937}</Project>
       <Name>TableController</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TableDTO\TableDTO.csproj">
-      <Project>{84F8F228-FCE7-4C45-A948-C23E917758B5}</Project>
-      <Name>TableDTO</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ConfigureForm.resx">
+      <DependentUpon>ConfigureForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath32)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

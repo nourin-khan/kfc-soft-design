@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TableDTO;
+using TableController.KfcService;
 
 namespace KFC_Table_GUI
 {
@@ -71,8 +71,8 @@ namespace KFC_Table_GUI
             optionsBar.OKClick += new KFC_Table_GUI.UserControlOptionsBar.ControlClicked(optionsBar_OKClick);
             this.FoodName = info.FoodName;
             this.FoodPrice = info.FoodPrice.ToString();
-            this.FoodDetails = info.FoodDescription + "\nGia : " + this.FoodPrice;
-            this.FoodImageSource = new BitmapImage(new Uri(info.FoodImageSource));
+            this.FoodDetails = info.Description + "\nGia : " + this.FoodPrice;
+            this.FoodImageSource = new BitmapImage(new Uri(info.Image));
         }
 
         void optionsBar_OKClick()

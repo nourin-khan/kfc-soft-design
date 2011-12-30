@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TableDTO;
+using TableController.KfcService;
 
 namespace TableController
 {
