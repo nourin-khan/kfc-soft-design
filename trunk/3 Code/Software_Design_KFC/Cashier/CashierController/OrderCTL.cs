@@ -106,5 +106,10 @@ namespace CashierController
         {
             return null;
         }
+
+        public int[] getUnfreeTable(int floorNum)
+        {
+            return null;
+        }
     }
 }

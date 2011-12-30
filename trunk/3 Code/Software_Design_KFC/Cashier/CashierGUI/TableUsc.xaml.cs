@@ -16,17 +16,12 @@ namespace CashierGUI
 	/// <summary>
 	/// Interaction logic for TableUsc.xaml
 	/// </summary>
-    public enum payment
-    {
-        PRINTEDBILL = 0,
-        NOPRINTEDBILL = 1,
-        UNPAID = 2
-    }
+    
 	public partial class TableUsc : UserControl
     {
         #region Attribute
         private bool _free = true;  // free: no customer
-        private payment _paid = payment.UNPAID; //payment flag: paid bill
+        private bool _printedBill = false; //payment flag: paid bill
         private int _tableNum = 101; //table number
         private string _orderId;
 		
@@ -46,25 +41,21 @@ namespace CashierGUI
                 }
 			}
 		}
-        public payment paid
+        public bool printedBill
         {
-            get { return _paid; }
+            get { return _printedBill; }
             set 
             {
-                _paid = value;
-                switch (value)
+                _printedBill = value;
+                if(_printedBill)
                 {
-                    case payment.UNPAID:
-                        paymentCallOut.Visibility = Visibility.Hidden;
-                        break;
-                    case payment.PRINTEDBILL:
-                        paymentMessage.Text = "In hóa đơn";
-                        paymentCallOut.Visibility = Visibility.Visible;
-                        break;
-                    case payment.NOPRINTEDBILL:
-                        paymentMessage.Text = "Không hóa đơn";
-                        paymentCallOut.Visibility = Visibility.Visible;
-                        break;
+                    paymentMessage.Text = "In hóa đơn";
+                    paymentCallOut.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    paymentMessage.Text = "Không hóa đơn";
+                    paymentCallOut.Visibility = Visibility.Visible;                        
                 }
             }
         }

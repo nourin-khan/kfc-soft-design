@@ -12,9 +12,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CashierDTO;
+using CashierController;
 
 namespace CashierGUI
 {
+    enum TableStatus
+    {
+        FREE =0,
+        UNFREE = 1,
+        PRINTEDBILL = 2,
+        NOPRINTEDBILL = 3
+    }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -22,20 +30,21 @@ namespace CashierGUI
     {
         #region Attribute
 
-
+        OrderCTL orderCtl = new OrderCTL();
         static int tableQtyOnFloor = 15;
         static int floorQty = 3;
-        bool[,] tableBitmap = new bool[floorQty, tableQtyOnFloor];       //false when free
+        TableStatus[,] tableBitmap = new TableStatus[floorQty, tableQtyOnFloor];       //false when free
 
         #endregion
         public MainWindow()
         {
             InitializeComponent();
 
-            //get Bill status and set status for table
+
+            //set initialized status  for tableBitMap (free status)
             for (int i = 0; i < floorQty; i++)
                 for (int j = 0; j < tableQtyOnFloor; j++)
-                    tableBitmap[i,j] = false;
+                    tableBitmap[i, j] = TableStatus.FREE;
 
             //test
             TableUsc table = (TableUsc)FloorWrappnl.Children[0];
@@ -47,29 +56,17 @@ namespace CashierGUI
         #region Event
         private void Floor1SelBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            showTableInFloor(0);
-
-            //test
-            TableUsc table =(TableUsc) FloorWrappnl.Children[0];
-            table.paid = payment.NOPRINTEDBILL;
-
-            table = (TableUsc)FloorWrappnl.Children[1];
-            table.paid = payment.UNPAID;
-
-            table = (TableUsc)FloorWrappnl.Children[2];
-            table.paid = payment.PRINTEDBILL;
-
-            //////////////////////////////////////////////////////////////////////////
+            showTableInFloor(1);            
         }
 
         private void Floor2SelBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            showTableInFloor(1);
+            showTableInFloor(2);
         }
 
         private void Floor3SelBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            showTableInFloor(2);
+            showTableInFloor(3);
         }
         #endregion
 
@@ -79,17 +76,49 @@ namespace CashierGUI
         //Event: FloornSelBox_MouseLeftDownButton
         //show tableUSC (free or not) when selecting floor
         public void showTableInFloor(int floorNum)
-        {
-            for (int j = 0; j < tableQtyOnFloor; j++)
+        {   
+            //set number of table and status for all table
+            for (int i = 0; i < tableQtyOnFloor; i++)
             {
-                TableUsc table = (TableUsc)FloorWrappnl.Children[j];
-                if (tableBitmap[floorNum,j])
+                TableUsc table = (TableUsc)FloorWrappnl.Children[i];
+                table.tableNum = floorNum * 100 + i + 1;
+                
+                switch(tableBitmap[floorNum -1, i])
                 {
-                    table.free = false;
+                    case TableStatus.FREE: 
+                        table.free = true;
+                        break;
+                    case TableStatus.UNFREE:
+                        table.free = false;
+                        break;
+                    case TableStatus.PRINTEDBILL:
+                        table.printedBill = true;
+                        break;
+                    case TableStatus.NOPRINTEDBILL:
+                        table.printedBill = false;
+                        break;
                 }
-            }
+            }            
         }
         #endregion
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {            
+            for (int i = 0; i < floorQty; i++)
+            {
+                //search for unfree table in db to reset status
+                int[] unfreeTables = orderCtl.getUnfreeTable(i + 1);
+                if (unfreeTables != null)
+                {
+                    for (int k = 0; k < unfreeTables.Length; k++)
+                    {
+                        tableBitmap[i, unfreeTables[k] % 100] = TableStatus.UNFREE;
+                    }
+                }
+            }
+            showTableInFloor(1);
+
+        }
 
 
 

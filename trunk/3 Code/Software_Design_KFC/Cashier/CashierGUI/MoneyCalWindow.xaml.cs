@@ -23,5 +23,10 @@ namespace CashierGUI
 			
 			// Insert code required on object creation below this point.
 		}
+
+        private void OK_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
 	}
 }
