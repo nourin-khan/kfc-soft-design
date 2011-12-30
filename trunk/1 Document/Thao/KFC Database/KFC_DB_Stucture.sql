@@ -53,7 +53,7 @@ create table ORDER_
 (
 OrderID varchar(5) not null,
 OrderDate datetime,
-TableNum int,
+TableNum varchar(3),
 OrderStatus int,
 OrderNote ntext,
 
