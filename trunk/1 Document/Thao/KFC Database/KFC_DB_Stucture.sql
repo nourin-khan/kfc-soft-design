@@ -12,8 +12,8 @@ go
 create table FOOD
 (
 FoodID varchar(5) not null,
-FoodName ntext, 
-FoodPrice int,
+FoodName ntext NOT NULL, 
+FoodPrice int NOT null,
 DiscountPrice int,
 Image text,
 Description ntext,
@@ -27,7 +27,7 @@ go
 create table FOOD_GROUP
 (
 FoodGroupID varchar(5) not null,
-FoodGroupName nvarchar(100),
+FoodGroupName nvarchar(100) NOT null,
 
 primary key (foodGroupID)
 )
@@ -38,11 +38,11 @@ create table BILL
 (
 BillID varchar(5) not null,
 BillDate datetime,
-Total int,
-BillStatus int,
+Total int NOT NULL,
+BillStatus int NOT NULL,
 DeleteNote ntext,
-EmpID varchar(5),
-OrderID varchar(5),
+EmpID varchar(5) NOT NULL,
+OrderID varchar(5) NOT NULL,
 
 primary key ( BillID)
 )
@@ -52,9 +52,9 @@ go
 create table ORDER_
 (
 OrderID varchar(5) not null,
-OrderDate datetime,
-TableNum int,
-OrderStatus int,
+OrderDate datetime NOT NULL,
+TableNum int NOT NULL,
+OrderStatus int NOT NULL,
 OrderNote ntext,
 
 primary key (OrderID)
@@ -66,8 +66,8 @@ create table ORDER_DETAIL
 (
 OrderID varchar(5) not null,
 FoodID varchar(5) not null,
-Quantity int,
-CompleteTime datetime,
+Quantity int NOT NULL,
+CompleteTime datetime ,
 Priority int,
 FoodNote ntext,
 
@@ -80,8 +80,8 @@ create table EMPLOYEE
 (
 EmpID varchar(5) not null,
 PositionID varchar(5),
-Username nvarchar(50),
-Password varchar(30),
+Username nvarchar(50) NOT NULL,
+Password varchar(30) NOT NULL,
 
 primary key (EmpID)
 )
@@ -102,8 +102,8 @@ go
 create table EMPLOYEE_INFO
 (
 EmpID  varchar(5) not null,
-EmpName nvarchar(100),
-Sex bit,
+EmpName nvarchar(100) NOT NULL,
+Sex bit NOT NULL,
 DateOfBirth datetime,
 PhoneNumber varchar(11),
 Address nvarchar(1000),
