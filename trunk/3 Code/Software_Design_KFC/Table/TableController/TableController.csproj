@@ -33,6 +33,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,18 +49,66 @@
     <Compile Include="OrderCTL.cs" />
     <Compile Include="OrderDetailCTL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\KfcService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\KfcService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\KfcService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\KfcService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\KfcService\Service.wsdl" />
+    <None Include="Service References\KfcService\TableController.KfcService.BillDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\KfcService\TableController.KfcService.FoodDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\KfcService\TableController.KfcService.FoodGroupDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\KfcService\TableController.KfcService.OrderDetailDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\KfcService\TableController.KfcService.OrderDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="TableCTL_ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TableDTO\TableDTO.csproj">
-      <Project>{84F8F228-FCE7-4C45-A948-C23E917758B5}</Project>
-      <Name>TableDTO</Name>
-    </ProjectReference>
+    <WCFMetadataStorage Include="Service References\KfcService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\KfcService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\KfcService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\KfcService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\KfcService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Service\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

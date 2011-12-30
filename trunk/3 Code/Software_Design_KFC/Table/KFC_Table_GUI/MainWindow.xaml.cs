@@ -11,20 +11,38 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TableController;
-using TableDTO;
+using TableController.KfcService;
 using System.Threading;
 using System.Windows.Media.Animation;
 
 namespace KFC_Table_GUI
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    class MyCommand : ICommand
+    {
+        public delegate void Refresh();
+        public event Refresh ReloadAll;
+
+        public bool CanExecute(object parameter)
+        {
+            return true;
+        }
+
+        public event EventHandler CanExecuteChanged;
+
+        public void Execute(object parameter)
+        {            
+            ReloadAll();
+        }
+    }
+
     public partial class MainWindow : Window
     {
+        private MyCommand configureCommand;
+        
         #region Attributes
         private const int FOOD_NUMBER = 9;
-        private List<UserControlFood> foods;        
+        private List<UserControlFood> foods;
+        private string imagesFolder;
         #endregion        
 
         #region Controller
@@ -35,14 +53,29 @@ namespace KFC_Table_GUI
         public MainWindow()
         {
             this.InitializeComponent();
+
+            // register Ctrl + Shift + C for configuration
+            // Bind key
+            configureCommand = new MyCommand();
+            configureCommand.ReloadAll += new MyCommand.Refresh(configureCommand_ReloadAll);
+            InputBinding ib = new InputBinding(configureCommand, new KeyGesture(Key.C, ModifierKeys.Control | ModifierKeys.Shift));
+            this.InputBindings.Add(ib);            
+
+            // controller
             foodCtrl = new FoodCTL();
-            orderCtrl = new OrderCTL();
+            orderCtrl = new OrderCTL(); 
+        }
+
+        void configureCommand_ReloadAll()
+        {
+            ConfigureForm configure = new ConfigureForm();
+            configure.ShowDialog();
+            getAllFood();
         }
 
         #region Events Handle
 		private void Window_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            #region OldRegion
             statusItems.SelectedIndex = 0;
 
             foods = new List<UserControlFood>();
@@ -61,26 +94,43 @@ namespace KFC_Table_GUI
                 food.FoodFocus += new UserControlFood.ControlFocus(focusFood);
                 food.ChooseFoodclick += new UserControlFood.ControlClick(food_ChooseFoodclick);
             } 
-            #endregion
+            
+            // get all food
+            getAllFood();            
+        }
 
-            FoodDTO[] foodList = foodCtrl.getFoodGroup("chicken");
-            if (foodList == null)
+        private void getAllFood()
+        {
+            // set config images directory path
+            imagesFolder = string.IsNullOrWhiteSpace(ConfigurationCTL.ImagesFolder) ? @"D:\2011-2012\Software analysis and design\Group-work\Project_SVN\1 Document\Thao\KFC Database\Images" : ConfigurationCTL.ImagesFolder;
+            // get all food
+            try
             {
-                return;
+                FoodDTO[] foodList = foodCtrl.getFoodGroup();
+                if (foodList == null)
+                {
+                    return;
+                }
+                int idx = 0;
+                while (idx < FOOD_NUMBER)
+                {
+                    foods[idx].FoodName = foodList[idx].FoodName;
+                    foods[idx].FoodPrice = foodList[idx].FoodPrice.ToString();
+                    foods[idx].FoodDetails = foodList[idx].Description + "\nGiá : " + foodList[idx].FoodPrice.ToString();
+                    foods[idx].FoodImageSource = new BitmapImage(new Uri(imagesFolder + foodList[idx].Image));
+                    idx++;
+                }
             }
-            int idx = 0;
-            while (idx < foods.Count)
+            catch
             {
-                foods[idx].FoodName = foodList[idx].FoodName;
-                foods[idx].FoodPrice = foodList[idx].FoodPrice.ToString();
-                foods[idx].FoodDetails = foodList[idx].FoodDescription + "\nGia : " + foodList[idx].FoodPrice.ToString();
-                foods[idx].FoodImageSource = new BitmapImage(new Uri(foodList[idx].FoodImageSource));
+                MessageBox.Show("Server connection failed or Images directory is invalid.", "Error");
             }
         }
 
         void focusFood(UserControlFood food)
         {
             this.gridChicken.Opacity = 0.2;
+            
             UserControlFoodInFocus focus = new UserControlFoodInFocus();
             focus.Image.Source = food.image.Source;
             focus.Details = food.FoodDetails;
@@ -181,12 +231,12 @@ namespace KFC_Table_GUI
 
             // create the order
             OrderDTO orderInfo = new OrderDTO();
-            orderInfo.OrderTime = DateTime.Now;
-            orderInfo.OrderStatus = OrderStatus.UNCONFIRMED;
+            orderInfo.OrderDate = DateTime.Now;
+            orderInfo.OrderStatus = 1;
             orderInfo.OrderNote = null;
             orderInfo.TableNum = ConfigurationCTL.TableNum;
             // order id is complexity string that's include table No. and datetime.now
-            orderInfo.OrderID = ConfigurationCTL.TableNum + orderInfo.OrderTime.ToString();
+            orderInfo.OrderID = ConfigurationCTL.TableNum + orderInfo.OrderDate.ToString();
 
             foreach (UserControlFoodInCart item in lstboxOrder.Items)
             {
@@ -196,7 +246,7 @@ namespace KFC_Table_GUI
                 info.FoodID = item.FoodID;
                 info.FoodNote = string.Empty;
                 info.OrderID = orderInfo.OrderID;
-                orderInfo.FoodList.Add(info);
+                
 
                 UserControlFoodInKitchen foodInKitchen = new UserControlFoodInKitchen();
                 foodInKitchen.image.Source = item.image.Source;
