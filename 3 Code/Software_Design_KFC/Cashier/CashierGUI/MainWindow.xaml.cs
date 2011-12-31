@@ -11,8 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using CashierDTO;
 using CashierController;
+using CashierController.KFCService;
 
 namespace CashierGUI
 {
@@ -56,17 +56,17 @@ namespace CashierGUI
         #region Event
         private void Floor1SelBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            showTableInFloor(1);            
+            showTableOnFloor(1);            
         }
 
         private void Floor2SelBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            showTableInFloor(2);
+            showTableOnFloor(2);
         }
 
         private void Floor3SelBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            showTableInFloor(3);
+            showTableOnFloor(3);
         }
         #endregion
 
@@ -75,7 +75,7 @@ namespace CashierGUI
 
         //Event: FloornSelBox_MouseLeftDownButton
         //show tableUSC (free or not) when selecting floor
-        public void showTableInFloor(int floorNum)
+        public void showTableOnFloor(int floorNum)
         {   
             //set number of table and status for all table
             for (int i = 0; i < tableQtyOnFloor; i++)
@@ -107,16 +107,17 @@ namespace CashierGUI
             for (int i = 0; i < floorQty; i++)
             {
                 //search for unfree table in db to reset status
-                int[] unfreeTables = orderCtl.getUnfreeTable(i + 1);
+                OrderDTO[] unfreeTables = orderCtl.getUnfreeTable(i + 1);                
+               
                 if (unfreeTables != null)
                 {
                     for (int k = 0; k < unfreeTables.Length; k++)
                     {
-                        tableBitmap[i, unfreeTables[k] % 100] = TableStatus.UNFREE;
+                        tableBitmap[i, unfreeTables[k].TableNum % 100] = TableStatus.UNFREE;
                     }
                 }
             }
-            showTableInFloor(1);
+            showTableOnFloor(1);
 
         }
 

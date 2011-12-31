@@ -82,8 +82,13 @@ namespace CashierGUI
 
         private void UserControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            BillDetailWindow billDetail = new BillDetailWindow();
-            billDetail.Show();
+            if (this.free == true) //note here, != true (changes for test and coding)
+            {
+                BillDetailWindow billDetail = new BillDetailWindow();
+                billDetail.tableNum = tableNum;
+                billDetail.ShowDialog();
+            }
+            
         }
 	}
 }
