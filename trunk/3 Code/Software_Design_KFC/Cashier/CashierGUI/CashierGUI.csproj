@@ -67,6 +67,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddFoodToOrderWindow.xaml.cs">
+      <DependentUpon>AddFoodToOrderWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BillDetailWindow.xaml.cs">
       <DependentUpon>BillDetailWindow.xaml</DependentUpon>
     </Compile>
@@ -79,6 +82,10 @@
     <Compile Include="TableUsc.xaml.cs">
       <DependentUpon>TableUsc.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddFoodToOrderWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="BillDetailWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

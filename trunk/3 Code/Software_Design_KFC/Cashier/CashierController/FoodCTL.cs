@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using CashierDTO;
+using CashierController.KFCService;
 
 namespace CashierController
 {
@@ -70,6 +70,18 @@ namespace CashierController
             return null;
         }
         public FoodDTO[] viewFoodInfo(string foodID)
+        {
+            return null;
+        }
+
+        /*
+         * Description: get all food in database
+         * Input: 
+         * Output: list of food information
+         * Author:
+         * Note: call viewFoodInfo(null) from DAO
+         */
+        public FoodDTO[] getAllFoodList()
         {
             return null;
         }
