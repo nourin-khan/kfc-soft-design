@@ -55,7 +55,7 @@ namespace KFC_Server
             {
                 address = txtAddress.Text;
                 string connectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=" + dabaseFile + ";Integrated Security=True;Connect Timeout=30;User Instance=True";
-                ServiceLibrary.Properties.Settings.connectionString = connectionString;
+                ServiceLibrary.Properties.ConnectionSettings.ConnectionString = connectionString;
             }
             catch (System.Exception ex)
             {
@@ -77,7 +77,7 @@ namespace KFC_Server
                 // add to dictionary of servers
                 _kfcDict.Add(address, kfcHost);
 
-                textBoxAddress.Text = address;
+                textBoxAddress.Text = serviceAddr;
                 textBoxStatus.Text = ServerStatus.Running;
                 textBoxStatus.BackColor = Color.PaleGreen;
                 btnStart.Enabled = false;
@@ -112,6 +112,7 @@ namespace KFC_Server
                     _kfcDict.Remove(address);
 
                     // set status
+                    textBoxAddress.Text = string.Empty;
                     textBoxStatus.Text = ServerStatus.Stopped;
                     textBoxStatus.BackColor = Color.LightPink;
                     btnStop.Enabled = false;

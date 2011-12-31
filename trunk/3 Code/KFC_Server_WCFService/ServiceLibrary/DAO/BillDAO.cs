@@ -8,6 +8,7 @@ using System.Data;
 using System.Collections;
 using System.Collections.Generic;
 
+
 namespace ServiceLibrary
 {
     public class BillDAO
@@ -21,7 +22,7 @@ namespace ServiceLibrary
         public bool insert(BillDTO info)
         {
             bool successfull = false;
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.ConnectionSettings.ConnectionString);
 
             try
             {
@@ -30,7 +31,7 @@ namespace ServiceLibrary
                 bill.BillDate = info.BillDate;
                 bill.Total = (int)info.Total;
                 bill.BillStatus = info.BillStatus;
-                bill.DeleteNote = info.DeleteNode;
+                bill.DeleteNote = info.DeleteNote;
                 bill.EmpID = info.EmpID;
                 bill.OrderID = info.OrderID;
 
@@ -55,7 +56,7 @@ namespace ServiceLibrary
         {
             bool successfull = false;
 
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.ConnectionSettings.ConnectionString);
             try
             {
                 var bill = db.BILLs.SingleOrDefault(b => b.BillID == info.BillID);
@@ -79,7 +80,7 @@ namespace ServiceLibrary
         {
             bool successfull = false;
 
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.ConnectionSettings.ConnectionString);
             try
             {
                 var bill = db.BILLs.SingleOrDefault(b => b.BillID == billID);
@@ -110,7 +111,7 @@ namespace ServiceLibrary
         public bool update(BillDTO info)
         {
             bool successfull = false;
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.ConnectionSettings.ConnectionString);
             try
             {
                 var bill = db.BILLs.SingleOrDefault(b => b.BillID == info.BillID);
@@ -120,7 +121,7 @@ namespace ServiceLibrary
                     bill.BillDate = info.BillDate;
                     bill.Total = (int)info.Total;
                     bill.BillStatus = info.BillStatus;
-                    bill.DeleteNote = info.DeleteNode;
+                    bill.DeleteNote = info.DeleteNote;
                     bill.EmpID = info.EmpID;
                     bill.OrderID = info.OrderID;
                     db.SubmitChanges();
@@ -143,7 +144,7 @@ namespace ServiceLibrary
          */
         public BillDTO[] selectInfo(BillDTO info)
         {
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.ConnectionSettings.ConnectionString);
             try
             {
                 if (info == null)
@@ -157,7 +158,7 @@ namespace ServiceLibrary
                         b.BillStatus = int.Parse(bill.BillStatus.ToString());
                         b.Total = (float)bill.Total;
                         b.BillDate = DateTime.Parse(bill.BillDate.ToString());
-                        b.DeleteNode = bill.DeleteNote;
+                        b.DeleteNote = bill.DeleteNote;
                         bill.EmpID = info.EmpID;
                         bill.OrderID = info.OrderID;
                         bills.Add(b);
@@ -180,7 +181,7 @@ namespace ServiceLibrary
                         b.BillStatus = int.Parse(bill.BillStatus.ToString());
                         b.Total = (float)bill.Total;
                         b.BillDate = DateTime.Parse(bill.BillDate.ToString());
-                        b.DeleteNode = bill.DeleteNote;
+                        b.DeleteNote = bill.DeleteNote;
                         bill.EmpID = info.EmpID;
                         bill.OrderID = info.OrderID;
                         bills.Add(b);
