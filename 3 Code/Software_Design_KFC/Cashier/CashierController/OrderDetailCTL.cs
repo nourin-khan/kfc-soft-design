@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using CashierDTO;
+using CashierController.KFCService;
 
 namespace CashierController
 {
@@ -34,7 +34,7 @@ namespace CashierController
             return true;
         }
 
-        public bool delete(string orderDetailID)
+        public bool delete(string orderId, string foodId)
         {
             return true;
         }

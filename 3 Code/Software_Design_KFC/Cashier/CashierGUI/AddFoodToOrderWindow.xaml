@@ -1,0 +1,52 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" mc:Ignorable="d"
+	x:Class="CashierGUI.AddFoodToOrderWindow"
+	x:Name="Window"
+	Title="AddFoodToOrderWindow"
+	Width="419" Height="377" Background="#FFDEEDF1" Loaded="Window_Loaded">
+
+	<Grid x:Name="LayoutRoot">
+		<StackPanel HorizontalAlignment="Center" Margin="0" Orientation="Vertical" VerticalAlignment="Top" Width="300">
+			<TextBlock x:Name="foodIdLbl" TextWrapping="Wrap" FontSize="14.667" FontWeight="Bold" Margin="0,20,0,0"><Run Text="Mã món ăn:"/><InlineUIContainer>
+					<TextBox x:Name="foodIdTxtBox"
+						TextWrapping="Wrap" Margin="35,0,0,0" Width="120" FontStyle="Italic" FontWeight="Normal" IsEnabled="False"  />
+				</InlineUIContainer></TextBlock>
+			<TextBlock x:Name="foodNameLbl" TextWrapping="Wrap" FontSize="14.667" d:LayoutOverrides="Width" Margin="0,20,0,0" FontWeight="Bold"><Run Text="Tên món ăn:"/><InlineUIContainer>
+					<ComboBox x:Name="foodNameCmbBox"
+						Width="120" Margin="30,0,0,0" SelectionChanged="foodNameCmbBox_SelectionChanged" />
+				</InlineUIContainer></TextBlock>
+			<TextBlock x:Name="qtyLbl" TextWrapping="Wrap" Margin="0,20,18.7,0" FontSize="14.667" d:LayoutOverrides="Width" FontWeight="Bold"><Run Text="Số lượng:"/><InlineUIContainer>
+					<TextBox x:Name="qtyTxtBox" InputMethod.IsInputMethodEnabled="False" Margin="50,0,0,0" TextWrapping="Wrap" Width="120" FontWeight="Normal"/>
+				</InlineUIContainer></TextBlock>
+			<TextBlock x:Name="foodPriceLbl" TextWrapping="Wrap" Margin="0,20,23.86,0" FontSize="14.667" d:LayoutOverrides="Width" FontWeight="Bold"><Run Text="Giá gốc: "/><InlineUIContainer>
+					<TextBox x:Name="foodPriceTxtBox" TextWrapping="Wrap" FontStyle="Italic" Margin="57,0,0,0" Width="120" FontWeight="Normal" IsEnabled="False"/>
+				</InlineUIContainer></TextBlock>
+			<TextBlock x:Name="discountPriceLbl" HorizontalAlignment="Left" TextWrapping="Wrap" FontSize="14.667" Margin="0,20,0,0" FontWeight="Bold"><Run Text="Giảm:"/><InlineUIContainer>
+					<TextBox x:Name="discountPriceTxtBox" TextWrapping="Wrap" FontStyle="Italic" Margin="77,0,0,0" Width="120" FontWeight="Normal" IsEnabled="False"/>
+				</InlineUIContainer></TextBlock>
+		</StackPanel>
+		<Grid x:Name="OK" Height="25" Margin="0,0,0,32.625" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="90.5" MouseLeftButtonDown="OK_MouseLeftButtonDown">
+			<Border x:Name="border6" BorderBrush="#FF1679E7" BorderThickness="1" CornerRadius="5" Background="#FF1679E7">
+				<i:Interaction.Triggers>
+					<i:EventTrigger EventName="MouseLeave">
+						<ei:ChangePropertyAction x:Name="Add_MouseLeave3" TargetObject="{Binding ElementName=OK}" PropertyName="Background">
+							<ei:ChangePropertyAction.Value>
+								<SolidColorBrush Color="#FF1679E7"/>
+							</ei:ChangePropertyAction.Value>
+						</ei:ChangePropertyAction>
+					</i:EventTrigger>
+					<i:EventTrigger EventName="MouseEnter">
+						<ei:ChangePropertyAction x:Name="Add_MouseEnter3" PropertyName="Background" TargetObject="{Binding ElementName=OK}">
+							<ei:ChangePropertyAction.Value>
+								<SolidColorBrush Color="#FF005EDE"/>
+							</ei:ChangePropertyAction.Value>
+						</ei:ChangePropertyAction>
+					</i:EventTrigger>
+				</i:Interaction.Triggers>
+				<TextBlock x:Name="textBlock3" TextWrapping="Wrap" FontSize="16" TextAlignment="Center" FontFamily="Times New Roman" HorizontalAlignment="Center" Foreground="White" Text="OK" Margin="0,-1" VerticalAlignment="Center"/>
+			</Border>
+		</Grid>
+	</Grid>
+</Window>

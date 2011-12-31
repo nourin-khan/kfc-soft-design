@@ -24,6 +24,7 @@ namespace CashierGUI
         OrderCTL orderCtl = new OrderCTL();
         private int _tableNum;
         private string _orderId;
+        private DataTable _foodList;
 
         public int tableNum
         {
@@ -64,7 +65,9 @@ namespace CashierGUI
             //    orderStatusTxtBlock.Text = "Chưa xác nhận";
 
             //get food detail of order, note here: quantity in foodlist is the quantity customer orders
-            DataTable foodList = orderCtl.viewFoodDetail(orderId);                      
+            _foodList = orderCtl.viewFoodDetail(orderId);
+            FoodGridView.DataContext = _foodList;
+            FoodGridView.Columns[0].Visibility = Visibility.Hidden;
 		}
         #endregion
 
@@ -80,6 +83,41 @@ namespace CashierGUI
         private void OK_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();
+        }
+
+        private void addBut_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            AddFoodToOrderWindow addWindow = new AddFoodToOrderWindow();
+            addWindow.orderId = orderId;
+            addWindow.ShowDialog();
+
+            //add new row to datagrid
+            if (addWindow.selectedFood != null)
+            {
+                _foodList.Rows.Add(addWindow.selectedFood.FoodID, addWindow.selectedFood.FoodName, addWindow.quantity, addWindow.selectedFood.FoodPrice, addWindow.selectedFood.DiscountPrice);
+                FoodGridView.DataContext = _foodList;
+                FoodGridView.Columns[0].Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void deleteBut_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (FoodGridView.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Mời bạn chọn thức ăn muốn xóa trước");
+                return;
+            }
+
+            string foodID = _foodList.Rows[FoodGridView.SelectedIndex][0].ToString(); //index 0 means foodID columns
+            OrderDetailCTL ordDetailCtl = new OrderDetailCTL();
+            //OrderDetailDTO ordDetailDto = new OrderDetailDTO();
+            //delete in db
+            ordDetailCtl.delete(orderId, foodID);
+            
+            //remove in _foodList and update GUI
+            _foodList.Rows.RemoveAt(FoodGridView.SelectedIndex);
+            FoodGridView.DataContext = _foodList;
+            FoodGridView.Columns[0].Visibility = Visibility.Hidden;
         }
 
        
