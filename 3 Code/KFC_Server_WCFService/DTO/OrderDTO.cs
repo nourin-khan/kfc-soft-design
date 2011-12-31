@@ -11,7 +11,7 @@ namespace DTO
          * 1 - not confirm yet
          * 2 - already confirm
         */
-    enum OrderStatus
+    public enum OrderStatus
     {
         DELETED = 0,
         UNCONFIRMED = 1,

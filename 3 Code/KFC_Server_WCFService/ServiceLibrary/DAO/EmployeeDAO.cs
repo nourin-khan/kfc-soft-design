@@ -28,7 +28,7 @@ namespace ServiceLibrary
          */
         public string getEmployeeName(string empID)
         {
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.ConnectionSettings.ConnectionString);
             try
             {
                 var emp = db.EMPLOYEEs.SingleOrDefault(e => e.EmpID == empID);
@@ -48,7 +48,7 @@ namespace ServiceLibrary
          */
         public string getEmployeeID(string empName)
         {
-            var db = new KFCDatabaseClassesDataContext();
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.ConnectionSettings.ConnectionString);
             try
             {
                 var emp = db.EMPLOYEEs.SingleOrDefault(e => e.EmpID == empName);

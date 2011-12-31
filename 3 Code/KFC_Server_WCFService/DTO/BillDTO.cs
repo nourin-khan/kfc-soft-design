@@ -52,13 +52,13 @@ namespace DTO
             get { return _billStatus; }
             set { _billStatus = value; }
         }
-        private string _deleteNode;
+        private string _deleteNote;
 
         [DataMember]
-        public string DeleteNode
+        public string DeleteNote
         {
-            get { return _deleteNode; }
-            set { _deleteNode = value; }
+            get { return _deleteNote; }
+            set { _deleteNote = value; }
         }
         private string _empID;
 

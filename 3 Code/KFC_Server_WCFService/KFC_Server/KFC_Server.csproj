@@ -48,24 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO\BillDAO.cs" />
-    <Compile Include="DAO\EmployeeDAO.cs" />
-    <Compile Include="DAO\FoodDAO.cs" />
-    <Compile Include="DAO\FoodGroupDAO.cs" />
-    <Compile Include="DAO\OrderDAO.cs" />
-    <Compile Include="DAO\OrderDetailDAO.cs" />
-    <Compile Include="DAO\ParameterDAO.cs" />
-    <Compile Include="DAO\ReportDAO.cs" />
-    <Compile Include="DAO\WarningDAO.cs" />
-    <Compile Include="IService.cs" />
-    <Compile Include="KFCDatabaseClasses.cs">
-      <DependentUpon>KFCDatabaseClasses.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="KFCDatabaseClasses.designer.cs">
-      <DependentUpon>KFCDatabaseClasses.dbml</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,14 +56,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service.cs" />
-    <Compile Include="Settings.cs" />
     <Compile Include="ThreadServiceHost.cs" />
     <None Include="App.config">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="KFCDatabaseClasses.dbml.layout">
-      <DependentUpon>KFCDatabaseClasses.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -95,11 +72,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="KFCDatabaseClasses.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>KFCDatabaseClasses.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -114,6 +86,10 @@
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{E18B1F24-CE88-421B-8E7F-D275FAB52AE9}</Project>
       <Name>DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiceLibrary\ServiceLibrary.csproj">
+      <Project>{A743A6BA-7F4A-4925-8D66-50003D76E9BE}</Project>
+      <Name>ServiceLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

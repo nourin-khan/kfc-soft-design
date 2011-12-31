@@ -19,7 +19,7 @@ namespace ServiceLibrary
             bool successfull = false;
             try
             {
-                var db = new KFCDatabaseClassesDataContext();
+                var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.ConnectionSettings.ConnectionString);
                 ORDER_ order = new ORDER_();
                 order.OrderID = info.OrderID;
                 order.OrderDate = info.OrderDate;
@@ -48,7 +48,7 @@ namespace ServiceLibrary
             bool successfull = false;
             try
             {
-                var db = new KFCDatabaseClassesDataContext();
+                var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.ConnectionSettings.ConnectionString);
                 var order = db.ORDER_s.SingleOrDefault(o => o.OrderID == info.OrderID);
                 db.ORDER_s.DeleteOnSubmit(order);
                 db.SubmitChanges();
@@ -78,7 +78,7 @@ namespace ServiceLibrary
             bool successfull = false;
             try
             {
-                var db = new KFCDatabaseClassesDataContext();
+                var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.ConnectionSettings.ConnectionString);
                 var order = db.ORDER_s.SingleOrDefault(o => o.OrderID == newInfo.OrderID);
                 if (order != null)
                 {
@@ -111,8 +111,8 @@ namespace ServiceLibrary
         public OrderDTO[] selectInfo(OrderDTO info = null)
         {
             try
-            {    
-                var db = new KFCDatabaseClassesDataContext();
+            {
+                var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.ConnectionSettings.ConnectionString);
                 if (info == null)
                 {
                 

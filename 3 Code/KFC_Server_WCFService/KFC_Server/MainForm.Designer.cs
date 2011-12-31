@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnBrowse = new System.Windows.Forms.Button();
+            this.txtAddress = new System.Windows.Forms.TextBox();
             this.txtFile = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
@@ -42,8 +44,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtAddress = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -64,6 +64,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Configuration";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(10, 56);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(26, 13);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Port";
+            // 
             // btnBrowse
             // 
             this.btnBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -74,6 +83,17 @@
             this.btnBrowse.Text = "Browse";
             this.btnBrowse.UseVisualStyleBackColor = true;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAddress.Location = new System.Drawing.Point(96, 53);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(182, 20);
+            this.txtAddress.TabIndex = 1;
+            this.txtAddress.Text = "8090";
             // 
             // txtFile
             // 
@@ -100,7 +120,7 @@
             // btnExit
             // 
             this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnExit.Location = new System.Drawing.Point(275, 243);
+            this.btnExit.Location = new System.Drawing.Point(298, 221);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(107, 23);
             this.btnExit.TabIndex = 2;
@@ -111,7 +131,7 @@
             // btnStop
             // 
             this.btnStop.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnStop.Location = new System.Drawing.Point(275, 214);
+            this.btnStop.Location = new System.Drawing.Point(298, 192);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(107, 23);
             this.btnStop.TabIndex = 3;
@@ -122,7 +142,7 @@
             // btnStart
             // 
             this.btnStart.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnStart.Location = new System.Drawing.Point(275, 185);
+            this.btnStart.Location = new System.Drawing.Point(298, 163);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(107, 23);
             this.btnStart.TabIndex = 3;
@@ -140,7 +160,7 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(13, 144);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(209, 123);
+            this.groupBox2.Size = new System.Drawing.Size(276, 123);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "KFC Server Info";
@@ -151,7 +171,7 @@
             this.textBoxStatus.Location = new System.Drawing.Point(62, 71);
             this.textBoxStatus.Name = "textBoxStatus";
             this.textBoxStatus.ReadOnly = true;
-            this.textBoxStatus.Size = new System.Drawing.Size(130, 20);
+            this.textBoxStatus.Size = new System.Drawing.Size(208, 20);
             this.textBoxStatus.TabIndex = 5;
             this.textBoxStatus.Text = "Stopped";
             // 
@@ -170,7 +190,7 @@
             this.textBoxAddress.Location = new System.Drawing.Point(62, 45);
             this.textBoxAddress.Name = "textBoxAddress";
             this.textBoxAddress.ReadOnly = true;
-            this.textBoxAddress.Size = new System.Drawing.Size(130, 20);
+            this.textBoxAddress.Size = new System.Drawing.Size(208, 20);
             this.textBoxAddress.TabIndex = 3;
             // 
             // label2
@@ -188,7 +208,7 @@
             this.textBoxName.Location = new System.Drawing.Point(62, 19);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.ReadOnly = true;
-            this.textBoxName.Size = new System.Drawing.Size(130, 20);
+            this.textBoxName.Size = new System.Drawing.Size(208, 20);
             this.textBoxName.TabIndex = 1;
             this.textBoxName.Text = "KFC Service";
             // 
@@ -201,31 +221,11 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Name";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 56);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(26, 13);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Port";
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAddress.Location = new System.Drawing.Point(96, 53);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(182, 20);
-            this.txtAddress.TabIndex = 1;
-            this.txtAddress.Text = "8090";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(417, 279);
+            this.ClientSize = new System.Drawing.Size(417, 276);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.btnStop);
