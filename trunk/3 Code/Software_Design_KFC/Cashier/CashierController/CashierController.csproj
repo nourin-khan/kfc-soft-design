@@ -33,6 +33,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,15 +50,67 @@
     <Compile Include="OrderDetailCTL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportCTL.cs" />
+    <Compile Include="Service References\KFCService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="CashierCTL_ClassDiagram.cd" />
+    <None Include="Service References\KFCService\CashierController.KFCService.BillDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\KFCService\CashierController.KFCService.FoodDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\KFCService\CashierController.KFCService.FoodGroupDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\KFCService\CashierController.KFCService.OrderDetailDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\KFCService\CashierController.KFCService.OrderDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\KFCService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\KFCService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\KFCService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\KFCService\Service.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CashierDTO\CashierDTO.csproj">
       <Project>{F6B3B173-E071-4A1C-BBBE-673D548AAAD6}</Project>
       <Name>CashierDTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\KFCService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\KFCService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\KFCService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\KFCService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\KFCService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
