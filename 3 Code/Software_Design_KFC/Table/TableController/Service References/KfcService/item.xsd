@@ -5,7 +5,7 @@
       <xs:element minOccurs="0" name="BillDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="BillID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="BillStatus" type="xs:int" />
-      <xs:element minOccurs="0" name="DeleteNode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DeleteNote" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="EmpID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="OrderID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Total" type="xs:float" />

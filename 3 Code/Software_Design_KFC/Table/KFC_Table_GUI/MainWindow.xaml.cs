@@ -14,6 +14,7 @@ using TableController;
 using TableController.KfcService;
 using System.Threading;
 using System.Windows.Media.Animation;
+using System.Collections;
 
 namespace KFC_Table_GUI
 {
@@ -245,12 +246,13 @@ namespace KFC_Table_GUI
             // create the order
             OrderDTO orderInfo = new OrderDTO();
             orderInfo.OrderDate = DateTime.Now;
-            orderInfo.OrderStatus = 1;
-            orderInfo.OrderNote = null;
+            orderInfo.OrderStatus = OrderStatus.UNCONFIRMED;
+            orderInfo.OrderNote = string.Empty;
             orderInfo.TableNum = ConfigurationCTL.TableNum;
             // order id is complexity string that's include table No. and datetime.now
             orderInfo.OrderID = ConfigurationCTL.TableNum + orderInfo.OrderDate.ToString();
 
+            ArrayList orderDetail = new ArrayList();
             foreach (UserControlFoodInCart item in lstboxOrder.Items)
             {
                 OrderDetailDTO info = new OrderDetailDTO();
@@ -259,7 +261,7 @@ namespace KFC_Table_GUI
                 info.FoodID = item.FoodID;
                 info.FoodNote = string.Empty;
                 info.OrderID = orderInfo.OrderID;
-                
+                orderDetail.Add(info);
 
                 UserControlFoodInKitchen foodInKitchen = new UserControlFoodInKitchen();
                 foodInKitchen.image.Source = item.image.Source;
@@ -267,8 +269,15 @@ namespace KFC_Table_GUI
                 lstboxKitchen.Items.Add(foodInKitchen);
             }
 
-            // add new order using order controller
-            orderCtrl.add(orderInfo);
+            try
+            {
+                // add new order using order controller
+                orderCtrl.add(orderInfo, orderDetail);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error");
+            }
         }
 
         private void btnPayment_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
