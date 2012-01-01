@@ -60,7 +60,7 @@
 	</i:Interaction.Triggers>
 
 	<Grid x:Name="LayoutRoot" Margin="0,0,-0.5,-1.5">
-		<Image x:Name="image" Source="/KFC_Table_GUI;component/Images/Button/close.png" Stretch="Fill" Margin="0,0,4,3" RenderTransformOrigin="0.5,0.5">
+		<Image x:Name="image" Source="/KFC_Table_GUI;component/Images/Button/gnome_window_close.png" Stretch="Fill" Margin="0,0,4,3" RenderTransformOrigin="0.5,0.5">
 			<Image.RenderTransform>
 				<TransformGroup>
 					<ScaleTransform/>
