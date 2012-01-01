@@ -32,7 +32,7 @@ namespace TableController.KfcService {
         private int BillStatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DeleteNodeField;
+        private string DeleteNoteField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmpIDField;
@@ -93,14 +93,14 @@ namespace TableController.KfcService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string DeleteNode {
+        public string DeleteNote {
             get {
-                return this.DeleteNodeField;
+                return this.DeleteNoteField;
             }
             set {
-                if ((object.ReferenceEquals(this.DeleteNodeField, value) != true)) {
-                    this.DeleteNodeField = value;
-                    this.RaisePropertyChanged("DeleteNode");
+                if ((object.ReferenceEquals(this.DeleteNoteField, value) != true)) {
+                    this.DeleteNoteField = value;
+                    this.RaisePropertyChanged("DeleteNote");
                 }
             }
         }
@@ -594,12 +594,6 @@ namespace TableController.KfcService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="KfcService.IService")]
     public interface IService {
         
-        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/DeleteBillByDTO", ReplyAction="http://tempuri.org/IService/DeleteBillByDTOResponse")]
-        bool DeleteBillByDTO(TableController.KfcService.BillDTO billDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/DeleteBillById", ReplyAction="http://tempuri.org/IService/DeleteBillByIdResponse")]
-        bool DeleteBillById(string billID);
-        
         [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/SelectBillByDTO", ReplyAction="http://tempuri.org/IService/SelectBillByDTOResponse")]
         TableController.KfcService.BillDTO[] SelectBillByDTO(TableController.KfcService.BillDTO billDTO);
         
@@ -680,6 +674,12 @@ namespace TableController.KfcService {
         
         [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/addBill", ReplyAction="http://tempuri.org/IService/addBillResponse")]
         bool addBill(TableController.KfcService.BillDTO billDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/DeleteBillByDTO", ReplyAction="http://tempuri.org/IService/DeleteBillByDTOResponse")]
+        bool DeleteBillByDTO(TableController.KfcService.BillDTO billDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/DeleteBillById", ReplyAction="http://tempuri.org/IService/DeleteBillByIdResponse")]
+        bool DeleteBillById(string billID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -707,14 +707,6 @@ namespace TableController.KfcService {
         
         public ServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
-        }
-        
-        public bool DeleteBillByDTO(TableController.KfcService.BillDTO billDTO) {
-            return base.Channel.DeleteBillByDTO(billDTO);
-        }
-        
-        public bool DeleteBillById(string billID) {
-            return base.Channel.DeleteBillById(billID);
         }
         
         public TableController.KfcService.BillDTO[] SelectBillByDTO(TableController.KfcService.BillDTO billDTO) {
@@ -823,6 +815,14 @@ namespace TableController.KfcService {
         
         public bool addBill(TableController.KfcService.BillDTO billDTO) {
             return base.Channel.addBill(billDTO);
+        }
+        
+        public bool DeleteBillByDTO(TableController.KfcService.BillDTO billDTO) {
+            return base.Channel.DeleteBillByDTO(billDTO);
+        }
+        
+        public bool DeleteBillById(string billID) {
+            return base.Channel.DeleteBillById(billID);
         }
     }
 }

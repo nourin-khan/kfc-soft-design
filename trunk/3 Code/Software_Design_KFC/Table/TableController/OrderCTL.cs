@@ -4,8 +4,23 @@ using System.Linq;
 using System.Text;
 using TableController.KfcService;
 
+
 namespace TableController
 {
+    /* @ convention:
+         * _orderStatus: 
+         * 0 - deleted
+         * 1 - not confirm yet
+         * 2 - already confirm
+        */
+
+    public class OrderStatus
+    {
+        public static readonly int DELETED = 0;
+        public static readonly int UNCONFIRMED = 1;
+        public static readonly int COMFIRMED = 2;
+    }
+
     public class OrderCTL
     {
         /*
@@ -105,6 +120,23 @@ namespace TableController
         public OrderDTO[] viewOrderInfo(string orderID)
         {
             return null;
+        }
+
+        public void add(OrderDTO orderInfo, System.Collections.ArrayList orderDetail)
+        {
+            try
+            {
+                ServiceClient wsClient = ConnectionCTL.connectWebService();
+                wsClient.addOrder(orderInfo);
+                foreach (OrderDetailDTO detail in orderDetail)
+                {
+                    wsClient.addOrderDetail(detail);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
