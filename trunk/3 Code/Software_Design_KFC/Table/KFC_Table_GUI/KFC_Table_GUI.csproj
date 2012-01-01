@@ -176,9 +176,13 @@
     <Resource Include="Images\160-popco.png" />
     <Resource Include="Images\19-Combo-Canh-Ga-Flava-Roast-large.png" />
     <Resource Include="Images\21-Combo-com-ga-Flava-Roast-large.png" />
-    <Resource Include="Images\Button\choose.png" />
-    <Resource Include="Images\Button\close.png" />
+    <Resource Include="Images\Button\gnome_window_close.png">
+      <Link>Images\Button\gnome_window_close.png</Link>
+    </Resource>
+    <Resource Include="Images\Button\navigation_left_frame.png" />
+    <Resource Include="Images\Button\navigation_right_frame.png" />
     <Resource Include="Images\Button\payment_icon.png" />
+    <Resource Include="Images\Button\right.png" />
     <Resource Include="Images\Chicken\large-garan01.png" />
     <Resource Include="Images\Chicken\large-garan02.png" />
     <Resource Include="Images\Chicken\large-garan03.png" />

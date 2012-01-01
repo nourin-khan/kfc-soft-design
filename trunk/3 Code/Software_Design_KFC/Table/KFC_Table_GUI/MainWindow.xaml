@@ -282,6 +282,58 @@
 				</Setter.Value>
 			</Setter>
 		</Style>
+		<Storyboard x:Key="navigate_right_mouse_enter">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="navigate_right">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="navigate_right_mouse_leave">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="navigate_right">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.6"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="navigate_left_mouse_enter">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="navigate_left">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="navigate_left_mouse_leave">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="navigate_left">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.6"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="navigate_right_LeftButtonDown">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(SkewTransform.AngleX)" Storyboard.TargetName="navigate_right">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="15"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(SkewTransform.AngleY)" Storyboard.TargetName="navigate_right">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="15"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="navigate_right_MouseLeftUp">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(SkewTransform.AngleX)" Storyboard.TargetName="navigate_right">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(SkewTransform.AngleY)" Storyboard.TargetName="navigate_right">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="navigate_left_MouseLeftDown">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(SkewTransform.AngleX)" Storyboard.TargetName="navigate_left">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="15"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(SkewTransform.AngleY)" Storyboard.TargetName="navigate_left">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="15"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="navigate_left_MouseLeftUp">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(SkewTransform.AngleX)" Storyboard.TargetName="navigate_left">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(SkewTransform.AngleY)" Storyboard.TargetName="navigate_left">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
 	</Window.Resources>
 	<Window.Background>
 		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -295,6 +347,14 @@
 			<BeginStoryboard Storyboard="{StaticResource moveToRightOver}"/>
 			<BeginStoryboard Storyboard="{StaticResource moveToRightLeave}"/>
 			<BeginStoryboard Storyboard="{StaticResource moveToLeftLeave}"/>
+			<BeginStoryboard Storyboard="{StaticResource navigate_right_mouse_enter}"/>
+			<BeginStoryboard Storyboard="{StaticResource navigate_right_mouse_leave}"/>
+			<BeginStoryboard x:Name="navigate_left_mouse_enter_BeginStoryboard" Storyboard="{StaticResource navigate_left_mouse_enter}"/>
+			<BeginStoryboard Storyboard="{StaticResource navigate_left_mouse_leave}"/>
+			<BeginStoryboard Storyboard="{StaticResource navigate_right_LeftButtonDown}"/>
+			<BeginStoryboard Storyboard="{StaticResource navigate_right_MouseLeftUp}"/>
+			<BeginStoryboard Storyboard="{StaticResource navigate_left_MouseLeftDown}"/>
+			<BeginStoryboard Storyboard="{StaticResource navigate_left_MouseLeftUp}"/>
 		</EventTrigger>
 	</Window.Triggers>
 	<Grid x:Name="main" Margin="0,8,-8,-8">
@@ -332,7 +392,11 @@
             				</LinearGradientBrush>
             			</ListBox.Background>
             		</ListBox>
-            		<local:UserControlCloseButton x:Name="btnCancelOrder" Height="41.592" Canvas.Left="170.768" Canvas.Top="231.077" Width="43.732" ToolTip="Hủy" MouseLeftButtonDown="btnCancelOrder_MouseLeftButtonDown"/>
+            		<local:UserControlCloseButton x:Name="btnCancelOrder" Height="41.592" Canvas.Left="170.768" Canvas.Top="231.077" Width="43.732" ToolTip="Hủy" MouseLeftButtonDown="btnCancelOrder_MouseLeftButtonDown">
+            			<local:UserControlCloseButton.Effect>
+            				<DropShadowEffect BlurRadius="0" Color="White" ShadowDepth="3" Direction="140"/>
+            			</local:UserControlCloseButton.Effect>
+            		</local:UserControlCloseButton>
             		<local:UserControlOK x:Name="btnOrder" Canvas.Left="98.833" Canvas.Top="231.077" Height="41.592" Width="45.791" ToolTip="Đặt món" MouseLeftButtonUp="btnOrder_MouseLeftButtonUp"/>
             	</Canvas>
             </Expander>
@@ -431,5 +495,53 @@
 				</Border>
 			</TabItem>
 		</TabControl>
+        <Image x:Name="navigate_right" Grid.Column="2" Margin="-4.5,407.5,-7,0" Source="Images/Button/navigation_right_frame.png" Stretch="Fill" Height="55" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" MouseLeftButtonUp="navigate_right_MouseLeftButtonUp">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+			<i:Interaction.Triggers>
+				<i:EventTrigger EventName="MouseEnter">
+					<ei:ControlStoryboardAction Storyboard="{StaticResource navigate_right_mouse_enter}"/>
+				</i:EventTrigger>
+				<i:EventTrigger EventName="MouseLeave">
+					<ei:ControlStoryboardAction Storyboard="{StaticResource navigate_right_mouse_leave}"/>
+				</i:EventTrigger>
+				<i:EventTrigger EventName="MouseLeftButtonDown">
+					<ei:ControlStoryboardAction Storyboard="{StaticResource navigate_right_LeftButtonDown}"/>
+				</i:EventTrigger>
+				<i:EventTrigger EventName="MouseLeftButtonUp">
+					<ei:ControlStoryboardAction Storyboard="{StaticResource navigate_right_MouseLeftUp}"/>
+				</i:EventTrigger>
+			</i:Interaction.Triggers>
+		</Image>
+        <Image x:Name="navigate_left" Height="55" Margin="8,407.5,-6,0" Source="Images/Button/navigation_left_frame.png" Stretch="Fill" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" MouseLeftButtonUp="navigate_left_MouseLeftButtonUp">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+			<i:Interaction.Triggers>
+				<i:EventTrigger EventName="MouseEnter">
+					<ei:ControlStoryboardAction Storyboard="{StaticResource navigate_left_mouse_enter}"/>
+				</i:EventTrigger>
+				<i:EventTrigger EventName="MouseLeave">
+					<ei:ControlStoryboardAction Storyboard="{StaticResource navigate_left_mouse_leave}"/>
+				</i:EventTrigger>
+				<i:EventTrigger EventName="MouseLeftButtonDown">
+					<ei:ControlStoryboardAction Storyboard="{StaticResource navigate_left_MouseLeftDown}"/>
+				</i:EventTrigger>
+				<i:EventTrigger EventName="MouseLeftButtonUp">
+					<ei:ControlStoryboardAction Storyboard="{StaticResource navigate_left_MouseLeftUp}"/>
+				</i:EventTrigger>
+			</i:Interaction.Triggers>
+		</Image>
 	</Grid>
 </Window>

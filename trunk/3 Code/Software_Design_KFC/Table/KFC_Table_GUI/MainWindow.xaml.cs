@@ -38,6 +38,9 @@ namespace KFC_Table_GUI
     public partial class MainWindow : Window
     {
         private MyCommand configureCommand;
+        private static int foodIndex;
+        private int foodTotal;
+        private FoodDTO[] foodList;
         
         #region Attributes
         private const int FOOD_NUMBER = 9;
@@ -59,11 +62,14 @@ namespace KFC_Table_GUI
             configureCommand = new MyCommand();
             configureCommand.ReloadAll += new MyCommand.Refresh(configureCommand_ReloadAll);
             InputBinding ib = new InputBinding(configureCommand, new KeyGesture(Key.C, ModifierKeys.Control | ModifierKeys.Shift));
-            this.InputBindings.Add(ib);            
+            this.InputBindings.Add(ib);
+     
+            // initialize food index
+            foodIndex = 0;
 
             // controller
             foodCtrl = new FoodCTL();
-            orderCtrl = new OrderCTL(); 
+            orderCtrl = new OrderCTL();
         }
 
         void configureCommand_ReloadAll()
@@ -76,6 +82,9 @@ namespace KFC_Table_GUI
         #region Events Handle
 		private void Window_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
+            // initialize some control
+            navigate_left.Opacity = 0;
+
             statusItems.SelectedIndex = 0;
 
             foods = new List<UserControlFood>();
@@ -96,7 +105,7 @@ namespace KFC_Table_GUI
             } 
             
             // get all food
-            getAllFood();            
+            getAllFood();
         }
 
         private void getAllFood()
@@ -106,11 +115,14 @@ namespace KFC_Table_GUI
             // get all food
             try
             {
-                FoodDTO[] foodList = foodCtrl.getFoodGroup();
+                foodList = foodCtrl.getFoodGroup();
+                foodTotal = foodList.Count();
                 if (foodList == null)
                 {
                     return;
                 }
+                // set food index with zero
+                foodIndex = 0;
                 int idx = 0;
                 while (idx < FOOD_NUMBER)
                 {
@@ -119,6 +131,7 @@ namespace KFC_Table_GUI
                     foods[idx].FoodDetails = foodList[idx].Description + "\nGiá : " + foodList[idx].FoodPrice.ToString();
                     foods[idx].FoodImageSource = new BitmapImage(new Uri(imagesFolder + foodList[idx].Image));
                     idx++;
+                    foodIndex++;
                 }
             }
             catch
@@ -267,6 +280,50 @@ namespace KFC_Table_GUI
             if (confirm.IsConfirm)
             {
                 // handling
+            }
+        }
+
+        private void navigate_left_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            naviagteLeft();
+        }
+
+        private void naviagteLeft()
+        {
+            for (int idx = FOOD_NUMBER - 1; idx >= 0; idx--)
+            {
+                if (foodIndex <= 0)
+                {
+                    foodIndex = foodTotal - 1;
+                }
+
+                foods[idx].FoodName = foodList[foodIndex].FoodName;
+                foods[idx].FoodPrice = foodList[foodIndex].FoodPrice.ToString();
+                foods[idx].FoodDetails = foodList[foodIndex].Description + "\nGiá : " + foodList[foodIndex].FoodPrice.ToString();
+                foods[idx].FoodImageSource = new BitmapImage(new Uri(imagesFolder + foodList[foodIndex].Image));
+                foodIndex--;                
+            }
+        }
+
+        private void navigate_right_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            // load
+            naviagteRight();
+        }
+
+        private void naviagteRight()
+        {
+            for (int idx = 0; idx < FOOD_NUMBER; idx++ )
+            {
+                foods[idx].FoodName = foodList[foodIndex].FoodName;
+                foods[idx].FoodPrice = foodList[foodIndex].FoodPrice.ToString();
+                foods[idx].FoodDetails = foodList[foodIndex].Description + "\nGiá : " + foodList[foodIndex].FoodPrice.ToString();
+                foods[idx].FoodImageSource = new BitmapImage(new Uri(imagesFolder + foodList[foodIndex].Image));
+                foodIndex++;
+                if (foodIndex >= foodTotal)
+                {
+                    foodIndex = 0;
+                }
             }
         }
  
