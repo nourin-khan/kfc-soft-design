@@ -54,6 +54,7 @@
     <Compile Include="DAO\ReportDAO.cs" />
     <Compile Include="DAO\WarningDAO.cs" />
     <Compile Include="IService.cs" />
+    <Compile Include="IServiceCallback.cs" />
     <Compile Include="KFCDatabaseClasses.cs">
       <DependentUpon>KFCDatabaseClasses.dbml</DependentUpon>
     </Compile>

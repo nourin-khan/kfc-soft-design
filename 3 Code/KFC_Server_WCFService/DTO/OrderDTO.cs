@@ -5,18 +5,6 @@ using System.Runtime.Serialization;
 
 namespace DTO
 {
-    /* @ convention:
-         * _orderStatus: 
-         * 0 - deleted
-         * 1 - not confirm yet
-         * 2 - already confirm
-        */
-    public enum OrderStatus
-    {
-        DELETED = 0,
-        UNCONFIRMED = 1,
-        COMFIRMED = 2
-    }
     [DataContract]
     public class OrderDTO
     {
