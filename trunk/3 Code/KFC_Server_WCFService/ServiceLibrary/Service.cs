@@ -7,8 +7,23 @@ using System.Text;
 
 namespace ServiceLibrary
 {
+    /**
+     * Duplex
+     * Callback
+     * Service
+     */
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
     public class Service : IService
     {
+        //private int answer = 0;
+        
+        IServiceCallback Callback
+        {
+            get
+            {
+                return OperationContext.Current.GetCallbackChannel<IServiceCallback>();
+            }
+        }
         public bool addFood(DTO.FoodDTO foodDTO)
         {
             FoodDAO data = new FoodDAO();

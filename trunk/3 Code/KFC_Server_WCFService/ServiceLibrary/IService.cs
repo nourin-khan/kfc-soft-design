@@ -8,7 +8,8 @@ using DTO;
 
 namespace ServiceLibrary
 {
-    [ServiceContract]
+    // inter face duplex callback service
+    [ServiceContract(SessionMode = SessionMode.Required, CallbackContract = typeof(IServiceCallback))]
     public interface IService
     {
         #region FoodDAO
