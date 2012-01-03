@@ -23,7 +23,7 @@ namespace CashierGUI
         private bool _free = true;  // free: no customer
         private bool _printedBill = false; //payment flag: paid bill
         private int _tableNum = 101; //table number
-        private string _orderId;
+        private string _empId;
 		
 		public bool free
 		{
@@ -68,10 +68,10 @@ namespace CashierGUI
                 this.TableNumLbl.Content = "BÀN " + _tableNum.ToString();
             }
         }
-        public string orderId
+        public string empId
         {
-            get { return _orderId; }
-            set { _orderId = value; }
+            get { return _empId; }
+            set { _empId = value; }
         }
 
         #endregion
@@ -85,8 +85,13 @@ namespace CashierGUI
             if (this.free == true) //note here, != true (changes for test and coding)
             {
                 BillDetailWindow billDetail = new BillDetailWindow();
-                billDetail.tableNum = tableNum;
+                billDetail.tableNum = this.tableNum;
+                billDetail.empId = this.empId;
                 billDetail.ShowDialog();
+                if (billDetail.isCashed)
+                {
+                    this.free = true;
+                }
             }
             
         }

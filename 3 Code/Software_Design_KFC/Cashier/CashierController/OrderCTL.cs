@@ -75,21 +75,7 @@ namespace CashierController
         {
             return null;
         }
-
-        /*
-         * Description: view food list of Order
-         * Input: orderId
-         * Output: list of food detail of the order
-         * query: select ord.foodId, food.foodName as N'Tên món ăn', ord.quantity as N'Số lượng', food.foodPrice as N'Giá gốc', food.discountPrice as N'Giảm'
-                   from ORDER_DETAIL ord JOIN  FOOD food ON (ord.FoodID = food.FoodID)
-                     where ord.OrderID = '56929' <- input
-         * Author:
-         * Note:
-         */
-        public DataTable viewFoodDetail(string orderID)
-        {
-            return null;
-        }
+        
         /*
          * Description: do when customer pay for order
          * Input: orderDTO, orderID
@@ -97,9 +83,28 @@ namespace CashierController
          * Author:
          * Note:
          */
-        public void payForOrder(BillDTO billDTO)
+        public int getOrderTotal(string orderID)
         {
+            int total = 0;
+            DataTable foodList = this.viewFoodDetail(orderID);
+            for (int i = 0; i < foodList.Rows.Count; i++ )
+            {
+                int price = int.Parse(foodList.Rows[i]["Giá gốc"].ToString()) - int.Parse(foodList.Rows[i]["Giảm"].ToString());
+                total = total + int.Parse(foodList.Rows[i]["Số lượng"].ToString()) * price;
+            }
+            return total;
+        }
 
+        /*
+         * Description: do when customer pay for order
+         * Input: orderDTO, orderID
+         * Output:
+         * Author:
+         * Note:
+         */
+        public bool payForOrder(BillDTO billDTO)
+        {
+            return true;
         }
         public void payForOrder(string billID)
         {
@@ -118,6 +123,23 @@ namespace CashierController
             return null;
         }
         public OrderDTO viewOrderInfo(string orderID)
+        {
+            return null;
+        }
+
+
+
+        /*
+         * Description: view food list of Order
+         * Input: orderId
+         * Output: list of food detail of the order
+         * query: select ord.foodId, food.foodName as N'Tên món ăn', ord.quantity as N'Số lượng', food.foodPrice as N'Giá gốc', food.discountPrice as N'Giảm'
+                   from ORDER_DETAIL ord JOIN  FOOD food ON (ord.FoodID = food.FoodID)
+                     where ord.OrderID = '56929' <- input
+         * Author:
+         * Note:
+         */
+        public DataTable viewFoodDetail(string orderID)
         {
             return null;
         }
@@ -149,7 +171,8 @@ namespace CashierController
          */
         public OrderDTO[] getUnfreeTable(int floorNum)
         {
-            return null;
+            ServiceClient ws = ConnectionCTL.connectWebService();
+            return null;            
         }
     }
 }

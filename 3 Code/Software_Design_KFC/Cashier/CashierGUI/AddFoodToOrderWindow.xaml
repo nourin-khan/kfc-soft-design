@@ -5,26 +5,26 @@
 	x:Class="CashierGUI.AddFoodToOrderWindow"
 	x:Name="Window"
 	Title="AddFoodToOrderWindow"
-	Width="419" Height="377" Background="#FFDEEDF1" Loaded="Window_Loaded">
+	Width="419" Height="377" Background="#FFDEEDF1" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
 	<Grid x:Name="LayoutRoot">
-		<StackPanel HorizontalAlignment="Center" Margin="0" Orientation="Vertical" VerticalAlignment="Top" Width="300">
+		<StackPanel Margin="40.5,0,72.5,0" Orientation="Vertical" VerticalAlignment="Top">
 			<TextBlock x:Name="foodIdLbl" TextWrapping="Wrap" FontSize="14.667" FontWeight="Bold" Margin="0,20,0,0"><Run Text="Mã món ăn:"/><InlineUIContainer>
 					<TextBox x:Name="foodIdTxtBox"
-						TextWrapping="Wrap" Margin="35,0,0,0" Width="120" FontStyle="Italic" FontWeight="Normal" IsEnabled="False"  />
+						TextWrapping="Wrap" Margin="35,0,0,0" Width="139" FontStyle="Italic" FontWeight="Normal" IsEnabled="False"  />
 				</InlineUIContainer></TextBlock>
 			<TextBlock x:Name="foodNameLbl" TextWrapping="Wrap" FontSize="14.667" d:LayoutOverrides="Width" Margin="0,20,0,0" FontWeight="Bold"><Run Text="Tên món ăn:"/><InlineUIContainer>
 					<ComboBox x:Name="foodNameCmbBox"
-						Width="120" Margin="30,0,0,0" SelectionChanged="foodNameCmbBox_SelectionChanged" />
+						Width="139" Margin="30,0,0,0" SelectionChanged="foodNameCmbBox_SelectionChanged" FontWeight="Normal" />
 				</InlineUIContainer></TextBlock>
 			<TextBlock x:Name="qtyLbl" TextWrapping="Wrap" Margin="0,20,18.7,0" FontSize="14.667" d:LayoutOverrides="Width" FontWeight="Bold"><Run Text="Số lượng:"/><InlineUIContainer>
-					<TextBox x:Name="qtyTxtBox" InputMethod.IsInputMethodEnabled="False" Margin="50,0,0,0" TextWrapping="Wrap" Width="120" FontWeight="Normal"/>
+					<TextBox x:Name="qtyTxtBox" InputMethod.IsInputMethodEnabled="False" Margin="50,0,0,0" TextWrapping="Wrap" Width="139" FontWeight="Normal"/>
 				</InlineUIContainer></TextBlock>
 			<TextBlock x:Name="foodPriceLbl" TextWrapping="Wrap" Margin="0,20,23.86,0" FontSize="14.667" d:LayoutOverrides="Width" FontWeight="Bold"><Run Text="Giá gốc: "/><InlineUIContainer>
-					<TextBox x:Name="foodPriceTxtBox" TextWrapping="Wrap" FontStyle="Italic" Margin="57,0,0,0" Width="120" FontWeight="Normal" IsEnabled="False"/>
+					<TextBox x:Name="foodPriceTxtBox" TextWrapping="Wrap" FontStyle="Italic" Margin="57,0,0,0" Width="139" FontWeight="Normal" IsEnabled="False"/>
 				</InlineUIContainer></TextBlock>
 			<TextBlock x:Name="discountPriceLbl" HorizontalAlignment="Left" TextWrapping="Wrap" FontSize="14.667" Margin="0,20,0,0" FontWeight="Bold"><Run Text="Giảm:"/><InlineUIContainer>
-					<TextBox x:Name="discountPriceTxtBox" TextWrapping="Wrap" FontStyle="Italic" Margin="77,0,0,0" Width="120" FontWeight="Normal" IsEnabled="False"/>
+					<TextBox x:Name="discountPriceTxtBox" TextWrapping="Wrap" FontStyle="Italic" Margin="77,0,0,0" Width="139" FontWeight="Normal" IsEnabled="False"/>
 				</InlineUIContainer></TextBlock>
 		</StackPanel>
 		<Grid x:Name="OK" Height="25" Margin="0,0,0,32.625" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="90.5" MouseLeftButtonDown="OK_MouseLeftButtonDown">
