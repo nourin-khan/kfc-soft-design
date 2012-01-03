@@ -25,6 +25,8 @@ namespace CashierGUI
         private int _tableNum;
         private string _orderId;
         private DataTable _foodList;
+        private string _empId;
+        private bool _isCashed = false;
 
         public int tableNum
         {
@@ -40,6 +42,16 @@ namespace CashierGUI
             get { return _orderId; }
             set { _orderId = value; }
         }
+        public string empId
+        {
+            get { return _empId; }
+            set { _empId = value; }
+        }
+        public bool isCashed
+        {
+            get { return _isCashed; }
+            set { _isCashed = value; }
+        }      
 
         #endregion
 
@@ -72,12 +84,19 @@ namespace CashierGUI
         #endregion
 
         #region Eventhandler
-        #endregion
-
         private void cashBut_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+
             MoneyCalWindow moneyCal = new MoneyCalWindow();
-            moneyCal.Show();
+            moneyCal.orderTotal = orderCtl.getOrderTotal(orderId);
+            moneyCal.empId = this.empId;
+            moneyCal.ShowDialog();
+            if (!moneyCal.closed)
+            {
+                this._isCashed = true;
+                this.Close();
+            }
+
         }
 
         private void OK_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -95,8 +114,9 @@ namespace CashierGUI
             if (addWindow.selectedFood != null)
             {
                 _foodList.Rows.Add(addWindow.selectedFood.FoodID, addWindow.selectedFood.FoodName, addWindow.quantity, addWindow.selectedFood.FoodPrice, addWindow.selectedFood.DiscountPrice);
-                FoodGridView.DataContext = _foodList;
-                FoodGridView.Columns[0].Visibility = Visibility.Hidden;
+                FoodGridView.UpdateLayout(); // thu nghiem
+                //DataContext = _foodList;
+                //FoodGridView.Columns[0].Visibility = Visibility.Hidden;
             }
         }
 
@@ -113,13 +133,11 @@ namespace CashierGUI
             //OrderDetailDTO ordDetailDto = new OrderDetailDTO();
             //delete in db
             ordDetailCtl.delete(orderId, foodID);
-            
+
             //remove in _foodList and update GUI
             _foodList.Rows.RemoveAt(FoodGridView.SelectedIndex);
-            FoodGridView.DataContext = _foodList;
-            FoodGridView.Columns[0].Visibility = Visibility.Hidden;
+            FoodGridView.Items.RemoveAt(FoodGridView.SelectedIndex);
         }
-
-       
+        #endregion    
 	}
 }

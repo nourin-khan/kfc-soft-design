@@ -7,5 +7,8 @@ namespace CashierController
 {
     public class ConfigurationCTL
     {
+        public static int TableNum;
+        public static string ImagesFolder;
+        public static string ServiceAddress;
     }
 }

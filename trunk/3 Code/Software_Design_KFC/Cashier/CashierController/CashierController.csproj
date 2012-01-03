@@ -45,6 +45,7 @@
     <Compile Include="BillCTL.cs" />
     <Compile Include="ConfigurationCTL.cs" />
     <Compile Include="ConnectionCTL.cs" />
+    <Compile Include="EmployeeCTL.cs" />
     <Compile Include="FoodCTL.cs" />
     <Compile Include="OrderCTL.cs" />
     <Compile Include="OrderDetailCTL.cs" />
@@ -59,6 +60,11 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="CashierCTL_ClassDiagram.cd" />
+    <None Include="Properties\DataSources\DTO.BillDTO.datasource" />
+    <None Include="Properties\DataSources\DTO.FoodDTO.datasource" />
+    <None Include="Properties\DataSources\DTO.FoodGroupDTO.datasource" />
+    <None Include="Properties\DataSources\DTO.OrderDetailDTO.datasource" />
+    <None Include="Properties\DataSources\DTO.OrderDTO.datasource" />
     <None Include="Service References\KFCService\CashierController.KFCService.BillDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -84,12 +90,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\KFCService\Service.wsdl" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CashierDTO\CashierDTO.csproj">
-      <Project>{F6B3B173-E071-4A1C-BBBE-673D548AAAD6}</Project>
-      <Name>CashierDTO</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

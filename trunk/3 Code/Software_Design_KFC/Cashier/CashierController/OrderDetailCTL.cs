@@ -18,7 +18,15 @@ namespace CashierController
          */
         public bool add(OrderDetailDTO orderDetailDTO)
         {
-            return true;
+            ServiceClient ws = ConnectionCTL.connectWebService();
+            try
+            {
+                return ws.addOrderDetail(orderDetailDTO);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /*

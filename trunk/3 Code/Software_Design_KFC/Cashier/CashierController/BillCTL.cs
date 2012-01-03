@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using CashierDTO;
+using CashierController.KFCService;
 
 namespace CashierController
 {
@@ -25,7 +25,15 @@ namespace CashierController
          */
         public bool add(BillDTO billDTO)
         {
-            return true;
+            ServiceClient ws = ConnectionCTL.connectWebService();
+           try
+           {
+               return ws.addBill(billDTO);
+           }
+           catch (System.Exception ex)
+           {
+               throw ex;
+           }
         }
 
         /*

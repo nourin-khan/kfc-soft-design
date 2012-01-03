@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CashierController;
 
 namespace CashierGUI
 {
@@ -16,8 +17,45 @@ namespace CashierGUI
 	/// Interaction logic for MoneyCalWindow.xaml
 	/// </summary>
 	public partial class MoneyCalWindow : Window
-	{
-		public MoneyCalWindow()
+    {
+        #region Attribute
+        private int _orderTotal;
+        private string _orderId;
+        private bool _closed = true;
+        private string _empId;
+
+        public string orderId
+        {
+            get { return _orderId; }
+            set { _orderId = value; }
+        }
+        public int orderTotal
+        {
+            get { return _orderTotal; }
+
+            set 
+            { 
+                _orderTotal = value;
+                this.sumTxtBlock.Text = value.ToString();
+                this.payMoneyTxtBlock.Text = value.ToString();
+            }        
+        }
+        public bool closed
+        {
+            get { return _closed; }
+            set { _closed = value; }
+        }
+        public string empId
+        {
+            get { return _empId; }
+            set { _empId = value; }
+        }
+
+        //delegate
+        
+        #endregion
+
+        public MoneyCalWindow()
 		{
 			this.InitializeComponent();
 			
@@ -26,6 +64,18 @@ namespace CashierGUI
 
         private void OK_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            //set parameter for new bill
+            CashierController.KFCService.BillDTO billDto = new CashierController.KFCService.BillDTO();
+            billDto.OrderID = this.orderId;
+            billDto.EmpID = this.empId;
+            billDto.Total = this.orderTotal;
+            billDto.BillStatus = 2;
+            billDto.BillDate = DateTime.Now;
+            billDto.BillID = this.orderId;
+            BillCTL billCtl = new BillCTL();
+            billCtl.add(billDto);
+
+            this.closed = false;
             this.Close();
         }
 	}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CashierController.KFCService;
+using System.ServiceModel;
 
 namespace CashierController
 {
@@ -83,7 +84,12 @@ namespace CashierController
          */
         public FoodDTO[] getAllFoodList()
         {
-            return null;
+            ServiceClient wsClient = ConnectionCTL.connectWebService();
+            try { return wsClient.SelectFoodByDTO(null); }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /*

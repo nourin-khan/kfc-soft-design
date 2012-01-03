@@ -2,22 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CashierController.KFCService;
+using System.ServiceModel;
 
 namespace CashierController
 {
     public class ConnectionCTL
     {
-        /*
-         * Description: connect web service
-         * Input:
-         * Output: @true: connect successfully
-         * Author:
-         * Note:
+
+        /**
+         * get service client from service channel
          */
-        public static bool connectWebService()
+        public static KFCService.ServiceClient connectWebService()
         {
-            return true;
+            System.ServiceModel.EndpointAddress endpoint =
+                new System.ServiceModel.EndpointAddress(string.IsNullOrWhiteSpace(ConfigurationCTL.ServiceAddress) ? @"http://localhost:8090/KFC_Server/ServiceLibrary/Service/" : ConfigurationCTL.ServiceAddress);
+            KFCService.ServiceClient wsClient = new KFCService.ServiceClient(new WSHttpBinding(), endpoint);
+            return wsClient;
         }
+        
         /*
          * Description: disconnect web service
          * Input:
