@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Data;
 
 namespace ServiceLibrary
 {
@@ -202,6 +203,76 @@ namespace ServiceLibrary
         {
             BillDAO data = new BillDAO();
             return data.selectInfo(billID);
+        }
+
+        public string getEmployeeName(string empID)
+        {
+            EmployeeDAO data = new EmployeeDAO();
+            return data.getEmployeeName(empID);
+        }
+
+
+        //new function
+        public string[] getEmpIdAndPermission(string username, string password)
+        {
+            EmployeeDAO data = new EmployeeDAO();
+            return data.getEmpIdAndPermission(username, password);
+        }
+
+        public string getPermission(string empId)
+        {
+            EmployeeDAO data = new EmployeeDAO();
+            return data.getPermission(empId);
+        }
+
+
+        //NEW FUCNTION OF ORDERDAO
+        /*
+        * Description: view food list of Order
+        * Input: orderId
+        * Output: list of food detail of the order
+        * query: select ord.foodId, food.foodName as N'Tên món ăn', ord.quantity as N'Số lượng', food.foodPrice as N'Giá gốc', food.discountPrice as N'Giảm'
+                  from ORDER_DETAIL ord JOIN  FOOD food ON (ord.FoodID = food.FoodID)
+                    where ord.OrderID = '56929' <- input
+        * Author:
+        * Note:
+        */
+        public DataTable viewFoodDetail(string orderID)
+        {
+            OrderDAO data = new OrderDAO();
+            return data.viewFoodDetail(orderID);
+        }
+
+        /*
+         * Description: view information of order
+         * Input: table number
+         * Output: OrderDTO - orderstatus, orderdate, orderID
+         * query: SELECT OrderID, OrderDate, OrderStatus, TableNum
+                    FROM ORDER_ ord
+                    WHERE TableNum = 101 AND ord.OrderID NOT IN (SELECT OrderID FROM dbo.BILL)
+         * Author:
+         * Note:
+         */
+        public DTO.OrderDTO viewOrderInfo(int tableNum)
+        {
+            OrderDAO data = new OrderDAO();
+            return data.viewOrderInfo(tableNum);
+        }
+
+        /*
+         * Description: get unfree table on a specified floor
+         * Input: floor number
+         * Output: OrderDTO - orderId, tablenum
+         * query: SELECT TableNum, OrderID
+                    FROM ORDER_
+                    WHERE OrderID NOT IN (SELECT OrderID FROM BILL)
+         * Author:
+         * Note:
+         */
+        public DTO.OrderDTO[] getUnfreeTable(int floorNum)
+        {
+            OrderDAO data = new OrderDAO();
+            return data.getUnfreeTable(floorNum);
         }
     }
 }

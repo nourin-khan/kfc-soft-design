@@ -60,5 +60,27 @@ namespace ServiceLibrary
             }
         }
 
+        /* 
+         * Description: get employee Id and permission
+         * Input: username, password
+         * Output: employee ID (string[0]) and permission (string[1])
+         * Author:
+         */
+        public string[] getEmpIdAndPermission(string username, string password)
+        {
+            return null;
+        }
+
+        /* 
+         * Description: get permission
+         * Input: employee
+         * Output: permission
+         * Author:
+         */
+        public string getPermission(string empId)
+        {
+            return null;
+        }
+
     }
 }
