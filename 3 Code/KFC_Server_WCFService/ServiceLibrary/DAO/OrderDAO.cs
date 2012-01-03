@@ -2,6 +2,7 @@
 using DTO;
 using System.Linq;
 using System.Collections.Generic;
+using System.Data;
 
 
 namespace ServiceLibrary
@@ -150,6 +151,51 @@ namespace ServiceLibrary
         public OrderDTO[] selectInfo(string orderID)
         {
             return this.selectInfo(new OrderDTO(orderID));
+        }
+
+        /*
+        * Description: view food list of Order
+        * Input: orderId
+        * Output: list of food detail of the order
+        * query: select ord.foodId, food.foodName as N'Tên món ăn', ord.quantity as N'Số lượng', food.foodPrice as N'Giá gốc', food.discountPrice as N'Giảm'
+                  from ORDER_DETAIL ord JOIN  FOOD food ON (ord.FoodID = food.FoodID)
+                    where ord.OrderID = '56929' <- input
+        * Author:
+        * Note:
+        */
+        public DataTable viewFoodDetail(string orderID)
+        {
+            return null;
+        }
+
+        /*
+         * Description: view information of order
+         * Input: table number
+         * Output: OrderDTO - orderstatus, orderdate, orderID
+         * query: SELECT OrderID, OrderDate, OrderStatus, TableNum
+                    FROM ORDER_ ord
+                    WHERE TableNum = 101 AND ord.OrderID NOT IN (SELECT OrderID FROM dbo.BILL)
+         * Author:
+         * Note:
+         */
+        public DTO.OrderDTO viewOrderInfo(int tableNum)
+        {
+            return null;
+        }
+
+        /*
+         * Description: get unfree table on a specified floor
+         * Input: floor number
+         * Output: OrderDTO - orderId, tablenum
+         * query: SELECT TableNum, OrderID
+                    FROM ORDER_
+                    WHERE OrderID NOT IN (SELECT OrderID FROM BILL)
+         * Author:
+         * Note:
+         */
+        public DTO.OrderDTO[] getUnfreeTable(int floorNum)
+        {
+            return null;
         }
     }        
 }
