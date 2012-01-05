@@ -17,14 +17,179 @@ namespace ServiceLibrary
     public class Service : IService
     {
         //private int answer = 0;
-        
-        IServiceCallback Callback
+        #region Instance fields
+        // thread sync lock object
+        private static object syncObj = new object();
+
+        // callback interface for clients
+        private IServiceCallback callback = null;
+
+        // delegate used for BoradcasetEvent
+        public delegate void KfcEventHandler(object sender, KfcEventArgs e);
+        public static event KfcEventHandler KfcEvent;
+        private KfcEventHandler eventHanler = null;
+
+        // holds a list of client, and a delegate to allow the BroadcastEvent to work
+        // out which client delegate to invoke
+        static Dictionary<Client, KfcEventHandler> clients = new Dictionary<Client, KfcEventHandler>();
+        // current client
+        private Client client;
+        #endregion
+
+        #region Helper
+        /**
+         * searchers the internal list of clients for a particular client, and returns true if the client could be found
+         * @param <clientType> the type of client 
+         * @return true if client was found in the internal list <clients>
+         */
+        private bool checkIfClientHasExist(string id)
         {
-            get
+            foreach (Client client in clients.Keys)
             {
-                return OperationContext.Current.GetCallbackChannel<IServiceCallback>();
+                if (client.Id == id)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /**
+         * searchers the internal list of clients for a particular client, 
+         * and returns the individual client KfcEventHandler delegate in the order that it can be invoked
+         * @param <clientType> the type of client 
+         * @return The true KfcEventHandler delegate for the clientType
+         */
+        private KfcEventHandler getKfcHandler(string id)
+        {
+            foreach (Client client in clients.Keys)
+            {
+                if (client.Id == id )
+                {
+                    KfcEventHandler handler = null;
+                    clients.TryGetValue(client, out handler);
+                    return handler;
+                }
+            }
+            return null;
+        }
+
+        /**
+         * searchers the internal list of clients for a particular client, 
+         * and returns the actual client who's client type matches the type input
+         * @param <clientType> the type of client 
+         * @return Client
+         */
+        private Client getClient(ClientType clientType)
+        {
+            foreach (Client client in clients.Keys)
+            {
+                if (client.ClientType == clientType)
+                {
+                    return client;
+                }
+            }
+            return null;
+        }
+        #endregion
+
+        /**
+         * when newly client join to network, it calls this method to register
+         * @param <client> newly client
+         * @return list clients after newly client added
+         */
+        public Client[] Join(Client client)
+        {
+            bool clientAdded = false;
+            // create kfc event handler
+            eventHanler = new KfcEventHandler(ServiceEventHanlder);
+
+            lock (syncObj)
+            {
+                if (!checkIfClientHasExist(client.Id) && client != null)
+                {
+                    this.client = client;
+                    clients.Add(client, ServiceEventHanlder);
+                    clientAdded = true;
+                }
+            }
+
+            // if the new client successfully added
+            // get callback instance
+            if (clientAdded)
+            {
+                callback = OperationContext.Current.GetCallbackChannel<IServiceCallback>();
+                // add this newly joined client KfcEventHanlder delegate,
+                // multicast delegate for invocation
+                KfcEvent += ServiceEventHanlder;
+                Client[] list = new Client[clients.Count];
+                // carry out a critical section that copy all clients to a new list
+                lock (syncObj)
+                {
+                    clients.Keys.CopyTo(list, 0);
+                }
+                return list;
+            }
+            else
+            {
+                return null;
             }
         }
+
+        /**
+         * Broadcast message
+         * loop through all connected client and invoke their KfcEventHanlder delegate asynchronously
+         * @param <e> The KfcEventArgs to use to send to all connected client
+         */
+        private void BroadCastMessage(KfcEventArgs e)
+        {
+            KfcEventHandler temp = KfcEvent;
+            
+
+            // Loop through all connected clients and invoke their KfcEventHandler delegate asynchronously,
+            // which will first call the ServiceEventHandler() method and will allow a asynch callback to call the EndAsync() method on completion of the initial call
+            if (temp != null)
+            {
+                foreach (KfcEventHandler handler in temp.GetInvocationList())
+                {
+                    handler.BeginInvoke(this, e, new AsyncCallback(EndAsync), null);
+                }
+            }
+
+        }
+
+        /**
+         * EndAsync
+         * is called as a callback from the asynchronous call, so simply get the delegate
+         * and do an EndInvoke on it, to signal the asynchronous call is now completed
+         * @param <ar> The asynch result
+         */
+        private void EndAsync(IAsyncResult ar)
+        {
+            KfcEventHandler handler = null;
+            try
+            {
+                // get the standard System.Runtime.Remoting.Messaging.AsyncResult, 
+                // and  then cast it to the correct delegate type, and do an end invoke
+                System.Runtime.Remoting.Messaging.AsyncResult asres = (System.Runtime.Remoting.Messaging.AsyncResult)ar;
+                handler = (KfcEventHandler)asres.AsyncDelegate;
+                handler.EndInvoke(ar);
+            }
+            catch
+            {
+                KfcEvent -= handler;
+            }
+        }
+
+        private void ServiceEventHanlder(object sender, KfcEventArgs e)
+        {
+
+        }
+
+        
+
+
+        #region Food
         public bool addFood(DTO.FoodDTO foodDTO)
         {
             FoodDAO data = new FoodDAO();
@@ -60,7 +225,10 @@ namespace ServiceLibrary
             FoodDAO data = new FoodDAO();
             return data.selectInfo(foodID);
         }
+        
+        #endregion
 
+        #region Food Group
         public bool addFoodGroup(DTO.FoodGroupDTO foodGroupDTO)
         {
             FoodGroupDAO data = new FoodGroupDAO();
@@ -96,7 +264,10 @@ namespace ServiceLibrary
             FoodGroupDAO data = new FoodGroupDAO();
             return data.selectInfo(foodGroupID);
         }
+        
+        #endregion
 
+        #region Order
         public bool addOrder(DTO.OrderDTO orderDTO)
         {
             OrderDAO data = new OrderDAO();
@@ -133,106 +304,12 @@ namespace ServiceLibrary
             return data.selectInfo(orderID);
         }
 
-        public bool addOrderDetail(DTO.OrderDetailDTO orderDetailDTO)
-        {
-            OrderDetailDAO data = new OrderDetailDAO();
-            return data.insert(orderDetailDTO);
-        }
-
-        public bool deleteOrderDetail(DTO.OrderDetailDTO orderDetailDTO)
-        {
-            OrderDetailDAO data = new OrderDetailDAO();
-            return data.delete(orderDetailDTO);
-        }
-
-        public bool deleteOrderDetail(string orderDetailID)
-        {
-            // not install yet
-            throw new NotImplementedException();
-        }
-
-        public bool updateOrderDetail(DTO.OrderDetailDTO newInfo)
-        {
-            OrderDetailDAO data = new OrderDetailDAO();
-            return data.update(newInfo);
-        }
-
-        public DTO.OrderDetailDTO[] selectOrderDetailInfo(DTO.OrderDetailDTO orderDetailDTO = null)
-        {
-            OrderDetailDAO data = new OrderDetailDAO();
-            return data.selectInfo(orderDetailDTO);
-        }
-
-        public DTO.OrderDetailDTO[] selectOrderDetailInfo(string orderId, string foodId)
-        {
-            OrderDetailDAO data = new OrderDetailDAO();
-            return data.selectInfo(orderId, foodId);
-        }
-
-        public bool addBill(DTO.BillDTO billDTO)
-        {
-            BillDAO data = new BillDAO();
-            return data.insert(billDTO);
-        }
-
-        public bool deleteBill(DTO.BillDTO billDTO)
-        {
-            BillDAO data = new BillDAO();
-            return data.delete(billDTO);
-        }
-
-        public bool deleteBill(string billID)
-        {
-            BillDAO data = new BillDAO();
-            return data.delete(billID);
-        }
-
-        public bool updateBill(DTO.BillDTO newInfo)
-        {
-            BillDAO data = new BillDAO();
-            return data.update(newInfo);
-        }
-
-        public DTO.BillDTO[] selectBillInfo(DTO.BillDTO billDTO = null)
-        {
-            BillDAO data = new BillDAO();
-            return data.selectInfo(billDTO);
-        }
-
-        public DTO.BillDTO[] selectBillInfo(string billID)
-        {
-            BillDAO data = new BillDAO();
-            return data.selectInfo(billID);
-        }
-
-        public string getEmployeeName(string empID)
-        {
-            EmployeeDAO data = new EmployeeDAO();
-            return data.getEmployeeName(empID);
-        }
-
-
-        //new function
-        public string[] getEmpIdAndPermission(string username, string password)
-        {
-            EmployeeDAO data = new EmployeeDAO();
-            return data.getEmpIdAndPermission(username, password);
-        }
-
-        public string getPermission(string empId)
-        {
-            EmployeeDAO data = new EmployeeDAO();
-            return data.getPermission(empId);
-        }
-
-
-        //NEW FUCNTION OF ORDERDAO
         /*
         * Description: view food list of Order
         * Input: orderId
         * Output: list of food detail of the order
         * query: select ord.foodId, food.foodName as N'Tên món ăn', ord.quantity as N'Số lượng', food.foodPrice as N'Giá gốc', food.discountPrice as N'Giảm'
-                  from ORDER_DETAIL ord JOIN  FOOD food ON (ord.FoodID = food.FoodID)
+                    from ORDER_DETAIL ord JOIN  FOOD food ON (ord.FoodID = food.FoodID)
                     where ord.OrderID = '56929' <- input
         * Author:
         * Note:
@@ -274,5 +351,110 @@ namespace ServiceLibrary
             OrderDAO data = new OrderDAO();
             return data.getUnfreeTable(floorNum);
         }
+        
+        #endregion
+
+        #region Order Detail
+        public bool addOrderDetail(DTO.OrderDetailDTO orderDetailDTO)
+        {
+            OrderDetailDAO data = new OrderDetailDAO();
+            return data.insert(orderDetailDTO);
+        }
+
+        public bool deleteOrderDetail(DTO.OrderDetailDTO orderDetailDTO)
+        {
+            OrderDetailDAO data = new OrderDetailDAO();
+            return data.delete(orderDetailDTO);
+        }
+
+        public bool deleteOrderDetail(string orderDetailID)
+        {
+            // not install yet
+            throw new NotImplementedException();
+        }
+
+        public bool updateOrderDetail(DTO.OrderDetailDTO newInfo)
+        {
+            OrderDetailDAO data = new OrderDetailDAO();
+            return data.update(newInfo);
+        }
+
+        public DTO.OrderDetailDTO[] selectOrderDetailInfo(DTO.OrderDetailDTO orderDetailDTO = null)
+        {
+            OrderDetailDAO data = new OrderDetailDAO();
+            return data.selectInfo(orderDetailDTO);
+        }
+
+        public DTO.OrderDetailDTO[] selectOrderDetailInfo(string orderId, string foodId)
+        {
+            OrderDetailDAO data = new OrderDetailDAO();
+            return data.selectInfo(orderId, foodId);
+        }
+        
+        #endregion
+
+        #region Bill
+        public bool addBill(DTO.BillDTO billDTO)
+        {
+            BillDAO data = new BillDAO();
+            return data.insert(billDTO);
+        }
+
+        public bool deleteBill(DTO.BillDTO billDTO)
+        {
+            BillDAO data = new BillDAO();
+            return data.delete(billDTO);
+        }
+
+        public bool deleteBill(string billID)
+        {
+            BillDAO data = new BillDAO();
+            return data.delete(billID);
+        }
+
+        public bool updateBill(DTO.BillDTO newInfo)
+        {
+            BillDAO data = new BillDAO();
+            return data.update(newInfo);
+        }
+
+        public DTO.BillDTO[] selectBillInfo(DTO.BillDTO billDTO = null)
+        {
+            BillDAO data = new BillDAO();
+            return data.selectInfo(billDTO);
+        }
+
+        public DTO.BillDTO[] selectBillInfo(string billID)
+        {
+            BillDAO data = new BillDAO();
+            return data.selectInfo(billID);
+        }
+        
+        #endregion
+
+        #region Employee and Permission
+        public string getEmployeeName(string empID)
+        {
+            EmployeeDAO data = new EmployeeDAO();
+            return data.getEmployeeName(empID);
+        }
+
+
+        //new function
+        public string[] getEmpIdAndPermission(string username, string password)
+        {
+            EmployeeDAO data = new EmployeeDAO();
+            return data.getEmpIdAndPermission(username, password);
+        }
+
+        public string getPermission(string empId)
+        {
+            EmployeeDAO data = new EmployeeDAO();
+            return data.getPermission(empId);
+        }
+        
+        #endregion
+
+
     }
 }

@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using DTO;
+using System.Data;
 
 namespace ServiceLibrary
 {
@@ -112,5 +113,34 @@ namespace ServiceLibrary
         BillDTO[] selectBillInfo(string billID);
         #endregion
 
+        [OperationContract]
+        string[] getEmpIdAndPermission(string username, string password);
+
+        [OperationContract]
+        string getPermission(string empId);
+
+        [OperationContract]
+        DataTable viewFoodDetail(string orderID);
+
+        [OperationContract]
+        DTO.OrderDTO viewOrderInfo(int tableNum);
+
+        [OperationContract]
+        DTO.OrderDTO[] getUnfreeTable(int floorNum);
+
+        [OperationContract]
+        string getEmployeeName(string empID);
+
+        //[System.ServiceModel.OperationContractAttribute(IsOneWay = true, IsInitiating = false)]
+        //System.IAsyncResult BeginJoin(Client client, System.AsyncCallback callback, object asyncState);
+
+        //Client[] EndJoin(System.IAsyncResult result);
+    }
+
+    public enum MessageType { NewOrder, Payment, ConfirmOrder }
+
+    public class KfcEventArgs : EventArgs
+    {
+        public MessageType msgType;
     }
 }

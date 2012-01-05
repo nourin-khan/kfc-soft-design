@@ -68,7 +68,36 @@ namespace ServiceLibrary
          */
         public string[] getEmpIdAndPermission(string username, string password)
         {
-            return null;
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.ConnectionSettings.ConnectionString);
+            try
+            {
+                //var query = from e in db.EMPLOYEEs
+                //            join p in db.PERMISSIONs on e.PositionID equals p.PositionID
+                //            where e.Username == username && e.Password == password
+                //            select new { e.EmpID, p.Permission1 };
+                var query = db.EMPLOYEEs.Join(
+                        db.PERMISSIONs,
+                        e => e.PositionID,
+                        p => p.PositionID,
+                        (e, p) => new { e.EmpID, e.Username, e.Password, p.Permission1 }
+                    )
+                    .Where(condition => condition.Username == username && condition.Password == password)
+                    .Select(row => new { row.EmpID, row.Permission1 });
+                var obj = query.SingleOrDefault();
+                if (obj == null)
+                {
+                    throw new Exception("Username and password doesn't exists on database");
+                }
+                else
+                {
+                    return new string[] { obj.EmpID, obj.Permission1 };
+                }
+
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /* 
@@ -79,7 +108,31 @@ namespace ServiceLibrary
          */
         public string getPermission(string empId)
         {
-            return null;
+            var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.ConnectionSettings.ConnectionString);
+            try
+            {
+                var query = db.EMPLOYEEs.Join(
+                        db.PERMISSIONs,
+                        e => e.PositionID,
+                        p => p.PositionID,
+                        (e, p) => new { e.EmpID, p.Permission1 }
+                    )
+                    .Where(condition => condition.EmpID == empId)
+                    .Select(result => result.Permission1);
+                
+                if (query != null)
+                {
+                    return query.Single();
+                } 
+                else
+                {
+                    throw new Exception("Employee id " + empId + "doesn't exists on database");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
 
     }
