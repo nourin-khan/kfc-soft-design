@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CashierController;
 using CashierController.KFCService;
+using System.Data;
 
 namespace CashierGUI
 {
@@ -248,6 +249,16 @@ namespace CashierGUI
                 this._foodList[index] = editWind.foodDto;
                 this.FoodGridView.UpdateLayout();
             }
+        }
+
+        private void Report_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DailyReport rptCtl = new DailyReport();
+            DateTime date = DateTime.Parse("9/18/2011");
+            int total = rptCtl.getTotalOfDay(date);
+            MessageBox.Show(total.ToString());
+            //DataTable data = rptCtl.getDailyReport(date);
+            //this.ReportGridView.DataContext = data;
         }
 
     }
