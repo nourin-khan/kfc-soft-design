@@ -18,18 +18,6 @@ namespace CashierController
     public class EmployeeCTL
     {
         /*
-         * Description: get employee id and permission
-         * Input: username, password
-         * Output: get employeeId (string[0]) and permission (string[1])
-         * Author:
-         * Note:
-         */
-        public string[] getEmpIdAndPermission(string username, string password)
-        {
-            return null;
-        }
-
-        /*
          * Description: check manager position 
          * Input: employee id
          * Output: employee id          
@@ -39,12 +27,37 @@ namespace CashierController
 
         public bool checkManagerPermission (string empId)
         {
-            return true;
+            ServiceClient ws = ConnectionCTL.connectWebService();
+            try
+            {
+                string permission = ws.getPermission(empId);
+                if (permission == "AllPermission")
+                    return true;
+                return false;
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public string checkCashierPermission(string username, string password)
         {
-            return null ;
+            ServiceClient ws = ConnectionCTL.connectWebService();
+            try
+            {
+                string[] info = ws.getEmpIdAndPermission(username, password);
+                if (info != null && (info[1] == "CashierPermission" || info[1] == "AllPermission"))
+                {
+                    return info[0];
+                }
+                else
+                    return null;
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public string getEmployeeName(string empId)
@@ -52,8 +65,7 @@ namespace CashierController
             ServiceClient ws = ConnectionCTL.connectWebService();
             try
             {
-                //return ws.getEmployeeName(empId);
-                return null;
+                return ws.getEmployeeName(empId);
             }
             catch (System.Exception ex)
             {

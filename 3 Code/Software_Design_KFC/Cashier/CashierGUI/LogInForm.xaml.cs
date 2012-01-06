@@ -29,12 +29,12 @@ namespace CashierGUI
         {
             if (!(string.IsNullOrWhiteSpace(this.usernameTxtBox.Text) || string.IsNullOrEmpty(this.usernameTxtBox.Text)))
             {
-                //EmployeeCTL empCtl = new EmployeeCTL();
-                //string empId = empCtl.checkCashierPermission(this.usernameTxtBox.Text,this.passwordTxtBox.Password);
-                //if (empId == null)
+                EmployeeCTL empCtl = new EmployeeCTL();
+                string empId = empCtl.checkCashierPermission(this.usernameTxtBox.Text,this.passwordTxtBox.Password);
+                if (empId == null)
                 {
                     MainWindow main = new MainWindow();
-                    //main.empId = empId;
+                    main.empId = empId;
                     this.Close();
                     main.Show();
                 }
