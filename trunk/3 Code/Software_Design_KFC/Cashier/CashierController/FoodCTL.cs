@@ -107,5 +107,25 @@ namespace CashierController
         {
             return 0;
         }
+
+        /*
+        * Description: 
+        * Input: 
+        * Output: 
+        * Author:
+        * Note:
+        */
+        public FoodGroupDTO[] getAllFoodGroup()
+        {
+            ServiceClient ws = ConnectionCTL.connectWebService();
+            try
+            {
+                return ws.SelectFoodGroupByDTO(null);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

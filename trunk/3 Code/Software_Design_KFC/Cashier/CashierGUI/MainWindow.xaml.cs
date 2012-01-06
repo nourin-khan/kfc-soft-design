@@ -49,7 +49,7 @@ namespace CashierGUI
                 {
                     this.Add.Opacity = 0.5;
                     this.Delete.Opacity = 0.5;
-                    this.Save.Opacity = 0.5;
+                    this.Edit.Opacity = 0.5;
                     this.Report.Opacity = 0.5;
                     this.Add_MouseEnter.IsEnabled = false;
                     this.Add_MouseLeave.IsEnabled = false;
@@ -169,12 +169,64 @@ namespace CashierGUI
             login.Show();
             this.Close();
         }
-
-        #endregion
-
+        #endregion     
+       
+   
         #region FoodTab
-        
+
+        #region Attribute
+        private FoodCTL foodCtl = new FoodCTL();
+        private List<FoodDTO> _foodList;
         #endregion
+        private void Add_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            AddFoodWindow foodWin = new AddFoodWindow();
+            foodWin.ShowDialog();
+            if (foodWin.isClosed == true)
+                return;
+            this._foodList.Add(foodWin.foodDto);
+        }
+        #endregion
+
+        private void TabFood_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            _foodList.AddRange(foodCtl.getAllFoodList());
+            this.FoodGridView.ItemsSource = _foodList;
+            this.FoodGridView.Columns[0].Visibility = Visibility.Hidden;
+        }
+
+        private void Delete_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (this.FoodGridView.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Mời bạn chón món ăn cần xóa trước");
+                return;
+            }
+            System.Windows.Forms.DialogResult dr = System.Windows.Forms.MessageBox.Show("Bạn có chắc muốn xóa món ăn này", "", System.Windows.Forms.MessageBoxButtons.OKCancel);
+            if (dr == System.Windows.Forms.DialogResult.OK)
+            {
+                for (int i = 0; i < this.FoodGridView.SelectedItems.Count; i++)
+                {
+                    FoodDTO item = (FoodDTO)this.FoodGridView.SelectedItems[0];
+                    foodCtl.delete(item.FoodID);
+                    this._foodList.RemoveAt(this.FoodGridView.SelectedIndex);
+                    this.FoodGridView.UpdateLayout();
+                }
+            }
+                        
+        }
+
+        private void Edit_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            EditFoodWindow editWind = new EditFoodWindow();
+            editWind.foodDto = (FoodDTO)this.FoodGridView.SelectedItem;
+            editWind.ShowDialog();
+            if (!editWind.isClosed)
+            {
+                this._foodList[this.FoodGridView.SelectedIndex] = editWind.foodDto;
+                this.FoodGridView.UpdateLayout();
+            }
+        }
 
     }
 }
