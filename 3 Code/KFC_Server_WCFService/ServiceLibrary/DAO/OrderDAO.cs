@@ -165,7 +165,17 @@ namespace ServiceLibrary
         */
         public DataTable viewFoodDetail(string orderID)
         {
-            return null;
+            SQLConnection db = new SQLConnection();
+            try
+            {
+                return db.ThucThiCauTruyVan_TraVeBang("select ord.foodId, food.foodName as N'Tên món ăn', ord.quantity as N'Số lượng', food.foodPrice as N'Giá gốc', food.discountPrice as N'Giảm' " +
+                                                      " from ORDER_DETAIL ord JOIN  FOOD food ON (ord.FoodID = food.FoodID) " +
+                                                      " where ord.OrderID = '" + orderID + "' ");
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /*
@@ -180,7 +190,28 @@ namespace ServiceLibrary
          */
         public DTO.OrderDTO viewOrderInfo(int tableNum)
         {
-            return null;
+            SQLConnection db = new SQLConnection();
+            try
+            {
+                DataTable data = db.ThucThiCauTruyVan_TraVeBang(" SELECT OrderID, OrderDate, OrderStatus, TableNum " + 
+                                                                " FROM ORDER_ ord " + 
+                                                                " WHERE TableNum = " + tableNum.ToString() + " AND ord.OrderID NOT IN (SELECT OrderID FROM dbo.BILL) ");
+                if (data == null || data.Rows.Count == 0)
+                    return null;
+                else
+                {
+                    OrderDTO order = new OrderDTO("");
+                    order.OrderID = data.Rows[0]["OrderID"].ToString();
+                    order.OrderDate = DateTime.Parse(data.Rows[0]["OrderDate"].ToString());
+                    order.OrderStatus = int.Parse(data.Rows[0]["OrderStatus"].ToString());
+                    order.TableNum = int.Parse(data.Rows[0]["TableNum"].ToString());
+                    return order;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /*
@@ -195,7 +226,31 @@ namespace ServiceLibrary
          */
         public DTO.OrderDTO[] getUnfreeTable(int floorNum)
         {
-            return null;
+            SQLConnection db = new SQLConnection();
+            try
+            {
+                DataTable data = db.ThucThiCauTruyVan_TraVeBang(" SELECT TableNum, OrderID " + 
+                                                                " FROM ORDER_ " + 
+                                                                " WHERE OrderID NOT IN (SELECT OrderID FROM BILL) ");
+                if (data == null || data.Rows.Count == 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    OrderDTO[] orderList = new OrderDTO[data.Rows.Count];
+                    for (int i = 0; i < data.Rows.Count; i++)
+                    {
+                        orderList[i].TableNum = int.Parse(data.Rows[i]["TableNum"].ToString());
+                        orderList[i].OrderID = data.Rows[i]["OrderID"].ToString();
+                    }
+                    return orderList;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
     }        
 }

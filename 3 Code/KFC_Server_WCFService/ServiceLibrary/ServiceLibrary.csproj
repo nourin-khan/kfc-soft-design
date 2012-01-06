@@ -72,6 +72,9 @@
     </Compile>
     <Compile Include="Service.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="SQLConnection.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="KFCDatabaseClasses.dbml">
