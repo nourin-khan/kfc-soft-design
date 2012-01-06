@@ -131,6 +131,24 @@ namespace ServiceLibrary
         [OperationContract]
         string getEmployeeName(string empID);
 
+        [OperationContract]
+        int getTotalOfDay(DateTime billDate);
+
+        [OperationContract]
+        DataTable getDailyReport(DateTime billDate);
+
+        [OperationContract]
+        int getTotalOfMonth(DateTime billDate);
+
+        [OperationContract]
+        DataTable getMonthlyReport(DateTime billDate);
+
+        [OperationContract]
+        int getTotalOfYear(DateTime billDate);
+
+        [OperationContract]
+        DataTable getYearlyReport(DateTime billDate);
+
         //[System.ServiceModel.OperationContractAttribute(IsOneWay = true, IsInitiating = false)]
         //System.IAsyncResult BeginJoin(Client client, System.AsyncCallback callback, object asyncState);
 

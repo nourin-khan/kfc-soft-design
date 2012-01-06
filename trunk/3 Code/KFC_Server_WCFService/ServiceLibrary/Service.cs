@@ -455,6 +455,45 @@ namespace ServiceLibrary
         
         #endregion
 
+        #region Report
+        public int getTotalOfDay(DateTime billDate)
+        {
+            ReportDAO data = new ReportDAO();
+            return data.getTotalOfDay(billDate);
+        }
+
+        public DataTable getDailyReport(DateTime billDate)
+        {
+            ReportDAO data = new ReportDAO();
+            return data.getDailyReport(billDate);
+        }
+
+        public int getTotalOfMonth(DateTime billDate)
+        {
+            ReportDAO data = new ReportDAO();
+            return data.getTotalOfMonth(billDate);
+        }
+
+        public DataTable getMonthlyReport(DateTime billDate)
+        {
+            ReportDAO data = new ReportDAO();
+            return data.getMonthlyReport(billDate);
+        }
+
+        public int getTotalOfYear(DateTime billDate)
+        {
+            ReportDAO data = new ReportDAO();
+            return data.getTotalOfYear(billDate);
+
+        }
+
+        public DataTable getYearlyReport(DateTime billDate)
+        {
+            ReportDAO data = new ReportDAO();
+            return data.getYearlyReport(billDate);
+        }
+        #endregion
+
 
     }
 }
