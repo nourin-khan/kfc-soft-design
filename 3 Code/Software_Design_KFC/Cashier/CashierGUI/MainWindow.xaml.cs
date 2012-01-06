@@ -101,6 +101,8 @@ namespace CashierGUI
             }
             showTableOnFloor(1);
 
+            _foodList.AddRange(foodCtl.getAllFoodList());
+            this.FoodGridView.ItemsSource = _foodList;          
         }
         #endregion
 
@@ -176,7 +178,7 @@ namespace CashierGUI
 
         #region Attribute
         private FoodCTL foodCtl = new FoodCTL();
-        private List<FoodDTO> _foodList;
+        private List<FoodDTO> _foodList = new List<FoodDTO>();
         #endregion
         private void Add_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -190,9 +192,15 @@ namespace CashierGUI
 
         private void TabFood_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            _foodList.AddRange(foodCtl.getAllFoodList());
-            this.FoodGridView.ItemsSource = _foodList;
+
             this.FoodGridView.Columns[0].Visibility = Visibility.Hidden;
+            this.FoodGridView.Columns[4].DisplayIndex = 0; //foodID
+            this.FoodGridView.Columns[5].DisplayIndex = 1; //foodName
+            this.FoodGridView.Columns[6].DisplayIndex = 2; //foodPrice
+            this.FoodGridView.Columns[2].DisplayIndex = 3; //discountPrice
+            this.FoodGridView.Columns[1].DisplayIndex = 4; //description
+            this.FoodGridView.Columns[3].DisplayIndex = 5; //foodGroupID
+            this.FoodGridView.Columns[7].DisplayIndex = 6; //imagePath 
         }
 
         private void Delete_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -207,10 +215,18 @@ namespace CashierGUI
             {
                 for (int i = 0; i < this.FoodGridView.SelectedItems.Count; i++)
                 {
-                    FoodDTO item = (FoodDTO)this.FoodGridView.SelectedItems[0];
+                    FoodDTO item = (FoodDTO)this.FoodGridView.SelectedItems[i];
                     foodCtl.delete(item.FoodID);
-                    this._foodList.RemoveAt(this.FoodGridView.SelectedIndex);
-                    this.FoodGridView.UpdateLayout();
+                    int index = this._foodList.FindIndex(
+                        delegate(FoodDTO dto)
+                        {
+                            FoodDTO food = (FoodDTO)this.FoodGridView.SelectedItems[i];
+                            return dto.FoodID == food.FoodID;
+                        }
+                        );
+                    this._foodList.RemoveAt(index);
+                    this.FoodGridView.ItemsSource = this._foodList;
+                    this.UpdateLayout();
                 }
             }
                         
@@ -218,12 +234,18 @@ namespace CashierGUI
 
         private void Edit_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            if (this.FoodGridView.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Mời bạn chọn món ăn muốn sửa đổi");
+                return;
+            }
             EditFoodWindow editWind = new EditFoodWindow();
             editWind.foodDto = (FoodDTO)this.FoodGridView.SelectedItem;
             editWind.ShowDialog();
             if (!editWind.isClosed)
             {
-                this._foodList[this.FoodGridView.SelectedIndex] = editWind.foodDto;
+                int index = this._foodList.FindIndex(delegate(FoodDTO dto) { return dto.FoodID == editWind.foodDto.FoodID;  });
+                this._foodList[index] = editWind.foodDto;
                 this.FoodGridView.UpdateLayout();
             }
         }
