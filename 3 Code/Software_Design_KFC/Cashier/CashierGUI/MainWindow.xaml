@@ -634,7 +634,7 @@
     						<ColumnDefinition/>
     					</Grid.ColumnDefinitions>
     					<Canvas Grid.Column="1" Margin="0,146,8,0" >
-    						<DataGrid x:Name="TickGridView1" AlternatingRowBackground="White" Background="#8C73AFF1" Foreground="#FF054387" RowBackground="#FFA3C0C8" HorizontalGridLinesBrush="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" FontSize="14.667" Height="383.077" Canvas.Left="1.3" Canvas.Top="1.875" Width="1340.7">
+    						<DataGrid x:Name="ReportGridView" AlternatingRowBackground="White" Background="#8C73AFF1" Foreground="#FF054387" RowBackground="#FFA3C0C8" HorizontalGridLinesBrush="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" FontSize="14.667" Height="383.077" Canvas.Left="1.3" Canvas.Top="1.875" Width="1340.7">
     							<DataGrid.VerticalGridLinesBrush>
     								<ImageBrush/>
     							</DataGrid.VerticalGridLinesBrush>
@@ -648,7 +648,7 @@
     					</ComboBox>
     					<TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="232,30.551,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23.96" Width="120" FontSize="14.667"><Run Text="Loại báo biểu"/></TextBlock>
     					<TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="232,73.318,0,0" TextWrapping="Wrap" Text="Thời gian" VerticalAlignment="Top" FontSize="14.667"/>
-    					<Grid x:Name="Report" Height="25" Margin="529.5,48.551,0,0" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Left" Width="86">
+    					<Grid x:Name="Report" Height="25" Margin="529.5,48.551,0,0" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Left" Width="86" MouseLeftButtonDown="Report_MouseLeftButtonDown">
     						<Border x:Name="border10" BorderBrush="#FF1679E7" BorderThickness="1" CornerRadius="5" Background="#FF1679E7" Margin="0,0,-1,-3.511">
     							<i:Interaction.Triggers>
     								<i:EventTrigger EventName="MouseLeave">
