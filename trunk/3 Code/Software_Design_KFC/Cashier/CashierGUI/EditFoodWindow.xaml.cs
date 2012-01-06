@@ -20,16 +20,17 @@ namespace CashierGUI
 	public partial class EditFoodWindow : Window
     {
         #region Attribute
-        private FoodDTO _fooDto = new FoodDTO();
+        private FoodDTO _foodDto = new FoodDTO();
         private FoodCTL foodCtl = new FoodCTL();
         private FoodGroupDTO[] _foodGroup;
         private bool _isClosed = true;
         private bool _isChanged = false;
+        private bool _isAlreadyLoaded = false;
 
         public FoodDTO foodDto
         {
-            get { return _fooDto; }
-            set { _fooDto = value; }
+            get { return _foodDto; }
+            set { _foodDto = value; }
         }
         public bool isClosed
         {
@@ -85,7 +86,7 @@ namespace CashierGUI
                     }
                 }
                 string[] numPoint = this.foodPriceTxtBox.Text.Split('.');
-                if (numPoint.Length > 1)
+                if (numPoint.Length > 2)
                     goto WRONGNUMBER;
             }
             if (!(string.IsNullOrEmpty(this.discountPriceTxtBox.Text) || string.IsNullOrWhiteSpace(this.discountPriceTxtBox.Text)))
@@ -96,29 +97,30 @@ namespace CashierGUI
                         goto WRONGNUMBER;
                 }
                 string[] numPoint = this.discountPriceTxtBox.Text.Split('.');
-                if (numPoint.Length > 1)
+                if (numPoint.Length > 2)
                     goto WRONGNUMBER;
             }
 
             //get info and add to database
-            foodDto.FoodName = this.foodNameTxtBox.Text;
-            foodDto.FoodPrice = int.Parse(this.foodPriceTxtBox.Text);
-            foodDto.DiscountPrice = int.Parse(this.discountPriceTxtBox.Text);
-            foodDto.FoodGroupID = this._foodGroup[this.foodGroupCmbBox.SelectedIndex].FoodGroupID;
-            foodDto.Image = this.imageTxtBox.Text;
-            foodDto.Description = this.descriptionTxtBox.Text;
+            this.foodDto.FoodName = this.foodNameTxtBox.Text;
+            this.foodDto.FoodPrice = int.Parse(this.foodPriceTxtBox.Text);
+            this.foodDto.DiscountPrice = int.Parse(this.discountPriceTxtBox.Text);
+            this.foodDto.FoodGroupID = this._foodGroup[this.foodGroupCmbBox.SelectedIndex].FoodGroupID;
+            this.foodDto.Image = this.imageTxtBox.Text;
+            this.foodDto.Description = this.descriptionTxtBox.Text;
 
             try
             {
                 FoodCTL foodCtl = new FoodCTL();
-                foodCtl.update(foodDto,foodDto);
+                foodCtl.update(foodDto.FoodID,foodDto);
                 this.isClosed = false;
+                this.Close();
             }
             catch (System.Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
+            return;
         WRONGNUMBER: MessageBox.Show("Thông tin giá nhập sai. Mời bạn nhập lại");
         }
 
@@ -133,42 +135,49 @@ namespace CashierGUI
             this._foodGroup = foodCtl.getAllFoodGroup();            
             for (int i = 0; i < this._foodGroup.Length; i++)
             {
-                this.foodGroupCmbBox.Items.Add(this._foodGroup[0].FoodGroupName);
+                this.foodGroupCmbBox.Items.Add(this._foodGroup[i].FoodGroupName);
                 if (this._foodGroup[i].FoodGroupID == foodDto.FoodGroupID)
                 {
                     this.foodGroupCmbBox.SelectedIndex = i;
                 }              
-             }           
+             }
+            this._isAlreadyLoaded = true;
         }
 
         private void foodNameTxtBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            this._isChanged = true;
+            if(this._isAlreadyLoaded)
+                this._isChanged = true;
         }
 
         private void foodGroupCmbBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this._isChanged = true;
+            if (this._isAlreadyLoaded)
+                this._isChanged = true;
         }
 
         private void foodPriceTxtBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            this._isChanged = true;
+            if (this._isAlreadyLoaded)
+                this._isChanged = true;
         }
 
         private void discountPriceTxtBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            this._isChanged = true;
+            if (this._isAlreadyLoaded)
+                this._isChanged = true;
         }
 
         private void imageTxtBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            this._isChanged = true;
+            if (this._isAlreadyLoaded)
+                this._isChanged = true;
         }
 
         private void descriptionTxtBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            this._isChanged = true;
+            if (this._isAlreadyLoaded)
+                this._isChanged = true;
         }
 	}
 }

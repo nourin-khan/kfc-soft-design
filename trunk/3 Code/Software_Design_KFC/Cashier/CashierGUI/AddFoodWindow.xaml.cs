@@ -79,7 +79,7 @@ namespace CashierGUI
                     }
                 }
                 string[] numPoint = this.foodPriceTxtBox.Text.Split('.');
-                if (numPoint.Length > 1)
+                if (numPoint.Length > 2)
                     goto WRONGNUMBER;
             }
             if (!(string.IsNullOrEmpty(this.discountPriceTxtBox.Text) || string.IsNullOrWhiteSpace(this.discountPriceTxtBox.Text)))
@@ -90,29 +90,30 @@ namespace CashierGUI
                         goto WRONGNUMBER;
                 }
                 string[] numPoint = this.discountPriceTxtBox.Text.Split('.');
-                if (numPoint.Length > 1)
+                if (numPoint.Length > 2)
                     goto WRONGNUMBER;
             }
 
             //get info and add to database
-            foodDto.FoodName = this.foodNameTxtBox.Text;
-            foodDto.FoodPrice = int.Parse(this.foodPriceTxtBox.Text);
-            foodDto.DiscountPrice = int.Parse(this.discountPriceTxtBox.Text);
-            foodDto.FoodGroupID = this._foodGroup[this.foodGroupCmbBox.SelectedIndex].FoodGroupID;
-            foodDto.Image = this.imageTxtBox.Text;
-            foodDto.Description = this.descriptionTxtBox.Text;
+            this.foodDto.FoodName = this.foodNameTxtBox.Text;
+            this.foodDto.FoodPrice = int.Parse(this.foodPriceTxtBox.Text);
+            this.foodDto.DiscountPrice = int.Parse(this.discountPriceTxtBox.Text);
+            this.foodDto.FoodGroupID = this._foodGroup[this.foodGroupCmbBox.SelectedIndex].FoodGroupID;
+            this.foodDto.Image = this.imageTxtBox.Text;
+            this.foodDto.Description = this.descriptionTxtBox.Text;
             
             try
             {
                 FoodCTL foodCtl = new FoodCTL();
                 foodCtl.add(foodDto);
                 this.isClosed = false;
+                this.Close();
             }
             catch (System.Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
+            return;
         WRONGNUMBER: MessageBox.Show("Thông tin giá nhập sai. Mời bạn nhập lại");
         }
 

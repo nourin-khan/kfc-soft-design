@@ -32,12 +32,28 @@ namespace CashierController
          */
         public bool delete(FoodDTO foodDTO)
         {
-            return true;
+            ServiceClient ws = ConnectionCTL.connectWebService();
+            try
+            {
+                return ws.DeleteFoodByDTO(foodDTO);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public bool delete(string foodID)
         {
-            return true;
+            ServiceClient ws = ConnectionCTL.connectWebService();
+            try
+            {
+                return ws.DeleteFoodByID(foodID);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /* 
@@ -56,7 +72,15 @@ namespace CashierController
 
         public bool update(string oldFoodID, FoodDTO newinfo)
         {
-            return true;
+            ServiceClient ws = ConnectionCTL.connectWebService();
+            try
+            {
+                return ws.updateFood(newinfo);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /*
