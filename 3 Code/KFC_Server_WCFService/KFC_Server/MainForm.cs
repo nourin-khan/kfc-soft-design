@@ -124,5 +124,10 @@ namespace KFC_Server
                 MessageBox.Show(ex.ToString(), "Error");
             }
         }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            btnStop_Click(sender, e);
+        }
     }
 }
