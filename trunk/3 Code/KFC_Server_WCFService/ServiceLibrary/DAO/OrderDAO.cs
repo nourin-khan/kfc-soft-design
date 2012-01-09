@@ -231,7 +231,8 @@ namespace ServiceLibrary
             {
                 DataTable data = db.ThucThiCauTruyVan_TraVeBang(" SELECT TableNum, OrderID " + 
                                                                 " FROM ORDER_ " + 
-                                                                " WHERE OrderID NOT IN (SELECT OrderID FROM BILL) ");
+                                                                " WHERE OrderID NOT IN (SELECT OrderID FROM BILL) AND TableNum> " + (floorNum*100).ToString() + 
+                                                                " AND TableNum < " + ((floorNum + 1)*100).ToString() );
                 if (data == null || data.Rows.Count == 0)
                 {
                     return null;
@@ -241,6 +242,7 @@ namespace ServiceLibrary
                     OrderDTO[] orderList = new OrderDTO[data.Rows.Count];
                     for (int i = 0; i < data.Rows.Count; i++)
                     {
+                        orderList[i] = new OrderDTO("");
                         orderList[i].TableNum = int.Parse(data.Rows[i]["TableNum"].ToString());
                         orderList[i].OrderID = data.Rows[i]["OrderID"].ToString();
                     }
