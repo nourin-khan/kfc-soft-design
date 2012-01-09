@@ -14,6 +14,7 @@
 					<DataGrid.VerticalGridLinesBrush>
 						<ImageBrush/>
 					</DataGrid.VerticalGridLinesBrush>
+                    
 				</DataGrid>
 				<Rectangle Stroke="#FF94B1C4" RadiusY="3" RadiusX="3" StrokeThickness="1.5" Height="260.453" Width="500" Canvas.Top="0.875" Canvas.Left="2"/>
 			</Canvas>

@@ -16,7 +16,7 @@
 			</Grid>
 			<Grid Height="24" Margin="0,15,17,0">
 				<TextBlock TextWrapping="Wrap" Text="Tiền đưa trước:" Margin="0,0,143,0" FontStyle="Italic" FontWeight="Bold"/>
-				<TextBox x:Name="givenMoneyTxtBlock" Margin="136,0,47,0" TextWrapping="Wrap" TextAlignment="Right"/>
+				<TextBox x:Name="givenMoneyTxtBlock" Margin="136,0,47,0" TextWrapping="Wrap" TextAlignment="Right" TextChanged="givenMoneyTxtBlock_TextChanged" />
 				<TextBlock HorizontalAlignment="Right" Margin="0,0,5,0" TextWrapping="Wrap" Text="VND" Width="38"/>
 			</Grid>
 			<Grid Height="24" Margin="0,15,17,0">
@@ -27,11 +27,11 @@
 			<Rectangle Height="4" Margin="0,7,0,0" RadiusY="3" RadiusX="3" Stroke="#FF1679E7" StrokeThickness="1.5" Fill="#FF1679E7"/>
 			<Grid Height="24" Margin="10,10,17,0">
 				<TextBlock TextWrapping="Wrap" Text="Tiền hoàn trả:" Margin="0,0,141,0" FontStyle="Italic" FontWeight="Bold"/>
-				<TextBox x:Name="backMoneyTxtBlock" Margin="127,0,46,0" TextWrapping="Wrap" TextAlignment="Right"/>
+				<TextBox x:Name="backMoneyTxtBlock"  Text="-" Margin="127,0,46,0" TextWrapping="Wrap" TextAlignment="Right"/>
 				<TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="VND" Width="38" Margin="0,0,4,0"/>
 			</Grid>
 		</StackPanel>
-		<Grid x:Name="OK" Height="25" Margin="127.5,0,125.5,29.449" VerticalAlignment="Bottom" MouseLeftButtonDown="OK_MouseLeftButtonDown">
+        <Grid x:Name="OK" Height="25" Margin="127.5,0,125.5,29.449" VerticalAlignment="Bottom" MouseLeftButtonDown="OK_MouseLeftButtonDown" TouchEnter="OK_TouchEnter">
 			<Border x:Name="okBut" BorderBrush="#FF1679E7" BorderThickness="1" CornerRadius="5" Background="#FF1679E7">
 				<i:Interaction.Triggers>
 					<i:EventTrigger EventName="MouseLeave">

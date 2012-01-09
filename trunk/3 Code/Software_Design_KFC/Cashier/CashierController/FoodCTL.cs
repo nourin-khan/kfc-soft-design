@@ -75,6 +75,7 @@ namespace CashierController
             ServiceClient ws = ConnectionCTL.connectWebService();
             try
             {
+                newinfo.FoodID = oldFoodID;
                 return ws.updateFood(newinfo);
             }
             catch (System.Exception ex)

@@ -82,7 +82,7 @@ namespace CashierGUI
                 for (int j = 0; j < _floorQty; j++)
                     _tableBitmap[j, i] = TableStatus.FREE;
             }
-            this.isManagerFuncEnabled = false;
+            this.isManagerFuncEnabled = true ;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -96,14 +96,23 @@ namespace CashierGUI
                 {
                     for (int k = 0; k < unfreeTables.Length; k++)
                     {
-                        _tableBitmap[i, unfreeTables[k].TableNum % 100] = TableStatus.UNFREE;
+                        _tableBitmap[i, unfreeTables[k].TableNum % 100 - 1] = TableStatus.UNFREE;
                     }
                 }
             }
             showTableOnFloor(1);
+            
+            reloadFood();
+            
+        }
 
+        private void reloadFood()
+        {
             _foodList.AddRange(foodCtl.getAllFoodList());
-            this.FoodGridView.ItemsSource = _foodList;          
+            this.FoodGridView.ItemsSource = _foodList;
+            this.FoodGridView.Columns[0].Visibility = Visibility.Hidden;
+            //this.foodCtl
+            
         }
         #endregion
 
@@ -140,7 +149,18 @@ namespace CashierGUI
         //Event: FloornSelBox_MouseLeftDownButton
         //show tableUSC (free or not) when selecting floor
         public void showTableOnFloor(int floorNum)
-        {   
+        {
+            //search for unfree table in db to reset status
+            OrderDTO[] unfreeTables = orderCtl.getUnfreeTable(floorNum);
+
+            if (unfreeTables != null)
+            {
+                for (int k = 0; k < unfreeTables.Length; k++)
+                {
+                    _tableBitmap[floorNum -1, unfreeTables[k].TableNum % 100 - 1] = TableStatus.UNFREE;
+                }
+            }
+
             //set number of table and status for all table
             for (int i = 0; i < _tableQtyOnFloor; i++)
             {
@@ -173,7 +193,6 @@ namespace CashierGUI
             this.Close();
         }
         #endregion     
-       
    
         #region FoodTab
 
@@ -188,6 +207,8 @@ namespace CashierGUI
             if (foodWin.isClosed == true)
                 return;
             this._foodList.Add(foodWin.foodDto);
+            this.FoodGridView.ItemsSource = null;
+            this.FoodGridView.ItemsSource = this._foodList;
         }
         #endregion
 
@@ -196,12 +217,20 @@ namespace CashierGUI
 
             this.FoodGridView.Columns[0].Visibility = Visibility.Hidden;
             this.FoodGridView.Columns[4].DisplayIndex = 0; //foodID
+            this.FoodGridView.Columns[4].Header = "MÃ MÓN ĂN";
             this.FoodGridView.Columns[5].DisplayIndex = 1; //foodName
+            this.FoodGridView.Columns[5].Header = "TÊN MÓN ĂN";
             this.FoodGridView.Columns[6].DisplayIndex = 2; //foodPrice
+            this.FoodGridView.Columns[6].Header = "GIÁ GỐC";
             this.FoodGridView.Columns[2].DisplayIndex = 3; //discountPrice
+            this.FoodGridView.Columns[2].Header = "GIẢM";
             this.FoodGridView.Columns[1].DisplayIndex = 4; //description
+            this.FoodGridView.Columns[1].Header = "MÔ TẢ";
             this.FoodGridView.Columns[3].DisplayIndex = 5; //foodGroupID
+            this.FoodGridView.Columns[3].Header = "MÃ NHÓM MÓN ĂN";
             this.FoodGridView.Columns[7].DisplayIndex = 6; //imagePath 
+            this.FoodGridView.Columns[7].Header = "HÌNH ẢNH";
+            this.FoodGridView.IsReadOnly = true;
         }
 
         private void Delete_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -225,10 +254,11 @@ namespace CashierGUI
                             return dto.FoodID == food.FoodID;
                         }
                         );
-                    this._foodList.RemoveAt(index);
-                    this.FoodGridView.ItemsSource = this._foodList;
-                    this.UpdateLayout();
+                    this._foodList.RemoveAt(index);                    
                 }
+                this.FoodGridView.ItemsSource = null;
+                this.FoodGridView.ItemsSource = this._foodList;
+                this.UpdateLayout();
             }
                         
         }
@@ -253,12 +283,65 @@ namespace CashierGUI
 
         private void Report_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            DailyReport rptCtl = new DailyReport();
-            DateTime date = DateTime.Parse("9/18/2011");
-            int total = rptCtl.getTotalOfDay(date);
-            MessageBox.Show(total.ToString());
-            //DataTable data = rptCtl.getDailyReport(date);
-            //this.ReportGridView.DataContext = data;
+            //validation
+            if (this.ReportTypeCmbBox.SelectedItem == null || this.DatePicker.SelectedDate == null)
+            {
+                MessageBox.Show("Mời bạn chọn thông tin cần kết xuất");
+                return;
+            }
+
+            //get report
+            int total = 0;
+            switch (this.ReportTypeCmbBox.SelectedIndex)
+            {
+                case 0: DailyReport rpt = new DailyReport();                    
+                    total = rpt.getTotalOfDay(DatePicker.SelectedDate.Value);
+                    if (total != 0)
+                    {
+                        DailyReportDTO[] data = rpt.getDailyReport(this.DatePicker.SelectedDate.Value);
+                        this.ReportGridView.ItemsSource = data;
+                        this.ReportGridView.Columns[0].Header = "MÃ MÓN ĂN"; //foodID
+                        this.ReportGridView.Columns[1].Header = "TÊN MÓN ĂN             "; //foodName
+                        this.ReportGridView.Columns[2].Header = "SỐ LƯỢNG            "; //quantity
+                        this.ReportGridView.Columns[3].Header = "GIÁ"; //foodPrices
+                    }
+                    else
+                        this.ReportGridView.ItemsSource = null;
+                    break;
+                case 1: MonthlyReport rpt2 = new MonthlyReport();
+                    total = rpt2.getTotalOfMonth(DatePicker.SelectedDate.Value);
+                    if (total != 0)
+                    {
+                        MonthlyReportDTO[] data2 = rpt2.getMonthlyReport(this.DatePicker.SelectedDate.Value);
+                        this.ReportGridView.ItemsSource = data2;
+                        this.ReportGridView.Columns[0].Header = "THỜI GIAN (NGÀY)                  "; //billDate
+                        this.ReportGridView.Columns[1].Header = "DOANH THU"; //Total
+                    }
+                    else
+                        this.ReportGridView.ItemsSource = null;
+                    break;
+                case 2: YearlyReport rpt3 = new YearlyReport();
+                    total = rpt3.getTotalOfYear(DatePicker.SelectedDate.Value);
+                    if (total != 0)
+                    {
+                        YearlyReportDTO[] data3 = rpt3.getYearlyReport(this.DatePicker.SelectedDate.Value);
+                        this.ReportGridView.ItemsSource = data3;
+                        this.ReportGridView.Columns[0].Header = "THỜI GIAN (THÁNG)                  "; //billDate
+                        this.ReportGridView.Columns[1].Header = "DOANH THU"; //Total
+                    }
+                    else
+                        this.ReportGridView.ItemsSource = null;
+                    break;
+            }
+
+            //set the "Extension data" column visible if have data
+            if (this.ReportGridView.Columns.Count != 0)
+                this.ReportGridView.Columns[this.ReportGridView.Columns.Count - 1].Visibility = Visibility.Hidden;
+            else
+                MessageBox.Show("Không có thông tin cho thời gian này");            
+                
+            //set value for total label
+            this.TotalLbl.Content = total.ToString();
         }
 
     }
