@@ -44,7 +44,18 @@ namespace CashierController
 
         public bool delete(string orderId, string foodId)
         {
-            return true;
+            ServiceClient ws = ConnectionCTL.connectWebService();
+            try
+            {
+                OrderDetailDTO dto = new OrderDetailDTO();
+                dto.OrderID = orderId;
+                dto.FoodID = foodId;
+                return ws.DeleteOrderDetailByDTO(dto);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /* 

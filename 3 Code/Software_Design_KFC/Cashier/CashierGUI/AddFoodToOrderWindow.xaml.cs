@@ -92,6 +92,7 @@ namespace CashierGUI
             ordDetailDto.OrderID = orderId;
             ordDetailDto.FoodID = foodIdTxtBox.Text;
             ordDetailDto.Quantity = int.Parse(qtyTxtBox.Text);
+            ordDetailDto.CompleteTime = DateTime.Now;
             ordDetailCtl.add(ordDetailDto);
             selectedFood = _foodList[selectedIndex];
             quantity = ordDetailDto.Quantity;

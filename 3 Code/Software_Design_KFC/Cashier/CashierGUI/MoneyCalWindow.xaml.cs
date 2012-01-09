@@ -64,8 +64,52 @@ namespace CashierGUI
 
         private void OK_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            //validation, check if customer give enough money
+            if (this.backMoneyTxtBlock.Text == "-" || int.Parse(this.backMoneyTxtBlock.Text) < 0)
+            {
+                MessageBox.Show("Khách hàng chưa thanh toán đủ");
+                return;
+            }
             //set parameter for new bill
             CashierController.KFCService.BillDTO billDto = new CashierController.KFCService.BillDTO();
+            billDto.BillID = DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString();
+            billDto.OrderID = this.orderId;
+            billDto.EmpID = this.empId;
+            billDto.Total = this.orderTotal;
+            billDto.BillStatus = 2;
+            billDto.BillDate = DateTime.Now;
+            billDto.BillID = this.orderId;
+            BillCTL billCtl = new BillCTL();
+            billCtl.add(billDto);
+
+            this.closed = false;
+            this.Close();
+        }
+
+        private void givenMoneyTxtBlock_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            foreach (Char c in this.givenMoneyTxtBlock.Text)
+            {
+                if (!(c >= '0' && c <= '9'))
+                {
+                    this.backMoneyTxtBlock.Text = "-";
+                    return;
+                }
+            }
+            this.backMoneyTxtBlock.Text = (int.Parse(this.givenMoneyTxtBlock.Text) - this.orderTotal).ToString();
+        }
+
+        private void OK_TouchEnter(object sender, TouchEventArgs e)
+        {
+            //validation, check if customer give enough money
+            if (this.backMoneyTxtBlock.Text == "-" || int.Parse(this.backMoneyTxtBlock.Text) < 0)
+            {
+                MessageBox.Show("Khách hàng chưa thanh toán đủ");
+                return;
+            }
+            //set parameter for new bill
+            CashierController.KFCService.BillDTO billDto = new CashierController.KFCService.BillDTO();
+            billDto.BillID = DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString();
             billDto.OrderID = this.orderId;
             billDto.EmpID = this.empId;
             billDto.Total = this.orderTotal;

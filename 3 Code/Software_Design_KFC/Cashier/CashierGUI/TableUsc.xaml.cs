@@ -82,16 +82,20 @@ namespace CashierGUI
 
         private void UserControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (this.free == true) //note here, != true (changes for test and coding)
+            if (this.free != true) //note here, != true (changes for test and coding)
             {
                 BillDetailWindow billDetail = new BillDetailWindow();
                 billDetail.tableNum = this.tableNum;
                 billDetail.empId = this.empId;
                 billDetail.ShowDialog();
-                if (billDetail.isCashed)
+                if (billDetail.isCashed || billDetail.isDeleted)
                 {
                     this.free = true;
                 }
+            }
+            else
+            {
+                MessageBox.Show("Bàn trống chưa có thông tin");
             }
             
         }

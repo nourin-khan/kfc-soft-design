@@ -37,7 +37,15 @@ namespace CashierController
 
         public bool delete(string orderID)
         {
-            return true;
+            ServiceClient ws = ConnectionCTL.connectWebService();
+            try
+            {
+                return ws.DeleteOrderById(orderID);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /* 
@@ -86,11 +94,10 @@ namespace CashierController
         public int getOrderTotal(string orderID)
         {
             int total = 0;
-            DataTable foodList = this.viewFoodDetail(orderID);
-            for (int i = 0; i < foodList.Rows.Count; i++ )
+            List<OrderFoodDTO> foodList = this.viewFoodDetail(orderID);
+            for (int i = 0; i < foodList.Count; i++ )
             {
-                int price = int.Parse(foodList.Rows[i]["Giá gốc"].ToString()) - int.Parse(foodList.Rows[i]["Giảm"].ToString());
-                total = total + int.Parse(foodList.Rows[i]["Số lượng"].ToString()) * price;
+                total = total + foodList[i].quantity * foodList[i].FoodPrice;
             }
             return total;
         }
@@ -139,9 +146,20 @@ namespace CashierController
          * Author:
          * Note:
          */
-        public DataTable viewFoodDetail(string orderID)
+        public List<OrderFoodDTO> viewFoodDetail(string orderID)
         {
-            return null;
+            ServiceClient ws = ConnectionCTL.connectWebService();
+            try
+            {
+                OrderFoodDTO[] data = ws.viewFoodDetail(orderID);
+                List<OrderFoodDTO> list = new List<OrderFoodDTO>();
+                list.AddRange(data);
+                return list;
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /*
@@ -156,7 +174,15 @@ namespace CashierController
          */
         public OrderDTO viewOrderInfo(int tableNum)
         {
-            return null;
+            ServiceClient ws = ConnectionCTL.connectWebService();
+            try
+            {
+                return ws.viewOrderInfo(tableNum);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /*
@@ -172,7 +198,14 @@ namespace CashierController
         public OrderDTO[] getUnfreeTable(int floorNum)
         {
             ServiceClient ws = ConnectionCTL.connectWebService();
-            return null;            
+            try
+            {
+                return ws.getUnfreeTable(floorNum);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

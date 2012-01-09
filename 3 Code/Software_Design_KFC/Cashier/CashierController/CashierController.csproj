@@ -69,16 +69,28 @@
     <None Include="Service References\KFCService\CashierController.KFCService.BillDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\KFCService\CashierController.KFCService.DailyReportDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\KFCService\CashierController.KFCService.FoodDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\KFCService\CashierController.KFCService.FoodGroupDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\KFCService\CashierController.KFCService.MonthlyReportDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\KFCService\CashierController.KFCService.OrderDetailDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\KFCService\CashierController.KFCService.OrderDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\KFCService\CashierController.KFCService.OrderFoodDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\KFCService\CashierController.KFCService.YearlyReportDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\KFCService\item.xsd">
@@ -88,9 +100,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\KFCService\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\KFCService\item3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\KFCService\item31.xsd">

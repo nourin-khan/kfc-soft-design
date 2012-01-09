@@ -38,7 +38,7 @@ namespace CashierController
             }
         }
 
-        public DataTable getDailyReport(DateTime billDate)
+        public DailyReportDTO[] getDailyReport(DateTime billDate)
         {
             ServiceClient ws = ConnectionCTL.connectWebService();
             try
@@ -52,7 +52,7 @@ namespace CashierController
         }
     }
 
-    public class WeeklyReport : ReportCTL
+    public class MonthlyReport : ReportCTL
     {
          public int getTotalOfMonth(DateTime billDate)
         {
@@ -67,7 +67,7 @@ namespace CashierController
              }
         }
 
-        public DataTable getMonthlyReport(DateTime billDate)
+        public MonthlyReportDTO[] getMonthlyReport(DateTime billDate)
          {
              ServiceClient ws = ConnectionCTL.connectWebService();
             try
@@ -81,7 +81,7 @@ namespace CashierController
          }
     }
 
-    public class MonthlyReport : ReportCTL
+    public class YearlyReport : ReportCTL
     {
         public int getTotalOfYear(DateTime billDate)
         {
@@ -96,7 +96,7 @@ namespace CashierController
             }
         }
 
-         public DataTable getYearlyReport(DateTime billDate)
+         public YearlyReportDTO[] getYearlyReport(DateTime billDate)
         {
             ServiceClient ws = ConnectionCTL.connectWebService();
             try

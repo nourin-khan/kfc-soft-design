@@ -492,7 +492,7 @@
     		</TabItem>
             <TabItem x:Name="TabFood" BorderBrush="{x:Null}" MouseLeftButtonDown="TabFood_MouseLeftButtonDown">
                 <TabItem.Header>
-    				<Image Source="2.png" Stretch="Fill" Margin="3" />
+    				<Image Source="2.png" Stretch="Fill" Margin="3"  />
     			</TabItem.Header>
     			<Border CornerRadius="7" BorderThickness="5">
     				<Border.Background>
@@ -572,7 +572,7 @@
     									</ei:ChangePropertyAction>
     								</i:EventTrigger>
     							</i:Interaction.Triggers>
-    							<TextBlock x:Name="textBlock2" TextWrapping="Wrap" FontSize="32" TextAlignment="Center" FontWeight="Bold" FontFamily="Arial" HorizontalAlignment="Center" Foreground="White" Margin="0,1.002,0,1.998"><Span FontFamily="Wingdings" Language="en-us"><Run Text="&lt;"/></Span></TextBlock>
+    							<TextBlock x:Name="textBlock2" TextWrapping="Wrap" FontSize="32" TextAlignment="Center" FontWeight="Bold" FontFamily="Arial" HorizontalAlignment="Center" Foreground="White" Margin="0,0.002,0,2.998"><Span FontFamily="Wingdings" Language="en-us"><Run Text="?"/></Span></TextBlock>
     						</Border>
     					</Grid>
     					<Canvas Grid.Column="1" Margin="0,146,8,0" >
@@ -641,7 +641,7 @@
     						</DataGrid>
     						<Rectangle Stroke="#FF94B1C4" RadiusY="3" RadiusX="3" StrokeThickness="1.5" Height="384.952" Width="1342"/>
     					</Canvas>
-    					<ComboBox Height="23.96" Width="134" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="356,30.551,0,0">
+    					<ComboBox x:Name="ReportTypeCmbBox" Height="23.96" Width="134" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="356,30.551,0,0">
     						<ComboBoxItem x:Name="Day" Content="Ngày"/>
     						<ComboBoxItem x:Name="Month" Content="Tháng"/>
     						<ComboBoxItem x:Name="Year" Content="Năm"/>
@@ -669,7 +669,9 @@
     							<TextBlock x:Name="textBlock8" TextWrapping="Wrap" FontSize="16" TextAlignment="Center" FontFamily="Times New Roman" HorizontalAlignment="Center" Foreground="White" Text="Kết xuất" Margin="0,-1" VerticalAlignment="Center"/>
     						</Border>
     					</Grid>
-    					<DatePicker Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="356,68.318,0,0" VerticalAlignment="Top" Width="134" FontSize="14.667"/>
+    					<DatePicker x:Name="DatePicker" Grid.Column="1" HorizontalAlignment="Left" Height="28" Margin="356,68.318,0,0" VerticalAlignment="Top" Width="134" FontSize="14.667"/>
+    					<Label Content="Tổng:" Grid.Column="1" HorizontalAlignment="Right" Height="32" Margin="0,110,135,0" VerticalAlignment="Top" Width="56" FontSize="14.667" FontWeight="Bold"/>
+    					<Label x:Name="TotalLbl" Content="0" Grid.Column="1" HorizontalAlignment="Right" Height="32" Margin="0,110,8,0" VerticalAlignment="Top" Width="137" FontSize="14.667" FontStyle="Italic" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
     				</Grid>
     			</Border>
     		</TabItem>
