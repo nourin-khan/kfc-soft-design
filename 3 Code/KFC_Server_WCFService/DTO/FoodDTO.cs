@@ -81,4 +81,57 @@ namespace DTO
             // TODO: Complete member initialization
         }
     }
+
+
+    [DataContract]
+    public class OrderFoodDTO
+    {
+        #region Attributes - private
+        private string _foodID;
+
+        [DataMember]
+        public string FoodID
+        {
+            get { return _foodID; }
+            set { _foodID = value; }
+        }
+        private string _foodName;
+
+        [DataMember]
+        public string FoodName
+        {
+            get { return _foodName; }
+            set { _foodName = value; }
+        }
+        private int _foodPrice;
+
+        [DataMember]
+        public int FoodPrice
+        {
+            get { return _foodPrice; }
+            set { _foodPrice = value; }
+        }
+        private int _discountPrice;
+
+        [DataMember]
+        public int DiscountPrice
+        {
+            get { return _discountPrice; }
+            set { _discountPrice = value; }
+        }
+
+        private int _quantity;
+        [DataMember]
+        public int quantity
+        {
+            get { return _quantity; }
+            set { _quantity = value; }
+        }
+        #endregion
+        public OrderFoodDTO()
+        {
+            // TODO: Complete member initialization
+        }
+    }
+
 }

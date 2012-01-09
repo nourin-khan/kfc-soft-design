@@ -124,7 +124,7 @@ namespace ServiceLibrary
         string getPermission(string empId);
 
         [OperationContract]
-        DataTable viewFoodDetail(string orderID);
+        DTO.OrderFoodDTO[] viewFoodDetail(string orderID);
 
         [OperationContract]
         DTO.OrderDTO viewOrderInfo(int tableNum);

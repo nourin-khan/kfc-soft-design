@@ -163,14 +163,31 @@ namespace ServiceLibrary
         * Author:
         * Note:
         */
-        public DataTable viewFoodDetail(string orderID)
+        public OrderFoodDTO[] viewFoodDetail(string orderID)
         {
             SQLConnection db = new SQLConnection();
             try
             {
-                return db.ThucThiCauTruyVan_TraVeBang("select ord.foodId, food.foodName as N'Tên món ăn', ord.quantity as N'Số lượng', food.foodPrice as N'Giá gốc', food.discountPrice as N'Giảm' " +
+                DataTable data = db.ThucThiCauTruyVan_TraVeBang("select ord.foodId, food.foodName as N'Tên món ăn', ord.quantity as N'Số lượng', food.foodPrice as N'Giá gốc', food.discountPrice as N'Giảm' " +
                                                       " from ORDER_DETAIL ord JOIN  FOOD food ON (ord.FoodID = food.FoodID) " +
                                                       " where ord.OrderID = '" + orderID + "' ");
+                if (!(data == null || data.Rows.Count == 0))
+                {
+                    OrderFoodDTO[] foodList = new OrderFoodDTO[data.Rows.Count];
+                    for (int i = 0; i < data.Rows.Count; i++)
+                    {
+                        foodList[i] = new OrderFoodDTO();
+                        foodList[i].FoodID = data.Rows[i]["foodId"].ToString();
+                        foodList[i].FoodName = data.Rows[i]["Tên món ăn"].ToString();
+                        foodList[i].quantity = int.Parse(data.Rows[i]["Số lượng"].ToString());
+                        foodList[i].FoodPrice = int.Parse(data.Rows[i]["Giá gốc"].ToString());
+                        foodList[i].DiscountPrice = int.Parse(data.Rows[i]["Giảm"].ToString());
+                    }
+                    return foodList;
+                }
+                else
+                    return null;
+
             }
             catch (System.Exception ex)
             {
