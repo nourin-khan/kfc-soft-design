@@ -156,6 +156,480 @@ namespace TableController.KfcService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderFoodDTO", Namespace="http://schemas.datacontract.org/2004/07/DTO")]
+    [System.SerializableAttribute()]
+    public partial class OrderFoodDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DiscountPriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FoodIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FoodNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FoodPriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int quantityField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int DiscountPrice {
+            get {
+                return this.DiscountPriceField;
+            }
+            set {
+                if ((this.DiscountPriceField.Equals(value) != true)) {
+                    this.DiscountPriceField = value;
+                    this.RaisePropertyChanged("DiscountPrice");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FoodID {
+            get {
+                return this.FoodIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FoodIDField, value) != true)) {
+                    this.FoodIDField = value;
+                    this.RaisePropertyChanged("FoodID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FoodName {
+            get {
+                return this.FoodNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FoodNameField, value) != true)) {
+                    this.FoodNameField = value;
+                    this.RaisePropertyChanged("FoodName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int FoodPrice {
+            get {
+                return this.FoodPriceField;
+            }
+            set {
+                if ((this.FoodPriceField.Equals(value) != true)) {
+                    this.FoodPriceField = value;
+                    this.RaisePropertyChanged("FoodPrice");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int quantity {
+            get {
+                return this.quantityField;
+            }
+            set {
+                if ((this.quantityField.Equals(value) != true)) {
+                    this.quantityField = value;
+                    this.RaisePropertyChanged("quantity");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderDTO", Namespace="http://schemas.datacontract.org/2004/07/DTO")]
+    [System.SerializableAttribute()]
+    public partial class OrderDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime OrderDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrderIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrderNoteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OrderStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TableNumField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime OrderDate {
+            get {
+                return this.OrderDateField;
+            }
+            set {
+                if ((this.OrderDateField.Equals(value) != true)) {
+                    this.OrderDateField = value;
+                    this.RaisePropertyChanged("OrderDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrderID {
+            get {
+                return this.OrderIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderIDField, value) != true)) {
+                    this.OrderIDField = value;
+                    this.RaisePropertyChanged("OrderID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrderNote {
+            get {
+                return this.OrderNoteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderNoteField, value) != true)) {
+                    this.OrderNoteField = value;
+                    this.RaisePropertyChanged("OrderNote");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OrderStatus {
+            get {
+                return this.OrderStatusField;
+            }
+            set {
+                if ((this.OrderStatusField.Equals(value) != true)) {
+                    this.OrderStatusField = value;
+                    this.RaisePropertyChanged("OrderStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TableNum {
+            get {
+                return this.TableNumField;
+            }
+            set {
+                if ((this.TableNumField.Equals(value) != true)) {
+                    this.TableNumField = value;
+                    this.RaisePropertyChanged("TableNum");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DailyReportDTO", Namespace="http://schemas.datacontract.org/2004/07/DTO")]
+    [System.SerializableAttribute()]
+    public partial class DailyReportDTO : TableController.KfcService.ReportDTO {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string foodIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string foodNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int quantityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int totalField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string foodID {
+            get {
+                return this.foodIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.foodIDField, value) != true)) {
+                    this.foodIDField = value;
+                    this.RaisePropertyChanged("foodID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string foodName {
+            get {
+                return this.foodNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.foodNameField, value) != true)) {
+                    this.foodNameField = value;
+                    this.RaisePropertyChanged("foodName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int quantity {
+            get {
+                return this.quantityField;
+            }
+            set {
+                if ((this.quantityField.Equals(value) != true)) {
+                    this.quantityField = value;
+                    this.RaisePropertyChanged("quantity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int total {
+            get {
+                return this.totalField;
+            }
+            set {
+                if ((this.totalField.Equals(value) != true)) {
+                    this.totalField = value;
+                    this.RaisePropertyChanged("total");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ReportDTO", Namespace="http://schemas.datacontract.org/2004/07/DTO")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TableController.KfcService.MonthlyReportDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TableController.KfcService.YearlyReportDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TableController.KfcService.DailyReportDTO))]
+    public partial class ReportDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MonthlyReportDTO", Namespace="http://schemas.datacontract.org/2004/07/DTO")]
+    [System.SerializableAttribute()]
+    public partial class MonthlyReportDTO : TableController.KfcService.ReportDTO {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string billDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int totalField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string billDate {
+            get {
+                return this.billDateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.billDateField, value) != true)) {
+                    this.billDateField = value;
+                    this.RaisePropertyChanged("billDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int total {
+            get {
+                return this.totalField;
+            }
+            set {
+                if ((this.totalField.Equals(value) != true)) {
+                    this.totalField = value;
+                    this.RaisePropertyChanged("total");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="YearlyReportDTO", Namespace="http://schemas.datacontract.org/2004/07/DTO")]
+    [System.SerializableAttribute()]
+    public partial class YearlyReportDTO : TableController.KfcService.ReportDTO {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string billDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int totalField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string billDate {
+            get {
+                return this.billDateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.billDateField, value) != true)) {
+                    this.billDateField = value;
+                    this.RaisePropertyChanged("billDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int total {
+            get {
+                return this.totalField;
+            }
+            set {
+                if ((this.totalField.Equals(value) != true)) {
+                    this.totalField = value;
+                    this.RaisePropertyChanged("total");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ClientDTO", Namespace="http://schemas.datacontract.org/2004/07/DTO")]
+    [System.SerializableAttribute()]
+    public partial class ClientDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TableController.KfcService.ClientType ClientTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TableController.KfcService.ClientType ClientType {
+            get {
+                return this.ClientTypeField;
+            }
+            set {
+                if ((this.ClientTypeField.Equals(value) != true)) {
+                    this.ClientTypeField = value;
+                    this.RaisePropertyChanged("ClientType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdField, value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ClientType", Namespace="http://schemas.datacontract.org/2004/07/DTO")]
+    public enum ClientType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Table = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Kitchen = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Cashier = 2,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="FoodDTO", Namespace="http://schemas.datacontract.org/2004/07/DTO")]
     [System.SerializableAttribute()]
     public partial class FoodDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -358,115 +832,6 @@ namespace TableController.KfcService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OrderDTO", Namespace="http://schemas.datacontract.org/2004/07/DTO")]
-    [System.SerializableAttribute()]
-    public partial class OrderDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime OrderDateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string OrderIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string OrderNoteField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int OrderStatusField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TableNumField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime OrderDate {
-            get {
-                return this.OrderDateField;
-            }
-            set {
-                if ((this.OrderDateField.Equals(value) != true)) {
-                    this.OrderDateField = value;
-                    this.RaisePropertyChanged("OrderDate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string OrderID {
-            get {
-                return this.OrderIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OrderIDField, value) != true)) {
-                    this.OrderIDField = value;
-                    this.RaisePropertyChanged("OrderID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string OrderNote {
-            get {
-                return this.OrderNoteField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OrderNoteField, value) != true)) {
-                    this.OrderNoteField = value;
-                    this.RaisePropertyChanged("OrderNote");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int OrderStatus {
-            get {
-                return this.OrderStatusField;
-            }
-            set {
-                if ((this.OrderStatusField.Equals(value) != true)) {
-                    this.OrderStatusField = value;
-                    this.RaisePropertyChanged("OrderStatus");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int TableNum {
-            get {
-                return this.TableNumField;
-            }
-            set {
-                if ((this.TableNumField.Equals(value) != true)) {
-                    this.TableNumField = value;
-                    this.RaisePropertyChanged("TableNum");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="OrderDetailDTO", Namespace="http://schemas.datacontract.org/2004/07/DTO")]
     [System.SerializableAttribute()]
     public partial class OrderDetailDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -591,14 +956,62 @@ namespace TableController.KfcService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="KfcService.IService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="KfcService.IService", SessionMode=System.ServiceModel.SessionMode.Required)]
     public interface IService {
+        
+        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/addBill", ReplyAction="http://tempuri.org/IService/addBillResponse")]
+        bool addBill(TableController.KfcService.BillDTO billDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/DeleteBillByDTO", ReplyAction="http://tempuri.org/IService/DeleteBillByDTOResponse")]
+        bool DeleteBillByDTO(TableController.KfcService.BillDTO billDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/DeleteBillById", ReplyAction="http://tempuri.org/IService/DeleteBillByIdResponse")]
+        bool DeleteBillById(string billID);
         
         [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/SelectBillByDTO", ReplyAction="http://tempuri.org/IService/SelectBillByDTOResponse")]
         TableController.KfcService.BillDTO[] SelectBillByDTO(TableController.KfcService.BillDTO billDTO);
         
         [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/SelectBillById", ReplyAction="http://tempuri.org/IService/SelectBillByIdResponse")]
         TableController.KfcService.BillDTO[] SelectBillById(string billID);
+        
+        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/getEmpIdAndPermission", ReplyAction="http://tempuri.org/IService/getEmpIdAndPermissionResponse")]
+        string[] getEmpIdAndPermission(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/getPermission", ReplyAction="http://tempuri.org/IService/getPermissionResponse")]
+        string getPermission(string empId);
+        
+        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/viewFoodDetail", ReplyAction="http://tempuri.org/IService/viewFoodDetailResponse")]
+        TableController.KfcService.OrderFoodDTO[] viewFoodDetail(string orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/viewOrderInfo", ReplyAction="http://tempuri.org/IService/viewOrderInfoResponse")]
+        TableController.KfcService.OrderDTO viewOrderInfo(int tableNum);
+        
+        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/getUnfreeTable", ReplyAction="http://tempuri.org/IService/getUnfreeTableResponse")]
+        TableController.KfcService.OrderDTO[] getUnfreeTable(int floorNum);
+        
+        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/getEmployeeName", ReplyAction="http://tempuri.org/IService/getEmployeeNameResponse")]
+        string getEmployeeName(string empID);
+        
+        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/getTotalOfDay", ReplyAction="http://tempuri.org/IService/getTotalOfDayResponse")]
+        int getTotalOfDay(System.DateTime billDate);
+        
+        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/getDailyReport", ReplyAction="http://tempuri.org/IService/getDailyReportResponse")]
+        TableController.KfcService.DailyReportDTO[] getDailyReport(System.DateTime billDate);
+        
+        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/getTotalOfMonth", ReplyAction="http://tempuri.org/IService/getTotalOfMonthResponse")]
+        int getTotalOfMonth(System.DateTime billDate);
+        
+        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/getMonthlyReport", ReplyAction="http://tempuri.org/IService/getMonthlyReportResponse")]
+        TableController.KfcService.MonthlyReportDTO[] getMonthlyReport(System.DateTime billDate);
+        
+        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/getTotalOfYear", ReplyAction="http://tempuri.org/IService/getTotalOfYearResponse")]
+        int getTotalOfYear(System.DateTime billDate);
+        
+        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/getYearlyReport", ReplyAction="http://tempuri.org/IService/getYearlyReportResponse")]
+        TableController.KfcService.YearlyReportDTO[] getYearlyReport(System.DateTime billDate);
+        
+        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/connect", ReplyAction="http://tempuri.org/IService/connectResponse")]
+        bool connect(TableController.KfcService.ClientDTO client);
         
         [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/addFood", ReplyAction="http://tempuri.org/IService/addFoodResponse")]
         bool addFood(TableController.KfcService.FoodDTO foodDTO);
@@ -671,15 +1084,6 @@ namespace TableController.KfcService {
         
         [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/SelectOrderDetailById", ReplyAction="http://tempuri.org/IService/SelectOrderDetailByIdResponse")]
         TableController.KfcService.OrderDetailDTO[] SelectOrderDetailById(string orderId, string foodId);
-        
-        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/addBill", ReplyAction="http://tempuri.org/IService/addBillResponse")]
-        bool addBill(TableController.KfcService.BillDTO billDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/DeleteBillByDTO", ReplyAction="http://tempuri.org/IService/DeleteBillByDTOResponse")]
-        bool DeleteBillByDTO(TableController.KfcService.BillDTO billDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/DeleteBillById", ReplyAction="http://tempuri.org/IService/DeleteBillByIdResponse")]
-        bool DeleteBillById(string billID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -709,12 +1113,76 @@ namespace TableController.KfcService {
                 base(binding, remoteAddress) {
         }
         
+        public bool addBill(TableController.KfcService.BillDTO billDTO) {
+            return base.Channel.addBill(billDTO);
+        }
+        
+        public bool DeleteBillByDTO(TableController.KfcService.BillDTO billDTO) {
+            return base.Channel.DeleteBillByDTO(billDTO);
+        }
+        
+        public bool DeleteBillById(string billID) {
+            return base.Channel.DeleteBillById(billID);
+        }
+        
         public TableController.KfcService.BillDTO[] SelectBillByDTO(TableController.KfcService.BillDTO billDTO) {
             return base.Channel.SelectBillByDTO(billDTO);
         }
         
         public TableController.KfcService.BillDTO[] SelectBillById(string billID) {
             return base.Channel.SelectBillById(billID);
+        }
+        
+        public string[] getEmpIdAndPermission(string username, string password) {
+            return base.Channel.getEmpIdAndPermission(username, password);
+        }
+        
+        public string getPermission(string empId) {
+            return base.Channel.getPermission(empId);
+        }
+        
+        public TableController.KfcService.OrderFoodDTO[] viewFoodDetail(string orderID) {
+            return base.Channel.viewFoodDetail(orderID);
+        }
+        
+        public TableController.KfcService.OrderDTO viewOrderInfo(int tableNum) {
+            return base.Channel.viewOrderInfo(tableNum);
+        }
+        
+        public TableController.KfcService.OrderDTO[] getUnfreeTable(int floorNum) {
+            return base.Channel.getUnfreeTable(floorNum);
+        }
+        
+        public string getEmployeeName(string empID) {
+            return base.Channel.getEmployeeName(empID);
+        }
+        
+        public int getTotalOfDay(System.DateTime billDate) {
+            return base.Channel.getTotalOfDay(billDate);
+        }
+        
+        public TableController.KfcService.DailyReportDTO[] getDailyReport(System.DateTime billDate) {
+            return base.Channel.getDailyReport(billDate);
+        }
+        
+        public int getTotalOfMonth(System.DateTime billDate) {
+            return base.Channel.getTotalOfMonth(billDate);
+        }
+        
+        public TableController.KfcService.MonthlyReportDTO[] getMonthlyReport(System.DateTime billDate) {
+            return base.Channel.getMonthlyReport(billDate);
+        }
+        
+        public int getTotalOfYear(System.DateTime billDate) {
+            return base.Channel.getTotalOfYear(billDate);
+        }
+        
+        public TableController.KfcService.YearlyReportDTO[] getYearlyReport(System.DateTime billDate) {
+            return base.Channel.getYearlyReport(billDate);
+        }
+        
+        public bool connect(TableController.KfcService.ClientDTO client) {
+            return base.Channel.connect(client);
         }
         
         public bool addFood(TableController.KfcService.FoodDTO foodDTO) {
@@ -811,18 +1279,6 @@ namespace TableController.KfcService {
         
         public TableController.KfcService.OrderDetailDTO[] SelectOrderDetailById(string orderId, string foodId) {
             return base.Channel.SelectOrderDetailById(orderId, foodId);
-        }
-        
-        public bool addBill(TableController.KfcService.BillDTO billDTO) {
-            return base.Channel.addBill(billDTO);
-        }
-        
-        public bool DeleteBillByDTO(TableController.KfcService.BillDTO billDTO) {
-            return base.Channel.DeleteBillByDTO(billDTO);
-        }
-        
-        public bool DeleteBillById(string billID) {
-            return base.Channel.DeleteBillById(billID);
         }
     }
 }

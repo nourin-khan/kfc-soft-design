@@ -14,10 +14,23 @@ namespace TableController
          */
         public static KfcService.ServiceClient connectWebService()
         {
-            System.ServiceModel.EndpointAddress endpoint = 
-                new System.ServiceModel.EndpointAddress(string.IsNullOrWhiteSpace(ConfigurationCTL.ServiceAddress) ? @"http://localhost:8090/KFC_Server/ServiceLibrary/Service/" : ConfigurationCTL.ServiceAddress);
-            KfcService.ServiceClient wsClient = new KfcService.ServiceClient(new WSHttpBinding(), endpoint);
-            return wsClient;
+            try
+            {
+                System.ServiceModel.EndpointAddress endpoint =
+                    new System.ServiceModel.EndpointAddress(string.IsNullOrWhiteSpace(ConfigurationCTL.ServiceAddress) ? @"http://localhost:8090/KFC_Server/ServiceLibrary/Service/" : ConfigurationCTL.ServiceAddress);
+                KfcService.ServiceClient wsClient = new KfcService.ServiceClient(new WSHttpBinding(), endpoint);
+
+                // Connect
+                ClientDTO client = new ClientDTO();
+                client.ClientType = ClientType.Table;
+                client.Id = ConfigurationCTL.TableNum.ToString();
+                wsClient.connect(client);
+                return wsClient;
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
         /*
          * Description: disconnect web service
@@ -76,6 +89,29 @@ namespace TableController
         public static string receiveMessage(string client)
         {
             return null;
+        }
+
+        /**
+         * join to server
+         */
+        public void join()
+        {
+            try
+            {
+                System.ServiceModel.EndpointAddress endpoint =
+                    new System.ServiceModel.EndpointAddress(string.IsNullOrWhiteSpace(ConfigurationCTL.ServiceAddress) ? @"http://localhost:8090/KFC_Server/ServiceLibrary/Service/" : ConfigurationCTL.ServiceAddress);
+                KfcService.ServiceClient wsClient = new KfcService.ServiceClient(new WSHttpBinding(), endpoint);
+
+                // Connect
+                ClientDTO client = new ClientDTO();
+                client.ClientType = ClientType.Table;
+                client.Id = ConfigurationCTL.TableNum.ToString();
+                wsClient.connect(client);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
