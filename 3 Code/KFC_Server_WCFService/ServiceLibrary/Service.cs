@@ -462,7 +462,7 @@ namespace ServiceLibrary
             return data.getTotalOfDay(billDate);
         }
 
-        public DataTable getDailyReport(DateTime billDate)
+        public DTO.DailyReportDTO[] getDailyReport(DateTime billDate)
         {
             ReportDAO data = new ReportDAO();
             return data.getDailyReport(billDate);
@@ -474,7 +474,7 @@ namespace ServiceLibrary
             return data.getTotalOfMonth(billDate);
         }
 
-        public DataTable getMonthlyReport(DateTime billDate)
+        public DTO.MonthlyReportDTO[] getMonthlyReport(DateTime billDate)
         {
             ReportDAO data = new ReportDAO();
             return data.getMonthlyReport(billDate);
@@ -487,7 +487,7 @@ namespace ServiceLibrary
 
         }
 
-        public DataTable getYearlyReport(DateTime billDate)
+        public DTO.YearlyReportDTO[] getYearlyReport(DateTime billDate)
         {
             ReportDAO data = new ReportDAO();
             return data.getYearlyReport(billDate);

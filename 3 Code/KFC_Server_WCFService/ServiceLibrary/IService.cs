@@ -135,19 +135,19 @@ namespace ServiceLibrary
         int getTotalOfDay(DateTime billDate);
 
         [OperationContract]
-        DataTable getDailyReport(DateTime billDate);
+        DailyReportDTO[] getDailyReport(DateTime billDate);
 
         [OperationContract]
         int getTotalOfMonth(DateTime billDate);
 
         [OperationContract]
-        DataTable getMonthlyReport(DateTime billDate);
+        MonthlyReportDTO[] getMonthlyReport(DateTime billDate);
 
         [OperationContract]
         int getTotalOfYear(DateTime billDate);
 
         [OperationContract]
-        DataTable getYearlyReport(DateTime billDate);
+        YearlyReportDTO[] getYearlyReport(DateTime billDate);
 
         //[System.ServiceModel.OperationContractAttribute(IsOneWay = true, IsInitiating = false)]
         //System.IAsyncResult BeginJoin(Client client, System.AsyncCallback callback, object asyncState);
