@@ -52,6 +52,7 @@ namespace KFC_Table_GUI
         #region Controller
         FoodCTL foodCtrl;
         OrderCTL orderCtrl;
+        ConnectionCTL connectionCtrl;
         #endregion
 
         public MainWindow()
@@ -71,6 +72,7 @@ namespace KFC_Table_GUI
             // controller
             foodCtrl = new FoodCTL();
             orderCtrl = new OrderCTL();
+            connectionCtrl = new ConnectionCTL();
         }
 
         void configureCommand_ReloadAll()
@@ -88,6 +90,7 @@ namespace KFC_Table_GUI
 
             statusItems.SelectedIndex = 0;
 
+            #region Initialzing food control
             foods = new List<UserControlFood>();
             foods.Add(chicken1);
             foods.Add(chicken2);
@@ -103,8 +106,18 @@ namespace KFC_Table_GUI
             {
                 food.FoodFocus += new UserControlFood.ControlFocus(focusFood);
                 food.ChooseFoodclick += new UserControlFood.ControlClick(food_ChooseFoodclick);
-            } 
+            }  
+            #endregion
             
+            // join to server
+            try
+            {
+                connectionCtrl.join();
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Can't join to server\n" + ex.ToString(), "Error");
+            }
             // get all food
             getAllFood();
         }

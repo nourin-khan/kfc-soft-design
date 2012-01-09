@@ -59,6 +59,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="Service References\KfcService\item.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -68,8 +69,14 @@
     <None Include="Service References\KfcService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\KfcService\item31.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\KfcService\Service.wsdl" />
     <None Include="Service References\KfcService\TableController.KfcService.BillDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\KfcService\TableController.KfcService.DailyReportDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\KfcService\TableController.KfcService.FoodDTO.datasource">
@@ -78,10 +85,19 @@
     <None Include="Service References\KfcService\TableController.KfcService.FoodGroupDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\KfcService\TableController.KfcService.MonthlyReportDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\KfcService\TableController.KfcService.OrderDetailDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\KfcService\TableController.KfcService.OrderDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\KfcService\TableController.KfcService.OrderFoodDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\KfcService\TableController.KfcService.YearlyReportDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="TableCTL_ClassDiagram.cd" />

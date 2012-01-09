@@ -33,7 +33,24 @@ namespace TableController
         */
         public bool add(OrderDTO orderDTO)
         {
-            return true;
+            ServiceClient wsClient = ConnectionCTL.connectWebService();
+            try
+            {
+                if (orderDTO != null) // get all food
+                {
+                    wsClient.addOrder(orderDTO);
+                    return true;
+                }
+                else
+                {
+                    throw new Exception("Order DTO must be not null");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+                return false;
+            }
         }
 
         /*
@@ -127,11 +144,13 @@ namespace TableController
             try
             {
                 ServiceClient wsClient = ConnectionCTL.connectWebService();
-                wsClient.addOrder(orderInfo);
-                foreach (OrderDetailDTO detail in orderDetail)
-                {
-                    wsClient.addOrderDetail(detail);
-                }
+                //wsClient.addOrder(orderInfo);
+                //foreach (OrderDetailDTO detail in orderDetail)
+                //{
+                //    wsClient.addOrderDetail(detail);
+                //}
+
+                // 
             }
             catch (System.Exception ex)
             {

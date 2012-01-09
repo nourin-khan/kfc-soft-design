@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using TableController.KfcService;
 using System.ServiceModel;
+using System.Data;
 
 
 namespace TableController
