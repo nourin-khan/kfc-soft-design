@@ -327,7 +327,7 @@ namespace ServiceLibrary
         * Author:
         * Note:
         */
-        public DataTable viewFoodDetail(string orderID)
+        public DTO.OrderFoodDTO[] viewFoodDetail(string orderID)
         {
             OrderDAO data = new OrderDAO();
             return data.viewFoodDetail(orderID);
