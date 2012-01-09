@@ -65,7 +65,7 @@ namespace ServiceLibrary
                     successfull = true;
                 }
             }
-            catch 
+            catch
             {
                 successfull = false;
             }

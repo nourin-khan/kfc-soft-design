@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.Data;
+using DTO;
 
 namespace ServiceLibrary
 {
@@ -31,9 +32,9 @@ namespace ServiceLibrary
 
         // holds a list of client, and a delegate to allow the BroadcastEvent to work
         // out which client delegate to invoke
-        static Dictionary<Client, KfcEventHandler> clients = new Dictionary<Client, KfcEventHandler>();
+        static Dictionary<ClientDTO, KfcEventHandler> clients = new Dictionary<ClientDTO, KfcEventHandler>();
         // current client
-        private Client client;
+        private ClientDTO client;
         #endregion
 
         #region Helper
@@ -44,7 +45,7 @@ namespace ServiceLibrary
          */
         private bool checkIfClientHasExist(string id)
         {
-            foreach (Client client in clients.Keys)
+            foreach (ClientDTO client in clients.Keys)
             {
                 if (client.Id == id)
                 {
@@ -62,7 +63,7 @@ namespace ServiceLibrary
          */
         private KfcEventHandler getKfcHandler(string id)
         {
-            foreach (Client client in clients.Keys)
+            foreach (ClientDTO client in clients.Keys)
             {
                 if (client.Id == id )
                 {
@@ -80,9 +81,9 @@ namespace ServiceLibrary
          * @param <clientType> the type of client 
          * @return Client
          */
-        private Client getClient(ClientType clientType)
+        private ClientDTO getClient(ClientType clientType)
         {
-            foreach (Client client in clients.Keys)
+            foreach (ClientDTO client in clients.Keys)
             {
                 if (client.ClientType == clientType)
                 {
@@ -98,7 +99,7 @@ namespace ServiceLibrary
          * @param <client> newly client
          * @return list clients after newly client added
          */
-        public Client[] Join(Client client)
+        public ClientDTO[] Join(ClientDTO client)
         {
             bool clientAdded = false;
             // create kfc event handler
@@ -122,7 +123,7 @@ namespace ServiceLibrary
                 // add this newly joined client KfcEventHanlder delegate,
                 // multicast delegate for invocation
                 KfcEvent += ServiceEventHanlder;
-                Client[] list = new Client[clients.Count];
+                ClientDTO[] list = new ClientDTO[clients.Count];
                 // carry out a critical section that copy all clients to a new list
                 lock (syncObj)
                 {
@@ -186,7 +187,19 @@ namespace ServiceLibrary
 
         }
 
-        
+
+        public bool connect(ClientDTO client)
+        {
+            try
+            {
+                Join(client);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
 
         #region Food
@@ -493,7 +506,5 @@ namespace ServiceLibrary
             return data.getYearlyReport(billDate);
         }
         #endregion
-
-
     }
 }

@@ -13,6 +13,9 @@ namespace ServiceLibrary
     [ServiceContract(SessionMode = SessionMode.Required, CallbackContract = typeof(IServiceCallback))]
     public interface IService
     {
+        [OperationContract]
+        bool connect(ClientDTO client);
+
         #region FoodDAO
         [OperationContract]
         bool addFood(FoodDTO foodDTO);
@@ -113,6 +116,7 @@ namespace ServiceLibrary
         BillDTO[] selectBillInfo(string billID);
         #endregion
 
+        #region Permission and Employee
         [OperationContract]
         string[] getEmpIdAndPermission(string username, string password);
 
@@ -130,7 +134,11 @@ namespace ServiceLibrary
 
         [OperationContract]
         string getEmployeeName(string empID);
+        
+        #endregion
 
+
+        #region Report
         [OperationContract]
         int getTotalOfDay(DateTime billDate);
 
@@ -148,11 +156,12 @@ namespace ServiceLibrary
 
         [OperationContract]
         YearlyReportDTO[] getYearlyReport(DateTime billDate);
-
+        
+        #endregion
         //[System.ServiceModel.OperationContractAttribute(IsOneWay = true, IsInitiating = false)]
-        //System.IAsyncResult BeginJoin(Client client, System.AsyncCallback callback, object asyncState);
+        //System.IAsyncResult BeginJoin(ClientDTO client, System.AsyncCallback callback, object asyncState);
 
-        //Client[] EndJoin(System.IAsyncResult result);
+        //ClientDTO[] EndJoin(System.IAsyncResult result);
     }
 
     public enum MessageType { NewOrder, Payment, ConfirmOrder }
