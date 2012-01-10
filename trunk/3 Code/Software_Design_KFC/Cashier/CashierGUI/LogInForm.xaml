@@ -4,14 +4,14 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" mc:Ignorable="d"
 	x:Class="CashierGUI.LogInForm"
 	x:Name="Window"
-	Title="LogInForm"
+	Title="Đăng nhập"
 	Width="348" Height="192" Background="#FFE3F0FF" WindowStartupLocation="CenterScreen">
 
 	<Grid x:Name="LayoutRoot">
-		<Label Content="Username:" HorizontalAlignment="Left" Margin="29,25,0,0" VerticalAlignment="Top" FontSize="14.667"/>
-		<Label Content="Password:" HorizontalAlignment="Left" Margin="29,0,0,57.08" FontSize="14.667" VerticalAlignment="Bottom"/>
-		<TextBox x:Name="usernameTxtBox" Margin="121,29,80.5,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14.667" Height="25.5066666666667"/>
-		<PasswordBox x:Name="passwordTxtBox" HorizontalAlignment="Left" Margin="121,67.413,0,57.08" Width="130.5" FontSize="14.667" d:LayoutOverrides="VerticalAlignment" Height="25"/>
+        <Label Content="Tên đăng nhập:" HorizontalAlignment="Left" Margin="29,25,0,0" VerticalAlignment="Top" FontSize="14.667"/>
+        <Label Content="Mật khẩu:" HorizontalAlignment="Left" Margin="29,0,0,57.08" FontSize="14.667" VerticalAlignment="Bottom"/>
+		<TextBox x:Name="usernameTxtBox" Margin="138,25,58,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14.667" Height="25.5066666666667"/>
+		<PasswordBox x:Name="passwordTxtBox" HorizontalAlignment="Left" Margin="138,66,0,62" Width="130.5" FontSize="14.667" d:LayoutOverrides="VerticalAlignment" Height="25"/>
 		<Grid x:Name="OK" Height="25" Margin="137.5,0,98.5,16.625" VerticalAlignment="Bottom">
 			<Border x:Name="OKbut" BorderBrush="#FF1679E7" BorderThickness="1" CornerRadius="5" Background="#FF1679E7" Margin="0,0,8,0" MouseLeftButtonDown="OKbut_MouseLeftButtonDown">
 				<i:Interaction.Triggers>

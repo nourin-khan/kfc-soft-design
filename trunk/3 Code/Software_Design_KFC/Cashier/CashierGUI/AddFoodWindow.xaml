@@ -4,7 +4,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" mc:Ignorable="d"
 	x:Class="CashierGUI.AddFoodWindow"
 	x:Name="Window"
-	Title="AddFoodWindow"
+	Title="Thêm món ăn"
 	Width="453" Height="526" Background="#FFDEEDF1" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
 
 	<Grid x:Name="LayoutRoot">
