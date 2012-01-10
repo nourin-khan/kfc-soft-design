@@ -238,7 +238,19 @@ namespace ServiceLibrary
             FoodDAO data = new FoodDAO();
             return data.selectInfo(foodID);
         }
-        
+
+        public string getNewFoodId(string foodGroupId)
+        {
+            FoodDAO data = new FoodDAO();
+            return data.getNewFoodId(foodGroupId);
+        }
+
+        public FoodDTO[] searchFood(FoodDTO foodDto)
+        {
+            FoodDAO data = new FoodDAO();
+            return data.searchFood(foodDto);
+        }
+
         #endregion
 
         #region Food Group
@@ -277,6 +289,7 @@ namespace ServiceLibrary
             FoodGroupDAO data = new FoodGroupDAO();
             return data.selectInfo(foodGroupID);
         }
+
         
         #endregion
 
