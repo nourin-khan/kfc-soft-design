@@ -25,6 +25,15 @@ namespace DTO
             get { return _foodName; }
             set { _foodName = value; }
         }
+
+        private bool _foodStatus;
+        [DataMember]
+        public bool FoodStatus
+        {
+            get { return _foodStatus; }
+            set { _foodStatus = value; }
+        }
+
         private float _foodPrice;
 
         [DataMember]
