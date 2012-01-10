@@ -43,6 +43,7 @@ namespace ServiceLibrary
 
         [OperationContract]
         FoodDTO[] searchFood(FoodDTO foodDto);
+
         #endregion
 
         #region FoodGroupDAO
