@@ -31,6 +31,7 @@ namespace ServiceLibrary
                 f.Description = info.Description;
                 f.DiscountPrice = (int)info.DiscountPrice;
                 f.FoodGroupID = info.FoodGroupID;
+                f.FoodStatus = info.FoodStatus;
                 db.FOODs.InsertOnSubmit(f);
                 db.SubmitChanges();
                 successfull = true;
@@ -120,7 +121,7 @@ namespace ServiceLibrary
                     food.Description = info.Description;
                     food.DiscountPrice = (int)info.DiscountPrice;
                     food.FoodGroupID = info.FoodGroupID;
-
+                    food.FoodStatus = info.FoodStatus;
                     db.SubmitChanges();
                     successfull = true;
                 }
@@ -158,6 +159,7 @@ namespace ServiceLibrary
                         f.DiscountPrice = float.Parse(food.DiscountPrice.ToString());
                         f.Image = food.Image;
                         f.Description = food.Description;
+                        f.FoodStatus = food.FoodStatus.Value;
                         foods.Add(f);
                     }
                     return foods.ToArray();
@@ -181,6 +183,7 @@ namespace ServiceLibrary
                         f.DiscountPrice = float.Parse(food.DiscountPrice.ToString());
                         f.Image = food.Image;
                         f.Description = food.Description;
+                        f.FoodStatus = food.FoodStatus.Value;
                         foods.Add(f);
                         return foods.ToArray();
                     }
@@ -195,6 +198,54 @@ namespace ServiceLibrary
         public FoodDTO[] selectInfo(string foodID)
         {
             return selectInfo(new FoodDTO(foodID));
+        }
+
+        public string getNewFoodId(string foodGroupId)
+        {
+             SQLConnection db = new SQLConnection();
+             try
+             {
+                 string sqlQuery = "SELECT dbo.func_getFoodID('" + foodGroupId + "')";
+                 DataTable data = db.ThucThiCauTruyVan_TraVeBang(sqlQuery);
+                 return data.Rows[0][0].ToString();
+             }
+            catch(Exception ex)
+             {
+                 throw ex;
+             }
+        }
+
+        public FoodDTO[] searchFood(FoodDTO foodDto)
+        {
+            SQLConnection db = new SQLConnection();
+            try
+            {
+                string sqlQuery = "SELECT * FROM FOOD f WHERE f.FoodID like '%" + foodDto.FoodID + "%' and f.FoodName like N'%" + foodDto.FoodName + "%'";
+                DataTable data = db.ThucThiCauTruyVan_TraVeBang(sqlQuery);
+                if (!(data == null || data.Rows.Count == 0))
+                {
+                    FoodDTO[] list = new FoodDTO[data.Rows.Count];
+                    for (int i = 0; i < data.Rows.Count; i++)
+                    {
+                        list[i] = new FoodDTO();
+                        list[i].FoodID = data.Rows[i]["FoodID"].ToString();
+                        list[i].FoodName = data.Rows[i]["FoodName"].ToString();
+                        list[i].FoodPrice = int.Parse(data.Rows[i]["FoodPrice"].ToString());
+                        list[i].FoodStatus = data.Rows[i]["FoodStatus"].ToString() == "True" ? true : false;
+                        list[i].DiscountPrice = int.Parse(data.Rows[i]["DiscountPrice"].ToString());
+                        list[i].Image = data.Rows[i]["Image"].ToString();
+                        list[i].Description = data.Rows[i]["Description"].ToString();
+                        list[i].FoodGroupID = data.Rows[i]["FoodGroupID"].ToString();
+                    }
+                    return list;
+                }
+                else
+                    return null;
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

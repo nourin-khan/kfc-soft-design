@@ -22,7 +22,7 @@ namespace ServiceLibrary
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="KFC_DB")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="KFC_DB4")]
 	public partial class KFCDatabaseClassesDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -63,7 +63,7 @@ namespace ServiceLibrary
     #endregion
 		
 		public KFCDatabaseClassesDataContext() : 
-				base(global::ServiceLibrary.Properties.Settings.Default.KFC_DBConnectionString, mappingSource)
+				base(global::ServiceLibrary.Properties.Settings.Default.KFC_DB4ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -183,9 +183,9 @@ namespace ServiceLibrary
 		
 		private System.Nullable<System.DateTime> _BillDate;
 		
-		private System.Nullable<int> _Total;
+		private int _Total;
 		
-		private System.Nullable<int> _BillStatus;
+		private int _BillStatus;
 		
 		private string _DeleteNote;
 		
@@ -205,9 +205,9 @@ namespace ServiceLibrary
     partial void OnBillIDChanged();
     partial void OnBillDateChanging(System.Nullable<System.DateTime> value);
     partial void OnBillDateChanged();
-    partial void OnTotalChanging(System.Nullable<int> value);
+    partial void OnTotalChanging(int value);
     partial void OnTotalChanged();
-    partial void OnBillStatusChanging(System.Nullable<int> value);
+    partial void OnBillStatusChanging(int value);
     partial void OnBillStatusChanged();
     partial void OnDeleteNoteChanging(string value);
     partial void OnDeleteNoteChanged();
@@ -224,7 +224,7 @@ namespace ServiceLibrary
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillID", DbType="VarChar(5) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillID", DbType="VarChar(30) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string BillID
 		{
 			get
@@ -264,8 +264,8 @@ namespace ServiceLibrary
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Int")]
-		public System.Nullable<int> Total
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Int NOT NULL")]
+		public int Total
 		{
 			get
 			{
@@ -284,8 +284,8 @@ namespace ServiceLibrary
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillStatus", DbType="Int")]
-		public System.Nullable<int> BillStatus
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillStatus", DbType="Int NOT NULL")]
+		public int BillStatus
 		{
 			get
 			{
@@ -324,7 +324,7 @@ namespace ServiceLibrary
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmpID", DbType="VarChar(5)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmpID", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
 		public string EmpID
 		{
 			get
@@ -348,7 +348,7 @@ namespace ServiceLibrary
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderID", DbType="VarChar(5)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderID", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
 		public string OrderID
 		{
 			get
@@ -661,7 +661,7 @@ namespace ServiceLibrary
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string Username
 		{
 			get
@@ -681,7 +681,7 @@ namespace ServiceLibrary
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(30)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
 		public string Password
 		{
 			get
@@ -825,7 +825,7 @@ namespace ServiceLibrary
 		
 		private string _EmpName;
 		
-		private System.Nullable<bool> _Sex;
+		private bool _Sex;
 		
 		private System.Nullable<System.DateTime> _DateOfBirth;
 		
@@ -843,7 +843,7 @@ namespace ServiceLibrary
     partial void OnEmpIDChanged();
     partial void OnEmpNameChanging(string value);
     partial void OnEmpNameChanged();
-    partial void OnSexChanging(System.Nullable<bool> value);
+    partial void OnSexChanging(bool value);
     partial void OnSexChanged();
     partial void OnDateOfBirthChanging(System.Nullable<System.DateTime> value);
     partial void OnDateOfBirthChanged();
@@ -879,7 +879,7 @@ namespace ServiceLibrary
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmpName", DbType="NVarChar(100)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmpName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
 		public string EmpName
 		{
 			get
@@ -899,8 +899,8 @@ namespace ServiceLibrary
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sex", DbType="Bit")]
-		public System.Nullable<bool> Sex
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sex", DbType="Bit NOT NULL")]
+		public bool Sex
 		{
 			get
 			{
@@ -1039,7 +1039,9 @@ namespace ServiceLibrary
 		
 		private string _FoodName;
 		
-		private System.Nullable<int> _FoodPrice;
+		private int _FoodPrice;
+		
+		private System.Nullable<bool> _FoodStatus;
 		
 		private System.Nullable<int> _DiscountPrice;
 		
@@ -1061,8 +1063,10 @@ namespace ServiceLibrary
     partial void OnFoodIDChanged();
     partial void OnFoodNameChanging(string value);
     partial void OnFoodNameChanged();
-    partial void OnFoodPriceChanging(System.Nullable<int> value);
+    partial void OnFoodPriceChanging(int value);
     partial void OnFoodPriceChanged();
+    partial void OnFoodStatusChanging(System.Nullable<bool> value);
+    partial void OnFoodStatusChanged();
     partial void OnDiscountPriceChanging(System.Nullable<int> value);
     partial void OnDiscountPriceChanged();
     partial void OnImageChanging(string value);
@@ -1100,7 +1104,7 @@ namespace ServiceLibrary
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FoodName", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FoodName", DbType="NText NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string FoodName
 		{
 			get
@@ -1120,8 +1124,8 @@ namespace ServiceLibrary
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FoodPrice", DbType="Int")]
-		public System.Nullable<int> FoodPrice
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FoodPrice", DbType="Int NOT NULL")]
+		public int FoodPrice
 		{
 			get
 			{
@@ -1136,6 +1140,26 @@ namespace ServiceLibrary
 					this._FoodPrice = value;
 					this.SendPropertyChanged("FoodPrice");
 					this.OnFoodPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FoodStatus", DbType="Bit")]
+		public System.Nullable<bool> FoodStatus
+		{
+			get
+			{
+				return this._FoodStatus;
+			}
+			set
+			{
+				if ((this._FoodStatus != value))
+				{
+					this.OnFoodStatusChanging(value);
+					this.SendPropertyChanging();
+					this._FoodStatus = value;
+					this.SendPropertyChanged("FoodStatus");
+					this.OnFoodStatusChanged();
 				}
 			}
 		}
@@ -1352,7 +1376,7 @@ namespace ServiceLibrary
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FoodGroupName", DbType="NVarChar(100)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FoodGroupName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
 		public string FoodGroupName
 		{
 			get
@@ -1426,11 +1450,11 @@ namespace ServiceLibrary
 		
 		private string _OrderID;
 		
-		private System.Nullable<System.DateTime> _OrderDate;
+		private System.DateTime _OrderDate;
 		
-		private System.Nullable<int> _TableNum;
+		private int _TableNum;
 		
-		private System.Nullable<int> _OrderStatus;
+		private int _OrderStatus;
 		
 		private string _OrderNote;
 		
@@ -1444,11 +1468,11 @@ namespace ServiceLibrary
     partial void OnCreated();
     partial void OnOrderIDChanging(string value);
     partial void OnOrderIDChanged();
-    partial void OnOrderDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnOrderDateChanging(System.DateTime value);
     partial void OnOrderDateChanged();
-    partial void OnTableNumChanging(System.Nullable<int> value);
+    partial void OnTableNumChanging(int value);
     partial void OnTableNumChanged();
-    partial void OnOrderStatusChanging(System.Nullable<int> value);
+    partial void OnOrderStatusChanging(int value);
     partial void OnOrderStatusChanged();
     partial void OnOrderNoteChanging(string value);
     partial void OnOrderNoteChanged();
@@ -1461,7 +1485,7 @@ namespace ServiceLibrary
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderID", DbType="VarChar(5) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderID", DbType="VarChar(30) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string OrderID
 		{
 			get
@@ -1481,8 +1505,8 @@ namespace ServiceLibrary
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> OrderDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderDate", DbType="DateTime NOT NULL")]
+		public System.DateTime OrderDate
 		{
 			get
 			{
@@ -1501,8 +1525,8 @@ namespace ServiceLibrary
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableNum", DbType="Int")]
-		public System.Nullable<int> TableNum
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableNum", DbType="Int NOT NULL")]
+		public int TableNum
 		{
 			get
 			{
@@ -1521,8 +1545,8 @@ namespace ServiceLibrary
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderStatus", DbType="Int")]
-		public System.Nullable<int> OrderStatus
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderStatus", DbType="Int NOT NULL")]
+		public int OrderStatus
 		{
 			get
 			{
@@ -1642,7 +1666,7 @@ namespace ServiceLibrary
 		
 		private string _FoodID;
 		
-		private System.Nullable<int> _Quantity;
+		private int _Quantity;
 		
 		private System.Nullable<System.DateTime> _CompleteTime;
 		
@@ -1662,7 +1686,7 @@ namespace ServiceLibrary
     partial void OnOrderIDChanged();
     partial void OnFoodIDChanging(string value);
     partial void OnFoodIDChanged();
-    partial void OnQuantityChanging(System.Nullable<int> value);
+    partial void OnQuantityChanging(int value);
     partial void OnQuantityChanged();
     partial void OnCompleteTimeChanging(System.Nullable<System.DateTime> value);
     partial void OnCompleteTimeChanged();
@@ -1679,7 +1703,7 @@ namespace ServiceLibrary
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderID", DbType="VarChar(5) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderID", DbType="VarChar(30) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string OrderID
 		{
 			get
@@ -1727,8 +1751,8 @@ namespace ServiceLibrary
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int")]
-		public System.Nullable<int> Quantity
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
+		public int Quantity
 		{
 			get
 			{
