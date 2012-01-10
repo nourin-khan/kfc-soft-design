@@ -15,7 +15,6 @@ using CashierController;
 using CashierController.KFCService;
 using System.Data;
 using System.Windows.Threading;
-using KitchenController.KfcService;
 
 namespace CashierGUI
 {
@@ -94,12 +93,18 @@ namespace CashierGUI
 
         void timer_Tick(object sender, EventArgs e)
         {
-            ServiceClient wsClient = ConnectionCTL.connectWebService();
-            OrderDTO[] newOrder = wsClient.getOrderByStatus("CONFIRM");
-
-            // if newOrder != null => update to GUI
-            if (newOrder != null)
+            for (int i = 0; i < _floorQty; i++)
             {
+                //search for unfree table in db to reset status
+                OrderDTO[] unfreeTables = orderCtl.getUnfreeTable(i + 1);
+
+                if (unfreeTables != null)
+                {
+                    for (int k = 0; k < unfreeTables.Length; k++)
+                    {
+                        _tableBitmap[i, unfreeTables[k].TableNum % 100 - 1] = TableStatus.UNFREE;
+                    }
+                }
             }
         }
 
@@ -170,7 +175,7 @@ namespace CashierGUI
         {
             //search for unfree table in db to reset status
             OrderDTO[] unfreeTables = orderCtl.getUnfreeTable(floorNum);
-            for(int i = 0; i<_tableQtyOnFloor; i++)
+            for (int i = 0; i < _tableQtyOnFloor; i++)
             {
                 _tableBitmap[floorNum - 1, i] = TableStatus.FREE;
             }

@@ -90,7 +90,9 @@ namespace CashierGUI
 
         private void givenMoneyTxtBlock_TextChanged(object sender, TextChangedEventArgs e)
         {
-            foreach (Char c in this.givenMoneyTxtBlock.Text)
+            if(!(string.IsNullOrWhiteSpace(this.givenMoneyTxtBlock.Text)))
+            {
+                foreach (Char c in this.givenMoneyTxtBlock.Text)
             {
                 if (!(c >= '0' && c <= '9'))
                 {
@@ -99,6 +101,7 @@ namespace CashierGUI
                 }
             }
             this.backMoneyTxtBlock.Text = (int.Parse(this.givenMoneyTxtBlock.Text) - this.orderTotal).ToString();
+            }
         }
 
         
