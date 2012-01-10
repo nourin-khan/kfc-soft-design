@@ -1,12 +1,12 @@
 use master
 go
-if(DB_ID('KFC_DB2') is not null)
-	drop database KFC_DB2
+if(DB_ID('KFC_DB5') is not null)
+	drop database KFC_DB5
 go
-create database KFC_DB2
+create database KFC_DB5
 go
 
-use KFC_DB2
+use KFC_DB5
 go
 --table FOOD
 create table FOOD
@@ -14,6 +14,7 @@ create table FOOD
 FoodID varchar(5) not null,
 FoodName ntext NOT NULL, 
 FoodPrice int NOT null,
+FoodStatus BIT DEFAULT 1,
 DiscountPrice int,
 Image text,
 Description ntext,
