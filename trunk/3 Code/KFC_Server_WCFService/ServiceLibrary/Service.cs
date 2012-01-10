@@ -550,5 +550,18 @@ namespace ServiceLibrary
                     return null;
             }
         }
+
+
+        public string getNewFoodId(string foodGroupId)
+        {
+            FoodDAO data = new FoodDAO();
+            return data.getNewFoodId(foodGroupId);
+        }
+
+        public FoodDTO[] searchFood(FoodDTO foodDto)
+        {
+            FoodDAO data = new FoodDAO();
+            return data.searchFood(foodDto);
+        }
     }
 }

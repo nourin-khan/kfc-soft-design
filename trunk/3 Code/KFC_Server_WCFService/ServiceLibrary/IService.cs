@@ -37,6 +37,12 @@ namespace ServiceLibrary
 
         [OperationContract(Name = "SelectFoodById")]
         FoodDTO[] selectFoodInfo(string foodID);
+
+        [OperationContract]
+        string getNewFoodId(string foodGroupId);
+
+        [OperationContract]
+        FoodDTO[] searchFood(FoodDTO foodDto);
         #endregion
 
         #region FoodGroupDAO
