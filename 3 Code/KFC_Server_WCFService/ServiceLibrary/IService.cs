@@ -10,11 +10,14 @@ using System.Data;
 namespace ServiceLibrary
 {
     // inter face duplex callback service
-    [ServiceContract(SessionMode = SessionMode.Required, CallbackContract = typeof(IServiceCallback))]
+    [ServiceContract]
     public interface IService
     {
-        [OperationContract]
-        bool connect(ClientDTO client);
+        //[OperationContract]
+        //bool connect(ClientDTO client);
+
+//         [OperationContract(Name="NewOrderInService")]
+//         void NewOrder();
 
         #region FoodDAO
         [OperationContract]
@@ -34,12 +37,6 @@ namespace ServiceLibrary
 
         [OperationContract(Name = "SelectFoodById")]
         FoodDTO[] selectFoodInfo(string foodID);
-
-        [OperationContract]
-        string getNewFoodId(string foodGroupId);
-
-        [OperationContract]
-        FoodDTO[] searchFood(FoodDTO foodDto);
         #endregion
 
         #region FoodGroupDAO
@@ -80,6 +77,9 @@ namespace ServiceLibrary
 
         [OperationContract(Name="SelectOrderById")]
         OrderDTO[] selectOrderInfo(string orderID);
+
+        [OperationContract]
+        OrderDTO[] getOrderByStatus(string status);
         #endregion
 
         #region OrderDetailDAO
@@ -174,6 +174,12 @@ namespace ServiceLibrary
 
     public class KfcEventArgs : EventArgs
     {
-        public MessageType msgType;
+        private MessageType msgType;
+
+        public MessageType MsgType
+        {
+            get { return msgType; }
+            set { msgType = value; }
+        }
     }
 }

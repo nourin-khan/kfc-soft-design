@@ -14,192 +14,210 @@ namespace ServiceLibrary
      * Callback
      * Service
      */
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
+    //[ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
     public class Service : IService
     {
-        //private int answer = 0;
-        #region Instance fields
-        // thread sync lock object
-        private static object syncObj = new object();
+//         //private int answer = 0;
+//         #region Instance fields
+//         // thread sync lock object
+//         private static object syncObj = new object();
+// 
+//         // callback interface for clients
+//         private IServiceCallback callback = null;
+// 
+//         // delegate used for BoradcasetEvent
+//         public delegate void KfcEventHandler(object sender, KfcEventArgs e);
+//         public static event KfcEventHandler KfcEvent;
+//         private KfcEventHandler eventHanler = null;
+// 
+//         // holds a list of client, and a delegate to allow the BroadcastEvent to work
+//         // out which client delegate to invoke
+//         static Dictionary<ClientDTO, KfcEventHandler> clients = new Dictionary<ClientDTO, KfcEventHandler>();
+//         // current client
+//         private ClientDTO client;
+//         #endregion
 
-        // callback interface for clients
-        private IServiceCallback callback = null;
-
-        // delegate used for BoradcasetEvent
-        public delegate void KfcEventHandler(object sender, KfcEventArgs e);
-        public static event KfcEventHandler KfcEvent;
-        private KfcEventHandler eventHanler = null;
-
-        // holds a list of client, and a delegate to allow the BroadcastEvent to work
-        // out which client delegate to invoke
-        static Dictionary<ClientDTO, KfcEventHandler> clients = new Dictionary<ClientDTO, KfcEventHandler>();
-        // current client
-        private ClientDTO client;
-        #endregion
-
-        #region Helper
-        /**
-         * searchers the internal list of clients for a particular client, and returns true if the client could be found
-         * @param <clientType> the type of client 
-         * @return true if client was found in the internal list <clients>
-         */
-        private bool checkIfClientHasExist(string id)
-        {
-            foreach (ClientDTO client in clients.Keys)
-            {
-                if (client.Id == id)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        /**
-         * searchers the internal list of clients for a particular client, 
-         * and returns the individual client KfcEventHandler delegate in the order that it can be invoked
-         * @param <clientType> the type of client 
-         * @return The true KfcEventHandler delegate for the clientType
-         */
-        private KfcEventHandler getKfcHandler(string id)
-        {
-            foreach (ClientDTO client in clients.Keys)
-            {
-                if (client.Id == id )
-                {
-                    KfcEventHandler handler = null;
-                    clients.TryGetValue(client, out handler);
-                    return handler;
-                }
-            }
-            return null;
-        }
-
-        /**
-         * searchers the internal list of clients for a particular client, 
-         * and returns the actual client who's client type matches the type input
-         * @param <clientType> the type of client 
-         * @return Client
-         */
-        private ClientDTO getClient(ClientType clientType)
-        {
-            foreach (ClientDTO client in clients.Keys)
-            {
-                if (client.ClientType == clientType)
-                {
-                    return client;
-                }
-            }
-            return null;
-        }
-        #endregion
-
-        /**
-         * when newly client join to network, it calls this method to register
-         * @param <client> newly client
-         * @return list clients after newly client added
-         */
-        public ClientDTO[] Join(ClientDTO client)
-        {
-            bool clientAdded = false;
-            // create kfc event handler
-            eventHanler = new KfcEventHandler(ServiceEventHanlder);
-
-            lock (syncObj)
-            {
-                if (!checkIfClientHasExist(client.Id) && client != null)
-                {
-                    this.client = client;
-                    clients.Add(client, ServiceEventHanlder);
-                    clientAdded = true;
-                }
-            }
-
-            // if the new client successfully added
-            // get callback instance
-            if (clientAdded)
-            {
-                callback = OperationContext.Current.GetCallbackChannel<IServiceCallback>();
-                // add this newly joined client KfcEventHanlder delegate,
-                // multicast delegate for invocation
-                KfcEvent += ServiceEventHanlder;
-                ClientDTO[] list = new ClientDTO[clients.Count];
-                // carry out a critical section that copy all clients to a new list
-                lock (syncObj)
-                {
-                    clients.Keys.CopyTo(list, 0);
-                }
-                return list;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        /**
-         * Broadcast message
-         * loop through all connected client and invoke their KfcEventHanlder delegate asynchronously
-         * @param <e> The KfcEventArgs to use to send to all connected client
-         */
-        private void BroadCastMessage(KfcEventArgs e)
-        {
-            KfcEventHandler temp = KfcEvent;
-            
-
-            // Loop through all connected clients and invoke their KfcEventHandler delegate asynchronously,
-            // which will first call the ServiceEventHandler() method and will allow a asynch callback to call the EndAsync() method on completion of the initial call
-            if (temp != null)
-            {
-                foreach (KfcEventHandler handler in temp.GetInvocationList())
-                {
-                    handler.BeginInvoke(this, e, new AsyncCallback(EndAsync), null);
-                }
-            }
-
-        }
-
-        /**
-         * EndAsync
-         * is called as a callback from the asynchronous call, so simply get the delegate
-         * and do an EndInvoke on it, to signal the asynchronous call is now completed
-         * @param <ar> The asynch result
-         */
-        private void EndAsync(IAsyncResult ar)
-        {
-            KfcEventHandler handler = null;
-            try
-            {
-                // get the standard System.Runtime.Remoting.Messaging.AsyncResult, 
-                // and  then cast it to the correct delegate type, and do an end invoke
-                System.Runtime.Remoting.Messaging.AsyncResult asres = (System.Runtime.Remoting.Messaging.AsyncResult)ar;
-                handler = (KfcEventHandler)asres.AsyncDelegate;
-                handler.EndInvoke(ar);
-            }
-            catch
-            {
-                KfcEvent -= handler;
-            }
-        }
-
-        private void ServiceEventHanlder(object sender, KfcEventArgs e)
-        {
-
-        }
-
-
-        public bool connect(ClientDTO client)
-        {
-            try
-            {
-                Join(client);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
+//         #region Helper
+//         /**
+//          * searchers the internal list of clients for a particular client, and returns true if the client could be found
+//          * @param <clientType> the type of client 
+//          * @return true if client was found in the internal list <clients>
+//          */
+//         private bool checkIfClientHasExist(string id)
+//         {
+//             foreach (ClientDTO client in clients.Keys)
+//             {
+//                 if (client.Id == id)
+//                 {
+//                     return true;
+//                 }
+//             }
+//             return false;
+//         }
+// 
+//         /**
+//          * searchers the internal list of clients for a particular client, 
+//          * and returns the individual client KfcEventHandler delegate in the order that it can be invoked
+//          * @param <clientType> the type of client 
+//          * @return The true KfcEventHandler delegate for the clientType
+//          */
+//         private KfcEventHandler getKfcHandler(string id)
+//         {
+//             foreach (ClientDTO client in clients.Keys)
+//             {
+//                 if (client.Id == id )
+//                 {
+//                     KfcEventHandler handler = null;
+//                     clients.TryGetValue(client, out handler);
+//                     return handler;
+//                 }
+//             }
+//             return null;
+//         }
+// 
+//         /**
+//          * searchers the internal list of clients for a particular client, 
+//          * and returns the actual client who's client type matches the type input
+//          * @param <clientType> the type of client 
+//          * @return Client
+//          */
+//         private ClientDTO getClient(ClientType clientType)
+//         {
+//             foreach (ClientDTO client in clients.Keys)
+//             {
+//                 if (client.ClientType == clientType)
+//                 {
+//                     return client;
+//                 }
+//             }
+//             return null;
+//         }
+//         #endregion
+// 
+//         /**
+//          * when newly client join to network, it calls this method to register
+//          * @param <client> newly client
+//          * @return list clients after newly client added
+//          */
+//         public ClientDTO[] Join(ClientDTO client)
+//         {
+//             bool clientAdded = false;
+//             // create kfc event handler
+//             eventHanler = new KfcEventHandler(ServiceEventHanlder);
+// 
+//             lock (syncObj)
+//             {
+//                 if (!checkIfClientHasExist(client.Id) && client != null)
+//                 {
+//                     this.client = client;
+//                     clients.Add(client, ServiceEventHanlder);
+//                     clientAdded = true;
+//                 }
+//             }
+// 
+//             // if the new client successfully added
+//             // get callback instance
+//             if (clientAdded)
+//             {
+//                 callback = OperationContext.Current.GetCallbackChannel<IServiceCallback>();
+//                 // add this newly joined client KfcEventHanlder delegate,
+//                 // multicast delegate for invocation
+//                 KfcEvent += ServiceEventHanlder;
+//                 ClientDTO[] list = new ClientDTO[clients.Count];
+//                 // carry out a critical section that copy all clients to a new list
+//                 lock (syncObj)
+//                 {
+//                     clients.Keys.CopyTo(list, 0);
+//                 }
+//                 return list;
+//             }
+//             else
+//             {
+//                 return null;
+//             }
+//         }
+// 
+//         /**
+//          * Broadcast message
+//          * loop through all connected client and invoke their KfcEventHanlder delegate asynchronously
+//          * @param <e> The KfcEventArgs to use to send to all connected client
+//          */
+//         private void BroadCastMessage(KfcEventArgs e, KfcEventHandler events)
+//         {
+//             KfcEventHandler temp = events;
+//             
+// 
+//             // Loop through all connected clients and invoke their KfcEventHandler delegate asynchronously,
+//             // which will first call the ServiceEventHandler() method and will allow a asynch callback to call the EndAsync() method on completion of the initial call
+//             if (temp != null)
+//             {
+//                 foreach (KfcEventHandler handler in temp.GetInvocationList())
+//                 {
+//                     handler.BeginInvoke(this, e, new AsyncCallback(EndAsync), null);
+//                 }
+//             }
+// 
+//         }
+// 
+//         /**
+//          * EndAsync
+//          * is called as a callback from the asynchronous call, so simply get the delegate
+//          * and do an EndInvoke on it, to signal the asynchronous call is now completed
+//          * @param <ar> The asynch result
+//          */
+//         private void EndAsync(IAsyncResult ar)
+//         {
+//             KfcEventHandler handler = null;
+//             try
+//             {
+//                 // get the standard System.Runtime.Remoting.Messaging.AsyncResult, 
+//                 // and  then cast it to the correct delegate type, and do an end invoke
+//                 System.Runtime.Remoting.Messaging.AsyncResult asres = (System.Runtime.Remoting.Messaging.AsyncResult)ar;
+//                 handler = (KfcEventHandler)asres.AsyncDelegate;
+//                 handler.EndInvoke(ar);
+//             }
+//             catch
+//             {
+//                 KfcEvent -= handler;
+//             }
+//         }
+// 
+//         private void ServiceEventHanlder(object sender, KfcEventArgs e)
+//         {
+//             try
+//             {
+//                 switch (e.MsgType)
+//                 {
+//                     case MessageType.NewOrder:
+//                         callback.NewOrder();
+//                         break;
+//                     case MessageType.ConfirmOrder:
+//                         callback.ConfirmOrder();
+//                         break;
+//                     case MessageType.Payment:
+//                         callback.Payment();
+//                         break;
+//                 }
+//             }
+//             catch (System.Exception ex)
+//             {
+//             	
+//             }
+//         }
+// 
+// 
+//         public bool connect(ClientDTO client)
+//         {
+//             try
+//             {
+//                 Join(client);
+//                 return true;
+//             }
+//             catch
+//             {
+//                 return false;
+//             }
+//         }
 
 
         #region Food
@@ -238,19 +256,7 @@ namespace ServiceLibrary
             FoodDAO data = new FoodDAO();
             return data.selectInfo(foodID);
         }
-
-        public string getNewFoodId(string foodGroupId)
-        {
-            FoodDAO data = new FoodDAO();
-            return data.getNewFoodId(foodGroupId);
-        }
-
-        public FoodDTO[] searchFood(FoodDTO foodDto)
-        {
-            FoodDAO data = new FoodDAO();
-            return data.searchFood(foodDto);
-        }
-
+        
         #endregion
 
         #region Food Group
@@ -289,7 +295,6 @@ namespace ServiceLibrary
             FoodGroupDAO data = new FoodGroupDAO();
             return data.selectInfo(foodGroupID);
         }
-
         
         #endregion
 
@@ -519,5 +524,31 @@ namespace ServiceLibrary
             return data.getYearlyReport(billDate);
         }
         #endregion
+
+
+        //public void NewOrder()
+        //{
+        //    KfcEventArgs e = new KfcEventArgs();
+        //    e.MsgType = MessageType.NewOrder;
+        //    KfcEventHandler events = this.getKfcHandler("kitchen");
+        //    BroadCastMessage(e, events);
+        //}
+
+
+        public OrderDTO[] getOrderByStatus(string status)
+        {
+            OrderDAO data = new OrderDAO();
+            switch (status)
+            {
+                case "DELETED":
+                    return data.getOrderByStatus(0);
+                case "UNCONFIRM":
+                    return data.getOrderByStatus(1);
+                case "CONFIRM":
+                    return data.getOrderByStatus(2);
+                default:
+                    return null;
+            }
+        }
     }
 }

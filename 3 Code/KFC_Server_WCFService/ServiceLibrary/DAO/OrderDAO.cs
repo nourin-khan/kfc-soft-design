@@ -153,6 +153,26 @@ namespace ServiceLibrary
             return this.selectInfo(new OrderDTO(orderID));
         }
 
+        public OrderDTO[] getOrderByStatus(int status)
+        {
+            try
+            {
+                var db = new KFCDatabaseClassesDataContext(ServiceLibrary.Properties.ConnectionSettings.ConnectionString);
+                var allOrder = from c in db.ORDER_s where c.OrderStatus == status select c;
+                List<OrderDTO> orders = new List<OrderDTO>();
+                foreach (var o in allOrder)
+                {
+                    OrderDTO order = new OrderDTO(o.OrderID, o.OrderDate, o.TableNum, o.OrderStatus, o.OrderNote);
+                    orders.Add(order);
+                }
+                return orders.ToArray();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         /*
         * Description: view food list of Order
         * Input: orderId
