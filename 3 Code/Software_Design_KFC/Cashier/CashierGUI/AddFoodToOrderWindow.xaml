@@ -4,7 +4,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" mc:Ignorable="d"
 	x:Class="CashierGUI.AddFoodToOrderWindow"
 	x:Name="Window"
-	Title="AddFoodToOrderWindow"
+	Title="Thêm món ăn"
 	Width="419" Height="377" Background="#FFDEEDF1" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
 	<Grid x:Name="LayoutRoot">

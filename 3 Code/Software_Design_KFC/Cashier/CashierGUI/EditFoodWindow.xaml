@@ -4,7 +4,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" mc:Ignorable="d"
 	x:Class="CashierGUI.EditFoodWindow"
 	x:Name="Window"
-	Title="EditFoodWindow"
+	Title="Thay đổi món ăn"
 	Width="476" Height="522" Background="#FFDEEDF1" Loaded="Window_Loaded">
 
 	<Grid x:Name="LayoutRoot">
@@ -29,7 +29,7 @@
 					<Button Content="..." Width="30" Margin="10,0,0,0" Click="Button_Click" />
 				</InlineUIContainer></TextBlock>
 			<TextBlock x:Name="descriptionLbl" HorizontalAlignment="Left" TextWrapping="Wrap" FontSize="14.667" Margin="0,20,0,0" FontWeight="Bold"><Run Text="Mô tả:"/></TextBlock>
-			<TextBox x:Name="descriptionTxtBox" TextWrapping="Wrap" Text="TextBox" FontSize="14.667" d:LayoutOverrides="Width" Height="102.507" TextChanged="descriptionTxtBox_TextChanged" VerticalScrollBarVisibility="Auto" />
+			<TextBox x:Name="descriptionTxtBox" TextWrapping="Wrap" Text="" FontSize="14.667" d:LayoutOverrides="Width" Height="102.507" TextChanged="descriptionTxtBox_TextChanged" VerticalScrollBarVisibility="Auto" />
 		</StackPanel>
 		<Grid x:Name="OK" Height="25" Margin="179.75,0,189.75,26.312" VerticalAlignment="Bottom" MouseLeftButtonDown="OK_MouseLeftButtonDown">
 			<Border x:Name="border6" BorderBrush="#FF1679E7" BorderThickness="1" CornerRadius="5" Background="#FF1679E7">

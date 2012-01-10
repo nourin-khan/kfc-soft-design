@@ -4,7 +4,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" mc:Ignorable="d"
 	x:Class="CashierGUI.MoneyCalWindow"
 	x:Name="Window"
-	Title="MoneyCalWindow"
+	Title="Tính tiền"
 	Width="355" Height="287" FontSize="14.667" Background="#FFE3F0FF" WindowStartupLocation="CenterScreen">
 
 	<Grid x:Name="LayoutRoot">
