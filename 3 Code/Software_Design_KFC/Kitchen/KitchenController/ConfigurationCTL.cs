@@ -7,5 +7,6 @@ namespace KitchenController
 {
     public class ConfigurationCTL
     {
+        public static string ServiceAddress;
     }
 }

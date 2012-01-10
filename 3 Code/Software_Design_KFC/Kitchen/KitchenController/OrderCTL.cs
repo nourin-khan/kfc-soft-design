@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using KitchenDTO;
+using KitchenController.KfcService;
 
 namespace KitchenController
 {
@@ -71,6 +71,19 @@ namespace KitchenController
         public bool setTimeForOrder()
         {
             return true;
+        }
+
+        public OrderDTO[] getOrderByStatus(string status)
+        {
+            try
+            {
+                ServiceClient wsClient = ConnectionCTL.connectWebService();
+                return wsClient.getOrderByStatus(status);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;	
+            }
         }
     }
 }

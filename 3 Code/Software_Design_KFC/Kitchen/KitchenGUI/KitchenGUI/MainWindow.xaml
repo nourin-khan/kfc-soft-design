@@ -3,7 +3,7 @@
 	x:Class="KitchenGUI.MainWindow"
 	x:Name="Window"
 	Title="MainWindow"
-	Width="1310" Height="707">
+	Width="1310" Height="707" Loaded="Window_Loaded">
 	<Window.Resources>
 		<Style x:Key="ClockStyle" TargetType="{x:Type Border}"/>
 		<Style x:Key="NoteStyle" TargetType="{x:Type Border}"/>
