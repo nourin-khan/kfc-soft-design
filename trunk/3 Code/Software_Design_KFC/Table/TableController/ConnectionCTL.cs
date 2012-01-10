@@ -12,26 +12,32 @@ namespace TableController
         /**
          * get service client from service channel
          */
-        public static KfcService.ServiceClient connectWebService()
+        public static ServiceClient connectWebService()
         {
             try
             {
                 System.ServiceModel.EndpointAddress endpoint =
                     new System.ServiceModel.EndpointAddress(string.IsNullOrWhiteSpace(ConfigurationCTL.ServiceAddress) ? @"http://localhost:8090/KFC_Server/ServiceLibrary/Service/" : ConfigurationCTL.ServiceAddress);
                 KfcService.ServiceClient wsClient = new KfcService.ServiceClient(new WSHttpBinding(), endpoint);
+                
+                //string endpoint = string.IsNullOrWhiteSpace(ConfigurationCTL.ServiceAddress) ? @"http://localhost:8090/KFC_Server/ServiceLibrary/Service/" : ConfigurationCTL.ServiceAddress;
 
-                // Connect
-                ClientDTO client = new ClientDTO();
-                client.ClientType = ClientType.Table;
-                client.Id = ConfigurationCTL.TableNum.ToString();
-                wsClient.connect(client);
+                //ServiceClient wsClient = new ServiceClient(new InstanceContext(new ProxySingleton()), endpoint);                              
+
+                //// Connect
+                //ClientDTO client = new ClientDTO();
+                //client.ClientType = ClientType.Table;
+                //client.Id = ConfigurationCTL.TableNum.ToString();
+                //wsClient.connect(client);
                 return wsClient;
+                 
             }
             catch (System.Exception ex)
             {
                 throw ex;
             }
         }
+
         /*
          * Description: disconnect web service
          * Input:
@@ -94,19 +100,24 @@ namespace TableController
         /**
          * join to server
          */
-        public void join()
+        public static void join()
         {
             try
             {
                 System.ServiceModel.EndpointAddress endpoint =
                     new System.ServiceModel.EndpointAddress(string.IsNullOrWhiteSpace(ConfigurationCTL.ServiceAddress) ? @"http://localhost:8090/KFC_Server/ServiceLibrary/Service/" : ConfigurationCTL.ServiceAddress);
+
+                //KfcService.ServiceClient wsClient = new KfcService.ServiceClient(new InstanceContext(new ProxySingleton()), new WSDualHttpBinding("WSDualHttpBinding_IService"), endpoint);
                 KfcService.ServiceClient wsClient = new KfcService.ServiceClient(new WSHttpBinding(), endpoint);
 
-                // Connect
-                ClientDTO client = new ClientDTO();
-                client.ClientType = ClientType.Table;
-                client.Id = ConfigurationCTL.TableNum.ToString();
-                wsClient.connect(client);
+                //CustomClientChannel<IService> channel = new CustomClientChannel<IService>("WSDualHttpBinding_IService", endpoint, "app.config");
+                //IService wsClient = channel.CreateChannel();
+
+                //// Connect
+                //ClientDTO client = new ClientDTO();
+                //client.ClientType = ClientType.Table;
+                //client.Id = ConfigurationCTL.TableNum.ToString();
+                //wsClient.connect(client);
             }
             catch (System.Exception ex)
             {

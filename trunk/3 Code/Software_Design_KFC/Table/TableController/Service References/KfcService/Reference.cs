@@ -555,81 +555,6 @@ namespace TableController.KfcService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ClientDTO", Namespace="http://schemas.datacontract.org/2004/07/DTO")]
-    [System.SerializableAttribute()]
-    public partial class ClientDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TableController.KfcService.ClientType ClientTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string IdField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TableController.KfcService.ClientType ClientType {
-            get {
-                return this.ClientTypeField;
-            }
-            set {
-                if ((this.ClientTypeField.Equals(value) != true)) {
-                    this.ClientTypeField = value;
-                    this.RaisePropertyChanged("ClientType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IdField, value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ClientType", Namespace="http://schemas.datacontract.org/2004/07/DTO")]
-    public enum ClientType : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Table = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Kitchen = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Cashier = 2,
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="FoodDTO", Namespace="http://schemas.datacontract.org/2004/07/DTO")]
     [System.SerializableAttribute()]
     public partial class FoodDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -654,6 +579,9 @@ namespace TableController.KfcService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private float FoodPriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool FoodStatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ImageField;
@@ -742,6 +670,19 @@ namespace TableController.KfcService {
                 if ((this.FoodPriceField.Equals(value) != true)) {
                     this.FoodPriceField = value;
                     this.RaisePropertyChanged("FoodPrice");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool FoodStatus {
+            get {
+                return this.FoodStatusField;
+            }
+            set {
+                if ((this.FoodStatusField.Equals(value) != true)) {
+                    this.FoodStatusField = value;
+                    this.RaisePropertyChanged("FoodStatus");
                 }
             }
         }
@@ -956,11 +897,8 @@ namespace TableController.KfcService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="KfcService.IService", SessionMode=System.ServiceModel.SessionMode.Required)]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="KfcService.IService")]
     public interface IService {
-        
-        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/addBill", ReplyAction="http://tempuri.org/IService/addBillResponse")]
-        bool addBill(TableController.KfcService.BillDTO billDTO);
         
         [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/DeleteBillByDTO", ReplyAction="http://tempuri.org/IService/DeleteBillByDTOResponse")]
         bool DeleteBillByDTO(TableController.KfcService.BillDTO billDTO);
@@ -1009,9 +947,6 @@ namespace TableController.KfcService {
         
         [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/getYearlyReport", ReplyAction="http://tempuri.org/IService/getYearlyReportResponse")]
         TableController.KfcService.YearlyReportDTO[] getYearlyReport(System.DateTime billDate);
-        
-        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/connect", ReplyAction="http://tempuri.org/IService/connectResponse")]
-        bool connect(TableController.KfcService.ClientDTO client);
         
         [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/addFood", ReplyAction="http://tempuri.org/IService/addFoodResponse")]
         bool addFood(TableController.KfcService.FoodDTO foodDTO);
@@ -1084,6 +1019,9 @@ namespace TableController.KfcService {
         
         [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/SelectOrderDetailById", ReplyAction="http://tempuri.org/IService/SelectOrderDetailByIdResponse")]
         TableController.KfcService.OrderDetailDTO[] SelectOrderDetailById(string orderId, string foodId);
+        
+        [System.ServiceModel.OperationContractAttribute(ProtectionLevel=System.Net.Security.ProtectionLevel.EncryptAndSign, Action="http://tempuri.org/IService/addBill", ReplyAction="http://tempuri.org/IService/addBillResponse")]
+        bool addBill(TableController.KfcService.BillDTO billDTO);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1111,10 +1049,6 @@ namespace TableController.KfcService {
         
         public ServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
-        }
-        
-        public bool addBill(TableController.KfcService.BillDTO billDTO) {
-            return base.Channel.addBill(billDTO);
         }
         
         public bool DeleteBillByDTO(TableController.KfcService.BillDTO billDTO) {
@@ -1179,10 +1113,6 @@ namespace TableController.KfcService {
         
         public TableController.KfcService.YearlyReportDTO[] getYearlyReport(System.DateTime billDate) {
             return base.Channel.getYearlyReport(billDate);
-        }
-        
-        public bool connect(TableController.KfcService.ClientDTO client) {
-            return base.Channel.connect(client);
         }
         
         public bool addFood(TableController.KfcService.FoodDTO foodDTO) {
@@ -1279,6 +1209,10 @@ namespace TableController.KfcService {
         
         public TableController.KfcService.OrderDetailDTO[] SelectOrderDetailById(string orderId, string foodId) {
             return base.Channel.SelectOrderDetailById(orderId, foodId);
+        }
+        
+        public bool addBill(TableController.KfcService.BillDTO billDTO) {
+            return base.Channel.addBill(billDTO);
         }
     }
 }

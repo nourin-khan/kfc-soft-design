@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TableController.KfcService;
+//using TableController.KfcService;
 using System.ServiceModel;
 using System.Data;
+using TableController.KfcService;
 
 
 namespace TableController
@@ -29,12 +30,12 @@ namespace TableController
 
         public FoodDTO[] getFoodGroup(string foodGroupName = null)
         {
-            ServiceClient wsClient = ConnectionCTL.connectWebService();
             try
             {
                 if (foodGroupName == null) // get all food
                 {
-                    return wsClient.SelectFoodByDTO(null);
+                    ServiceClient wsClient = ConnectionCTL.connectWebService();
+                    return wsClient.SelectFoodByDTO(null);                    
                 } 
                 else
                 {

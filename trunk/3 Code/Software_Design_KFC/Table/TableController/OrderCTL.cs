@@ -17,10 +17,9 @@ namespace TableController
     public class OrderStatus
     {
         public static readonly int DELETED = 0;
-        public static readonly int UNCONFIRMED = 1;
-        public static readonly int COMFIRMED = 2;
+        public static readonly int UNCONFIRM = 1;
+        public static readonly int CONFIRM = 2;
     }
-
     public class OrderCTL
     {
         /*
@@ -49,7 +48,6 @@ namespace TableController
             catch (System.Exception ex)
             {
                 throw ex;
-                return false;
             }
         }
 
@@ -144,13 +142,12 @@ namespace TableController
             try
             {
                 ServiceClient wsClient = ConnectionCTL.connectWebService();
-                //wsClient.addOrder(orderInfo);
-                //foreach (OrderDetailDTO detail in orderDetail)
-                //{
-                //    wsClient.addOrderDetail(detail);
-                //}
+                wsClient.addOrder(orderInfo);
+                foreach (OrderDetailDTO detail in orderDetail)
+                {
+                    wsClient.addOrderDetail(detail);
+                }
 
-                // 
             }
             catch (System.Exception ex)
             {

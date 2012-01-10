@@ -26,8 +26,6 @@ namespace KFC_Table_GUI
             set { foodID = value; }
         }
 
-        private string foodName;
-
         public string FoodName
         {
             get { return name.Text; }
