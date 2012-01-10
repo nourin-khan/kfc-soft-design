@@ -48,7 +48,7 @@ namespace CashierGUI
         private void Button_Click(object sender, RoutedEventArgs e)
         {   //CHANGE HERE FOR IMAGE FILE EXTENSION
             System.Windows.Forms.OpenFileDialog dlg = new System.Windows.Forms.OpenFileDialog();
-            dlg.Filter = "Image File|*.jpeg";
+            dlg.Filter = "Image File(*.png)|*.png";
             dlg.Title = "Choose Image File";
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -112,7 +112,7 @@ namespace CashierGUI
             try
             {
                 FoodCTL foodCtl = new FoodCTL();
-                foodCtl.update(foodDto.FoodID,foodDto);
+                foodCtl.update(this.foodDto.FoodID,this.foodDto);
                 this.isClosed = false;
                 this.Close();
             }

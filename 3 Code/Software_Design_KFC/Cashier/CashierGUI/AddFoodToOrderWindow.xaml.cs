@@ -60,7 +60,8 @@ namespace CashierGUI
 
             foreach (FoodDTO foodDto in _foodList)
             {
-                foodNameCmbBox.Items.Add(foodDto.FoodName);
+                if(foodDto.FoodStatus)
+                    foodNameCmbBox.Items.Add(foodDto.FoodName);
             }
             foodNameCmbBox.SelectedIndex = 0;
         }

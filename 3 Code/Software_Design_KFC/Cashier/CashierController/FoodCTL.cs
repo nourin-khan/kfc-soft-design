@@ -19,7 +19,17 @@ namespace CashierController
          */
         public bool add(FoodDTO foodDTO)
         {
-            return true;
+            ServiceClient ws = ConnectionCTL.connectWebService();
+            try
+            {
+                string newId = ws.getNewFoodId(foodDTO.FoodGroupID);
+                foodDTO.FoodID = newId;
+                return ws.addFood(foodDTO);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /*
@@ -146,6 +156,26 @@ namespace CashierController
             try
             {
                 return ws.SelectFoodGroupByDTO(null);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<FoodDTO> searchFood(FoodDTO dto)
+        {
+            ServiceClient ws = ConnectionCTL.connectWebService();
+            try
+            {
+                List<FoodDTO> list = new List<FoodDTO>();
+                FoodDTO[] data = ws.searchFood(dto);
+                if (data != null)
+                {
+                    list.AddRange(data);
+                    return list;
+                }
+                return null;
             }
             catch (System.Exception ex)
             {

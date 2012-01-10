@@ -24,7 +24,7 @@
 					<TextBox x:Name="discountPriceTxtBox" TextWrapping="Wrap" FontStyle="Italic" Margin="77,0,0,0" Width="120" FontWeight="Normal" TextChanged="discountPriceTxtBox_TextChanged" />
 				</InlineUIContainer></TextBlock>
 			<TextBlock x:Name="imageLbl" HorizontalAlignment="Left" TextWrapping="Wrap" FontSize="14.667" Margin="0,20,0,0" FontWeight="Bold" Width="346.14"><Run Text="Hình ảnh:"/><InlineUIContainer>
-					<TextBox x:Name="imageTxtBox" TextWrapping="Wrap" FontStyle="Italic" Margin="50,0,0,0" Width="120" FontWeight="Normal" TextChanged="imageTxtBox_TextChanged" />
+					<TextBox x:Name="imageTxtBox" TextWrapping="Wrap" FontStyle="Italic" Margin="50,0,0,0" Width="185" FontWeight="Normal" TextChanged="imageTxtBox_TextChanged" Height="26" VerticalScrollBarVisibility="Disabled" />
 				</InlineUIContainer><InlineUIContainer>
 					<Button Content="..." Width="30" Margin="10,0,0,0" Click="Button_Click" />
 				</InlineUIContainer></TextBlock>
