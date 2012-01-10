@@ -4977,7 +4977,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:8090/KFC_Server/ServiceLibrary/Service/8090</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>Stanley-PC\Stanley</Upn>
+          <Upn>JML-PC\JML</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

@@ -1,159 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="BillDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="BillDate" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="BillID" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="BillStatus" type="xs:int" />
-      <xs:element minOccurs="0" name="DeleteNote" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="EmpID" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="OrderID" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Total" type="xs:float" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="BillDTO" nillable="true" type="tns:BillDTO" />
-  <xs:complexType name="ArrayOfBillDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="BillDTO" nillable="true" type="tns:BillDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfBillDTO" nillable="true" type="tns:ArrayOfBillDTO" />
-  <xs:complexType name="ArrayOfOrderFoodDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderFoodDTO" nillable="true" type="tns:OrderFoodDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfOrderFoodDTO" nillable="true" type="tns:ArrayOfOrderFoodDTO" />
-  <xs:complexType name="OrderFoodDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="DiscountPrice" type="xs:int" />
-      <xs:element minOccurs="0" name="FoodID" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FoodName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FoodPrice" type="xs:int" />
-      <xs:element minOccurs="0" name="quantity" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="OrderFoodDTO" nillable="true" type="tns:OrderFoodDTO" />
-  <xs:complexType name="OrderDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="OrderDate" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="OrderID" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="OrderNote" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="OrderStatus" type="xs:int" />
-      <xs:element minOccurs="0" name="TableNum" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="OrderDTO" nillable="true" type="tns:OrderDTO" />
-  <xs:complexType name="ArrayOfOrderDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderDTO" nillable="true" type="tns:OrderDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfOrderDTO" nillable="true" type="tns:ArrayOfOrderDTO" />
-  <xs:complexType name="ArrayOfDailyReportDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="DailyReportDTO" nillable="true" type="tns:DailyReportDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfDailyReportDTO" nillable="true" type="tns:ArrayOfDailyReportDTO" />
-  <xs:complexType name="DailyReportDTO">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:ReportDTO">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="foodID" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="foodName" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="quantity" type="xs:int" />
-          <xs:element minOccurs="0" name="total" type="xs:int" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="DailyReportDTO" nillable="true" type="tns:DailyReportDTO" />
-  <xs:complexType name="ReportDTO">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:element name="ReportDTO" nillable="true" type="tns:ReportDTO" />
-  <xs:complexType name="ArrayOfMonthlyReportDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="MonthlyReportDTO" nillable="true" type="tns:MonthlyReportDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfMonthlyReportDTO" nillable="true" type="tns:ArrayOfMonthlyReportDTO" />
-  <xs:complexType name="MonthlyReportDTO">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:ReportDTO">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="billDate" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="total" type="xs:int" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="MonthlyReportDTO" nillable="true" type="tns:MonthlyReportDTO" />
-  <xs:complexType name="ArrayOfYearlyReportDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="YearlyReportDTO" nillable="true" type="tns:YearlyReportDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfYearlyReportDTO" nillable="true" type="tns:ArrayOfYearlyReportDTO" />
-  <xs:complexType name="YearlyReportDTO">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:ReportDTO">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="billDate" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="total" type="xs:int" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="YearlyReportDTO" nillable="true" type="tns:YearlyReportDTO" />
-  <xs:complexType name="FoodDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="DiscountPrice" type="xs:float" />
-      <xs:element minOccurs="0" name="FoodGroupID" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FoodID" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FoodName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FoodPrice" type="xs:float" />
-      <xs:element minOccurs="0" name="FoodStatus" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="FoodDTO" nillable="true" type="tns:FoodDTO" />
-  <xs:complexType name="ArrayOfFoodDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="FoodDTO" nillable="true" type="tns:FoodDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfFoodDTO" nillable="true" type="tns:ArrayOfFoodDTO" />
-  <xs:complexType name="FoodGroupDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="FoodGroupID" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FoodGroupName" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="FoodGroupDTO" nillable="true" type="tns:FoodGroupDTO" />
-  <xs:complexType name="ArrayOfFoodGroupDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="FoodGroupDTO" nillable="true" type="tns:FoodGroupDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfFoodGroupDTO" nillable="true" type="tns:ArrayOfFoodGroupDTO" />
-  <xs:complexType name="OrderDetailDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CompleteTime" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="FoodID" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FoodNote" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="OrderID" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Priority" type="xs:int" />
-      <xs:element minOccurs="0" name="Quantity" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="OrderDetailDTO" nillable="true" type="tns:OrderDetailDTO" />
-  <xs:complexType name="ArrayOfOrderDetailDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderDetailDTO" nillable="true" type="tns:OrderDetailDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfOrderDetailDTO" nillable="true" type="tns:ArrayOfOrderDetailDTO" />
+<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="anyType" nillable="true" type="xs:anyType" />
+  <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+  <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+  <xs:element name="boolean" nillable="true" type="xs:boolean" />
+  <xs:element name="byte" nillable="true" type="xs:byte" />
+  <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+  <xs:element name="decimal" nillable="true" type="xs:decimal" />
+  <xs:element name="double" nillable="true" type="xs:double" />
+  <xs:element name="float" nillable="true" type="xs:float" />
+  <xs:element name="int" nillable="true" type="xs:int" />
+  <xs:element name="long" nillable="true" type="xs:long" />
+  <xs:element name="QName" nillable="true" type="xs:QName" />
+  <xs:element name="short" nillable="true" type="xs:short" />
+  <xs:element name="string" nillable="true" type="xs:string" />
+  <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+  <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+  <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+  <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+  <xs:element name="char" nillable="true" type="tns:char" />
+  <xs:simpleType name="char">
+    <xs:restriction base="xs:int" />
+  </xs:simpleType>
+  <xs:element name="duration" nillable="true" type="tns:duration" />
+  <xs:simpleType name="duration">
+    <xs:restriction base="xs:duration">
+      <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+      <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+      <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="guid" nillable="true" type="tns:guid" />
+  <xs:simpleType name="guid">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attribute name="FactoryType" type="xs:QName" />
+  <xs:attribute name="Id" type="xs:ID" />
+  <xs:attribute name="Ref" type="xs:IDREF" />
 </xs:schema>
