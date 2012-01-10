@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using CashierController;
 using CashierController.KFCService;
 using System.Data;
+using System.Windows.Threading;
+using KitchenController.KfcService;
 
 namespace CashierGUI
 {
@@ -81,6 +83,23 @@ namespace CashierGUI
                 table.empId = MainWindow.empId;
                 for (int j = 0; j < _floorQty; j++)
                     _tableBitmap[j, i] = TableStatus.FREE;
+            }
+
+            // create timer
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(3);
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Start();
+        }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            ServiceClient wsClient = ConnectionCTL.connectWebService();
+            OrderDTO[] newOrder = wsClient.getOrderByStatus("CONFIRM");
+
+            // if newOrder != null => update to GUI
+            if (newOrder != null)
+            {
             }
         }
 
