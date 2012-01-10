@@ -76,7 +76,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="KFCDatabaseClasses.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>KFCDatabaseClasses.designer.cs</LastGenOutput>
