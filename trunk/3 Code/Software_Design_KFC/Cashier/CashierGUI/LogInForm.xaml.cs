@@ -31,12 +31,20 @@ namespace CashierGUI
             {
                 EmployeeCTL empCtl = new EmployeeCTL();
                 string empId = empCtl.checkCashierPermission(this.usernameTxtBox.Text,this.passwordTxtBox.Password);
-                if (empId == null)
+                bool isManager = empCtl.checkManagerPermission(empId);
+                if (empId != null)
                 {
                     MainWindow main = new MainWindow();
-                    main.empId = empId;
+                    MainWindow.empId = empId;
+                    main.isManagerFuncEnabled = isManager;
                     this.Close();
                     main.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Bạn không đủ quyền truy cập");
+                    this.passwordTxtBox.Clear();
+                    return;
                 }
             }
             else

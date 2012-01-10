@@ -111,6 +111,7 @@ namespace CashierGUI
             MoneyCalWindow moneyCal = new MoneyCalWindow();
             moneyCal.orderTotal = orderCtl.getOrderTotal(orderId);
             moneyCal.empId = this.empId;
+            moneyCal.orderId = this.orderId;
             moneyCal.ShowDialog();
             if (!moneyCal.closed)
             {

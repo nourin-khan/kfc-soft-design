@@ -56,7 +56,7 @@ namespace CashierController
             }
             catch (System.Exception ex)
             {
-                throw ex;
+                return null;
             }
         }
 

@@ -32,10 +32,10 @@ namespace CashierGUI
         #region Initialization
 
         #region Attribute
-        private string _empId;
+        private static string _empId;
         private bool _isManagerFuncEnabled = true;
         
-        public string empId
+        public static string empId
         {
             get { return _empId; }
             set { _empId = value; }
@@ -78,11 +78,10 @@ namespace CashierGUI
             for (int i = 0; i < _tableQtyOnFloor; i++)
             {
                 TableUsc table = (TableUsc)FloorWrappnl.Children[i];
-                table.empId = this.empId;
+                table.empId = MainWindow.empId;
                 for (int j = 0; j < _floorQty; j++)
                     _tableBitmap[j, i] = TableStatus.FREE;
             }
-            this.isManagerFuncEnabled = true ;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -152,6 +151,10 @@ namespace CashierGUI
         {
             //search for unfree table in db to reset status
             OrderDTO[] unfreeTables = orderCtl.getUnfreeTable(floorNum);
+            for(int i = 0; i<_tableQtyOnFloor; i++)
+            {
+                _tableBitmap[floorNum - 1, i] = TableStatus.FREE;
+            }
 
             if (unfreeTables != null)
             {
@@ -200,41 +203,42 @@ namespace CashierGUI
         private FoodCTL foodCtl = new FoodCTL();
         private List<FoodDTO> _foodList = new List<FoodDTO>();
         #endregion
-        private void Add_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            AddFoodWindow foodWin = new AddFoodWindow();
-            foodWin.ShowDialog();
-            if (foodWin.isClosed == true)
-                return;
-            this._foodList.Add(foodWin.foodDto);
-            this.FoodGridView.ItemsSource = null;
-            this.FoodGridView.ItemsSource = this._foodList;
-        }
+        
         #endregion
 
         private void TabFood_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
-            this.FoodGridView.Columns[0].Visibility = Visibility.Hidden;
-            this.FoodGridView.Columns[4].DisplayIndex = 0; //foodID
-            this.FoodGridView.Columns[4].Header = "MÃ MÓN ĂN";
-            this.FoodGridView.Columns[5].DisplayIndex = 1; //foodName
-            this.FoodGridView.Columns[5].Header = "TÊN MÓN ĂN";
-            this.FoodGridView.Columns[6].DisplayIndex = 2; //foodPrice
-            this.FoodGridView.Columns[6].Header = "GIÁ GỐC";
-            this.FoodGridView.Columns[2].DisplayIndex = 3; //discountPrice
-            this.FoodGridView.Columns[2].Header = "GIẢM";
-            this.FoodGridView.Columns[1].DisplayIndex = 4; //description
-            this.FoodGridView.Columns[1].Header = "MÔ TẢ";
-            this.FoodGridView.Columns[3].DisplayIndex = 5; //foodGroupID
-            this.FoodGridView.Columns[3].Header = "MÃ NHÓM MÓN ĂN";
-            this.FoodGridView.Columns[7].DisplayIndex = 6; //imagePath 
-            this.FoodGridView.Columns[7].Header = "HÌNH ẢNH";
-            this.FoodGridView.IsReadOnly = true;
+            FormatFoodGridView();
         }
 
+        private void FormatFoodGridView()
+        {
+            this.FoodGridView.Columns[0].Visibility = Visibility.Hidden;
+            this.FoodGridView.Columns[4].DisplayIndex = 0; //foodID
+            this.FoodGridView.Columns[4].Header = "MÃ MÓN ĂN            ";
+            this.FoodGridView.Columns[5].DisplayIndex = 1; //foodName
+            this.FoodGridView.Columns[5].Header = "TÊN MÓN ĂN           ";
+            this.FoodGridView.Columns[6].DisplayIndex = 2; //foodPrice
+            this.FoodGridView.Columns[6].Header = "GIÁ GỐC              ";
+            this.FoodGridView.Columns[2].DisplayIndex = 3; //discountPrice
+            this.FoodGridView.Columns[2].Header = "GIẢM                 ";
+            this.FoodGridView.Columns[1].DisplayIndex = 4; //description
+            this.FoodGridView.Columns[1].Header = "MÔ TẢ                ";
+            this.FoodGridView.Columns[3].DisplayIndex = 5; //foodGroupID
+            this.FoodGridView.Columns[3].Header = "MÃ NHÓM MÓN ĂN        ";
+            this.FoodGridView.Columns[7].DisplayIndex = 6; //foodStatus
+            this.FoodGridView.Columns[7].Header = "HIỆN DÙNG / ĐÃ XÓA       ";
+            this.FoodGridView.Columns[8].DisplayIndex = 7; //imagePath 
+            this.FoodGridView.Columns[8].Header = "HÌNH ẢNH             ";
+            this.FoodGridView.IsReadOnly = true;
+        }
         private void Delete_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            if (!this.isManagerFuncEnabled)
+            {
+                MessageBox.Show("Bạn không đủ quyền truy cập");
+                return;
+            }
             if (this.FoodGridView.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Mời bạn chón món ăn cần xóa trước");
@@ -246,7 +250,8 @@ namespace CashierGUI
                 for (int i = 0; i < this.FoodGridView.SelectedItems.Count; i++)
                 {
                     FoodDTO item = (FoodDTO)this.FoodGridView.SelectedItems[i];
-                    foodCtl.delete(item.FoodID);
+                    item.FoodStatus = false;
+                    foodCtl.update(item.FoodID,item);
                     int index = this._foodList.FindIndex(
                         delegate(FoodDTO dto)
                         {
@@ -254,7 +259,7 @@ namespace CashierGUI
                             return dto.FoodID == food.FoodID;
                         }
                         );
-                    this._foodList.RemoveAt(index);                    
+                    this._foodList[index] = item;
                 }
                 this.FoodGridView.ItemsSource = null;
                 this.FoodGridView.ItemsSource = this._foodList;
@@ -265,6 +270,11 @@ namespace CashierGUI
 
         private void Edit_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            if (!this.isManagerFuncEnabled)
+            {
+                MessageBox.Show("Bạn không đủ quyền truy cập");
+                return;
+            }
             if (this.FoodGridView.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Mời bạn chọn món ăn muốn sửa đổi");
@@ -283,6 +293,11 @@ namespace CashierGUI
 
         private void Report_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            if (!this.isManagerFuncEnabled)
+            {
+                MessageBox.Show("Bạn không đủ quyền truy cập");
+                return;
+            }
             //validation
             if (this.ReportTypeCmbBox.SelectedItem == null || this.DatePicker.SelectedDate == null)
             {
@@ -344,5 +359,54 @@ namespace CashierGUI
             this.TotalLbl.Content = total.ToString();
         }
 
+        private void Add_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (!this.isManagerFuncEnabled)
+            {
+                MessageBox.Show("Bạn không đủ quyền truy cập");
+                return;
+            }
+            AddFoodWindow foodWin = new AddFoodWindow();
+            foodWin.ShowDialog();
+            if (foodWin.isClosed == true)
+                return;
+            this._foodList.Add(foodWin.foodDto);
+            this.FoodGridView.ItemsSource = null;
+            this.FoodGridView.ItemsSource = this._foodList;
+        }
+
+        private void Search_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(this.foodNameSearchTxtBox.Text) && string.IsNullOrWhiteSpace(this.foodIdSearchTxtBox.Text))
+            {
+                this.FoodGridView.ItemsSource = null;
+                this.FoodGridView.ItemsSource = this._foodList;
+                FormatFoodGridView();
+                return;
+            }
+
+            FoodDTO searchItem = new FoodDTO();
+            if (!(string.IsNullOrWhiteSpace(this.foodIdSearchTxtBox.Text)))
+            {
+                searchItem.FoodID = this.foodIdSearchTxtBox.Text;
+            }
+            if (!(string.IsNullOrWhiteSpace(this.foodNameSearchTxtBox.Text)))
+            {
+                searchItem.FoodName = this.foodNameSearchTxtBox.Text;
+            }
+            List<FoodDTO> result = this.foodCtl.searchFood(searchItem);
+            if (result != null)
+            {
+                this.FoodGridView.ItemsSource = null;
+                this.FoodGridView.ItemsSource = result;
+                FormatFoodGridView();
+                return;
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy thông tin bạn cần");
+                return;
+            }
+        }
     }
 }

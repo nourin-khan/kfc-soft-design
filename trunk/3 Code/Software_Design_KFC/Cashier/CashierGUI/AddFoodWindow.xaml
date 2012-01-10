@@ -24,12 +24,12 @@
 					<TextBox x:Name="discountPriceTxtBox" TextWrapping="Wrap" FontStyle="Italic" Margin="77,0,0,0" Width="120" FontWeight="Normal"/>
 				</InlineUIContainer></TextBlock>
 			<TextBlock x:Name="imageLbl" HorizontalAlignment="Left" TextWrapping="Wrap" FontSize="14.667" Margin="0,20,0,0" FontWeight="Bold" Width="346.14"><Run Text="Hình ảnh:"/><InlineUIContainer>
-					<TextBox x:Name="imageTxtBox" TextWrapping="Wrap" FontStyle="Italic" Margin="50,0,0,0" Width="120" FontWeight="Normal"/>
+					<TextBox x:Name="imageTxtBox" TextWrapping="Wrap" FontStyle="Italic" Margin="50,0,0,0" Width="185" FontWeight="Normal" Height="25"/>
 				</InlineUIContainer><InlineUIContainer>
 					<Button Content="..." Width="30" Margin="10,0,0,0" Click="Button_Click" />
 				</InlineUIContainer></TextBlock>
 			<TextBlock x:Name="descriptionLbl" HorizontalAlignment="Left" TextWrapping="Wrap" FontSize="14.667" Margin="0,20,0,0" FontWeight="Bold"><Run Text="Mô tả:"/></TextBlock>
-			<TextBox x:Name="descriptionTxtBox" TextWrapping="Wrap" Text="TextBox" FontSize="14.667" d:LayoutOverrides="Width" Height="102.507"/>
+			<TextBox x:Name="descriptionTxtBox" TextWrapping="Wrap" FontSize="14.667" d:LayoutOverrides="Width" Height="102.507"/>
 		</StackPanel>
 		<Grid x:Name="OK" Height="25" Margin="179.75,0,166.75,30.312" VerticalAlignment="Bottom" MouseLeftButtonDown="OK_MouseLeftButtonDown">
 			<Border x:Name="border6" BorderBrush="#FF1679E7" BorderThickness="1" CornerRadius="5" Background="#FF1679E7">

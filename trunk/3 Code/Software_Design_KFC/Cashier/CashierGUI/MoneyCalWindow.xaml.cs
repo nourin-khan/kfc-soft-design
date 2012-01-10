@@ -58,12 +58,14 @@ namespace CashierGUI
         public MoneyCalWindow()
 		{
 			this.InitializeComponent();
+            
 			
 			// Insert code required on object creation below this point.
 		}
 
         private void OK_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            this.empId = MainWindow.empId;
             //validation, check if customer give enough money
             if (this.backMoneyTxtBlock.Text == "-" || int.Parse(this.backMoneyTxtBlock.Text) < 0)
             {
@@ -78,7 +80,7 @@ namespace CashierGUI
             billDto.Total = this.orderTotal;
             billDto.BillStatus = 2;
             billDto.BillDate = DateTime.Now;
-            billDto.BillID = this.orderId;
+            billDto.OrderID = this.orderId;
             BillCTL billCtl = new BillCTL();
             billCtl.add(billDto);
 
@@ -99,28 +101,6 @@ namespace CashierGUI
             this.backMoneyTxtBlock.Text = (int.Parse(this.givenMoneyTxtBlock.Text) - this.orderTotal).ToString();
         }
 
-        private void OK_TouchEnter(object sender, TouchEventArgs e)
-        {
-            //validation, check if customer give enough money
-            if (this.backMoneyTxtBlock.Text == "-" || int.Parse(this.backMoneyTxtBlock.Text) < 0)
-            {
-                MessageBox.Show("Khách hàng chưa thanh toán đủ");
-                return;
-            }
-            //set parameter for new bill
-            CashierController.KFCService.BillDTO billDto = new CashierController.KFCService.BillDTO();
-            billDto.BillID = DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString();
-            billDto.OrderID = this.orderId;
-            billDto.EmpID = this.empId;
-            billDto.Total = this.orderTotal;
-            billDto.BillStatus = 2;
-            billDto.BillDate = DateTime.Now;
-            billDto.BillID = this.orderId;
-            BillCTL billCtl = new BillCTL();
-            billCtl.add(billDto);
-
-            this.closed = false;
-            this.Close();
-        }
-	}
+        
+    }
 }

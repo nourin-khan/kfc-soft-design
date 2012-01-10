@@ -94,6 +94,12 @@ namespace CashierGUI
                     goto WRONGNUMBER;
             }
 
+            //discountPrice > foodPrice
+            if (int.Parse(this.foodPriceTxtBox.Text) < int.Parse(this.discountPriceTxtBox.Text))
+            {
+                goto WRONGNUMBER;
+            }
+
             //get info and add to database
             this.foodDto.FoodName = this.foodNameTxtBox.Text;
             this.foodDto.FoodPrice = int.Parse(this.foodPriceTxtBox.Text);
@@ -101,11 +107,12 @@ namespace CashierGUI
             this.foodDto.FoodGroupID = this._foodGroup[this.foodGroupCmbBox.SelectedIndex].FoodGroupID;
             this.foodDto.Image = this.imageTxtBox.Text;
             this.foodDto.Description = this.descriptionTxtBox.Text;
+            this.foodDto.FoodStatus = true;
             
             try
             {
                 FoodCTL foodCtl = new FoodCTL();
-                foodCtl.add(foodDto);
+                foodCtl.add(this.foodDto);
                 this.isClosed = false;
                 this.Close();
             }
@@ -120,7 +127,7 @@ namespace CashierGUI
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.OpenFileDialog dlg = new System.Windows.Forms.OpenFileDialog();
-            dlg.Filter = "Image File|*.jpeg";
+            dlg.Filter = "Image File(*.png)|*.png";
             dlg.Title = "Choose Image File";
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
