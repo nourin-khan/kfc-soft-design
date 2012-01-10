@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ServiceModel;
+using KitchenController.KfcService;
+
 
 namespace KitchenController
 {
@@ -14,9 +17,20 @@ namespace KitchenController
          * Author:
          * Note:
          */
-        public static bool connectWebService()
+        public static KfcService.ServiceClient connectWebService()
         {
-            return true;
+            try
+            {
+                System.ServiceModel.EndpointAddress endpoint =
+                    new System.ServiceModel.EndpointAddress(string.IsNullOrWhiteSpace(ConfigurationCTL.ServiceAddress) ? @"http://localhost:8090/KFC_Server/ServiceLibrary/Service/" : ConfigurationCTL.ServiceAddress);
+                KfcService.ServiceClient wsClient = new KfcService.ServiceClient(new WSHttpBinding(), endpoint);
+
+                return wsClient;
+            }
+            catch
+            {
+                return null;
+            }
         }
         /*
          * Description: disconnect web service
@@ -75,6 +89,24 @@ namespace KitchenController
         public static string receiveMessage(string client)
         {
             return null;
+        }
+
+        /**
+         * register to server
+         */
+        public void Join()
+        {
+            try
+            {
+                System.ServiceModel.EndpointAddress endpoint =
+                    new System.ServiceModel.EndpointAddress(string.IsNullOrWhiteSpace(ConfigurationCTL.ServiceAddress) ? @"http://localhost:8090/KFC_Server/ServiceLibrary/Service/" : ConfigurationCTL.ServiceAddress);
+                KfcService.ServiceClient wsClient = new KfcService.ServiceClient(new WSHttpBinding(), endpoint);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
     }
 }

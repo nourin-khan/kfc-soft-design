@@ -45,6 +45,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity">
       <HintPath>C:\Program Files (x86)\Microsoft SDKs\Expression\Blend\.NETFramework\v4.0\Libraries\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -67,6 +71,12 @@
     </ApplicationDefinition>
     <Compile Include="BellOrderUsc.xaml.cs">
       <DependentUpon>BellOrderUsc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigureForm.Designer.cs">
+      <DependentUpon>ConfigureForm.cs</DependentUpon>
     </Compile>
     <Compile Include="NavigateAction.cs" />
     <Compile Include="NoteOrderUsc.xaml.cs">
@@ -181,7 +191,17 @@
     <Resource Include="warning-stop-do-not-symbol_Images\Layer 4.png" />
     <Resource Include="warning-stop-do-not-symbol_Images\Layer 5.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\KitchenController\KitchenController.csproj">
+      <Project>{C89B86D3-7472-40D8-A718-FABFB44CA8BB}</Project>
+      <Name>KitchenController</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ConfigureForm.resx">
+      <DependentUpon>ConfigureForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath32)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
 	     Other similar extension points exist, see Microsoft.Common.targets.
