@@ -32,7 +32,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +48,7 @@
     <Compile Include="ConnectionCTL.cs" />
     <Compile Include="FoodCTL.cs" />
     <Compile Include="FoodGroupCTL.cs" />
+    <Compile Include="KfcCustomChannel.cs" />
     <Compile Include="OrderCTL.cs" />
     <Compile Include="OrderDetailCTL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,9 +59,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="app.config" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="Service References\KfcService\item.xsd">
       <SubType>Designer</SubType>
@@ -69,7 +70,7 @@
     <None Include="Service References\KfcService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\KfcService\item31.xsd">
+    <None Include="Service References\KfcService\item3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\KfcService\Service.wsdl" />

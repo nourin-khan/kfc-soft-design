@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1c34c057-5930-48af-afec-e0eb0358a6fe" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8aaee26e-aae7-4148-8140-3a207ecc2dfb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -21,12 +21,12 @@
     <MetadataSource Address="http://localhost:8090/KFC_Server/ServiceLibrary/Service/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="751bcef9-f96f-4661-976f-5f070fd8758a" SourceId="1" SourceUrl="http://localhost:8090/KFC_Server/ServiceLibrary/Service/?xsd=xsd0" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="bc7eb053-f39d-40e0-9a9b-330aac7d0336" SourceId="1" SourceUrl="http://localhost:8090/KFC_Server/ServiceLibrary/Service/?xsd=xsd1" />
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="0eb50390-9f83-445e-8794-a196e016b919" SourceId="1" SourceUrl="http://localhost:8090/KFC_Server/ServiceLibrary/Service/?disco" />
-    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="2f48b23e-5c02-4bf5-a315-aed6acbe8d20" SourceId="1" SourceUrl="http://localhost:8090/KFC_Server/ServiceLibrary/Service/?wsdl" />
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="7df38a72-934c-49cc-b021-f39300c82242" SourceId="1" SourceUrl="http://localhost:8090/KFC_Server/ServiceLibrary/Service/?xsd=xsd2" />
-    <MetadataFile FileName="item31.xsd" MetadataType="Schema" ID="3405b0c1-7ce4-4ab0-b811-df588a1043ab" SourceId="1" SourceUrl="http://localhost:8090/KFC_Server/ServiceLibrary/Service/?xsd=xsd3" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="0c8afa42-f3ca-4826-8740-e7a67f2890f1" SourceId="1" SourceUrl="http://localhost:8090/KFC_Server/ServiceLibrary/Service/?xsd=xsd0" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="fb021d56-445c-43be-ab80-9894502288b8" SourceId="1" SourceUrl="http://localhost:8090/KFC_Server/ServiceLibrary/Service/?xsd=xsd1" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="9d309ee2-7fc0-4b4a-bf33-4ffdb5b55f94" SourceId="1" SourceUrl="http://localhost:8090/KFC_Server/ServiceLibrary/Service/?disco" />
+    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="b6620680-531a-43c1-b6e5-ed30468d7bdd" SourceId="1" SourceUrl="http://localhost:8090/KFC_Server/ServiceLibrary/Service/?wsdl" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="92d61aef-2ad1-409d-b171-f82b82d68cee" SourceId="1" SourceUrl="http://localhost:8090/KFC_Server/ServiceLibrary/Service/?xsd=xsd2" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="d1a00fe3-91bd-441f-a3b8-967f64dbac49" SourceId="1" SourceUrl="http://localhost:8090/KFC_Server/ServiceLibrary/Service/?xsd=xsd3" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

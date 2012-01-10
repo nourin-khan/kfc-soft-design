@@ -50,9 +50,9 @@ namespace KFC_Table_GUI
         #endregion        
 
         #region Controller
-        FoodCTL foodCtrl;
-        OrderCTL orderCtrl;
-        ConnectionCTL connectionCtrl;
+        private FoodCTL foodCtrl;
+        private OrderCTL orderCtrl;
+        private ConnectionCTL connectionCtrl;
         #endregion
 
         public MainWindow()
@@ -109,15 +109,6 @@ namespace KFC_Table_GUI
             }  
             #endregion
             
-            // join to server
-            try
-            {
-                connectionCtrl.join();
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show("Can't join to server\n" + ex.ToString(), "Error");
-            }
             // get all food
             getAllFood();
         }
@@ -259,7 +250,7 @@ namespace KFC_Table_GUI
             // create the order
             OrderDTO orderInfo = new OrderDTO();
             orderInfo.OrderDate = DateTime.Now;
-            orderInfo.OrderStatus = OrderStatus.UNCONFIRMED;
+            orderInfo.OrderStatus = OrderStatus.CONFIRM;
             orderInfo.OrderNote = string.Empty;
             orderInfo.TableNum = ConfigurationCTL.TableNum;
             // order id is complexity string that's include table No. and datetime.now
