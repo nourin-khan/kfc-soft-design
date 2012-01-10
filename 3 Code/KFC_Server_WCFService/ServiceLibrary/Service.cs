@@ -256,7 +256,19 @@ namespace ServiceLibrary
             FoodDAO data = new FoodDAO();
             return data.selectInfo(foodID);
         }
-        
+
+        public FoodDTO[] searchFood(FoodDTO foodDto)
+        {
+            FoodDAO data = new FoodDAO();
+            return data.searchFood(foodDto);
+        }
+
+        public string getNewFoodId(string foodGroupId)
+        {
+            FoodDAO data = new FoodDAO();
+            return data.getNewFoodId(foodGroupId);
+        }
+
         #endregion
 
         #region Food Group
