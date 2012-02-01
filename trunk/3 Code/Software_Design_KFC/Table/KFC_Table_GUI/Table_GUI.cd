@@ -1,21 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="KFC_Table_GUI.MainWindow">
-    <Position X="0.5" Y="0.5" Width="2.75" />
+  <Class Name="KFC_Table_GUI.App" Collapsed="true">
+    <Position X="0.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIAAAQAAAAASAgIgAAABAAgYAAAAAAAAAABQ=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Table_GUI.ConfigureForm" Collapsed="true">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ARAAAAABECAAABAAgBCAAIACAAAAUEAgBKAAggEAACA=</HashCode>
+      <FileName>ConfigureForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Table_GUI.foodStatus" Collapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Properties\foodStatus.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Table_GUI.MainWindow" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIBAAAMAIAQACAAgSggIgABABAAgcIAAAAAAAAAhU=</HashCode>
       <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="KFC_Table_GUI.UserControlCloseButton">
-    <Position X="8" Y="0.5" Width="2" />
+  <Class Name="KFC_Table_GUI.MyCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.75" Y="1.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="KFC_Table_GUI.MyCommand.Refresh" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MainWindow.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQCAAQAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KFC_Table_GUI.UserControlCloseButton" Collapsed="true">
+    <Position X="2.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>UserControl\UserControlCloseButton.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="KFC_Table_GUI.UserControlFood">
-    <Position X="10.25" Y="0.5" Width="2.25" />
+  <Class Name="KFC_Table_GUI.UserControlConfirm" Collapsed="true">
+    <Position X="4.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAABAAAAAQAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>UserControl\UserControlConfirm.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC_Table_GUI.UserControlFood" Collapsed="true">
+    <Position X="6" Y="1.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
     <NestedTypes>
       <Delegate Name="KFC_Table_GUI.UserControlFood.ControlClick" Collapsed="true">
         <TypeIdentifier>
@@ -33,8 +82,11 @@
       <FileName>UserControl\UserControlFood.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="KFC_Table_GUI.UserControlFoodInCart">
-    <Position X="5.75" Y="2.75" Width="2" />
+  <Class Name="KFC_Table_GUI.UserControlFoodInCart" Collapsed="true">
+    <Position X="0.75" Y="2.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
     <NestedTypes>
       <Delegate Name="KFC_Table_GUI.UserControlFoodInCart.RemoveFromCartHandler" Collapsed="true">
         <TypeIdentifier>
@@ -47,36 +99,32 @@
       <FileName>UserControl\UserControlFoodInCart.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="KFC_Table_GUI.UserControlFoodInKitchen">
-    <Position X="3.5" Y="3.5" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAgAAAAAAAAAAAAAAQAAAAEAAAAAAAAAgAAA=</HashCode>
-      <FileName>UserControl\UserControlFoodInKitchen.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="KFC_Table_GUI.UserControlFoodInFocus">
-    <Position X="8" Y="2" Width="2" />
+  <Class Name="KFC_Table_GUI.UserControlFoodInFocus" Collapsed="true">
+    <Position X="2.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAgBAAAAAAAAAABIQAAAQFAAAAAAAAAAAAA=</HashCode>
       <FileName>UserControl\UserControlFoodInFocus.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="KFC_Table_GUI.UserControlPayment">
-    <Position X="3.5" Y="2" Width="1.75" />
+  <Class Name="KFC_Table_GUI.UserControlFoodInKitchen" Collapsed="true">
+    <Position X="4.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>UserControl\UserControlPayment.xaml.cs</FileName>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAgAAA=</HashCode>
+      <FileName>UserControl\UserControlFoodInKitchen.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="KFC_Table_GUI.UserControlOK">
-    <Position X="3.5" Y="0.5" Width="1.5" />
+  <Class Name="KFC_Table_GUI.UserControlOK" Collapsed="true">
+    <Position X="6" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>UserControl\UserControlOK.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="KFC_Table_GUI.UserControlOptionsBar">
-    <Position X="5.75" Y="0.5" Width="2" />
+  <Class Name="KFC_Table_GUI.UserControlOptionsBar" Collapsed="true">
+    <Position X="4.25" Y="3.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
     <NestedTypes>
       <Delegate Name="KFC_Table_GUI.UserControlOptionsBar.ControlClicked" Collapsed="true">
         <TypeIdentifier>
@@ -89,18 +137,11 @@
       <FileName>UserControl\UserControlOptionsBar.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="KFC_Table_GUI.App">
-    <Position X="10.75" Y="5.25" Width="1.5" />
+  <Class Name="KFC_Table_GUI.UserControlPayment" Collapsed="true">
+    <Position X="2.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>App.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="KFC_Table_GUI.UserControlConfirm">
-    <Position X="0.5" Y="5" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
-      <FileName>UserControl\UserControlConfirm.xaml.cs</FileName>
+      <FileName>UserControl\UserControlPayment.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
