@@ -167,6 +167,7 @@
     <None Include="Application.ico">
       <Visible>false</Visible>
     </None>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="chalkboard_Images\Green Board.png" />
